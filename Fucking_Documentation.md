@@ -885,3 +885,617 @@ The goal is becoming a better problem solver every day.
 
 
 One problem at a time. 🚀
+
+
+---
+
+# 📅 Day 3 — Mapping, Counting & Processing Numbers
+
+
+## Problems Solved
+
+- LeetCode 1920 — Build Array from Permutation
+- LeetCode 1365 — How Many Numbers Are Smaller Than the Current Number
+- LeetCode 1295 — Find Numbers with Even Number of Digits
+
+
+---
+
+# 🧠 Day 3 Learning
+
+
+## 1. Mapping Can Happen More Than Once
+
+
+Problem:
+
+LeetCode 1920 — Build Array from Permutation
+
+
+After learning index mapping in Shuffle String, I encountered another mapping problem.
+
+At first I thought:
+
+```java
+ans[i] = nums[i];
+```
+
+But the problem required:
+
+```java
+ans[i] = nums[nums[i]];
+```
+
+This taught me:
+
+```
+Index
+
+↓
+
+Value
+
+↓
+
+Another Index
+
+↓
+
+Final Value
+```
+
+For the first time I understood that indexes themselves can become data.
+
+This was an important step in improving my problem-solving ability.
+
+
+---
+
+## 2. Correct Array Creation
+
+
+One mistake I made:
+
+```java
+int ans[] = new ans;
+```
+
+Learned:
+
+```java
+int[] ans = new int[nums.length];
+```
+
+This reinforced a pattern I must remember:
+
+```java
+datatype[] arrayName = new datatype[size];
+```
+
+
+---
+
+## 3. Loop Boundary Understanding
+
+
+Initially I still sometimes wrote:
+
+```java
+i <= nums.length
+```
+
+But I learned again:
+
+Arrays are 0-indexed.
+
+Correct:
+
+```java
+i < nums.length
+```
+
+Because:
+
+```
+Last Index
+
+=
+
+length - 1
+```
+
+
+---
+
+## 4. Counting Pattern
+
+
+Problem:
+
+LeetCode 1365 — How Many Numbers Are Smaller Than the Current Number
+
+
+My thinking process:
+
+For every number:
+
+```
+Compare with every other number
+
+↓
+
+If smaller
+
+↓
+
+Increase count
+```
+
+Pattern:
+
+```java
+for(int i = 0; i < nums.length; i++)
+{
+    for(int j = 0; j < nums.length; j++)
+    {
+        if(nums[i] > nums[j])
+        {
+            count[i]++;
+        }
+    }
+}
+```
+
+
+This problem strengthened my understanding of nested loops.
+
+
+---
+
+## 5. Storing Answers In Arrays
+
+
+Important realization:
+
+```java
+count[i]
+```
+
+stores the answer for:
+
+```java
+nums[i]
+```
+
+I learned that answer arrays often work like:
+
+```
+Input Position
+
+↓
+
+Output Position
+```
+
+Every index stores its own answer.
+
+
+---
+
+## 6. Runtime Is Not Everything
+
+
+For LeetCode 1365 my solution achieved:
+
+```
+7 ms
+
+Beats 82.27%
+```
+
+This taught me something important.
+
+Even a simple brute-force solution can perform well.
+
+First priority:
+
+```
+Correct Solution
+```
+
+Then:
+
+```
+Optimization
+```
+
+
+---
+
+## 7. Arrays vs Elements
+
+
+Problem:
+
+LeetCode 1295 — Find Numbers with Even Number of Digits
+
+
+One of my biggest mistakes today:
+
+Wrong thinking:
+
+```java
+while(nums != 0)
+```
+
+I forgot:
+
+```java
+nums
+```
+
+is an entire array.
+
+What I actually needed:
+
+```java
+int num = nums[i];
+```
+
+This created a very important lesson:
+
+```
+Array
+
+↓
+
+Select Element
+
+↓
+
+Process Element
+```
+
+
+---
+
+## 8. Digit Counting Pattern
+
+
+Initially I knew:
+
+```
+Division by 10
+
+↓
+
+Related to digits
+```
+
+But I couldn't convert that idea into code.
+
+Eventually I learned:
+
+```java
+while(num != 0)
+{
+    num /= 10;
+    digits++;
+}
+```
+
+Every division removes one digit.
+
+Example:
+
+```
+1234
+
+↓
+
+123
+
+↓
+
+12
+
+↓
+
+1
+
+↓
+
+0
+```
+
+Total digits:
+
+```
+4
+```
+
+
+---
+
+## 9. Variable Scope Matters
+
+
+Another mistake:
+
+I created:
+
+```java
+int digits = 0;
+```
+
+outside the loop.
+
+Because of that:
+
+```
+Digit counts from previous numbers
+
+↓
+
+Continued into next numbers
+```
+
+Learned:
+
+```java
+for(...)
+{
+    int digits = 0;
+}
+```
+
+Each number needs its own fresh counter.
+
+
+---
+
+## 10. Understanding What The Problem Is Asking
+
+
+One mistake I repeatedly made today:
+
+Checking:
+
+```java
+nums[i] % 2 == 0
+```
+
+I was checking whether the number was even.
+
+But the problem wanted:
+
+```
+Is the number of digits even?
+```
+
+This taught me:
+
+Before coding, always ask:
+
+```
+What exactly am I counting?
+```
+
+Because many mistakes happen when solving the wrong sub-problem.
+
+
+---
+
+# 🐛 New Mistakes Added To My Mistake Database
+
+
+## 7. Arrays vs Elements
+
+
+Wrong Thinking:
+
+```java
+nums
+```
+
+Correct Thinking:
+
+```java
+nums[i]
+```
+
+Always ask:
+
+```
+Am I working with the entire array
+
+or
+
+one element?
+```
+
+
+---
+
+## 8. Counter Scope
+
+
+Wrong:
+
+```java
+int count = 0;
+```
+
+outside the required loop.
+
+Correct:
+
+Reset counters whenever a new element needs independent processing.
+
+
+---
+
+## 9. Counting The Wrong Thing
+
+
+Wrong:
+
+```
+I know how to code.
+
+↓
+
+I immediately start coding.
+```
+
+Correct:
+
+```
+Understand exactly what needs to be counted.
+
+↓
+
+Then write code.
+```
+
+
+---
+
+# 🔥 New Patterns Learned
+
+
+## Nested Mapping
+
+
+```java
+ans[i] = nums[nums[i]];
+```
+
+
+---
+
+## Counting Smaller Elements
+
+
+```java
+if(nums[i] > nums[j])
+{
+    count[i]++;
+}
+```
+
+
+---
+
+## Digit Counting
+
+
+```java
+while(num != 0)
+{
+    num /= 10;
+    digits++;
+}
+```
+
+
+---
+
+## Array Element Processing
+
+
+```java
+int num = nums[i];
+```
+
+
+Process the element.
+
+Not the entire array.
+
+
+---
+
+# 📈 Progress After 3 Days
+
+
+Problems Solved:
+
+```
+13 Problems
+```
+
+
+New Concepts Learned Today:
+
+- Nested Mapping
+- Counting Patterns
+- Digit Processing
+- Variable Scope
+- Array vs Element Thinking
+- Nested Loop Comparison
+- Runtime Awareness
+
+
+---
+
+# My Biggest Realization Today
+
+
+Day 1 was about syntax.
+
+Day 2 was about strings and mapping.
+
+Day 3 was about understanding exactly what needs to be counted and processed.
+
+I noticed that most of my mistakes no longer come from not knowing Java.
+
+Most mistakes now come from:
+
+- Understanding the problem incorrectly.
+- Processing the wrong thing.
+- Applying logic to an entire array instead of one element.
+- Forgetting where variables should be reset.
+
+This is a good sign.
+
+It means I am slowly moving from learning syntax to learning problem solving.
+
+
+---
+
+# My Improvement
+
+
+Before:
+
+```
+I struggled to understand what loops should do.
+```
+
+Now:
+
+```
+I can identify patterns like:
+
+- Mapping
+- Counting
+- Comparison
+- Digit Processing
+```
+
+Before:
+
+```
+I focused only on getting an answer.
+```
+
+Now:
+
+```
+I focus on understanding the pattern behind the answer.
+```
+
+That pattern can be reused in future problems.
+
+And that is what turns problem solving into skill building. 🚀
