@@ -728,3 +728,476 @@ Topics:
 ## Progress 🚀
 
 Today I improved my ability to convert problem logic into Java code and learned how small syntax details affect the final solution.
+
+# 📅 Day 3 — Understanding Mapping, Counting, and Digit Processing
+
+## Problems Solved Today
+
+- LeetCode 1920 — Build Array from Permutation
+- LeetCode 1365 — How Many Numbers Are Smaller Than the Current Number
+- LeetCode 1295 — Find Numbers with Even Number of Digits
+
+---
+
+# 🧠 Overall Learning From Today
+
+Today was different from previous days.
+
+Earlier, most of my mistakes were syntax-related:
+
+- length vs length()
+- char vs char[]
+- Returning wrong data types
+- Creating arrays incorrectly
+
+Today, I started facing more logic-oriented problems.
+
+The biggest lesson was:
+
+> Understanding what exactly needs to be counted, mapped, or processed before writing code.
+
+---
+
+# 🚀 LeetCode 1920 — Build Array from Permutation
+
+## My First Thought
+
+I understood that a new array needed to be created.
+
+But I struggled with array creation syntax.
+
+## Mistakes I Made
+
+### Incorrect Array Creation
+
+Wrong:
+
+```java
+int ans[] = new ans;
+```
+
+Learned:
+
+```java
+int[] ans = new int[nums.length];
+```
+
+### Loop Boundary Confusion
+
+Initially:
+
+```java
+for(int i = 1; i <= nums.length; i++)
+```
+
+Learned:
+
+Arrays are 0-indexed.
+
+Correct:
+
+```java
+for(int i = 0; i < nums.length; i++)
+```
+
+### Assignment Without Index
+
+Wrong:
+
+```java
+ans[] = nums[i];
+```
+
+Learned:
+
+```java
+ans[i] = value;
+```
+
+Every array assignment needs an index.
+
+## Biggest Concept Learned
+
+### Index Mapping
+
+```java
+ans[i] = nums[nums[i]];
+```
+
+This was my second major mapping problem after Shuffle String.
+
+I learned:
+
+> One index can lead to another index.
+
+Example:
+
+```text
+nums[1] = 2
+
+ans[1] = nums[2]
+```
+
+## Pattern Learned
+
+```java
+ans[i] = nums[nums[i]];
+```
+
+## Thinking Improvement
+
+Before:
+
+> Copy values directly.
+
+After:
+
+> Use indexes to locate another position.
+
+---
+
+# 🚀 LeetCode 1365 — How Many Numbers Are Smaller Than the Current Number
+
+## My First Thought
+
+For every number:
+
+Compare it with every other number.
+
+If another number is smaller:
+
+Increase the count.
+
+## Mistakes I Made
+
+### Loop Boundary Mistake
+
+Initially:
+
+```java
+i <= nums.length
+```
+
+Learned:
+
+```java
+i < nums.length
+```
+
+### Incrementing Whole Array
+
+Wrong:
+
+```java
+count++;
+```
+
+Learned:
+
+```java
+count[i]++;
+```
+
+because count is an array.
+
+## Biggest Concept Learned
+
+### Counting Pattern
+
+I learned that:
+
+```java
+count[i]
+```
+
+stores the answer for:
+
+```java
+nums[i]
+```
+
+Every position in the answer array can represent the answer for the corresponding input position.
+
+## Pattern Learned
+
+```java
+for(int i = 0; i < nums.length; i++)
+{
+    for(int j = 0; j < nums.length; j++)
+    {
+        if(nums[i] > nums[j])
+        {
+            count[i]++;
+        }
+    }
+}
+```
+
+## Runtime
+
+```text
+7 ms
+Beats 82.27%
+```
+
+This showed me that a simple brute-force solution can still perform quite well.
+
+## Thinking Improvement
+
+Before:
+
+> I knew how to compare numbers.
+
+After:
+
+> I understood where the result should be stored.
+
+---
+
+# 🚀 LeetCode 1295 — Find Numbers With Even Number of Digits
+
+## My First Thought
+
+I knew division by 10 was related to digits.
+
+But I struggled to convert that idea into code.
+
+## Mistakes I Made
+
+### Treated Array As A Number
+
+Wrong:
+
+```java
+while(nums != 0)
+```
+
+I forgot that nums is an array.
+
+### Tried Dividing Entire Array
+
+Wrong:
+
+```java
+nums /= 10;
+```
+
+Arrays cannot be divided.
+
+Learned:
+
+```java
+int num = nums[i];
+```
+
+Process the element, not the entire array.
+
+### Checked Wrong Thing
+
+Wrong:
+
+```java
+if(nums[i] % 2 == 0)
+```
+
+I was checking whether the number was even.
+
+The problem asks whether the number of digits is even.
+
+### Counter Scope Mistake
+
+Initially:
+
+```java
+int digits = 0;
+```
+
+was outside the loop.
+
+So digit counts from previous numbers continued accumulating.
+
+Learned:
+
+```java
+for(...)
+{
+    int digits = 0;
+}
+```
+
+Each number needs its own digit counter.
+
+## Biggest Concept Learned
+
+### Digit Counting Pattern
+
+```java
+while(num != 0)
+{
+    num /= 10;
+    digits++;
+}
+```
+
+Every division removes one digit.
+
+## Pattern Learned
+
+```java
+for(each number)
+{
+    digits = 0;
+
+    while(number != 0)
+    {
+        number /= 10;
+        digits++;
+    }
+}
+```
+
+## Thinking Improvement
+
+Before:
+
+> I was trying to process the entire array.
+
+After:
+
+> First select one element. Then process that element.
+
+---
+
+# 🐛 Mistake Database Added Today
+
+## Arrays vs Elements
+
+Wrong Thinking:
+
+```java
+nums
+```
+
+Correct Thinking:
+
+```java
+nums[i]
+```
+
+Always ask:
+
+> Am I working with the entire array or one element?
+
+## Array Counter vs Integer Counter
+
+Wrong:
+
+```java
+count++;
+```
+
+Correct:
+
+```java
+count[i]++;
+```
+
+when count is an array.
+
+## Variable Scope
+
+Wrong:
+
+```java
+int digits = 0;
+```
+
+outside processing loop.
+
+Correct:
+
+Reset counters for every new element when required.
+
+---
+
+# 🔥 New Patterns Learned Today
+
+## Mapping Pattern
+
+```java
+ans[i] = nums[nums[i]];
+```
+
+## Counting Pattern
+
+```java
+count[i]++;
+```
+
+## Digit Counting Pattern
+
+```java
+while(num != 0)
+{
+    num /= 10;
+    digits++;
+}
+```
+
+## Nested Comparison Pattern
+
+```java
+for(int i = 0; i < n; i++)
+{
+    for(int j = 0; j < n; j++)
+    {
+        if(nums[i] > nums[j])
+        {
+            count[i]++;
+        }
+    }
+}
+```
+
+---
+
+# 📈 Progress After Day 3
+
+## Problems Solved So Far
+
+- LeetCode 2235
+- LeetCode 1480
+- LeetCode 1929
+- LeetCode 2011
+- LeetCode 2114
+- LeetCode 2942
+- LeetCode 412
+- LeetCode 2469
+- LeetCode 2652
+- LeetCode 1528
+- LeetCode 1920
+- LeetCode 1365
+- LeetCode 1295
+
+**Total Solved: 13 Problems**
+
+---
+
+# 🌟 Biggest Realization Today
+
+Earlier, I thought my biggest weakness was syntax.
+
+Now I realize that many mistakes come from understanding:
+
+- What exactly should be counted.
+- What exactly should be stored.
+- Whether I am working on an array or a single element.
+- Where variables should be reset.
+
+These are problem-solving skills that improve only through practice.
+
+Every problem is making my thinking more structured.
+
+I am no longer just writing code.
+
+I am learning how to think like a programmer. 🚀
