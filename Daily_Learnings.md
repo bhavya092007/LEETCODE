@@ -1201,3 +1201,607 @@ Every problem is making my thinking more structured.
 I am no longer just writing code.
 
 I am learning how to think like a programmer. 🚀
+
+
+
+# 📅 Day 4 — From Syntax Thinking to Problem-Solving Thinking
+
+## Problems Solved
+
+- LeetCode 1470 — Shuffle the Array
+- LeetCode 1431 — Kids With the Greatest Number of Candies
+- LeetCode 1732 — Find the Highest Altitude
+
+---
+
+# 🎯 Day 4 Overview
+
+Day 4 was different from previous days.
+
+In earlier problems, most of my mistakes were related to Java syntax:
+
+- Arrays
+- Return types
+- Loops
+- ArrayList
+- String conversions
+
+Today, most mistakes came from:
+
+```text
+Thinking about the problem incorrectly
+```
+
+Instead of syntax errors, I spent more time understanding:
+
+```text
+How should data move?
+
+Do I need a new array?
+
+Do I need one loop or two loops?
+
+Should I store information first?
+
+What pattern is hidden in the problem?
+```
+
+This was an important shift from coding to problem-solving.
+
+---
+
+# LeetCode 1470 — Shuffle the Array
+
+## Problem Understanding
+
+Input:
+
+```java
+[x1,x2,x3,y1,y2,y3]
+```
+
+Output:
+
+```java
+[x1,y1,x2,y2,x3,y3]
+```
+
+The challenge was to take values from two halves of the array and merge them alternately.
+
+---
+
+# My Initial Thinking
+
+I kept thinking:
+
+```text
+Can I directly place both values into the same position?
+```
+
+I wrote ideas like:
+
+```java
+array[i] = nums[i];
+array[i] = nums[i+n];
+```
+
+Then realized:
+
+```text
+Second assignment overwrites the first one.
+```
+
+One position can store only one value.
+
+---
+
+# Mistake 1
+
+```java
+array[i] = nums[i];
+array[i] = nums[i+n];
+```
+
+Learning:
+
+```text
+The second value replaces the first value.
+
+Data gets lost.
+```
+
+---
+
+# Mistake 2
+
+I tried using:
+
+```java
+i++
+```
+
+inside the loop.
+
+Example:
+
+```java
+array[i] = nums[i];
+i++;
+array[i] = nums[i+n];
+```
+
+Learning:
+
+```text
+The loop already updates i.
+
+Manually changing i inside the loop can create confusion.
+```
+
+---
+
+# Mistake 3
+
+I thought:
+
+```text
+Maybe I don't need another variable.
+```
+
+But then I learned:
+
+```text
+The output array position
+and input array position
+are different things.
+```
+
+---
+
+# Biggest Learning
+
+I learned the concept of a separate pointer.
+
+Pattern:
+
+```java
+array[k] = nums[i];
+k++;
+
+array[k] = nums[i+n];
+k++;
+```
+
+Learning:
+
+```text
+A separate index can control
+where data is stored.
+```
+
+This was one of the biggest lessons of the day.
+
+---
+
+# LeetCode 1431 — Kids With the Greatest Number of Candies
+
+## Problem Understanding
+
+For every kid:
+
+```text
+Current Candies
+
+↓
+
+Add Extra Candies
+
+↓
+
+Can this kid become the kid
+with the greatest candies?
+```
+
+---
+
+# My Initial Thinking
+
+I immediately started adding:
+
+```java
+candies[i] + extraCandies
+```
+
+without first knowing:
+
+```text
+What is the current maximum?
+```
+
+---
+
+# Mistake 1
+
+I created:
+
+```java
+int[] ans = new int[candies.length];
+```
+
+Learning:
+
+```text
+Not every problem requires
+an answer array.
+```
+
+---
+
+# Mistake 2
+
+I compared:
+
+```java
+ans[i] >= extraCandies
+```
+
+Learning:
+
+```text
+The comparison should be
+against the maximum candies,
+not against extraCandies.
+```
+
+---
+
+# Mistake 3
+
+I accidentally compared:
+
+```java
+if(i >= total)
+```
+
+Learning:
+
+```text
+i = index
+
+total = candy value
+
+Position and value
+are completely different things.
+```
+
+---
+
+# Mistake 4
+
+I tried solving the entire problem in one pass.
+
+Then I realized:
+
+```text
+I cannot know if a child can become
+the greatest until I know
+who currently has the greatest candies.
+```
+
+---
+
+# Biggest Learning
+
+This problem taught me:
+
+## Two-Pass Thinking
+
+Pass 1:
+
+```text
+Find Maximum
+```
+
+Pass 2:
+
+```text
+Build Answer
+```
+
+Pattern:
+
+```text
+Gather Information
+
+↓
+
+Use Information
+```
+
+This pattern will appear many times in future LeetCode problems.
+
+---
+
+# LeetCode 1732 — Find the Highest Altitude
+
+## Problem Understanding
+
+The biker starts at:
+
+```java
+0
+```
+
+Every gain changes the current altitude.
+
+Goal:
+
+```text
+Find the highest altitude reached.
+```
+
+---
+
+# My Initial Thinking
+
+I decided to build an altitude array.
+
+Example:
+
+```java
+[0,-5,-4,1,1,-6]
+```
+
+Then find the maximum.
+
+This was a valid approach.
+
+---
+
+# Mistake 1
+
+I wrote:
+
+```java
+alt[i] = altitude + gain[i];
+alt[i] += gain[i];
+```
+
+Learning:
+
+```text
+Gain was added twice.
+```
+
+---
+
+# Mistake 2
+
+I wrote:
+
+```java
+alt += gain[i];
+```
+
+Learning:
+
+```text
+alt is an array.
+
+Arrays cannot be updated using +=.
+```
+
+---
+
+# Mistake 3
+
+I forgot to update:
+
+```java
+altitude
+```
+
+Learning:
+
+```text
+Altitude changes after every move.
+```
+
+Pattern:
+
+```java
+altitude += gain[i];
+```
+
+---
+
+# Mistake 4
+
+I used:
+
+```java
+for(int j=0;j<altitude;j++)
+```
+
+Learning:
+
+```text
+Altitude is a value.
+
+Array traversal requires array length.
+```
+
+Correct thinking:
+
+```java
+for(int j=0;j<alt.length;j++)
+```
+
+---
+
+# Biggest Learning
+
+This problem connected two patterns I already knew.
+
+## Running Sum
+
+```java
+current += value;
+```
+
+## Maximum Pattern
+
+```java
+if(current > max)
+{
+    max = current;
+}
+```
+
+This was my first experience combining multiple previously learned patterns into one solution.
+
+---
+
+# 🐛 Day 4 Mistake Database
+
+## Shuffle Array
+
+### Mistakes
+
+- Overwriting values.
+- Trying to use same position for two values.
+- Confusion about needing a separate pointer.
+- Trying to modify loop variable manually.
+
+### Learning
+
+```text
+Output position and input position
+can be different.
+```
+
+---
+
+## Kids With Candies
+
+### Mistakes
+
+- Created unnecessary array.
+- Compared with extraCandies.
+- Compared index with value.
+- Tried solving before finding maximum.
+
+### Learning
+
+```text
+Sometimes information must be gathered
+before the answer can be built.
+```
+
+---
+
+## Highest Altitude
+
+### Mistakes
+
+- Added gain twice.
+- Tried += on an array.
+- Forgot to update altitude.
+- Used altitude as loop boundary.
+
+### Learning
+
+```text
+Running Sum + Maximum Tracking
+can solve many problems.
+```
+
+---
+
+# 🔥 New Patterns Added Today
+
+## Separate Pointer Pattern
+
+```java
+array[k] = value;
+k++;
+```
+
+---
+
+## Maximum Pattern
+
+```java
+if(current > max)
+{
+    max = current;
+}
+```
+
+---
+
+## Running Sum Pattern
+
+```java
+current += value;
+```
+
+---
+
+## Two-Pass Processing
+
+```text
+Pass 1
+
+↓
+
+Gather Information
+
+↓
+
+Pass 2
+
+↓
+
+Build Answer
+```
+
+---
+
+# 📈 Progress Reflection
+
+Today I noticed a major improvement.
+
+Earlier I mostly struggled with:
+
+```text
+How do I write Java syntax?
+```
+
+Today I struggled with:
+
+```text
+How should I think?
+```
+
+That is actually progress.
+
+Because syntax can be memorized.
+
+Problem-solving must be developed.
+
+I am slowly moving from:
+
+```text
+Learning Java
+```
+
+to
+
+```text
+Learning how to solve problems.
+```
+
+And that is the real purpose of LeetCode.
+
+🚀
