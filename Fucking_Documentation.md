@@ -1499,3 +1499,661 @@ I focus on understanding the pattern behind the answer.
 That pattern can be reused in future problems.
 
 And that is what turns problem solving into skill building. 🚀
+
+
+# 📅 Day 4 — The Day I Started Solving Problems on Paper First
+
+## Problems Solved
+
+- LeetCode 1470 — Shuffle the Array
+- LeetCode 1431 — Kids With the Greatest Number of Candies
+- LeetCode 1732 — Find the Highest Altitude
+
+---
+
+# 🎯 Day 4 Overview
+
+Today was different from the last few days.
+
+For the past 3 days, I usually read the problem and immediately started writing code.
+
+My thinking process looked like:
+
+```text
+Read Problem
+
+↓
+
+Get Idea
+
+↓
+
+Start Coding Immediately
+
+↓
+
+Get Stuck
+
+↓
+
+Debug
+
+↓
+
+Fix Mistakes
+```
+
+This often resulted in:
+
+- More syntax mistakes
+- More logic mistakes
+- More confusion
+- More debugging time
+
+Today I tried something different.
+
+Before writing code, I manually decoded the problem in my notebook.
+
+I wrote:
+
+```text
+What is the input?
+
+↓
+
+What is the output?
+
+↓
+
+What exactly is happening?
+
+↓
+
+Can I create an example manually?
+
+↓
+
+What pattern does this problem follow?
+
+↓
+
+Then write code
+```
+
+This single change reduced many mistakes.
+
+It also made the solutions feel much clearer.
+
+---
+
+# 🚀 Biggest Learning Of Day 4
+
+## Manual Decoding Before Coding
+
+Today I realized:
+
+```text
+Coding is not the hard part.
+
+Thinking is the hard part.
+```
+
+When I manually decoded the problem first:
+
+- Logic became clearer.
+- Mistakes reduced.
+- Debugging reduced.
+- Confidence increased.
+- Coding became easier.
+
+New Problem Solving System:
+
+```text
+1. Read Problem
+
+↓
+
+2. Create Manual Example
+
+↓
+
+3. Understand Input
+
+↓
+
+4. Understand Output
+
+↓
+
+5. Find Pattern
+
+↓
+
+6. Write Logic In Words
+
+↓
+
+7. Convert Logic Into Code
+
+↓
+
+8. Debug If Needed
+```
+
+This is probably the most important thing I learned today.
+
+---
+
+# LeetCode 1470 — Shuffle the Array
+
+## Problem Understanding
+
+Input:
+
+```java
+[x1,x2,x3,y1,y2,y3]
+```
+
+Output:
+
+```java
+[x1,y1,x2,y2,x3,y3]
+```
+
+---
+
+# My Initial Thinking
+
+I kept thinking:
+
+```text
+Can I store both values in the same position?
+```
+
+Example:
+
+```java
+array[i] = nums[i];
+array[i] = nums[i+n];
+```
+
+Then I realized:
+
+```text
+Second assignment overwrites the first.
+```
+
+One position can only store one value.
+
+---
+
+# Mistakes Made
+
+## Mistake 1
+
+```java
+array[i] = nums[i];
+array[i] = nums[i+n];
+```
+
+Learning:
+
+```text
+One position cannot hold two values.
+```
+
+---
+
+## Mistake 2
+
+```java
+i++;
+```
+
+inside the loop.
+
+Learning:
+
+```text
+The loop already controls i.
+
+Changing it manually creates confusion.
+```
+
+---
+
+## Mistake 3
+
+I thought I could solve it without another variable.
+
+Learning:
+
+```text
+Input position and output position
+are different things.
+```
+
+---
+
+# Biggest Learning
+
+## Separate Pointer Pattern
+
+```java
+array[k] = nums[i];
+k++;
+
+array[k] = nums[i+n];
+k++;
+```
+
+Learning:
+
+```text
+A separate pointer can control
+where values are stored.
+```
+
+---
+
+# LeetCode 1431 — Kids With the Greatest Number of Candies
+
+## Problem Understanding
+
+For every child:
+
+```text
+Current Candies
+
+↓
+
+Add Extra Candies
+
+↓
+
+Can this child have the maximum candies?
+```
+
+---
+
+# My Initial Thinking
+
+I immediately started adding:
+
+```java
+candies[i] + extraCandies
+```
+
+without knowing:
+
+```text
+Who currently has the maximum candies?
+```
+
+---
+
+# Mistakes Made
+
+## Mistake 1
+
+Created:
+
+```java
+int[] ans = new int[candies.length];
+```
+
+Learning:
+
+```text
+Not every problem requires an answer array.
+```
+
+---
+
+## Mistake 2
+
+Compared:
+
+```java
+ans[i] >= extraCandies
+```
+
+Learning:
+
+```text
+Need to compare with maximum candies,
+not extraCandies.
+```
+
+---
+
+## Mistake 3
+
+Compared:
+
+```java
+if(i >= total)
+```
+
+Learning:
+
+```text
+i = position
+
+total = value
+
+Positions and values are different things.
+```
+
+---
+
+## Mistake 4
+
+Tried solving before finding maximum.
+
+Learning:
+
+```text
+Some problems require information gathering first.
+```
+
+---
+
+# Biggest Learning
+
+## Two-Pass Thinking
+
+Pass 1:
+
+```text
+Find Maximum
+```
+
+Pass 2:
+
+```text
+Build Answer
+```
+
+Pattern:
+
+```text
+Gather Information
+
+↓
+
+Use Information
+```
+
+---
+
+# LeetCode 1732 — Find the Highest Altitude
+
+## Problem Understanding
+
+Biker starts at:
+
+```java
+0
+```
+
+Every gain changes altitude.
+
+Need:
+
+```text
+Highest altitude reached.
+```
+
+---
+
+# My Initial Thinking
+
+I manually created the altitude sequence:
+
+```java
+gain = [-5,1,5,0,-7]
+```
+
+Altitude:
+
+```java
+[0,-5,-4,1,1,-6]
+```
+
+This notebook decoding made the problem much easier.
+
+---
+
+# Mistakes Made
+
+## Mistake 1
+
+```java
+alt[i] = altitude + gain[i];
+alt[i] += gain[i];
+```
+
+Learning:
+
+```text
+Gain was added twice.
+```
+
+---
+
+## Mistake 2
+
+```java
+alt += gain[i];
+```
+
+Learning:
+
+```text
+Arrays cannot use +=.
+```
+
+---
+
+## Mistake 3
+
+Forgot to update:
+
+```java
+altitude
+```
+
+Learning:
+
+```text
+Altitude changes after every move.
+```
+
+---
+
+## Mistake 4
+
+Used:
+
+```java
+for(int j=0;j<altitude;j++)
+```
+
+Learning:
+
+```text
+Altitude is a value.
+
+Array traversal requires array length.
+```
+
+---
+
+# Biggest Learning
+
+This problem combined two previously learned patterns.
+
+## Running Sum
+
+```java
+current += value;
+```
+
+---
+
+## Maximum Pattern
+
+```java
+if(current > max)
+{
+    max = current;
+}
+```
+
+---
+
+# 🐛 Day 4 Mistake Database
+
+## Shuffle Array
+
+- Overwriting values.
+- Trying to store two values in one position.
+- Confusion about needing a separate pointer.
+- Modifying loop variable manually.
+
+---
+
+## Kids With Candies
+
+- Created unnecessary array.
+- Compared with extraCandies.
+- Compared index with value.
+- Tried solving before finding maximum.
+
+---
+
+## Highest Altitude
+
+- Added gain twice.
+- Tried += on array.
+- Forgot to update altitude.
+- Used altitude as loop boundary.
+
+---
+
+# 🔥 New Patterns Added Today
+
+## Separate Pointer Pattern
+
+```java
+array[k] = value;
+k++;
+```
+
+---
+
+## Running Sum Pattern
+
+```java
+current += value;
+```
+
+---
+
+## Maximum Tracking Pattern
+
+```java
+if(current > max)
+{
+    max = current;
+}
+```
+
+---
+
+## Two-Pass Processing
+
+```text
+Pass 1
+
+↓
+
+Gather Information
+
+↓
+
+Pass 2
+
+↓
+
+Build Answer
+```
+
+---
+
+# 📈 Most Important Improvement
+
+Previous Days:
+
+```text
+Read Problem
+
+↓
+
+Start Coding Immediately
+```
+
+Day 4:
+
+```text
+Read Problem
+
+↓
+
+Decode Manually In Notebook
+
+↓
+
+Create Example
+
+↓
+
+Write Logic
+
+↓
+
+Write Code
+```
+
+This reduced mistakes significantly.
+
+It also helped me understand the problem more deeply before touching the keyboard.
+
+---
+
+# 🌟 Day 4 Reflection
+
+Today I learned something more valuable than syntax.
+
+I learned that:
+
+```text
+Writing code is not the first step.
+
+Thinking is the first step.
+```
+
+The notebook became a debugging tool before the code even existed.
+
+Instead of fixing mistakes after writing code,
+
+I started preventing mistakes before writing code.
+
+This may become one of the most important habits in my entire LeetCode journey.
+
+Because good programmers do not just write code.
+
+They understand the problem first.
+
+🚀
