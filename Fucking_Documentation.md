@@ -2254,3 +2254,10 @@ return k;
 
 Not every problem needs a new array.
 Sometimes we can overwrite values inside the same array and keep track of the next valid position using a write pointer.
+
+
+This is date 20-07-2026(Day 4) ,Today felt difficult because I solved my first few problems that required actual pattern recognition rather than simple loops.
+
+LeetCode 414 (Third Maximum Number) and LeetCode 26 (Remove Duplicates from Sorted Array) forced me to manually trace examples, think about edge cases, and understand what each variable represented.
+
+Although these problems took significantly longer than previous Easy problems, they helped me improve my debugging process and taught me not to rush into coding before fully understanding the problem.
