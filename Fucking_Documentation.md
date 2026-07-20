@@ -2261,3 +2261,89 @@ This is date 20-07-2026(Day 4) ,Today felt difficult because I solved my first f
 LeetCode 414 (Third Maximum Number) and LeetCode 26 (Remove Duplicates from Sorted Array) forced me to manually trace examples, think about edge cases, and understand what each variable represented.
 
 Although these problems took significantly longer than previous Easy problems, they helped me improve my debugging process and taught me not to rush into coding before fully understanding the problem.
+
+
+# Day 4 of LeetCode Journey
+📅 Date: 21/07/2026
+
+## Progress Update
+
+Today I completed my 20th LeetCode problem. 🚀
+
+This feels like a small number compared to people who have solved hundreds or thousands of problems, but for me it's a meaningful milestone because I am building consistency and learning problem-solving step by step.
+
+## Today's Reflection
+
+Some of today's problems felt genuinely difficult, especially:
+
+- LeetCode 414 — Third Maximum Number
+- LeetCode 26 — Remove Duplicates from Sorted Array
+
+There were moments where I got stuck and needed help from AI. Overall, I took significant help in around 4–5 problems, but instead of copying answers, I focused on understanding:
+
+- Why my logic was failing
+- What each variable should represent
+- How to trace examples manually
+- How to debug step by step
+
+## Biggest Improvement Today
+
+For the last few days, I often jumped directly into coding.
+
+Today I spent more time manually decoding problems in my notebook before writing code.
+
+This helped me:
+- Understand the problem better
+- Reduce random mistakes
+- Find logic errors earlier
+- Improve my confidence while coding
+
+## Important Patterns Learned
+
+### Two Pointer Pattern
+Learned through:
+- LeetCode 26 — Remove Duplicates from Sorted Array
+
+Concept:
+- One pointer reads data
+- One pointer writes data
+
+### Distinct Element Handling
+Learned through:
+- LeetCode 414 — Third Maximum Number
+
+Concept:
+- Counting distinct values
+- Ignoring duplicates
+- Handling edge cases
+
+## Honest Assessment
+
+Today was not easy.
+
+A few problems took much longer than expected.
+Some required AI guidance.
+Some logic mistakes took a long time to identify.
+
+But I am happy because I did not quit.
+
+I kept tracing examples, asking questions, debugging, and trying again.
+
+## Current Stats
+
+✅ Day 4 Completed  
+✅ 20 LeetCode Problems Solved  
+✅ Learning Java + Problem Solving Together  
+✅ Building Consistency
+
+## Promise to Myself
+
+I will continue this journey.
+
+The goal is not to solve problems quickly.
+The goal is to understand patterns, improve my thinking, and become better than I was yesterday.
+
+One problem at a time.
+One day at a time.
+
+See you on Day 5. 🚀
