@@ -2157,3 +2157,100 @@ Because good programmers do not just write code.
 They understand the problem first.
 
 🚀
+
+### Time Spent
+
+⏱️ Approximate Time: 1 – 1.2 Hours
+
+This problem took significantly longer than most Easy problems I have solved so far.
+
+The reason was not the Bubble Sort itself, but understanding:
+
+- What "third distinct maximum" actually means.
+- How to ignore duplicate values.
+- How to count distinct maximums correctly.
+- The difference between a helper variable (`count`) and the actual answer.
+- Handling the special case when a third distinct maximum does not exist.
+
+### My Struggles
+
+During this problem I made several mistakes:
+
+- Tried returning the count instead of the actual value.
+- Confused array values with counters.
+- Used `count[k]` even though `count` was not an array.
+- Made index boundary mistakes with `k-1`.
+- Forgot to handle cases with fewer than 3 distinct values.
+- Spent time debugging logic rather than syntax.
+
+### Biggest Learning
+
+This was the first problem where I spent a long time manually tracing examples in my notebook before writing code.
+
+Instead of immediately coding, I repeatedly asked:
+
+```text
+What exactly is being counted?
+
+What is the actual answer?
+
+When should duplicates be ignored?
+
+What should happen if the third maximum doesn't exist?
+```
+
+This manual decoding process helped me eventually understand the problem and reduce random debugging.
+
+### Reflection
+
+Even though this problem took around 1–1.2 hours, it was one of the most valuable problems I have solved so far because it improved my ability to:
+
+- Trace algorithms manually.
+- Debug logic step by step.
+- Distinguish helper variables from answer variables.
+- Handle edge cases.
+- Stay patient when a solution is not immediately obvious.
+
+This problem reminded me that time spent understanding logic is often more valuable than quickly reaching an accepted solution.
+
+
+
+
+### LeetCode 26 — Remove Duplicates from Sorted Array
+
+Time Spent: ~30-40 minutes
+
+#### Mistakes Made
+
+- Initially thought I only needed to count unique elements.
+- Tried creating a new array unnecessarily.
+- Forgot that the problem requires modifying the same array.
+- Used return inside the loop, causing early exit.
+- Confused unique count with actual array values.
+- Tried returning nums instead of an int.
+
+#### Key Learning
+
+This was my first proper Two Pointer problem.
+
+Pointers:
+- i = read pointer
+- k = write pointer
+
+The read pointer scans the array.
+The write pointer stores unique values at the front.
+
+#### Pattern Learned
+
+if(nums[i] != nums[i-1])
+{
+    nums[k] = nums[i];
+    k++;
+}
+
+return k;
+
+#### Biggest Takeaway
+
+Not every problem needs a new array.
+Sometimes we can overwrite values inside the same array and keep track of the next valid position using a write pointer.
