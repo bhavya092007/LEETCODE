@@ -2339,3 +2339,232 @@ Code
 The more time I spend understanding the problem manually, the fewer mistakes I make while coding.
 
 This is becoming one of the biggest improvements in my LeetCode journey.
+
+# Day 4 Learnings & Mistakes (Last 2 Problems)
+📅 21/07/2026
+
+---
+
+# 1. LeetCode 414 — Third Maximum Number
+
+⏱️ Time Spent: ~1 to 1.2 Hours
+
+## What I Learned
+
+- Difference between maximum number and third distinct maximum number.
+- Duplicate values should not be counted multiple times.
+- Bubble Sort can be used to sort an array before processing.
+- Counting distinct values and finding the answer are two different things.
+- Edge cases are important.
+- Manual tracing in a notebook helps understand logic better.
+
+## Mistakes I Made
+
+### Bubble Sort Mistakes
+
+- Initially forgot proper comparison and swapping logic.
+- Needed revision of Bubble Sort implementation.
+
+### Distinct Counting Mistakes
+
+- Counted duplicates incorrectly.
+- Confused "count of distinct values" with the actual answer.
+
+### Variable Mistakes
+
+Tried things like:
+
+```java
+ans = count[k];
+```
+
+Even though:
+
+```java
+count
+```
+
+was not an array.
+
+### Return Mistakes
+
+- Tried returning count instead of the actual third maximum value.
+- Forgot that helper variables help find the answer but are not always the answer.
+
+### Edge Case Mistakes
+
+Forgot:
+
+```text
+If the third distinct maximum does not exist,
+return the maximum number.
+```
+
+## Biggest Learning
+
+```text
+Helper variables help find the answer.
+
+They are not necessarily the answer themselves.
+```
+
+Example:
+
+```java
+count
+```
+
+helped locate the third distinct maximum but was not the final answer.
+
+---
+
+# 2. LeetCode 26 — Remove Duplicates from Sorted Array
+
+## What I Learned
+
+- My first proper Two Pointer problem.
+- Difference between Read Pointer and Write Pointer.
+- Arrays can be modified in-place.
+- Not every problem requires creating a new array.
+- Sorted arrays make duplicate detection easier.
+
+## Mistakes I Made
+
+### Wrong Understanding
+
+Initially thought:
+
+```text
+I only need to count unique elements.
+```
+
+But the actual task was:
+
+```text
+Move unique elements to the beginning of the same array.
+```
+
+### Unnecessary Array
+
+Tried creating:
+
+```java
+expectedNums
+```
+
+even though the problem required modifying:
+
+```java
+nums
+```
+
+itself.
+
+### Index Mistakes
+
+Used:
+
+```java
+nums[i-1]
+```
+
+without considering the first index.
+
+Used:
+
+```java
+nums[i+1]
+```
+
+which caused boundary issues.
+
+### Value vs Count Confusion
+
+Tried:
+
+```java
+nums[k] = unique;
+```
+
+instead of:
+
+```java
+nums[k] = nums[i];
+```
+
+### Return Mistakes
+
+- Returned inside the loop.
+- Tried returning an array when the function expected an integer.
+
+### Variable Understanding
+
+Initially did not understand what:
+
+```java
+k
+```
+
+represented.
+
+Later learned:
+
+```text
+k = next position where a unique value should be stored.
+```
+
+## Biggest Learning
+
+```text
+i = Read Pointer
+k = Write Pointer
+```
+
+Read Pointer scans the array.
+
+Write Pointer stores valid unique values.
+
+This is a very important LeetCode pattern.
+
+---
+
+# Day 4 Reflection
+
+These two problems felt much harder than my previous Easy problems.
+
+The main reason was not syntax.
+
+The difficulty was understanding:
+
+- What each variable represents.
+- What the actual answer is.
+- How to handle duplicates.
+- How to think about edge cases.
+- How to modify arrays in-place.
+
+## Biggest Improvement Today
+
+Instead of immediately writing code, I started:
+
+```text
+Reading the problem
+
+↓
+
+Manually tracing examples in my notebook
+
+↓
+
+Understanding the logic
+
+↓
+
+Writing code
+```
+
+This reduced many mistakes and helped me debug faster.
+
+🚀 Day 4 Completed
+✅ 20 LeetCode Problems Solved
+✅ Learned Two Pointers
+✅ Improved Manual Problem Decoding
