@@ -1805,3 +1805,537 @@ Learning how to solve problems.
 And that is the real purpose of LeetCode.
 
 🚀
+
+
+## 📅 2026-07-20
+
+# 📚 Learning Notes — LeetCode 977 & LeetCode 485
+
+---
+
+# LeetCode 977 — Squares of a Sorted Array
+
+## Problem Understanding
+
+Given a sorted array, square every element and return the squares in sorted order.
+
+Example:
+
+```java
+Input:  [-4,-1,0,3,10]
+
+Square:
+[16,1,0,9,100]
+
+Sorted:
+[0,1,9,16,100]
+```
+
+---
+
+## My Initial Thinking
+
+I manually decoded the problem in my notebook.
+
+My thought process:
+
+```text
+Step 1:
+Square all numbers
+
+↓
+
+Step 2:
+Sort the squared values
+
+↓
+
+Step 3:
+Return the sorted array
+```
+
+This was a valid brute-force approach.
+
+---
+
+## My First Mistakes
+
+### Mistake 1
+
+Tried using only one loop for sorting.
+
+Example:
+
+```java
+if(sqr[j] > sqr[j+1])
+{
+    ans[j] = sqr[j];
+}
+```
+
+### Learning
+
+```text
+Comparing values is not sorting.
+
+Sorting requires swapping.
+```
+
+---
+
+### Mistake 2
+
+Array index out of bounds.
+
+Example:
+
+```java
+sqr[k+1]
+```
+
+while
+
+```java
+k < sqr.length
+```
+
+### Learning
+
+```text
+Whenever using k+1,
+the loop must stop before the last index.
+```
+
+---
+
+### Mistake 3
+
+Created an unnecessary array.
+
+Example:
+
+```java
+int[] ans = new int[nums.length];
+```
+
+but later sorted directly in:
+
+```java
+sqr[]
+```
+
+### Learning
+
+```text
+Do not create extra arrays unless needed.
+```
+
+---
+
+### Mistake 4
+
+Forgot swapping logic.
+
+Initially I was only comparing values.
+
+### Learning
+
+Bubble Sort requires:
+
+```text
+Compare
+
+↓
+
+Swap
+
+↓
+
+Repeat
+```
+
+---
+
+## New Pattern Learned
+
+### Bubble Sort
+
+```java
+for(int i = 0; i < n - 1; i++)
+{
+    for(int j = 0; j < n - i - 1; j++)
+    {
+        if(arr[j] > arr[j+1])
+        {
+            int temp = arr[j];
+            arr[j] = arr[j+1];
+            arr[j+1] = temp;
+        }
+    }
+}
+```
+
+---
+
+## Complexity Understanding
+
+My solution:
+
+```text
+Square Array  → O(n)
+
+Bubble Sort   → O(n²)
+
+Total         → O(n²)
+```
+
+### Learning
+
+```text
+O(n) + O(n²)
+
+↓
+
+O(n²)
+```
+
+The largest term dominates.
+
+---
+
+## Biggest Learning
+
+I solved the problem myself without looking at the solution.
+
+Even though the runtime was slower than optimal solutions, I learned:
+
+- Bubble Sort
+- Swapping
+- Loop boundaries
+- Sorting logic
+- Time complexity
+
+---
+
+# LeetCode 485 — Max Consecutive Ones
+
+## Problem Understanding
+
+Find the maximum number of consecutive 1s.
+
+Example:
+
+```java
+Input:
+[1,1,0,1,1,1]
+
+Output:
+3
+```
+
+---
+
+## My Initial Wrong Thinking
+
+I tried comparing neighboring elements.
+
+Example:
+
+```java
+if(nums[i] == nums[current])
+```
+
+### Learning
+
+```text
+This problem is NOT about comparing elements.
+
+It is about counting streaks.
+```
+
+---
+
+## Mistake 1
+
+Confused count variables with indexes.
+
+Example:
+
+```java
+nums[current]
+nums[max]
+```
+
+### Learning
+
+```text
+current and max are counters.
+
+They are not array positions.
+```
+
+---
+
+## Mistake 2
+
+Used return inside loop.
+
+Example:
+
+```java
+return max;
+```
+
+### Learning
+
+```text
+Returning inside the loop
+stops checking the remaining elements.
+```
+
+---
+
+## Mistake 3
+
+Thought max should reset.
+
+My thinking:
+
+```java
+else
+{
+    max = 0;
+}
+```
+
+### Learning
+
+Wrong.
+
+Because:
+
+```text
+max = best streak ever found
+```
+
+A new zero should only break the current streak.
+
+---
+
+## Huge Learning
+
+When a streak breaks:
+
+```java
+current = 0;
+```
+
+NOT
+
+```java
+max = 0;
+```
+
+---
+
+## Most Important Pattern Learned
+
+### Current vs Maximum
+
+```java
+current = current streak
+
+max = best streak found so far
+```
+
+---
+
+## The Biggest Realization
+
+I discovered why two if statements are needed.
+
+Before:
+
+```text
+I thought one if should solve everything.
+```
+
+Now:
+
+```text
+Question 1:
+Is this a 1?
+
+↓
+
+Question 2:
+Did current become greater than max?
+```
+
+Which leads to:
+
+```java
+if(nums[i] == 1)
+{
+    current++;
+
+    if(current > max)
+    {
+        max = current;
+    }
+}
+else
+{
+    current = 0;
+}
+```
+
+---
+
+## Tiny Mistakes I Want To Remember
+
+### 1. Confusing Value and Index
+
+Wrong thinking:
+
+```java
+nums[current]
+```
+
+when current was actually a counter.
+
+---
+
+### 2. Returning Too Early
+
+Wrong:
+
+```java
+return max;
+```
+
+inside the loop.
+
+---
+
+### 3. Resetting Wrong Variable
+
+Wrong:
+
+```java
+max = 0;
+```
+
+Correct:
+
+```java
+current = 0;
+```
+
+---
+
+## Personal Improvement
+
+For the past few days I was mentally decoding problems and immediately writing code.
+
+Today I spent more time manually decoding the problem in my notebook before coding.
+
+New process:
+
+```text
+Read Problem
+
+↓
+
+Create Example
+
+↓
+
+Write Logic in Words
+
+↓
+
+Identify Variables
+
+↓
+
+Trace Example
+
+↓
+
+Write Code
+```
+
+Benefits noticed:
+
+- Fewer mistakes
+- Faster debugging
+- Better understanding
+- More confidence while coding
+
+This habit helped me solve problems with much less confusion.
+
+---
+
+# Key Patterns Added To My Library
+
+## Bubble Sort
+
+```java
+if(arr[j] > arr[j+1])
+{
+    swap
+}
+```
+
+---
+
+## Current vs Maximum
+
+```java
+current++;
+
+if(current > max)
+{
+    max = current;
+}
+```
+
+---
+
+## Reset Current Streak
+
+```java
+else
+{
+    current = 0;
+}
+```
+
+---
+
+# Final Reflection
+
+These two problems taught me that writing code is not the first step.
+
+The real first step is:
+
+```text
+Understand
+
+↓
+
+Decode
+
+↓
+
+Trace
+
+↓
+
+Code
+```
+
+The more time I spend understanding the problem manually, the fewer mistakes I make while coding.
+
+This is becoming one of the biggest improvements in my LeetCode journey.
