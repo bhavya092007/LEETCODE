@@ -2347,3 +2347,173 @@ One problem at a time.
 One day at a time.
 
 See you on Day 5. 🚀
+
+# LEETCODE JOURNEY
+
+## Day 5 (21-07-2026)
+
+Problems Solved Today:
+1. LeetCode 344 - Reverse String
+2. LeetCode 125 - Valid Palindrome
+3. LeetCode 58 - Length of Last Word
+
+Total Problems Solved So Far: 20+
+
+---
+
+# LeetCode 344 — Reverse String
+
+## Concept Learned
+
+Two Pointer Technique
+
+Pointers:
+
+- left = beginning
+- right = end
+
+Swap values and move inward.
+
+## Pattern
+
+temp = s[left];
+s[left] = s[right];
+s[right] = temp;
+
+left++;
+right--;
+
+## Mistakes I Made
+
+- Used s.length instead of s.length - 1.
+- Tried swapping pointer variables instead of characters.
+- Moved pointers before completing swap.
+- Tried returning an array from a void method.
+- Forgot the problem requires modifying the same array.
+
+## Biggest Learning
+
+When reversing arrays or strings:
+
+Use two pointers from opposite ends and swap until they meet.
+
+## Time Complexity
+
+O(n)
+
+## Space Complexity
+
+O(1)
+
+---
+
+# LeetCode 125 — Valid Palindrome
+
+## Concepts Used
+
+- String Traversal
+- Character Functions
+- Character.toLowerCase()
+- Character.isLetterOrDigit()
+- Two Pointers
+- Palindrome Checking
+
+## Final Approach
+
+1. Traverse original string.
+2. Convert every character to lowercase.
+3. Keep only letters and digits.
+4. Store cleaned characters in a new string.
+5. Use two pointers.
+6. Compare from both ends.
+7. Return false on mismatch.
+8. Return true if all comparisons match.
+
+## Mistakes I Made
+
+- Tried checking palindrome while cleaning the string.
+- Compared original string instead of cleaned string.
+- Used == " " instead of character comparisons.
+- Forgot charAt() returns a char.
+- Initialized right before building cleaned string.
+- Ignored result of Character.isLetterOrDigit().
+- Removed only spaces, commas and colons initially.
+- Mixed array syntax and string syntax.
+
+## Biggest Learning
+
+Clean data first, then solve the actual problem.
+
+## Time Complexity
+
+O(n)
+
+## Space Complexity
+
+O(n)
+
+---
+
+# LeetCode 58 — Length of Last Word
+
+## Concepts Used
+
+- Reverse Traversal
+- Character Comparison
+- Counting Pattern
+- Early Return
+
+## Approach
+
+- Traverse from the end.
+- Skip trailing spaces.
+- Count characters of last word.
+- Stop when space is found after counting starts.
+
+## Mistakes I Made
+
+- Wrote conut instead of count.
+- Used charAt(i) instead of s.charAt(i).
+- Used = instead of ==.
+- Returned 0 instead of count.
+- Mixed skip-space logic with count logic.
+
+## Pattern Learned
+
+Start From End
+↓
+Skip Unwanted Characters
+↓
+Count Useful Characters
+↓
+Stop At Boundary
+
+## Time Complexity
+
+O(n)
+
+## Space Complexity
+
+O(1)
+
+---
+
+## Day 5 Reflection
+
+Today I became more comfortable with:
+
+- Two Pointers
+- Reverse Traversal
+- String Cleaning
+- Character Functions
+- Early Return Logic
+
+Biggest Improvement:
+I am starting to recognize patterns before solving instead of randomly trying approaches.
+
+Problems that took the most time:
+- LeetCode 125 (Valid Palindrome)
+- LeetCode 58 (Length of Last Word)
+
+Mood:
+Feeling confident and enjoying the process.
