@@ -2568,3 +2568,49 @@ This reduced many mistakes and helped me debug faster.
 ✅ 20 LeetCode Problems Solved
 ✅ Learned Two Pointers
 ✅ Improved Manual Problem Decoding
+
+# DAILY LEARNING LOG
+
+## Day 5 (21-07-2026)
+
+Problems Solved:
+- LeetCode 344 - Reverse String
+- LeetCode 125 - Valid Palindrome
+- LeetCode 58 - Length of Last Word
+
+Concepts Learned:
+- Two Pointers
+- String Cleaning
+- Character.toLowerCase()
+- Character.isLetterOrDigit()
+- Reverse Traversal
+- Early Return
+- Counting Pattern
+
+Common Mistakes Today:
+- Using s.length instead of s.length - 1.
+- Mixing array syntax and string syntax.
+- Using = instead of ==.
+- Forgetting charAt() returns a char.
+- Initializing variables before required data was prepared.
+- Returning wrong values at end of method.
+
+Patterns Reinforced:
+1. Two Pointer Pattern
+2. Reverse Traversal Pattern
+3. Clean Data → Process Data Pattern
+4. Count Until Boundary Pattern
+
+Time Spent:
+- Reverse String: ~15 min
+- Valid Palindrome: ~45 min
+- Length of Last Word: ~20 min
+
+Total Learning Time:
+~1.5 hours
+
+Confidence Level:
+8/10
+
+Notes to Future Me:
+Focus less on syntax mistakes and more on trusting the pattern. Most bugs today came from Java syntax, not logic.
