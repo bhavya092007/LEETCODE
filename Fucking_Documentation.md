@@ -2517,3 +2517,221 @@ Problems that took the most time:
 
 Mood:
 Feeling confident and enjoying the process.
+
+
+# DAY 6 REFLECTION
+Date: 22-07-2026
+
+## Problems Solved
+
+1. LeetCode 28 - Find the Index of the First Occurrence in a String
+2. LeetCode 796 - Rotate String
+3. LeetCode 242 - Valid Anagram
+
+---
+
+## What I Noticed Today
+
+Today I felt that the problems were easier to understand compared to earlier days.
+
+The biggest difference is that I am starting to recognize patterns on my own.
+
+Before, I often struggled with:
+
+- Understanding the problem.
+- Deciding where to start.
+- Finding the correct approach.
+- Identifying the pattern.
+
+Now I can usually recognize things like:
+
+- This looks like String Matching.
+- This can be solved using Reverse Traversal.
+- This needs a Frequency Array.
+- There may be a hidden pattern instead of simulation.
+- This problem can be simplified.
+
+---
+
+## My Biggest Improvement
+
+I feel that my logic is improving.
+
+Many times I can already see the correct idea before writing code.
+
+Examples from today:
+
+### LeetCode 28
+
+I eventually understood:
+
+```java
+haystack.charAt(i + j)
+needle.charAt(j)
+```
+
+and the string matching pattern.
+
+### LeetCode 796
+
+I understood that:
+
+```java
+(s + s).contains(goal)
+```
+
+is a pattern-based solution and much better than manually rotating characters.
+
+### LeetCode 242
+
+I learned how Frequency Arrays work and why counting character frequencies is more important than simply checking whether characters exist.
+
+---
+
+## What Is Still Holding Me Back
+
+Most of my mistakes are no longer logic mistakes.
+
+My main problems now are:
+
+### Syntax Mistakes
+
+Examples:
+
+```java
+s[i]
+```
+
+instead of
+
+```java
+s.charAt(i)
+```
+
+Using:
+
+```java
+=
+```
+
+instead of
+
+```java
+==
+```
+
+Confusing:
+
+```java
+length
+```
+
+and
+
+```java
+length()
+```
+
+---
+
+### Implementation Mistakes
+
+Examples:
+
+- Boundary conditions.
+- Wrong loop limits.
+- Returning too early.
+- Using break vs return incorrectly.
+- Index calculations.
+
+---
+
+### Confidence While Coding
+
+Sometimes I actually know the correct logic but get stuck while converting it into Java code.
+
+---
+
+## Biggest Learning Today
+
+I realized that:
+
+```text
+Finding the pattern is harder than writing the code.
+```
+
+The code can always be fixed.
+
+But if I can recognize the correct pattern, I am already moving in the right direction.
+
+---
+
+## Current Self Assessment
+
+### Pattern Recognition
+
+8/10
+
+I am starting to identify common patterns myself.
+
+### Problem Understanding
+
+8/10
+
+Most problems make sense after reading carefully.
+
+### Logic Building
+
+7.5/10
+
+I can usually find the correct approach.
+
+### Java Syntax
+
+5.5/10
+
+Still making many small syntax mistakes.
+
+### Implementation
+
+6/10
+
+Need more practice converting ideas into code.
+
+---
+
+## Day 6 Takeaway
+
+Today I learned that my biggest weakness is no longer understanding the problem.
+
+My biggest weakness is implementing the solution correctly.
+
+That is good progress because syntax and implementation improve with practice, while logic takes longer to develop.
+
+I feel more confident than I did on Day 1.
+
+---
+
+## Goal For Day 7
+
+- Reduce syntax mistakes.
+- Write correct code with fewer retries.
+- Improve boundary-condition handling.
+- Continue recognizing patterns before coding.
+- Solve problems with less AI help.
+
+---
+
+## Final Reflection
+
+Today was one of my most important learning days.
+
+For the first time, I felt that I could recognize patterns and logic on my own.
+
+The challenge now is not finding the idea.
+
+The challenge is expressing the idea correctly in Java.
+
+LeetCode Journey Day: 6 🚀
+
+
