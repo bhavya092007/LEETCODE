@@ -2614,3 +2614,233 @@ Confidence Level:
 
 Notes to Future Me:
 Focus less on syntax mistakes and more on trusting the pattern. Most bugs today came from Java syntax, not logic.
+
+# DAILY LEARNING LOG - DAY 5 (21-07-2026)
+
+## Problems Solved
+
+1. LeetCode 28 - Find the Index of the First Occurrence in a String
+2. LeetCode 796 - Rotate String
+
+---
+
+## Concepts Learned Today
+
+### String Matching
+- Nested Loops
+- Character Comparison
+- Brute Force Search
+- Break Statement
+- Early Return
+- Boundary Conditions
+
+### String Rotation
+- String Concatenation
+- contains()
+- Length Checking
+- Pattern Recognition
+- Rotation Observation
+
+---
+
+## Important Patterns Learned
+
+### Pattern 1: Brute Force String Matching
+
+Choose Start Position
+↓
+Compare Entire Pattern
+↓
+Mismatch → Break
+↓
+Complete Match → Return Start Index
+↓
+No Match → Return -1
+
+Key Learning:
+
+```java
+haystack.charAt(i + j)
+needle.charAt(j)
+```
+
+Both strings move together while matching.
+
+---
+
+### Pattern 2: String Rotation
+
+Length Check
+↓
+Concatenate String
+↓
+Use contains()
+↓
+Return Result
+
+Key Learning:
+
+```java
+(s + s).contains(goal)
+```
+
+All possible rotations of a string exist inside:
+
+```java
+s + s
+```
+
+Example:
+
+```text
+abcdeabcde
+
+Contains:
+abcde
+bcdea
+cdeab
+deabc
+eabcd
+```
+
+---
+
+## Tiny Mistakes I Made Today
+
+### LeetCode 28
+
+- Compared `haystack[i]` with every character of needle.
+- Forgot that haystack should move using `i + j`.
+- Returned `-1` on the first mismatch.
+- Didn't understand when a complete match was found.
+- Forgot outer loop boundary conditions.
+- Used:
+
+```java
+i < haystack.length()
+```
+
+instead of:
+
+```java
+i <= haystack.length() - needle.length()
+```
+
+- Returned `0` instead of `-1` when substring wasn't found.
+- Repeatedly switched between correct and incorrect indexing while debugging.
+- Needed several attempts to understand why `break` was required instead of `return -1`.
+
+### LeetCode 796
+
+- First thought about manually shifting characters.
+- Thought loops were required.
+- Added a loop around `contains()` without using the loop variable.
+- Forgot equal length check.
+- Focused on simulation before looking for a pattern.
+- Didn't initially notice that all rotations appear inside `(s + s)`.
+
+---
+
+## Biggest Learnings
+
+### Learning #1
+
+A mismatch at one position does NOT mean the answer doesn't exist.
+
+Use:
+
+```java
+break;
+```
+
+instead of:
+
+```java
+return -1;
+```
+
+when checking a single starting position.
+
+---
+
+### Learning #2
+
+Boundary conditions are extremely important.
+
+Many bugs today happened because loops were checking positions that should never be checked.
+
+---
+
+### Learning #3
+
+Sometimes there is a hidden observation that completely simplifies a problem.
+
+Example:
+
+```java
+(s + s).contains(goal)
+```
+
+replaces all manual rotation logic.
+
+---
+
+### Learning #4
+
+When solving string matching problems:
+
+```java
+i = starting position
+j = pattern position
+```
+
+and comparison is:
+
+```java
+haystack.charAt(i + j)
+needle.charAt(j)
+```
+
+---
+
+## Useful Functions Learned/Reinforced
+
+```java
+charAt()
+length()
+contains()
+```
+
+---
+
+## Time Complexity Learned
+
+### LeetCode 28
+
+```text
+O(n × m)
+```
+
+### LeetCode 796
+
+```text
+O(n²)
+```
+
+(using contains in worst case)
+
+---
+
+## Reflection
+
+Today I learned that many problems become easier when I stop thinking about code first and start looking for patterns.
+
+Most of my mistakes were:
+- Boundary mistakes
+- Wrong return statements
+- Incorrect indexing
+- Missing observations
+
+My logic is improving, and I'm starting to recognize common string patterns instead of guessing solutions.
+
+Confidence: 8/10 🚀
