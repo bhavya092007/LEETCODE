@@ -2831,6 +2831,205 @@ O(n²)
 
 ---
 
+# LeetCode 242 - Valid Anagram
+
+## Difficulty
+
+Easy
+
+## Concepts Used
+
+- Frequency Array
+- Character Counting
+- String Traversal
+- Length Check
+- Character to Index Mapping
+- Counting Pattern
+
+## Final Approach
+
+1. Check if both strings have equal lengths.
+2. Create a frequency array of size 26.
+3. Traverse string `s` and increase character counts.
+4. Traverse string `t` and decrease character counts.
+5. Traverse the frequency array.
+6. If any value is not 0, return `false`.
+7. Otherwise return `true`.
+
+## Key Observation
+
+Anagrams contain:
+
+- Same characters
+- Same frequency of each character
+
+Example:
+
+```text
+anagram
+nagaram
+```
+
+Character counts:
+
+```text
+a = 3
+n = 1
+g = 1
+r = 1
+m = 1
+```
+
+Both strings have identical counts.
+
+## Character Mapping Learned
+
+Characters can be converted into array indexes.
+
+```java
+'a' - 'a' = 0
+'b' - 'a' = 1
+'c' - 'a' = 2
+...
+'z' - 'a' = 25
+```
+
+Pattern:
+
+```java
+freq[s.charAt(i) - 'a']++;
+freq[t.charAt(i) - 'a']--;
+```
+
+## Mistakes I Made
+
+### Logic Mistakes
+
+- First thought checking character presence was enough.
+- Didn't realize frequency also matters.
+- Didn't understand what the frequency array stores.
+- Thought comparing characters directly with frequency values would work.
+- Tried solving without counting occurrences.
+
+### Syntax Mistakes
+
+- Used:
+
+```java
+freq[i] == s[i]
+```
+
+instead of using `charAt()`.
+
+- Compared counts with characters.
+- Forgot that strings cannot be accessed using array syntax.
+- Needed help understanding:
+
+```java
+s.charAt(i) - 'a'
+```
+
+### Frequency Array Mistakes
+
+- Didn't know how characters map to indexes.
+- Initially confused about why `'a'` should become index `0`.
+- Thought frequency array stores characters.
+- Learned that frequency array stores counts.
+
+### Final Checking Mistakes
+
+- Returned `true` when finding the first frequency equal to 0.
+- Forgot that ALL frequencies must become 0.
+- Returned too early before checking the entire frequency array.
+
+## Biggest Learning
+
+Frequency arrays do NOT store characters.
+
+They store counts.
+
+Example:
+
+```java
+freq[0]
+```
+
+means:
+
+```text
+Count of 'a'
+```
+
+not the character `'a'`.
+
+## Pattern Learned
+
+Length Check
+↓
+Count First String (+)
+↓
+Remove Second String (-)
+↓
+Check All Frequencies
+↓
+All Zero → Anagram
+↓
+Otherwise → Not Anagram
+
+## Useful Concepts Learned
+
+### Frequency Array
+
+```java
+int[] freq = new int[26];
+```
+
+### Character to Index Conversion
+
+```java
+s.charAt(i) - 'a'
+```
+
+### Counting Pattern
+
+```java
+freq[index]++;
+freq[index]--;
+```
+
+## Time Complexity
+
+```text
+O(n)
+```
+
+## Space Complexity
+
+```text
+O(1)
+```
+
+(Fixed size array of 26)
+
+## Time Spent
+
+~30-40 minutes
+
+## Confidence
+
+Needed guidance to understand frequency arrays, but successfully learned one of the most important string patterns used in LeetCode.
+
+## Main Takeaway
+
+When a problem asks whether two strings contain the same characters:
+
+```text
+Do not check presence.
+Check frequency.
+```
+
+Frequency arrays are often faster and cleaner than nested loops.
+
 ## Reflection
 
 Today I learned that many problems become easier when I stop thinking about code first and start looking for patterns.
