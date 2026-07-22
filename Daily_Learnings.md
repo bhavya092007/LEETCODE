@@ -2615,37 +2615,62 @@ Confidence Level:
 Notes to Future Me:
 Focus less on syntax mistakes and more on trusting the pattern. Most bugs today came from Java syntax, not logic.
 
-# DAILY LEARNING LOG - DAY 5 (21-07-2026)
+# DAY 6 LEARNING LOG (22-07-2026)
 
 ## Problems Solved
 
 1. LeetCode 28 - Find the Index of the First Occurrence in a String
 2. LeetCode 796 - Rotate String
+3. LeetCode 242 - Valid Anagram
 
 ---
 
-## Concepts Learned Today
+# LeetCode 28 - Find the Index of the First Occurrence in a String
 
-### String Matching
+## Difficulty
+
+Easy
+
+## Concepts Used
+
 - Nested Loops
+- String Traversal
 - Character Comparison
 - Brute Force Search
 - Break Statement
 - Early Return
 - Boundary Conditions
 
-### String Rotation
-- String Concatenation
-- contains()
-- Length Checking
-- Pattern Recognition
-- Rotation Observation
+## Final Approach
 
----
+1. Choose every possible starting position in `haystack`.
+2. Compare every character of `needle`.
+3. If mismatch occurs, stop checking current position.
+4. If all characters match, return starting index.
+5. If no match exists, return `-1`.
 
-## Important Patterns Learned
+## Mistakes I Made
 
-### Pattern 1: Brute Force String Matching
+- Compared `haystack[i]` with every character of `needle`.
+- Returned `-1` immediately on mismatch.
+- Didn't know how to detect a complete match.
+- Forgot boundary condition for outer loop.
+- Returned `0` instead of `-1` when substring wasn't found.
+- Didn't initially understand why `i + j` was needed.
+- Mixed up `break` and `return`.
+
+## Biggest Learning
+
+When matching strings:
+
+```java
+haystack.charAt(i + j)
+needle.charAt(j)
+```
+
+The haystack moves using `i + j`, while the pattern moves using `j`.
+
+## Pattern Learned
 
 Choose Start Position
 ↓
@@ -2654,37 +2679,50 @@ Compare Entire Pattern
 Mismatch → Break
 ↓
 Complete Match → Return Start Index
-↓
-No Match → Return -1
 
-Key Learning:
+## Time Complexity
 
-```java
-haystack.charAt(i + j)
-needle.charAt(j)
-```
+O(n × m)
 
-Both strings move together while matching.
+## Space Complexity
+
+O(1)
+
+## Confidence
+
+Solved mostly by myself after understanding boundary conditions.
 
 ---
 
-### Pattern 2: String Rotation
+# LeetCode 796 - Rotate String
 
-Length Check
-↓
-Concatenate String
-↓
-Use contains()
-↓
-Return Result
+## Difficulty
 
-Key Learning:
+Easy
+
+## Concepts Used
+
+- String Rotation
+- String Concatenation
+- Length Check
+- contains()
+- Pattern Recognition
+
+## Final Approach
+
+1. Check if lengths are equal.
+2. Concatenate:
 
 ```java
-(s + s).contains(goal)
+s + s
 ```
 
-All possible rotations of a string exist inside:
+3. Check if `goal` exists inside `(s + s)`.
+4. Return result.
+
+## Key Observation
+
+All rotations of a string exist inside:
 
 ```java
 s + s
@@ -2694,8 +2732,11 @@ Example:
 
 ```text
 abcdeabcde
+```
 
 Contains:
+
+```text
 abcde
 bcdea
 cdeab
@@ -2703,131 +2744,54 @@ deabc
 eabcd
 ```
 
----
-
-## Tiny Mistakes I Made Today
-
-### LeetCode 28
-
-- Compared `haystack[i]` with every character of needle.
-- Forgot that haystack should move using `i + j`.
-- Returned `-1` on the first mismatch.
-- Didn't understand when a complete match was found.
-- Forgot outer loop boundary conditions.
-- Used:
-
-```java
-i < haystack.length()
-```
-
-instead of:
-
-```java
-i <= haystack.length() - needle.length()
-```
-
-- Returned `0` instead of `-1` when substring wasn't found.
-- Repeatedly switched between correct and incorrect indexing while debugging.
-- Needed several attempts to understand why `break` was required instead of `return -1`.
-
-### LeetCode 796
+## Mistakes I Made
 
 - First thought about manually shifting characters.
-- Thought loops were required.
+- Wanted to use loops unnecessarily.
 - Added a loop around `contains()` without using the loop variable.
 - Forgot equal length check.
-- Focused on simulation before looking for a pattern.
-- Didn't initially notice that all rotations appear inside `(s + s)`.
+- Focused on simulation before finding the pattern.
 
----
+## Biggest Learning
 
-## Biggest Learnings
+Sometimes one observation removes all complex logic.
 
-### Learning #1
-
-A mismatch at one position does NOT mean the answer doesn't exist.
-
-Use:
-
-```java
-break;
-```
-
-instead of:
-
-```java
-return -1;
-```
-
-when checking a single starting position.
-
----
-
-### Learning #2
-
-Boundary conditions are extremely important.
-
-Many bugs today happened because loops were checking positions that should never be checked.
-
----
-
-### Learning #3
-
-Sometimes there is a hidden observation that completely simplifies a problem.
-
-Example:
+For rotation problems:
 
 ```java
 (s + s).contains(goal)
 ```
 
-replaces all manual rotation logic.
+is the key idea.
 
----
+## Pattern Learned
 
-### Learning #4
+Length Check
+↓
+Concatenate String
+↓
+Use contains()
+↓
+Return Result
 
-When solving string matching problems:
-
-```java
-i = starting position
-j = pattern position
-```
-
-and comparison is:
-
-```java
-haystack.charAt(i + j)
-needle.charAt(j)
-```
-
----
-
-## Useful Functions Learned/Reinforced
+## Useful Functions
 
 ```java
-charAt()
 length()
 contains()
 ```
 
----
+## Time Complexity
 
-## Time Complexity Learned
-
-### LeetCode 28
-
-```text
-O(n × m)
-```
-
-### LeetCode 796
-
-```text
 O(n²)
-```
 
-(using contains in worst case)
+## Space Complexity
+
+O(n)
+
+## Confidence
+
+Solved after understanding the hidden rotation pattern.
 
 ---
 
@@ -2844,47 +2808,22 @@ Easy
 - String Traversal
 - Length Check
 - Character to Index Mapping
-- Counting Pattern
 
 ## Final Approach
 
-1. Check if both strings have equal lengths.
-2. Create a frequency array of size 26.
-3. Traverse string `s` and increase character counts.
-4. Traverse string `t` and decrease character counts.
-5. Traverse the frequency array.
-6. If any value is not 0, return `false`.
-7. Otherwise return `true`.
+1. Check if lengths are equal.
+2. Create:
 
-## Key Observation
-
-Anagrams contain:
-
-- Same characters
-- Same frequency of each character
-
-Example:
-
-```text
-anagram
-nagaram
+```java
+int[] freq = new int[26];
 ```
 
-Character counts:
-
-```text
-a = 3
-n = 1
-g = 1
-r = 1
-m = 1
-```
-
-Both strings have identical counts.
+3. Traverse `s` and increase counts.
+4. Traverse `t` and decrease counts.
+5. Check if every frequency becomes 0.
+6. Return result.
 
 ## Character Mapping Learned
-
-Characters can be converted into array indexes.
 
 ```java
 'a' - 'a' = 0
@@ -2905,48 +2844,37 @@ freq[t.charAt(i) - 'a']--;
 
 ### Logic Mistakes
 
-- First thought checking character presence was enough.
-- Didn't realize frequency also matters.
-- Didn't understand what the frequency array stores.
-- Thought comparing characters directly with frequency values would work.
-- Tried solving without counting occurrences.
+- Thought checking character presence was enough.
+- Didn't realize frequencies must also match.
+- Didn't understand what frequency arrays store.
+- Tried comparing counts directly with characters.
 
 ### Syntax Mistakes
 
-- Used:
+- Tried:
 
 ```java
 freq[i] == s[i]
 ```
 
-instead of using `charAt()`.
-
-- Compared counts with characters.
-- Forgot that strings cannot be accessed using array syntax.
-- Needed help understanding:
+- Forgot to use:
 
 ```java
-s.charAt(i) - 'a'
+s.charAt(i)
 ```
+
+- Mixed character values and frequency counts.
 
 ### Frequency Array Mistakes
 
-- Didn't know how characters map to indexes.
-- Initially confused about why `'a'` should become index `0`.
+- Didn't understand character-to-index conversion.
 - Thought frequency array stores characters.
-- Learned that frequency array stores counts.
-
-### Final Checking Mistakes
-
-- Returned `true` when finding the first frequency equal to 0.
-- Forgot that ALL frequencies must become 0.
-- Returned too early before checking the entire frequency array.
+- Returned `true` when finding the first zero frequency.
+- Forgot all frequencies must become zero.
 
 ## Biggest Learning
 
-Frequency arrays do NOT store characters.
-
-They store counts.
+Frequency arrays store counts, not characters.
 
 Example:
 
@@ -2966,80 +2894,99 @@ not the character `'a'`.
 
 Length Check
 ↓
-Count First String (+)
+Count Characters (+)
 ↓
-Remove Second String (-)
+Remove Characters (-)
 ↓
-Check All Frequencies
-↓
-All Zero → Anagram
-↓
-Otherwise → Not Anagram
-
-## Useful Concepts Learned
-
-### Frequency Array
-
-```java
-int[] freq = new int[26];
-```
-
-### Character to Index Conversion
-
-```java
-s.charAt(i) - 'a'
-```
-
-### Counting Pattern
-
-```java
-freq[index]++;
-freq[index]--;
-```
+Verify All Counts Are Zero
 
 ## Time Complexity
 
-```text
 O(n)
-```
 
 ## Space Complexity
 
-```text
 O(1)
-```
-
-(Fixed size array of 26)
-
-## Time Spent
-
-~30-40 minutes
 
 ## Confidence
 
-Needed guidance to understand frequency arrays, but successfully learned one of the most important string patterns used in LeetCode.
+Learned frequency arrays for the first time and understood the complete counting pattern.
 
-## Main Takeaway
+---
 
-When a problem asks whether two strings contain the same characters:
+# DAY 6 OVERALL LESSONS
+
+## Major Patterns Learned
+
+### 1. Brute Force String Matching
 
 ```text
-Do not check presence.
-Check frequency.
+Choose Start
+↓
+Compare Pattern
+↓
+Break on Mismatch
+↓
+Return on Match
 ```
 
-Frequency arrays are often faster and cleaner than nested loops.
+### 2. String Rotation Pattern
 
-## Reflection
+```text
+Length Check
+↓
+s + s
+↓
+contains()
+```
 
-Today I learned that many problems become easier when I stop thinking about code first and start looking for patterns.
+### 3. Frequency Array Pattern
 
-Most of my mistakes were:
-- Boundary mistakes
-- Wrong return statements
-- Incorrect indexing
-- Missing observations
+```text
+Count
+↓
+Subtract
+↓
+Verify Zero
+```
 
-My logic is improving, and I'm starting to recognize common string patterns instead of guessing solutions.
+---
 
-Confidence: 8/10 🚀
+## Most Common Mistakes Today
+
+- Returning too early.
+- Missing boundary conditions.
+- Using loops when a pattern already solved the problem.
+- Confusing counts with characters.
+- Not understanding what data structures store.
+- Thinking about implementation before finding the pattern.
+
+---
+
+## Biggest Day 6 Takeaway
+
+```text
+Look for patterns before writing code.
+```
+
+Today I learned that many string problems become much easier after identifying the underlying pattern rather than immediately starting with loops.
+
+---
+
+## Day 6 Reflection
+
+Today was a strong learning day.
+
+I learned:
+
+- String Matching
+- String Rotation
+- Frequency Arrays
+
+The most valuable concept was Frequency Arrays because it introduced a completely new way of solving string problems efficiently.
+
+Confidence: 8.5/10 🚀
+
+Total Problems Solved: 3
+LeetCode Journey Day: 6
+Date: 22-07-2026
