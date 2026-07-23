@@ -7,3 +7,11 @@ if(current > max)
 {
     max = current;
 }
+
+Frequency Array Rule:
+
+freq[s.charAt(i) - 'a']++
+
+means
+
+"Increase the count of the current character."
