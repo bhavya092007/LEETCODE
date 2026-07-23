@@ -2990,3 +2990,333 @@ Confidence: 8.5/10 🚀
 Total Problems Solved: 3
 LeetCode Journey Day: 6
 Date: 22-07-2026
+
+
+# DAY 7 LEARNING LOG
+Date: 23-07-2026
+
+## Problems Solved
+
+1. LeetCode 709 - To Lower Case
+2. LeetCode 771 - Jewels and Stones
+3. LeetCode 1108 - Defanging an IP Address
+
+---
+
+# LeetCode 709 - To Lower Case
+
+## Difficulty
+
+Easy
+
+## Concepts Used
+
+- String Traversal
+- Character Comparison
+- ASCII Values
+- Character Conversion
+- String Building
+
+## Final Approach
+
+1. Traverse the string.
+2. Check whether the current character is uppercase.
+3. If uppercase, convert it to lowercase using ASCII difference.
+4. Add the character to a new string.
+5. Return the final string.
+
+## Key Observation
+
+```java
+'A' = 65
+'a' = 97
+```
+
+Difference:
+
+```java
+32
+```
+
+Conversion:
+
+```java
+ch = (char)(ch + 32);
+```
+
+## Mistakes I Made
+
+- Declared `char ch` twice.
+- Tried using `ch(i)` as if it were a function.
+- Forgot that String is immutable.
+- Initially added characters only inside the uppercase `if` block.
+- Forgot lowercase characters also need to be added to the answer string.
+- Didn't know where to store converted characters.
+
+## Biggest Learning
+
+```text
+Convert if needed
+↓
+Always add character to answer
+```
+
+The placement of a line inside or outside an `if` block can completely change the result.
+
+## Pattern Learned
+
+Traverse String
+↓
+Check Condition
+↓
+Modify Character
+↓
+Build New String
+↓
+Return Result
+
+## Time Complexity
+
+O(n)
+
+## Space Complexity
+
+O(n)
+
+---
+
+# LeetCode 771 - Jewels and Stones
+
+## Difficulty
+
+Easy
+
+## Concepts Used
+
+- Nested Loops
+- Character Comparison
+- Searching
+- Break Statement
+- Counting Pattern
+
+## Final Approach
+
+1. Traverse every stone.
+2. Check whether it exists in jewels.
+3. If found:
+   - Increase count.
+   - Break inner loop.
+4. Return count.
+
+## Final Pattern
+
+```text
+For each stone
+↓
+Search all jewels
+↓
+Found?
+↓
+count++
+↓
+break
+```
+
+## Mistakes I Made
+
+- Returned `0` immediately on first mismatch.
+- Thought one failed comparison means the answer is zero.
+- Added unnecessary `else` block.
+- Forgot that a mismatch only means:
+  
+```text
+Try the next jewel
+```
+
+- Needed reminder about when to use `break`.
+
+## Biggest Learning
+
+```text
+One comparison fails
+↓
+Try next possibility
+
+NOT
+
+One comparison fails
+↓
+Return immediately
+```
+
+This was similar to mistakes I previously made in string matching problems.
+
+## Pattern Learned
+
+Nested Loop Search Pattern
+
+```text
+Outer Loop
+↓
+Thing being counted
+
+Inner Loop
+↓
+Place being searched
+```
+
+## Time Complexity
+
+O(n × m)
+
+## Space Complexity
+
+O(1)
+
+---
+
+# LeetCode 1108 - Defanging an IP Address
+
+## Difficulty
+
+Easy
+
+## Concepts Used
+
+- String Traversal
+- Character Comparison
+- Conditional Replacement
+- String Building
+
+## Final Approach
+
+1. Traverse the IP address.
+2. If current character is '.':
+   
+```java
+"[.]"
+```
+
+is added.
+
+3. Otherwise add the original character.
+4. Return final string.
+
+## Mistakes I Made
+
+- None major.
+- Correctly identified the pattern before writing code.
+- Immediately recognized that only one loop and one condition were required.
+
+## Biggest Learning
+
+Sometimes the simplest approach is already the correct solution.
+
+Not every string problem requires complicated logic.
+
+## Pattern Learned
+
+Traverse String
+↓
+Check Character
+↓
+Replace If Needed
+↓
+Build Answer String
+
+## Time Complexity
+
+O(n)
+
+## Space Complexity
+
+O(n)
+
+---
+
+# DAY 7 OVERALL LESSONS
+
+## Major Patterns Reinforced
+
+### String Building Pattern
+
+```java
+String ans = "";
+```
+
+```java
+ans = ans + ch;
+```
+
+Used in:
+- Valid Palindrome
+- To Lower Case
+- Defanging IP Address
+
+---
+
+### Nested Loop Search Pattern
+
+```text
+Item
+↓
+Search Collection
+↓
+Found?
+↓
+Process
+↓
+break
+```
+
+Used in:
+- Jewels and Stones
+
+---
+
+### Conditional Character Processing
+
+```java
+if(condition)
+{
+    modify
+}
+```
+
+```java
+add to answer
+```
+
+Used in:
+- To Lower Case
+- Defanging IP Address
+
+---
+
+# Biggest Day 7 Observation
+
+Today I noticed that I am starting to recognize patterns before writing code.
+
+Examples:
+
+- Immediately identified one-loop solution for Defanging IP Address.
+- Understood Nested Loop Search for Jewels and Stones.
+- Already knew ASCII conversion logic for To Lower Case.
+
+Most of my mistakes are now implementation mistakes rather than logic mistakes.
+
+---
+
+# Day 7 Reflection
+
+Today I felt more comfortable identifying the correct approach before coding.
+
+I still make small syntax and implementation mistakes, but I am increasingly able to recognize the underlying pattern of a problem.
+
+The biggest improvement today was confidence in choosing the correct logic without needing much guidance.
+
+Confidence: 9/10
+
+Total Problems Solved Today: 3
+
+LeetCode Journey Day: 7 🚀
