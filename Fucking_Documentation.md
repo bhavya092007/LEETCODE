@@ -2734,4 +2734,224 @@ The challenge is expressing the idea correctly in Java.
 
 LeetCode Journey Day: 6 🚀
 
+# Personal Reflection - Day 7
+
+Today was one of my strongest problem-solving days so far.
+
+For all three problems, I was able to identify the correct logic very quickly. I did not struggle much with understanding what the problem was asking. Instead, most of my mistakes came from translating my thoughts into Java code.
+
+## What I Noticed About Myself
+
+I can usually recognize the pattern behind a problem now.
+
+Examples from recent problems:
+
+* Valid Anagram → Frequency Array Pattern
+* First Unique Character → Frequency Array + Second Traversal
+* Find First Occurrence in String → Nested Loop Search
+* Rotate String → Pattern Recognition using Concatenation
+* Jewels and Stones → Nested Loop Search + Break
+* To Lower Case → Character Processing
+* Defanging IP Address → Character Replacement
+
+In most cases, I understand the logic before writing the code.
+
+## Current Weakness
+
+My biggest challenge is no longer finding the approach.
+
+My biggest challenge is expressing the approach correctly in Java syntax.
+
+Common examples:
+
+* Using the correct index inside arrays.
+* Remembering when to use `s.charAt(i)`.
+* Knowing where to place statements inside or outside an `if` block.
+* Accidentally returning too early.
+* Forgetting that Strings are immutable.
+* Translating a mental step into the exact Java statement required.
+* Knowing when to use `break`, `continue`, or `return`.
+* Converting a pattern in my head into working Java code.
+
+Many times I know exactly what should happen, but I need a few attempts before I write it correctly.
+
+## Improvement Compared to Earlier Days
+
+Earlier:
+
+```text
+Problem
+↓
+Confusion about logic
+↓
+Confusion about code
+```
+
+Now:
+
+```text
+Problem
+↓
+Understand logic quickly
+↓
+Minor syntax/debugging mistakes
+↓
+Accepted solution
+```
+
+This is a big improvement because logic is usually harder to learn than syntax.
+
+## Evidence From Recent Problems
+
+### LeetCode 28 - Find the Index of the First Occurrence in a String
+
+I understood that I needed nested loops and character comparison.
+
+Mistakes were:
+
+* Returning `-1` too early.
+* Missing boundary conditions.
+* Understanding when a complete match was found.
+* Using incorrect indexes.
+
+The algorithm was mostly correct. The mistakes were implementation details.
+
+### LeetCode 796 - Rotate String
+
+I quickly understood the rotation concept after seeing the pattern.
+
+Main learning:
+
+```java
+(s + s).contains(goal)
+```
+
+The challenge was recognizing the hidden pattern, not coding complexity.
+
+### LeetCode 242 - Valid Anagram
+
+I successfully learned frequency arrays.
+
+Biggest breakthrough:
+
+```java
+freq[s.charAt(i) - 'a']++;
+freq[t.charAt(i) - 'a']--;
+```
+
+I now understand how characters can be converted into array indexes.
+
+### LeetCode 387 - First Unique Character in a String
+
+I immediately recognized another frequency-array problem.
+
+The struggle was not the approach.
+
+The struggle was correctly accessing the frequency array and performing the second traversal.
+
+### LeetCode 709 - To Lower Case
+
+I already knew the ASCII difference.
+
+The challenge was:
+
+* Storing converted characters.
+* Building the answer string.
+* Correct placement of statements.
+
+### LeetCode 771 - Jewels and Stones
+
+I correctly identified the need for nested loops.
+
+The mistake was returning too early on mismatch.
+
+After removing the unnecessary return statement, the solution became correct.
+
+### LeetCode 1108 - Defanging an IP Address
+
+I recognized the entire solution before writing code.
+
+One loop.
+One condition.
+String building.
+
+This was one of the cleanest solutions I wrote.
+
+## Biggest Lesson From Day 7
+
+I am starting to think like a programmer before writing code.
+
+Instead of asking:
+
+"What is the logic?"
+
+I often ask:
+
+"How do I express this logic in Java?"
+
+That is a major improvement compared to earlier days.
+
+## Pattern Recognition Growth
+
+Patterns I can now recognize:
+
+* Two Pointers
+* Frequency Arrays
+* Reverse Traversal
+* String Matching
+* String Building
+* Character Processing
+* Nested Loop Search
+* Rotation Pattern
+* Conditional Replacement
+
+Instead of treating every problem as completely new, I am beginning to connect them with previously solved patterns.
+
+## Focus For Day 8
+
+* Improve Java syntax fluency.
+* Reduce implementation mistakes.
+* Become faster at converting logic into code.
+* Practice frequency-array problems.
+* Practice nested-loop search patterns.
+* Continue building confidence in pattern recognition.
+
+## Confidence Assessment
+
+Logic Understanding: 9/10
+
+Pattern Recognition: 8.5/10
+
+Problem Approach Selection: 8.5/10
+
+Java Syntax Confidence: 6.5/10
+
+Overall Progress: Strong improvement compared to previous days.
+
+## Final Day 7 Reflection
+
+Today showed me that my biggest limitation is no longer problem-solving logic.
+
+Most of the time I can identify the correct approach, pattern, or algorithm.
+
+My current goal is to improve the speed and accuracy with which I convert those ideas into Java code.
+
+That is a much better problem to have than not understanding the logic at all.
+
+I am moving from:
+
+```text
+Learning Algorithms
+```
+
+to:
+
+```text
+Learning How To Express Algorithms In Java
+```
+
+and that is real progress.
+See Yoou ON day 8
+LOg out
+
 
