@@ -2955,3 +2955,67 @@ See Yoou ON day 8
 LOg out
 
 
+Biggest Day 8 Observation
+
+Today I noticed that I am becoming much better at recognizing patterns from previously solved problems.
+
+For Power of Three, I immediately connected it with Power of Two.
+
+Instead of learning a completely new solution, I only had to modify an existing pattern.
+
+This is the first time I strongly felt that solving previous problems is helping me solve new ones faster.
+
+Personal Reflection
+
+Today I learned an important difference:
+
+Knowing the operation
+≠
+Knowing the stopping condition
+
+In Power of Two, my division logic was correct from the beginning.
+
+The real bug was deciding when to stop.
+
+I also learned that Binary Search is much more powerful than I originally thought.
+
+It is not just for searching elements.
+
+It can also search for answers.
+
+Confidence
+
+Logic Understanding: 9/10
+
+Pattern Recognition: 9/10
+
+Java Syntax Confidence: 7/10
+
+Binary Search Understanding: 7.5/10
+
+Overall Progress: Strong
+
+Final Day 8 Reflection
+
+Earlier I focused mostly on solving one problem at a time.
+
+Today I started recognizing relationships between problems.
+
+I am beginning to build a library of patterns in my mind:
+
+Two Pointers
+Frequency Arrays
+Reverse Traversal
+String Building
+Nested Loop Search
+Binary Search
+Repeated Division
+
+This makes new problems feel less like completely new challenges and more like variations of patterns I already know.
+
+Total Problems Solved Today: 3
+
+LeetCode Journey Day: 8 🚀
+
+SEE YOU ON DAY 9 
+LOG OUT..
