@@ -3320,3 +3320,545 @@ Confidence: 9/10
 Total Problems Solved Today: 3
 
 LeetCode Journey Day: 7 🚀
+
+
+# DAY 8 LEARNING LOG
+
+**Date:** 24-07-2026
+
+## Problems Solved
+
+1. LeetCode 69 - Sqrt(x)
+2. LeetCode 231 - Power of Two
+3. LeetCode 326 - Power of Three
+
+---
+
+# LeetCode 69 - Sqrt(x)
+
+## Difficulty
+
+Easy
+
+## Concepts Used
+
+- Binary Search
+- Search Space
+- Mid Calculation
+- Floor Value
+- Overflow Handling
+
+## Initial Approach
+
+### Brute Force
+
+```text
+Try numbers one by one
+↓
+Square them
+↓
+Stop when square exceeds x
+↓
+Return previous number
+```
+
+Example:
+
+```text
+x = 8
+
+1² = 1
+2² = 4
+3² = 9 ❌
+
+Answer = 2
+```
+
+## Final Approach
+
+Use Binary Search.
+
+```text
+low = 0
+high = x
+```
+
+Find:
+
+```text
+mid
+```
+
+Check:
+
+```text
+mid²
+```
+
+Cases:
+
+```text
+mid² == x
+↓
+Return mid
+```
+
+```text
+mid² < x
+↓
+Store answer
+↓
+Search right side
+```
+
+```text
+mid² > x
+↓
+Search left side
+```
+
+## Mistakes I Made
+
+- Started with brute force only.
+- Did not initially think about large inputs.
+- Needed help understanding why Binary Search works.
+- Learned why `long` is used for:
+
+```java
+(long)mid * mid
+```
+
+to prevent overflow.
+
+## Biggest Learning
+
+Binary Search is not only for finding elements.
+
+It can also be used to find an answer inside a sorted numeric range.
+
+## Pattern Learned
+
+```text
+Search Space
+↓
+Middle Value
+↓
+Condition Check
+↓
+Move Left or Right
+↓
+Store Best Answer
+```
+
+## Time Complexity
+
+```text
+O(log n)
+```
+
+## Space Complexity
+
+```text
+O(1)
+```
+
+---
+
+# LeetCode 231 - Power of Two
+
+## Difficulty
+
+Easy
+
+## Concepts Used
+
+- Repeated Division
+- Modulus Operator
+- Loop Conditions
+- Mathematical Pattern
+
+## Initial Thinking
+
+At first I thought:
+
+```java
+n % 2 == 0
+```
+
+would be enough.
+
+Then I realized:
+
+```text
+6
+10
+12
+18
+```
+
+are even but not powers of two.
+
+## Final Approach
+
+Keep dividing by 2 while divisible.
+
+Example:
+
+```text
+16
+↓
+8
+↓
+4
+↓
+2
+↓
+1
+```
+
+If final value becomes:
+
+```text
+1
+```
+
+Return:
+
+```text
+true
+```
+
+Otherwise:
+
+```text
+false
+```
+
+## Mistakes I Made
+
+### Attempt 1
+
+Thought:
+
+```java
+n % 2 == 0
+```
+
+alone proves power of two.
+
+### Attempt 2
+
+Used:
+
+```java
+while(n != 0)
+```
+
+which divided too long.
+
+Example:
+
+```text
+16
+↓
+8
+↓
+4
+↓
+2
+↓
+1
+↓
+0
+```
+
+Then answer became incorrect.
+
+### Final Fix
+
+Changed stopping condition to:
+
+```java
+while(n % 2 == 0)
+```
+
+which correctly stops at:
+
+```text
+1
+```
+
+## Biggest Learning
+
+The operation may be correct.
+
+The stopping condition can still be wrong.
+
+## Pattern Learned
+
+```text
+Repeated Division
+↓
+Stop At Boundary
+↓
+Check Final Value
+```
+
+## Thought Process Growth
+
+```text
+Check even number
+↓
+Realize that's not enough
+↓
+Repeated division
+↓
+Wrong stopping condition
+↓
+Correct stopping condition
+↓
+Accepted logic
+```
+
+## Time Complexity
+
+```text
+O(log n)
+```
+
+## Space Complexity
+
+```text
+O(1)
+```
+
+---
+
+# LeetCode 326 - Power of Three
+
+## Difficulty
+
+Easy
+
+## Concepts Used
+
+- Pattern Reuse
+- Repeated Division
+- Mathematical Verification
+
+## Key Observation
+
+This problem is almost identical to Power of Two.
+
+Instead of:
+
+```text
+Divide by 2
+```
+
+we:
+
+```text
+Divide by 3
+```
+
+Example:
+
+```text
+27
+↓
+9
+↓
+3
+↓
+1
+```
+
+Final value:
+
+```text
+1
+```
+
+Therefore:
+
+```text
+true
+```
+
+## Mistakes I Made
+
+Accidentally checked:
+
+```java
+n % 2
+```
+
+instead of:
+
+```java
+n % 3
+```
+
+Accidentally checked:
+
+```java
+if(n == 2)
+```
+
+instead of:
+
+```java
+if(n == 1)
+```
+
+Forgot that the pattern should end at:
+
+```text
+1
+```
+
+just like Power of Two.
+
+## Biggest Learning
+
+Once a pattern is learned, many new problems become small modifications of the same idea.
+
+Power of Three is basically:
+
+```text
+Power of Two Pattern
++
+Replace 2 with 3
+```
+
+## Pattern Learned
+
+```text
+Repeated Division
+↓
+While Divisible
+↓
+Reduce Number
+↓
+Reach 1
+↓
+Valid Power
+```
+
+## Time Complexity
+
+```text
+O(log₃ n)
+```
+
+## Space Complexity
+
+```text
+O(1)
+```
+
+---
+
+# DAY 8 OVERALL LESSONS
+
+## Major Patterns Reinforced
+
+### Binary Search On Answer
+
+```text
+Search Space
+↓
+Middle
+↓
+Condition
+↓
+Move Left / Right
+↓
+Store Best Answer
+```
+
+Used In:
+
+- LeetCode 69
+
+---
+
+### Repeated Division Pattern
+
+```text
+While divisible
+↓
+Divide
+↓
+Stop
+↓
+Check final value
+```
+
+Used In:
+
+- LeetCode 231
+- LeetCode 326
+
+---
+
+## Biggest Day 8 Observation
+
+Today I noticed that I am becoming much better at recognizing patterns from previously solved problems.
+
+For Power of Three, I immediately connected it with Power of Two.
+
+Instead of learning a completely new solution, I only had to modify an existing pattern.
+
+This is the first time I strongly felt that solving previous problems is helping me solve new ones faster.
+
+## Personal Reflection
+
+Today I learned an important difference:
+
+```text
+Knowing the operation
+≠
+Knowing the stopping condition
+```
+
+In Power of Two, my division logic was correct from the beginning.
+
+The real bug was deciding when to stop.
+
+I also learned that Binary Search is much more powerful than I originally thought.
+
+It is not just for searching elements.
+
+It can also search for answers.
+
+## Confidence
+
+- Logic Understanding: 9/10
+- Pattern Recognition: 9/10
+- Java Syntax Confidence: 7/10
+- Binary Search Understanding: 7.5/10
+- Overall Progress: Strong
+
+## Final Day 8 Reflection
+
+Earlier I focused mostly on solving one problem at a time.
+
+Today I started recognizing relationships between problems.
+
+I am beginning to build a library of patterns in my mind:
+
+- Two Pointers
+- Frequency Arrays
+- Reverse Traversal
+- String Building
+- Nested Loop Search
+- Binary Search
+- Repeated Division
+
+This makes new problems feel less like completely new challenges and more like variations of patterns I already know.
+
+**Total Problems Solved Today: 3**
+
+**LeetCode Journey Day: 8 🚀**
