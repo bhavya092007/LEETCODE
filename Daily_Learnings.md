@@ -3862,3 +3862,624 @@ This makes new problems feel less like completely new challenges and more like v
 **Total Problems Solved Today: 3**
 
 **LeetCode Journey Day: 8 🚀**
+
+
+# DAY 9 LEARNING LOG
+
+**Date:** 25-07-2026
+
+## Problems Solved
+
+1. LeetCode 507 - Perfect Number
+2. LeetCode 202 - Happy Number
+3. LeetCode 263 - Ugly Number
+4. LeetCode 367 - Valid Perfect Square
+
+---
+
+# LeetCode 507 - Perfect Number
+
+## Difficulty
+
+Easy
+
+## Concepts Used
+
+- Factors / Divisors
+- Loops
+- Accumulation Pattern
+- Mathematical Verification
+
+## Initial Thinking
+
+Check every number from:
+
+```text
+1 to num
+```
+
+and add divisors.
+
+## Mistakes I Made
+
+### Mistake 1
+
+Tried:
+
+```java
+num.length
+```
+
+on an integer.
+
+### Mistake 2
+
+Used:
+
+```java
+else
+{
+    return false;
+}
+```
+
+inside loop.
+
+I assumed one non-divisor means the number is not perfect.
+
+### Mistake 3
+
+Checked:
+
+```java
+if(sum == num)
+```
+
+inside loop before processing all divisors.
+
+### Mistake 4
+
+Included:
+
+```java
+i <= num
+```
+
+which also adds the number itself.
+
+Perfect numbers use:
+
+```text
+Proper Divisors
+=
+All divisors except the number itself
+```
+
+## Final Approach
+
+```text
+Traverse from 1 to num-1
+↓
+If divisor
+↓
+Add to sum
+↓
+After loop
+↓
+Compare sum with num
+```
+
+Example:
+
+```text
+28
+
+1 + 2 + 4 + 7 + 14
+=
+28
+```
+
+## Biggest Learning
+
+Just because one condition fails inside a loop does not mean the final answer is false.
+
+Sometimes the answer can only be decided after processing everything.
+
+## Pattern Learned
+
+```text
+Initialize Sum
+↓
+Check Divisors
+↓
+Accumulate
+↓
+Final Comparison
+```
+
+## Time Complexity
+
+O(n)
+
+## Space Complexity
+
+O(1)
+
+---
+
+# LeetCode 202 - Happy Number
+
+## Difficulty
+
+Easy
+
+## Concepts Used
+
+- Digit Extraction
+- Modulus Operator
+- Nested Loops
+- State Transformation
+- HashSet
+- Cycle Detection
+
+## Initial Thinking
+
+Extract digits.
+
+Square them.
+
+Add them.
+
+Check if sum becomes 1.
+
+## Progress Journey
+
+### Attempt 1
+
+Incorrect digit extraction.
+
+### Attempt 2
+
+Correctly extracted digits using:
+
+```java
+n % 10
+```
+
+### Attempt 3
+
+Built square sum correctly.
+
+### Attempt 4
+
+Realized process must repeat.
+
+```text
+19
+↓
+82
+↓
+68
+↓
+100
+↓
+1
+```
+
+### Attempt 5
+
+Built:
+
+```text
+Outer Loop
+↓
+Repeat Process
+
+Inner Loop
+↓
+Process Digits
+```
+
+### Final Problem
+
+TLE.
+
+Because some numbers never reach 1.
+
+Example:
+
+```text
+2
+↓
+4
+↓
+16
+↓
+37
+↓
+58
+↓
+89
+↓
+145
+↓
+42
+↓
+20
+↓
+4
+```
+
+Cycle detected.
+
+## New Concept Learned
+
+HashSet
+
+Purpose:
+
+```text
+Store already visited numbers
+↓
+If number appears again
+↓
+Cycle detected
+↓
+Return false
+```
+
+## Biggest Learning
+
+This is my first cycle detection problem.
+
+Not every repeated process eventually ends.
+
+Sometimes we must remember previous states.
+
+## Pattern Learned
+
+```text
+Current State
+↓
+Generate Next State
+↓
+Store State
+↓
+Check Repetition
+↓
+Cycle Detection
+```
+
+## Time Complexity
+
+O(log n) per transformation cycle
+
+## Space Complexity
+
+O(k)
+
+(k = number of unique values encountered)
+
+---
+
+# LeetCode 263 - Ugly Number
+
+## Difficulty
+
+Easy
+
+## Concepts Used
+
+- Repeated Division
+- Modulus Operator
+- Mathematical Pattern
+- Prime Factors
+
+## Key Observation
+
+Ugly numbers only contain:
+
+```text
+2
+3
+5
+```
+
+as prime factors.
+
+## Final Approach
+
+```text
+While divisible by 2
+↓
+Divide by 2
+
+While divisible by 3
+↓
+Divide by 3
+
+While divisible by 5
+↓
+Divide by 5
+
+Final value == 1
+↓
+Ugly Number
+```
+
+Example:
+
+```text
+30
+↓
+15
+↓
+5
+↓
+1
+```
+
+Return:
+
+```text
+true
+```
+
+## Mistakes I Made
+
+Initially treated it similarly to Power of Two.
+
+Needed to realize there are three allowed factors:
+
+```text
+2
+3
+5
+```
+
+instead of one.
+
+## Biggest Learning
+
+Many problems are extensions of previous patterns.
+
+Ugly Number is basically:
+
+```text
+Power of Two Pattern
++
+Multiple Valid Divisors
+```
+
+## Pattern Learned
+
+```text
+Repeated Division
+↓
+Remove Allowed Factors
+↓
+Check Remaining Number
+```
+
+## Time Complexity
+
+O(log n)
+
+## Space Complexity
+
+O(1)
+
+---
+
+# LeetCode 367 - Valid Perfect Square
+
+## Difficulty
+
+Easy
+
+## Concepts Used
+
+- Binary Search
+- Search Space
+- Mid Calculation
+- Overflow Handling
+- Pattern Recognition
+
+## Biggest Realization
+
+This problem looked new.
+
+But after reading it, I immediately recognized:
+
+```text
+Perfect Square
+↓
+Sqrt(x)
+↓
+Same Binary Search Pattern
+```
+
+This was the biggest achievement of today.
+
+## Initial Thought
+
+Instead of checking every number:
+
+```text
+1²
+2²
+3²
+...
+```
+
+Use Binary Search.
+
+## Final Approach
+
+```text
+low
+high
+↓
+mid
+↓
+mid²
+
+Equal?
+↓
+true
+
+Too Small?
+↓
+Right Side
+
+Too Large?
+↓
+Left Side
+```
+
+## Mistakes I Avoided
+
+Because I already solved:
+
+```text
+LeetCode 69 - Sqrt(x)
+```
+
+I already knew:
+
+```java
+long square = (long) mid * mid;
+```
+
+to avoid overflow.
+
+## Biggest Learning
+
+Not every new problem needs a new algorithm.
+
+Sometimes it is the same pattern hidden inside a different question.
+
+## Pattern Learned
+
+```text
+Binary Search On Answer
+↓
+Check Candidate
+↓
+Move Left / Right
+↓
+Find Exact Match
+```
+
+## Time Complexity
+
+O(log n)
+
+## Space Complexity
+
+O(1)
+
+---
+
+# DAY 9 OVERALL LESSONS
+
+## Major Patterns Reinforced
+
+### Repeated Division Pattern
+
+```text
+While Divisible
+↓
+Reduce Number
+↓
+Check Final Value
+```
+
+Used In:
+
+```text
+Power of Two
+Power of Three
+Ugly Number
+```
+
+---
+
+### Binary Search On Answer
+
+```text
+Search Space
+↓
+Middle
+↓
+Condition
+↓
+Move Left / Right
+```
+
+Used In:
+
+```text
+Sqrt(x)
+Valid Perfect Square
+```
+
+---
+
+### State Transformation Pattern
+
+```text
+Current State
+↓
+Generate New State
+↓
+Repeat
+↓
+Detect Cycle
+```
+
+Used In:
+
+```text
+Happy Number
+```
+
+---
+
+## Personal Reflection
+
+Today I had a very important realization.
+
+Earlier, every new LeetCode problem looked completely different.
+
+Now I am starting to recognize patterns.
+
+The biggest example was:
+
+```text
+LeetCode 367
+↓
+Immediately connected it to
+LeetCode 69
+↓
+Applied Binary Search without learning a new algorithm
+```
+
+I still make syntax mistakes sometimes, but my ability to recognize logic and patterns is becoming much stronger.
+
+My bottleneck is slowly shifting from:
+
+```text
+Understanding Logic
+```
+
+to:
+
+```text
+Expressing Logic Correctly In Code
+```
+
+which is a sign of progress.
+
+signing off ,
+seeya on day 10.
