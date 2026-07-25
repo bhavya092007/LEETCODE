@@ -3019,3 +3019,181 @@ LeetCode Journey Day: 8 🚀
 
 SEE YOU ON DAY 9 
 LOG OUT..
+
+
+# DAY 9 DOCUMENTATION
+
+**Date:** 25-07-2026
+
+Today felt different compared to my earlier LeetCode days.
+
+The biggest change I noticed is that I am no longer struggling to understand the core logic of most Easy problems. Instead, I am starting to recognize patterns from previously solved questions and reuse them.
+
+For the first time, I looked at a new problem and immediately connected it to a pattern I had already learned.
+
+Example:
+
+```text
+LeetCode 367 - Valid Perfect Square
+↓
+Looked familiar
+↓
+Connected it to
+LeetCode 69 - Sqrt(x)
+↓
+Realized both use Binary Search
+↓
+Solved using the same pattern
+```
+
+This was probably the biggest achievement of today.
+
+Earlier in my journey, every new problem felt completely different. Now I am beginning to see that many problems are actually small variations of the same underlying pattern.
+
+---
+
+## Problems Solved
+
+- LeetCode 507 - Perfect Number
+- LeetCode 202 - Happy Number
+- LeetCode 263 - Ugly Number
+- LeetCode 367 - Valid Perfect Square
+
+---
+
+## What I Learned Today
+
+### 1. Pattern Recognition Is Improving
+
+Instead of thinking:
+
+```text
+New Problem
+↓
+Need New Algorithm
+```
+
+I am starting to think:
+
+```text
+New Problem
+↓
+Which pattern does this belong to?
+```
+
+This mindset helped me solve Valid Perfect Square very quickly because I immediately recognized the Binary Search pattern.
+
+---
+
+### 2. Repeated Division Pattern Is Becoming Natural
+
+After solving:
+
+```text
+Power of Two
+Power of Three
+Ugly Number
+```
+
+I noticed all of them share the same idea:
+
+```text
+Repeated Division
+↓
+Reduce Number
+↓
+Check Final Value
+```
+
+I am becoming more comfortable identifying mathematical patterns.
+
+---
+
+### 3. Happy Number Introduced A New Concept
+
+Happy Number was the first problem where I realized:
+
+```text
+A process can continue forever.
+```
+
+My logic for generating the next number was correct, but I got TLE because I did not know how to detect cycles.
+
+This introduced me to:
+
+```text
+HashSet
+Cycle Detection
+```
+
+Even though I had not learned HashSet before, I was able to understand why it was needed.
+
+This was an important lesson because the problem was no longer about syntax or loops—it required a completely new concept.
+
+---
+
+### 4. My Current Bottleneck
+
+A few days ago my biggest struggle was:
+
+```text
+Understanding the problem logic.
+```
+
+Now I feel my biggest struggle is:
+
+```text
+Expressing the logic correctly in code.
+```
+
+Many times I can already see the solution pattern in my head, but I still make mistakes while converting that idea into Java syntax.
+
+Examples of recurring issues:
+
+- Wrong stopping conditions.
+- Returning too early.
+- Writing conditions in the wrong place.
+- Small indexing mistakes.
+- Forgetting where a check should happen.
+
+The good part is that these are implementation mistakes, not logic mistakes.
+
+---
+
+## Personal Reflection
+
+Today gave me confidence that my problem-solving ability is improving.
+
+The strongest evidence was:
+
+```text
+LeetCode 367
+↓
+Recognized Binary Search instantly
+```
+
+A few weeks ago I would have treated it as a completely new problem.
+
+Now I am starting to see patterns instead of isolated questions.
+
+That feels like real progress.
+
+---
+
+## Biggest Learning Of Day 9
+
+```text
+Most Easy LeetCode problems are not about learning
+new algorithms.
+
+They are about recognizing an old pattern
+inside a new problem.
+```
+
+I still have a lot to improve in coding syntax and implementation, but my pattern recognition and logical thinking are becoming much stronger.
+
+This is the first time I genuinely felt that I am starting to think like a problem solver instead of just trying to memorize solutions.
+
+
+SEE YOU ON DAY 10,
+LOG OUT...🚀
