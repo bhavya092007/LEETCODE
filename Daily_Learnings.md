@@ -4483,3 +4483,266 @@ which is a sign of progress.
 
 signing off ,
 seeya on day 10.
+
+
+# DAY 10 LEARNING LOG
+
+**Date:** 26-07-2026
+
+## Problems Solved
+
+- LeetCode 3658 — GCD of Odd and Even Sums
+
+---
+
+# LeetCode 3658 - GCD of Odd and Even Sums
+
+## Difficulty
+
+Easy
+
+## Concepts Used
+
+- GCD (Greatest Common Divisor)
+- Odd Numbers
+- Even Numbers
+- Mathematical Observation
+- Pattern Recognition
+
+## Initial Thinking
+
+At first, the problem looked like it would require:
+
+```text
+Generate odd numbers
+↓
+Generate even numbers
+↓
+Calculate both sums
+↓
+Find GCD
+```
+
+which seemed longer than necessary.
+
+---
+
+## Key Observation
+
+After analyzing the pattern:
+
+```text
+First n odd numbers
+=
+n²
+
+First n even numbers
+=
+n(n + 1)
+```
+
+The problem becomes:
+
+```text
+GCD(n² , n(n+1))
+```
+
+Factor out:
+
+```text
+GCD(n² , n(n+1))
+
+=
+n × GCD(n , n+1)
+```
+
+Since consecutive numbers always have:
+
+```text
+GCD(n , n+1) = 1
+```
+
+The final answer becomes:
+
+```text
+n
+```
+
+---
+
+## Final Approach
+
+```java
+return n;
+```
+
+---
+
+## Biggest Learning
+
+Not every math problem requires simulation.
+
+Sometimes the entire problem collapses into a mathematical identity.
+
+Instead of:
+
+```text
+Build values
+↓
+Calculate
+↓
+Find answer
+```
+
+it became:
+
+```text
+Observe pattern
+↓
+Simplify expression
+↓
+Direct answer
+```
+
+---
+
+## Mistakes I Made
+
+None in implementation.
+
+The challenge was understanding why:
+
+```java
+return n;
+```
+
+works.
+
+The important part was proving the mathematics behind it.
+
+---
+
+## Pattern Learned
+
+```text
+Look For Formula
+↓
+Replace Repeated Computation
+↓
+Simplify Expression
+↓
+Return Direct Result
+```
+
+---
+
+## Time Complexity
+
+```text
+O(1)
+```
+
+## Space Complexity
+
+```text
+O(1)
+```
+
+---
+
+# DAY 10 OVERALL LESSONS
+
+## Major Learning
+
+Today reinforced an important idea:
+
+```text
+Not every problem needs loops.
+Not every problem needs arrays.
+Not every problem needs simulation.
+```
+
+Sometimes:
+
+```text
+Math Observation
+>
+Implementation
+```
+
+---
+
+## Personal Reflection
+
+Compared to my earlier days:
+
+```text
+Read Problem
+↓
+Think About Loops
+```
+
+I am slowly developing a new habit:
+
+```text
+Read Problem
+↓
+Look For Pattern
+↓
+Look For Formula
+↓
+Then Think About Code
+```
+
+Today's problem was a reminder that recognizing a mathematical pattern can completely eliminate the need for complex code.
+
+---
+
+## Growth Observation
+
+Recently I have started recognizing:
+
+```text
+Binary Search Patterns
+Repeated Division Patterns
+Frequency Array Patterns
+Mathematical Formula Patterns
+```
+
+This means my focus is shifting from:
+
+```text
+How do I write code?
+```
+
+to:
+
+```text
+What pattern is hidden in this problem?
+```
+
+That is one of the biggest improvements in my problem-solving journey so far.
+
+---
+
+## Biggest Learning Of Day 10
+
+```text
+The shortest solution is often the result of
+the deepest observation.
+```
+
+Today's accepted solution:
+
+```java
+return n;
+```
+
+looked trivial,
+
+but the real challenge was understanding *why* it works.
+
+
+
+signing off 
+seeya on day 11
