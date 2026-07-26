@@ -3197,3 +3197,204 @@ This is the first time I genuinely felt that I am starting to think like a probl
 
 SEE YOU ON DAY 10,
 LOG OUT...🚀
+
+
+# DAY 10 DOCUMENTATION
+
+**Date:** 26-07-2026 (Sunday)
+
+## Problems Solved
+
+- LeetCode 3658 — GCD of Odd and Even Sums
+
+---
+
+## Why I Solved Only One Problem Today
+
+Today I intentionally solved only one LeetCode problem.
+
+The reason was not lack of motivation or consistency.
+
+Instead, I decided to prepare for my next learning topic:
+
+```text
+HashMap
+```
+
+Over the last few days I encountered my first problem that required a new data structure:
+
+```text
+LeetCode 202 — Happy Number
+```
+
+While solving it, I realized that my current bottleneck is no longer basic loops or conditions.
+
+The next step in my journey is understanding:
+
+```text
+HashSet
+HashMap
+```
+
+properly.
+
+Because of that, I chose to spend time revising concepts instead of rushing through multiple LeetCode problems.
+
+---
+
+## Problem Solved
+
+### LeetCode 3658 — GCD of Odd and Even Sums
+
+### Biggest Learning
+
+At first, the problem looked like it would require:
+
+```text
+Generate odd numbers
+↓
+Generate even numbers
+↓
+Calculate sums
+↓
+Find GCD
+```
+
+But after observing the mathematical pattern, the entire problem simplified into:
+
+```java
+return n;
+```
+
+This was a reminder that:
+
+```text
+Not every problem requires loops.
+Not every problem requires simulation.
+```
+
+Sometimes:
+
+```text
+Pattern Recognition
+>
+Implementation
+```
+
+---
+
+## What I Learned Today
+
+### 1. Observation Can Eliminate Code
+
+Earlier in my journey I would immediately start thinking:
+
+```text
+Which loop should I use?
+```
+
+Today the solution came from:
+
+```text
+Understanding the mathematics
+```
+
+instead of writing more code.
+
+---
+
+### 2. Preparation Is Also Progress
+
+Today reinforced an important lesson:
+
+```text
+Learning is not only solving questions.
+```
+
+Sometimes progress comes from:
+
+```text
+Revising concepts
+Understanding weak areas
+Preparing for the next topic
+```
+
+and that is exactly what I chose to do today.
+
+---
+
+### 3. Next Focus Area
+
+My next topic is:
+
+```text
+HashMap
+```
+
+Goals before moving deeper into HashMap:
+
+- Understand HashSet properly.
+- Learn storing key-value pairs.
+- Learn frequency counting using HashMap.
+- Learn lookup operations.
+- Learn when arrays stop being enough and HashMap becomes necessary.
+
+---
+
+## Personal Reflection
+
+Compared to the beginning of my journey:
+
+```text
+Day 1
+↓
+Struggled with logic and syntax
+```
+
+Now I feel:
+
+```text
+Logic Recognition
+↑
+Pattern Recognition
+↑
+Confidence
+↑
+```
+
+Most of my mistakes are no longer about understanding the problem.
+
+Instead, they are usually:
+
+```text
+Syntax
+Implementation Details
+New Data Structures
+```
+
+which is a very different type of challenge.
+
+---
+
+## Day 10 Overall Lesson
+
+```text
+Solving fewer questions is okay
+if the day is spent strengthening fundamentals.
+```
+
+Today's focus was not quantity.
+
+Today's focus was:
+
+```text
+Understanding
+Preparation
+Building foundations for HashMap
+```
+
+and that is still meaningful progress in my learning journey.
+
+
+SEE YOU ON 11
+LOG OUT...🚀
