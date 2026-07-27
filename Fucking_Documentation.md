@@ -3398,3 +3398,344 @@ and that is still meaningful progress in my learning journey.
 
 SEE YOU ON 11
 LOG OUT...🚀
+
+# DAY 11 DOCUMENTATION
+
+**Date:** 27-07-2026
+
+## Problems Solved
+
+- LeetCode 217 — Contains Duplicate
+- LeetCode 20 — Valid Parentheses
+
+---
+
+## Why Today Was Important
+
+Today was not about solving many questions.
+
+Today was about learning two completely new and extremely important data structures:
+
+```text
+HashSet
+Stack
+```
+
+For the first time, I started seeing that many LeetCode problems are not solved by loops alone.
+
+Instead:
+
+```text
+Problem
+↓
+Recognize Pattern
+↓
+Choose Data Structure
+↓
+Implement
+```
+
+---
+
+# LeetCode 217 — Contains Duplicate
+
+## My Initial Thinking
+
+The first idea was:
+
+```text
+Compare every element with every other element
+↓
+Find duplicate
+```
+
+which naturally leads to:
+
+```text
+Nested Loops
+```
+
+and:
+
+```text
+O(n²)
+```
+
+time complexity.
+
+---
+
+## What I Learned
+
+I learned that:
+
+```text
+HashSet stores only unique values.
+```
+
+This means:
+
+```text
+Have I seen this number before?
+```
+
+can be checked very quickly.
+
+Instead of repeatedly searching the array:
+
+```text
+Store
+↓
+Check
+↓
+Continue
+```
+
+---
+
+## New Concepts Learned
+
+```java
+HashSet<Integer> set = new HashSet<>();
+```
+
+Operations:
+
+```java
+set.add()
+set.contains()
+```
+
+I also reinforced:
+
+```java
+for(int num : nums)
+```
+
+and understood its expanded form.
+
+---
+
+## Biggest Learning
+
+```text
+HashSet is useful whenever I need to know:
+
+"Have I seen this before?"
+```
+
+This is my first solid HashSet problem.
+
+---
+
+# LeetCode 20 — Valid Parentheses
+
+## My Initial Understanding
+
+The problem looked simple:
+
+```text
+Opening brackets
+Closing brackets
+Match them
+```
+
+But after analyzing examples, I noticed:
+
+```text
+Last Opened
+↓
+First Closed
+```
+
+which follows:
+
+```text
+LIFO
+```
+
+and therefore:
+
+```text
+Stack
+```
+
+---
+
+## What I Learned
+
+For the first time I used:
+
+```java
+Stack<Character> stack = new Stack<>();
+```
+
+Operations:
+
+```java
+stack.push()
+stack.pop()
+stack.isEmpty()
+```
+
+---
+
+## Important Realization
+
+The problem is not about counting brackets.
+
+It is about remembering:
+
+```text
+Which bracket was opened most recently.
+```
+
+Example:
+
+```text
+([{}])
+
+Push (
+Push [
+Push {
+
+Pop {
+Pop [
+Pop (
+```
+
+Valid.
+
+---
+
+## Biggest Learning
+
+Today I learned a very important interview pattern:
+
+```text
+Last Opened
+↓
+First Closed
+↓
+STACK
+```
+
+Whenever I see:
+
+```text
+Parentheses
+Nested Structures
+Matching Symbols
+```
+
+I should think:
+
+```text
+Stack
+```
+
+---
+
+# Overall Reflection
+
+Today felt different from previous days.
+
+Most of my earlier learning focused on:
+
+```text
+Loops
+Conditions
+Arrays
+Math
+```
+
+Today introduced:
+
+```text
+Data Structures
+```
+
+which is a major step forward.
+
+---
+
+## What I Realized About Myself
+
+Earlier my thought process was:
+
+```text
+Read Problem
+↓
+Think About Code
+```
+
+Now it is slowly becoming:
+
+```text
+Read Problem
+↓
+Find Pattern
+↓
+Choose Data Structure
+↓
+Write Code
+```
+
+This is a huge improvement compared to where I started.
+
+---
+
+## Day 11 Overall Lessons
+
+### HashSet Pattern
+
+```text
+Seen Before?
+↓
+Yes → Duplicate
+↓
+No → Store
+```
+
+Used In:
+
+```text
+Contains Duplicate
+```
+
+---
+
+### Stack Pattern
+
+```text
+Last Opened
+↓
+First Closed
+```
+
+Used In:
+
+```text
+Valid Parentheses
+```
+
+---
+
+## Biggest Learning Of The Day
+
+```text
+The correct data structure can make a difficult problem feel easy.
+```
+
+Today was not about quantity.
+
+It was about learning two foundational tools:
+
+```text
+HashSet
+Stack
+```
+
+that will appear again and again in future LeetCode problems.
+
+SEE YOU ON DAY 12...🚀
