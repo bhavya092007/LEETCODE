@@ -5180,6 +5180,282 @@ Contains Duplicate
 Valid Parentheses
 → Stack
 ```
+# DAY 11 ADDITIONAL LEARNING LOG
 
-Choosing the right tool is often more important than writing more code.
+## Problem Solved
+
+- LeetCode 1464 — Maximum Product of Two Elements in an Array
+
+---
+
+## Difficulty
+
+Easy
+
+## Concepts Used
+
+- Brute Force
+- Optimization
+- Largest Element Tracking
+- Second Largest Element Tracking
+- Single Pass Traversal
+
+---
+
+## Initial Thinking
+
+My first instinct was:
+
+```text
+Choose every possible pair
+↓
+Calculate product
+↓
+Keep the maximum
+```
+
+This naturally led to:
+
+```java
+for(i)
+{
+    for(j)
+    {
+        ...
+    }
+}
+```
+
+which is the classic:
+
+```text
+Brute Force
+```
+
+approach.
+
+---
+
+## Mistakes I Made
+
+### Mistake 1
+
+I initially used:
+
+```java
+max = nums[i] * nums[j];
+```
+
+and then checked:
+
+```java
+if(nums[i] * nums[j] > max)
+```
+
+which can never become true because I had already assigned the same value to `max`.
+
+---
+
+### Mistake 2
+
+I forgot that the problem asks for:
+
+```java
+(nums[i] - 1) * (nums[j] - 1)
+```
+
+and not:
+
+```java
+nums[i] * nums[j]
+```
+
+This is a common mistake where I understand the idea but miss a small detail from the formula.
+
+---
+
+## Brute Force Pattern
+
+```text
+Try every pair
+↓
+Compute answer
+↓
+Keep maximum
+```
+
+Example:
+
+```text
+[3,4,5,2]
+
+(3-1)*(4-1)
+(3-1)*(5-1)
+(4-1)*(5-1)
+...
+```
+
+Complexity:
+
+```text
+Time  : O(n²)
+Space : O(1)
+```
+
+---
+
+## Important Observation
+
+After thinking more carefully, I realized:
+
+```text
+To maximize
+
+(nums[i]-1)*(nums[j]-1)
+
+I only need the two largest numbers.
+```
+
+Nothing else matters.
+
+---
+
+## Optimized Approach
+
+Track:
+
+```text
+Largest Number
+Second Largest Number
+```
+
+while traversing the array only once.
+
+Pattern:
+
+```text
+Current Number
+↓
+Bigger than Largest?
+↓
+Update Largest
+↓
+Old Largest becomes Second Largest
+```
+
+Otherwise:
+
+```text
+Bigger than Second Largest?
+↓
+Update Second Largest
+```
+
+---
+
+## Optimized Pattern Learned
+
+```text
+Find Largest
+↓
+Find Second Largest
+↓
+Compute Answer
+```
+
+Code idea:
+
+```java
+max1 = largest
+max2 = second largest
+```
+
+Answer:
+
+```java
+(max1 - 1) * (max2 - 1)
+```
+
+---
+
+## Biggest Learning
+
+Today I learned that many brute-force problems can be simplified by asking:
+
+```text
+What information actually matters?
+```
+
+For this problem:
+
+```text
+Every pair does NOT matter.
+Only the two largest values matter.
+```
+
+This observation reduced:
+
+```text
+O(n²)
+```
+
+to:
+
+```text
+O(n)
+```
+
+---
+
+## New Pattern Added To My Collection
+
+### Largest + Second Largest Tracking
+
+```text
+Traverse Once
+↓
+Maintain Largest
+↓
+Maintain Second Largest
+↓
+Compute Answer
+```
+
+Common Uses:
+
+```text
+Maximum Product
+Maximum Sum Pair
+Best Two Elements
+Maximum Difference
+```
+
+---
+
+## Personal Reflection
+
+I noticed that my first solution is usually becoming correct logically.
+
+The next step I am improving on is:
+
+```text
+Finding observations
+↓
+Reducing unnecessary work
+↓
+Optimizing
+```
+
+This is a sign that my problem-solving mindset is improving from:
+
+```text
+Can I solve it?
+```
+
+to:
+
+```text
+Can I solve it better?
+```
+
 seeya on day 12
