@@ -4746,3 +4746,440 @@ but the real challenge was understanding *why* it works.
 
 signing off 
 seeya on day 11
+
+
+# DAY 11 LEARNING LOG
+
+**Date:** 27-07-2026
+
+## Problems Solved
+
+- LeetCode 217 — Contains Duplicate
+- LeetCode 20 — Valid Parentheses
+
+---
+
+# LeetCode 217 - Contains Duplicate
+
+## Difficulty
+
+Easy
+
+## Concepts Used
+
+- HashSet
+- Duplicate Detection
+- Enhanced For Loop
+- Seen Before Pattern
+
+## Initial Thinking
+
+The goal was:
+
+```text
+Check whether any number appears more than once.
+```
+
+At first, the natural approach is:
+
+```text
+Compare every element with every other element
+↓
+Find duplicate
+```
+
+which leads to:
+
+```text
+Nested Loops
+O(n²)
+```
+
+---
+
+## Better Observation
+
+The problem can be simplified to:
+
+```text
+Have I seen this number before?
+```
+
+If yes:
+
+```text
+Duplicate exists
+↓
+Return true
+```
+
+Otherwise:
+
+```text
+Store it
+↓
+Continue
+```
+
+---
+
+## HashSet Pattern Learned
+
+```java
+HashSet<Integer> set = new HashSet<>();
+```
+
+Operations learned:
+
+```java
+set.add(num);
+set.contains(num);
+```
+
+---
+
+## Biggest Learning
+
+HashSet is useful when we need:
+
+```text
+Fast lookup
+↓
+Seen Before?
+```
+
+instead of repeatedly searching the entire array.
+
+---
+
+## New Concepts Reinforced
+
+```java
+for(int num : nums)
+```
+
+Expanded version:
+
+```java
+for(int i = 0; i < nums.length; i++)
+{
+    int num = nums[i];
+}
+```
+
+---
+
+## Pattern Learned
+
+```text
+Traverse
+↓
+Already Seen?
+↓
+Yes → Return
+↓
+No → Store
+```
+
+---
+
+## Time Complexity
+
+```text
+O(n)
+```
+
+## Space Complexity
+
+```text
+O(n)
+```
+
+---
+
+# LeetCode 20 - Valid Parentheses
+
+## Difficulty
+
+Easy
+
+## Concepts Used
+
+- Stack
+- LIFO
+- Push
+- Pop
+- Matching Pairs
+
+---
+
+## Initial Understanding
+
+The problem looked like:
+
+```text
+Opening Brackets
+Closing Brackets
+Matching Them
+```
+
+But the important observation was:
+
+```text
+Last Opened
+↓
+First Closed
+```
+
+which is exactly:
+
+```text
+LIFO
+(Last In First Out)
+```
+
+and therefore:
+
+```text
+Stack
+```
+
+---
+
+## Stack Operations Learned
+
+### Push
+
+```java
+stack.push(ch);
+```
+
+Store opening brackets.
+
+---
+
+### Pop
+
+```java
+char top = stack.pop();
+```
+
+Retrieve the most recently opened bracket.
+
+---
+
+### Empty Check
+
+```java
+stack.isEmpty()
+```
+
+Used to prevent invalid closing brackets.
+
+---
+
+## Example
+
+```text
+([{}])
+
+Push (
+Push [
+Push {
+
+Pop {
+Pop [
+Pop (
+
+Valid
+```
+
+---
+
+## Biggest Learning
+
+Not every problem is about loops.
+
+Sometimes the real challenge is identifying:
+
+```text
+Which Data Structure Fits?
+```
+
+For this problem:
+
+```text
+Stack
+```
+
+was the correct answer.
+
+---
+
+## Pattern Learned
+
+```text
+Opening Bracket
+↓
+Push
+
+Closing Bracket
+↓
+Pop
+
+Match?
+↓
+Continue
+
+Mismatch?
+↓
+False
+```
+
+---
+
+## New Data Structure Learned
+
+```java
+Stack<Character> stack = new Stack<>();
+```
+
+Operations:
+
+```java
+stack.push()
+stack.pop()
+stack.isEmpty()
+```
+
+---
+
+## Time Complexity
+
+```text
+O(n)
+```
+
+## Space Complexity
+
+```text
+O(n)
+```
+
+---
+
+# DAY 11 OVERALL LESSONS
+
+## Major Concepts Learned
+
+### HashSet
+
+```text
+Store Unique Values
+↓
+Fast Lookup
+↓
+Seen Before Pattern
+```
+
+Used In:
+
+```text
+LeetCode 217
+```
+
+---
+
+### Stack
+
+```text
+Last Opened
+↓
+First Closed
+```
+
+Used In:
+
+```text
+LeetCode 20
+```
+
+---
+
+## Personal Reflection
+
+Today was an important day because I worked with two completely different data structures:
+
+```text
+HashSet
+Stack
+```
+
+Earlier, most problems were solved using:
+
+```text
+Loops
+Conditions
+Arrays
+```
+
+Today introduced a new level of thinking:
+
+```text
+Problem
+↓
+Identify Pattern
+↓
+Choose Data Structure
+↓
+Implement Solution
+```
+
+---
+
+## Growth Observation
+
+My journey is slowly moving from:
+
+```text
+How do I write the code?
+```
+
+towards:
+
+```text
+Which pattern does this problem belong to?
+```
+
+Patterns learned so far:
+
+```text
+Frequency Array
+Binary Search
+Repeated Division
+HashSet
+Stack
+Mathematical Observation
+```
+
+---
+
+## Biggest Learning Of Day 11
+
+```text
+A problem becomes much easier
+once the correct data structure is identified.
+```
+
+Today reinforced that:
+
+```text
+Contains Duplicate
+→ HashSet
+
+Valid Parentheses
+→ Stack
+```
+
+Choosing the right tool is often more important than writing more code.
+seeya on day 12
