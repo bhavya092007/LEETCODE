@@ -3737,5 +3737,95 @@ Stack
 ```
 
 that will appear again and again in future LeetCode problems.
+## Additional Day 11 Reflection
+
+Today I also looked at the LeetCode Daily Question.
+
+At first, I was not sure whether I was fully ready for daily problems yet because I am still learning new topics like:
+
+```text
+HashSet
+Stack
+HashMap (next topic)
+```
+
+and building my problem-solving skills step by step.
+
+However, when I saw today's Daily Question, it felt approachable and easier than I expected.
+
+That gave me an important realization:
+
+```text
+Sometimes I feel I am not ready,
+but the only way to know is to try.
+```
+
+So instead of skipping it, I decided to attempt it and give my best effort.
+
+Even if I cannot solve every Daily Question right now, attempting them helps me:
+
+```text
+Read new problem types
+↓
+Practice pattern recognition
+↓
+Test my current level
+↓
+Learn new approaches
+```
+
+This mindset is important because:
+
+```text
+Growth does not happen by waiting until I feel ready.
+
+Growth happens by attempting challenges
+even when I am unsure.
+```
+
+### Personal Observation
+
+A few weeks ago, many LeetCode questions looked impossible.
+
+Now, after learning patterns like:
+
+```text
+Binary Search
+Repeated Division
+HashSet
+Stack
+Largest & Second Largest Tracking
+```
+
+I can at least understand the problem, think of an approach, and attempt a solution.
+
+That itself is progress.
+
+### Commitment
+
+Going forward:
+
+```text
+I will continue solving Daily Questions whenever possible.
+
+I may not solve every one of them.
+
+I may get stuck.
+
+I may need hints.
+
+But I will always try first and give my best effort.
+```
+
+### Day 11 Final Thought
+
+```text
+I do not need to be ready for every challenge.
+
+I only need to be willing to attempt it.
+
+Each attempt teaches me something,
+whether I solve the problem or not.
+```
 
 SEE YOU ON DAY 12...🚀
