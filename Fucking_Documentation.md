@@ -3829,3 +3829,334 @@ whether I solve the problem or not.
 ```
 
 SEE YOU ON DAY 12...🚀
+
+
+# Binary Search Documentation
+
+## Overview
+
+Binary Search is an efficient searching algorithm used to reduce the search space by half in every step.
+
+Instead of checking every element one by one, Binary Search checks the middle element and decides which half of the search space can be ignored.
+
+Time Complexity:
+
+O(log n)
+
+Space Complexity:
+
+O(1)
+
+
+---
+
+# How Binary Search Works
+
+Binary Search requires a condition where after checking the middle element, we can eliminate half of the possible answers.
+
+Steps:
+
+1. Find the middle element.
+2. Compare it with the required condition.
+3. Decide whether to search left or right.
+4. Repeat until the answer is found.
+
+
+Formula:
+
+mid = start + (end - start) / 2
+
+
+---
+
+# Binary Search Patterns Learned
+
+
+## 1. Normal Binary Search
+
+Used when finding an element in a sorted array.
+
+Example:
+
+Search target in:
+
+[1,3,5,7,9]
+
+
+If:
+
+target > mid
+
+Search right half
+
+
+If:
+
+target < mid
+
+Search left half
+
+
+
+---
+
+# 2. Binary Search on Answer
+
+Sometimes we are not searching for an element.
+
+We search for the first position where a condition becomes true.
+
+Pattern:
+
+False False False True True True
+
+Goal:
+
+Find the first True.
+
+
+Example:
+
+## LeetCode 278 - First Bad Version
+
+
+Concept:
+
+Versions before bad version:
+
+false
+
+
+Bad version and after:
+
+true
+
+
+Binary Search helps find the first bad version efficiently.
+
+
+
+---
+
+# 3. Binary Search with Conditions
+
+
+Example:
+
+## LeetCode 374 - Guess Number Higher or Lower
+
+
+Instead of checking every number:
+
+1 2 3 4 5 6 7 8 9
+
+
+Check middle value.
+
+
+If number is higher:
+
+Search left.
+
+
+If number is lower:
+
+Search right.
+
+
+If correct:
+
+Return answer.
+
+
+
+---
+
+# 4. Mountain Array Binary Search
+
+
+Example:
+
+## LeetCode 852 - Peak Index in a Mountain Array
+
+
+Mountain array structure:
+
+Increasing → Peak → Decreasing
+
+
+Example:
+
+[0,2,5,10,6,3,1]
+
+
+Peak:
+
+10
+
+
+Instead of finding maximum using O(n),
+
+we use Binary Search.
+
+
+
+## Logic
+
+
+Compare:
+
+arr[mid]
+
+and
+
+arr[mid+1]
+
+
+
+### Case 1:
+
+arr[mid] < arr[mid+1]
+
+
+Meaning:
+
+We are on increasing side.
+
+
+Peak exists on the right.
+
+
+Move:
+
+start = mid + 1
+
+
+
+---
+
+### Case 2:
+
+arr[mid] > arr[mid+1]
+
+
+Meaning:
+
+We are on decreasing side.
+
+
+Peak is at mid or left.
+
+
+Move:
+
+end = mid
+
+
+
+---
+
+# How to Recognize Binary Search Problems
+
+
+Look for:
+
+- O(log n) requirement
+- Sorted array
+- Increasing/decreasing pattern
+- Finding minimum/maximum
+- Finding first or last occurrence
+- Finding peak element
+- Search space reduction
+
+
+Main Question:
+
+"After checking the middle, can I remove half of the possibilities?"
+
+If yes:
+
+Think Binary Search.
+
+
+---
+
+# Common Mistakes
+
+
+## 1. Confusing Maximum Value and Index
+
+Example:
+
+arr = [0,10,5,2]
+
+
+Maximum value:
+
+10
+
+
+Peak index:
+
+1
+
+
+Problem may ask for index, not value.
+
+
+
+## 2. Wrong Direction
+
+In mountain array:
+
+
+arr[mid] < arr[mid+1]
+
+means:
+
+Move right
+
+
+arr[mid] > arr[mid+1]
+
+means:
+
+Move left
+
+
+
+## 3. Wrong Mid Calculation
+
+
+Wrong:
+
+mid = start + (end=start)/2
+
+
+Correct:
+
+mid = start + (end-start)/2
+
+
+
+Reason:
+
+Using '=' assigns a value.
+
+Using '-' calculates the distance.
+
+
+
+---
+
+# Key Learning
+
+Binary Search is not only for finding numbers.
+
+It is a technique to reduce a problem's search space by half.
+
+The main skill is recognizing:
+
+"Can one decision eliminate half of the choices?"
+
+SEE YOU ON DAY 13...🚀
