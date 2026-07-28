@@ -5459,3 +5459,124 @@ Can I solve it better?
 ```
 
 seeya on day 12
+
+# LeetCode Journey Log - Day 12
+
+Date: 28-07-2026
+
+## Problems Solved
+
+1. 278 - First Bad Version
+2. 374 - Guess Number Higher or Lower
+3. 852 - Peak Index in a Mountain Array
+
+
+## Today's Main Topic
+
+Binary Search Pattern
+
+Today I learned how Binary Search is not only used for searching elements,
+but also for finding answers in problems where we can eliminate half of
+the search space.
+
+
+## Concepts Learned
+
+- Binary Search
+- Search Space Reduction
+- Monotonic Pattern Recognition
+- Finding Boundaries
+- Mountain Array Pattern
+
+
+## Important Realization
+
+Before today, I thought Binary Search means:
+
+"Search a number in a sorted array"
+
+But today I learned:
+
+Binary Search is a technique where:
+
+"If one comparison can remove half of the possible answers,
+Binary Search can be applied."
+
+
+## Problems Pattern
+
+### 278 - First Bad Version
+
+Pattern:
+Binary Search on Answer
+
+Learning:
+- We don't search an element.
+- We search the first position where condition becomes true.
+
+Concept:
+
+False False False True True True
+
+Need to find first True.
+
+
+---
+
+### 374 - Guess Number Higher or Lower
+
+Pattern:
+Binary Search with API condition
+
+Learning:
+- Compare mid with target.
+- According to result, eliminate half.
+
+Conditions:
+
+Too High → Search Left
+
+Too Low → Search Right
+
+Correct → Answer
+
+
+---
+
+### 852 - Peak Index in Mountain Array
+
+Pattern:
+Binary Search on Mountain Array
+
+Learning:
+- Compare arr[mid] and arr[mid+1]
+- Decide whether peak is left or right.
+
+Increasing side:
+
+arr[mid] < arr[mid+1]
+
+Peak is on right.
+
+
+Decreasing side:
+
+arr[mid] > arr[mid+1]
+
+Peak is on left or mid.
+
+
+## Time Complexity
+
+All three problems:
+
+O(log n)
+
+
+## Progress
+
+Day 12 completed.
+
+Binary Search pattern recognition improved.
+
+seeya on day 13🚀
