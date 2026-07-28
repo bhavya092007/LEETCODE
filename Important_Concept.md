@@ -163,3 +163,83 @@ Read as:
 
 "For every index i in nums"
 ```
+
+
+# Day 12 - Binary Search Notes
+
+Date: 28-07-2026
+
+Problems Solved:
+- 278 - First Bad Version
+- 374 - Guess Number Higher or Lower
+- 852 - Peak Index in a Mountain Array
+
+
+## Binary Search
+
+Binary Search is an algorithm that reduces the search space by half in every step.
+
+Instead of checking every element:
+
+O(n)
+
+Binary Search removes half of the possible answers:
+
+O(log n)
+
+
+Main Question:
+
+"After checking the middle element, can I remove half of the possibilities?"
+
+
+If yes, Binary Search can be applied.
+
+
+---
+
+## O(log n) Understanding
+
+O(log n) means repeatedly dividing the input size by 2.
+
+
+Example:
+
+n = 16
+
+16 → 8 → 4 → 2 → 1
+
+
+Only 4 operations are required.
+
+
+Important:
+
+Number of loops does not decide complexity.
+
+The way the value changes decides complexity.
+
+
+Example:
+
+i++
+
+Usually O(n)
+
+
+i = i / 2
+
+Usually O(log n)
+
+
+
+---
+
+## Mid Calculation
+
+
+Correct Binary Search mid formula:
+
+
+```java
+int mid = start + (end - start) / 2;
