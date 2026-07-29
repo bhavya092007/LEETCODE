@@ -4160,3 +4160,53 @@ The main skill is recognizing:
 "Can one decision eliminate half of the choices?"
 
 SEE YOU ON DAY 13...🚀
+
+
+## Why Only One Problem Today?
+
+Today was a travel day, and I was physically tired after travelling.
+
+Because of that, I did not have the same energy or focus level that I normally have for solving multiple LeetCode problems.
+
+Instead of forcing myself to solve many questions with low concentration, I decided to solve one problem properly and understand its logic completely.
+
+Problem Solved:
+
+- LeetCode 1539 — Kth Missing Positive Number
+
+Although the number of questions solved was lower than usual, I still maintained consistency and continued my learning streak.
+
+### Personal Reflection
+
+```text
+Some days are high-output days.
+Some days are low-output days.
+
+What matters most is staying consistent.
+```
+
+Today was not about quantity.
+
+It was about:
+
+```text
+Showing up
+↓
+Learning something new
+↓
+Maintaining momentum
+```
+
+Even solving one problem is better than breaking the habit completely.
+
+### Day 13 Final Thought
+
+```text
+I was tired because of travelling,
+but I still solved a problem and learned a new pattern.
+
+Progress may be slow on some days,
+but consistency keeps the journey moving forward.
+```
+
+SEE YOU ON DAY 14...🚀
