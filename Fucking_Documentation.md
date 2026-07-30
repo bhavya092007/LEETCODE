@@ -4210,3 +4210,314 @@ but consistency keeps the journey moving forward.
 ```
 
 SEE YOU ON DAY 14...🚀
+
+
+# DAY 14 LEARNING LOG
+
+**Date:** 30-07-2026
+
+## Activities Completed
+
+### 1. Learned LinkedIn Basics
+Today I spent some time understanding the fundamentals of LinkedIn.
+
+Topics explored:
+
+- Purpose of LinkedIn
+- Professional networking
+- Building an online presence
+- Importance of maintaining a professional profile
+- How LinkedIn can help with internships, jobs, and career growth
+
+This was not coding-related but is an important step toward future professional development.
+
+---
+
+## LeetCode 206 — Reverse Linked List
+
+### Initial Challenge
+
+This was my first serious Linked List problem.
+
+At first, I was trying to solve it like an array problem.
+
+My initial thinking included:
+
+```java
+head.length
+head[i]
+```
+
+which made me realize that Linked Lists are fundamentally different from arrays.
+
+---
+
+### Concepts Learned
+
+#### Linked List Structure
+
+A node contains:
+
+```java
+value
+next
+```
+
+Example:
+
+```text
+1 -> 2 -> 3 -> null
+```
+
+Each node stores a value and a reference to the next node.
+
+---
+
+#### Linked List vs Array
+
+Array:
+
+```java
+arr[i]
+arr.length
+```
+
+Linked List:
+
+```java
+node.next
+```
+
+No direct indexing is possible.
+
+---
+
+### Main Pattern Learned
+
+Three Pointer Technique:
+
+```java
+prev
+curr
+next
+```
+
+Roles:
+
+```text
+prev = reversed portion
+
+curr = current node
+
+next = remaining nodes
+```
+
+---
+
+### Reverse Process
+
+Pattern:
+
+```java
+next = curr.next;
+curr.next = prev;
+prev = curr;
+curr = next;
+```
+
+Logic:
+
+```text
+Save next node
+↓
+Reverse current link
+↓
+Move pointers
+↓
+Repeat
+```
+
+---
+
+### Biggest Breakthrough
+
+Understanding:
+
+```java
+curr.next = prev;
+```
+
+Initially this looked confusing.
+
+After visualizing each step, I understood that this line actually reverses the direction of the link.
+
+Example:
+
+Before:
+
+```text
+1 -> 2 -> 3
+```
+
+After first reversal:
+
+```text
+1 -> null
+```
+
+This is the core operation behind linked list reversal.
+
+---
+
+### Important Realization
+
+When the loop ends:
+
+```java
+curr == null
+```
+
+The fully reversed list is pointed to by:
+
+```java
+prev
+```
+
+Therefore:
+
+```java
+return prev;
+```
+
+---
+
+### Key Learning
+
+Today I learned that Linked Lists require a completely different mindset from arrays.
+
+This problem introduced me to pointer manipulation and helped me understand how references move inside a linked list.
+
+---
+
+## LeetCode 315 — Count of Smaller Numbers After Self
+
+### My Approach
+
+I successfully derived a brute-force solution using nested loops.
+
+Logic:
+
+```text
+For every element
+↓
+Check all elements on its right
+↓
+Count smaller values
+↓
+Store count
+```
+
+Example:
+
+```text
+nums = [5,2,6,1]
+
+5 → 2
+2 → 1
+6 → 1
+1 → 0
+
+Output = [2,1,1,0]
+```
+
+---
+
+### What Went Well
+
+I was able to understand the problem independently and build a logically correct solution.
+
+This confirmed that my problem understanding was correct.
+
+---
+
+### Issue Faced
+
+Although the solution produced correct output, it received:
+
+```text
+TLE (Time Limit Exceeded)
+```
+
+Reason:
+
+```text
+Time Complexity = O(n²)
+```
+
+The nested loops become too slow for large inputs.
+
+---
+
+### Biggest Lesson
+
+Today I learned:
+
+```text
+A solution can be correct
+but still fail due to efficiency constraints.
+```
+
+Correctness and optimization are two separate skills.
+
+---
+
+### New Awareness
+
+This problem introduced me to advanced techniques that I have not studied yet:
+
+```text
+Merge Sort Counting
+Fenwick Tree (Binary Indexed Tree)
+Segment Tree
+```
+
+I now understand why advanced algorithms are necessary for some Hard problems.
+
+---
+
+## Overall Reflection
+
+Today was less about solving many problems and more about understanding deeper concepts.
+
+Major takeaways:
+
+```text
+Learned LinkedIn basics
+↓
+Learned Linked List fundamentals
+↓
+Understood pointer manipulation
+↓
+Experienced the difference between correctness and efficiency
+```
+
+Even though I solved only a few problems, today's learning was highly valuable because it introduced completely new concepts.
+
+---
+
+## Day 14 Final Thought
+
+```text
+Today taught me that growth is not measured only by the number of questions solved.
+
+Sometimes understanding a new data structure,
+learning a new pattern,
+or realizing why a solution fails
+is more valuable than solving many easy questions.
+
+I learned my first major Linked List pattern today
+and understood that optimization is a skill that develops over time.
+```
+
+
+SEE YOU ON DAY 15...🚀
