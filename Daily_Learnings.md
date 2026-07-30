@@ -5863,3 +5863,303 @@ Consistency during busy days is what builds long-term progress.
 ```
 
 SEEYA ON DAY 14🚀
+
+# DAY 14 LEARNING LOG
+
+**Date:** 30-07-2026
+
+## Problems Solved
+
+- LeetCode 206 — Reverse Linked List
+- LeetCode 315 — Count of Smaller Numbers After Self (Brute Force Understanding)
+
+---
+
+## Additional Learning
+
+Today I also spent time learning the basics of LinkedIn.
+
+Topics explored:
+
+- What LinkedIn is used for
+- Professional networking basics
+- Importance of building an online professional profile
+- Understanding how recruiters and professionals use LinkedIn
+
+Although this was not coding-related, it is an important skill for future internships, networking, and career growth.
+
+---
+
+## LeetCode 206 — Reverse Linked List
+
+### Initial Challenge
+
+This was my first serious Linked List problem.
+
+My biggest confusion was:
+
+```text
+I was trying to think about Linked Lists like arrays.
+```
+
+I initially tried concepts such as:
+
+```text
+length
+index access
+head[i]
+```
+
+but quickly realized:
+
+```text
+Linked Lists do not support indexing.
+```
+
+---
+
+## New Concepts Learned
+
+### What is a Linked List?
+
+A node contains:
+
+```java
+value
+next
+```
+
+Example:
+
+```text
+1 -> 2 -> 3 -> null
+```
+
+Each node points to the next node.
+
+---
+
+### Linked List vs Array
+
+Array:
+
+```java
+arr[2]
+arr.length
+```
+
+Linked List:
+
+```java
+node.next
+```
+
+No direct indexing.
+
+---
+
+### Most Important Learning
+
+The Three Pointer Pattern:
+
+```java
+prev
+curr
+next
+```
+
+Roles:
+
+```text
+prev = reversed portion
+
+curr = current node
+
+next = remaining nodes
+```
+
+---
+
+### Reverse Linked List Pattern
+
+```text
+Save next
+↓
+Reverse current link
+↓
+Move prev
+↓
+Move curr
+↓
+Repeat
+```
+
+Code pattern:
+
+```java
+next = curr.next;
+curr.next = prev;
+prev = curr;
+curr = next;
+```
+
+---
+
+### Biggest Breakthrough
+
+Understanding:
+
+```java
+curr.next = prev;
+```
+
+At first this line looked confusing.
+
+Today I learned:
+
+```text
+This line changes the direction of the link.
+```
+
+Example:
+
+Before:
+
+```text
+1 -> 2 -> 3
+```
+
+After:
+
+```text
+1 -> null
+```
+
+which is the actual reversal process.
+
+---
+
+## LeetCode 315 — Count of Smaller Numbers After Self
+
+### Understanding Achieved
+
+I successfully understood the problem and created a correct brute-force solution.
+
+Approach:
+
+```text
+For every element
+↓
+Check every element on its right
+↓
+Count smaller values
+↓
+Store count
+```
+
+---
+
+### Learning
+
+I learned:
+
+```text
+A solution can be logically correct
+but still fail due to efficiency.
+```
+
+My brute-force solution:
+
+```text
+Time Complexity:
+O(n²)
+```
+
+Result:
+
+```text
+TLE (Time Limit Exceeded)
+```
+
+---
+
+### Important Realization
+
+Not every correct solution passes LeetCode.
+
+Sometimes:
+
+```text
+Correct Logic
+≠
+Accepted Solution
+```
+
+because efficiency matters.
+
+I learned that this problem typically requires advanced techniques such as:
+
+```text
+Merge Sort Counting
+Fenwick Tree
+Segment Tree
+```
+
+which I have not studied yet.
+
+---
+
+## Problem Solving Growth
+
+Today I improved my ability to:
+
+```text
+Understand unfamiliar data structures
+↓
+Break down pointer movement
+↓
+Visualize memory references
+↓
+Distinguish between correctness and efficiency
+```
+
+---
+
+## Personal Reflection
+
+Today was not about solving many problems.
+
+Instead, it was about learning a completely new topic:
+
+```text
+Linked Lists
+```
+
+I also explored LinkedIn basics to prepare for future professional growth.
+
+Although I solved fewer questions than some previous days, I gained deeper understanding of:
+
+```text
+Data Structures
+Professional Development
+Problem Solving Mindset
+```
+
+---
+
+## Day 14 Final Thought
+
+```text
+Today I learned that every problem
+does not require more coding.
+
+Sometimes the biggest progress comes from
+understanding a new concept deeply.
+
+Linked Lists felt confusing at first,
+but by breaking the process into small steps,
+I was able to understand one of the most important
+pointer patterns in Data Structures.
+```
+
+SSEYA ON DAY 15...🚀
