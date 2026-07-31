@@ -238,6 +238,250 @@ Usually O(log n)
 ## Mid Calculation
 
 
+## Important Concepts Learned Today
+
+### Linked List Concepts
+
+#### 1. Dummy Node Pattern
+
+```java
+ListNode dummy = new ListNode(-1);
+```
+
+Purpose:
+
+```text
+Creates a safe starting point for building a new linked list.
+Avoids special handling of the first node.
+```
+
+---
+
+#### 2. Tail Pointer
+
+```java
+ListNode tail = dummy;
+```
+
+Purpose:
+
+```text
+Always points to the last node
+of the merged linked list.
+```
+
+Pattern:
+
+```java
+tail.next = node;
+tail = tail.next;
+```
+
+---
+
+#### 3. ListNode Reference Understanding
+
+```java
+tail.next = list1;
+```
+
+Learning:
+
+```text
+We are attaching existing nodes,
+not creating new ones.
+```
+
+---
+
+#### 4. Linked Lists Do Not Have
+
+```java
+head.length
+head[i]
+```
+
+Important reminder:
+
+```text
+Linked Lists use references,
+not indexing.
+```
+
+---
+
+### Binary Search Concepts
+
+#### 5. O(log n) Hint
+
+Learning:
+
+```text
+Whenever I see O(log n),
+I should immediately think about Binary Search.
+```
+
+---
+
+#### 6. Overflow Safe Mid Calculation
+
+Instead of:
+
+```java
+int mid = (start + end) / 2;
+```
+
+Use:
+
+```java
+int mid = start + (end - start) / 2;
+```
+
+Reason:
+
+```text
+Avoids integer overflow.
+```
+
+---
+
+#### 7. Rotated Array Observation
+
+Learning:
+
+```text
+Even if the whole array is not sorted,
+at least one half is always sorted.
+```
+
+Example:
+
+```text
+4 5 6 7 | 0 1 2
+```
+
+Left half is sorted.
+
+---
+
+#### 8. Detecting Sorted Half
+
+```java
+nums[start] <= nums[mid]
+```
+
+Meaning:
+
+```text
+Left half is sorted.
+```
+
+Otherwise:
+
+```text
+Right half is sorted.
+```
+
+---
+
+#### 9. Range Checking
+
+Instead of directly comparing:
+
+```java
+nums[mid] < target
+```
+
+Learned to check:
+
+```java
+target >= nums[start]
+&&
+target < nums[mid]
+```
+
+This determines whether the target lies inside the sorted half.
+
+---
+
+### Problem Solving Concepts
+
+#### 10. Pattern Recognition
+
+Learning:
+
+```text
+Do not immediately think about code.
+
+First identify:
+
+Which pattern is this?
+```
+
+Examples:
+
+```text
+Linked List
+→ Pointer Manipulation
+
+O(log n)
+→ Binary Search
+
+Merge Two Sorted Lists
+→ Merge Pattern
+```
+
+---
+
+#### 11. Thinking Mistake Identified
+
+Today I noticed that I often:
+
+```text
+Jump into coding
+before fully understanding the logic.
+```
+
+Need to improve:
+
+```text
+Understand pattern first
+↓
+Dry run example
+↓
+Then code
+```
+
+---
+
+#### 12. Small Win
+
+I independently recognized:
+
+```text
+O(log n)
+→ Binary Search
+```
+
+This shows my pattern recognition is improving.
+
+---
+
+### Keywords Added To My Toolkit
+
+```text
+Dummy Node
+Tail Pointer
+Reference Manipulation
+Merge Pattern
+Rotated Binary Search
+Sorted Half Detection
+Range Checking
+Pattern Recognition
+Overflow Safe Mid
+```
+
+
 Correct Binary Search mid formula:
 
 
