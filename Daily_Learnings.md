@@ -6163,3 +6163,261 @@ pointer patterns in Data Structures.
 ```
 
 SSEYA ON DAY 15...🚀
+
+# DAY 15 LEARNING LOG
+
+**Date:** 31-07-2026
+
+## Problems Attempted
+
+### LeetCode 21 — Merge Two Sorted Lists
+
+### Initial Understanding
+
+This was another Linked List problem after learning Reverse Linked List.
+
+Initially, I was unsure how to create a completely new merged list while simultaneously traversing two existing linked lists.
+
+The main challenge was understanding:
+
+```text
+How to build a new linked list while comparing nodes from two different lists.
+```
+
+---
+
+### New Concepts Learned
+
+#### Dummy Node Pattern
+
+Today I learned the concept of a:
+
+```java
+ListNode dummy = new ListNode(-1);
+```
+
+A dummy node acts as a temporary starting point that makes linked list construction easier.
+
+Instead of handling special cases for the first node, I can always attach new nodes after the dummy node.
+
+---
+
+#### Tail Pointer
+
+I learned the purpose of:
+
+```java
+ListNode tail = dummy;
+```
+
+Role:
+
+```text
+tail always points to the last node
+of the merged linked list.
+```
+
+Whenever a new node is attached:
+
+```java
+tail.next = node;
+tail = tail.next;
+```
+
+---
+
+### Pattern Learned
+
+```text
+Compare
+↓
+Attach Smaller Node
+↓
+Move Corresponding Pointer
+↓
+Move Tail
+↓
+Repeat
+```
+
+This is essentially the merge step of Merge Sort applied to Linked Lists.
+
+---
+
+### Biggest Learning
+
+Today I realized that:
+
+```text
+Linked List problems are mostly about
+moving references correctly.
+```
+
+The actual values are often less important than understanding where pointers are pointing.
+
+---
+
+## LeetCode 33 — Search in Rotated Sorted Array
+
+### Initial Thought Process
+
+At first, I tried approaching the problem using normal binary search.
+
+My thinking was:
+
+```java
+nums[mid] < target
+```
+
+However, I quickly realized that the array is not completely sorted because of rotation.
+
+Example:
+
+```text
+4 5 6 7 0 1 2
+```
+
+This breaks the assumptions of standard binary search.
+
+---
+
+### Key Observation
+
+I learned that:
+
+```text
+Even if the entire array is not sorted,
+at least one half is always sorted.
+```
+
+Example:
+
+```text
+4 5 6 7 | 0 1 2
+```
+
+The left half:
+
+```text
+4 5 6 7
+```
+
+is sorted.
+
+---
+
+### New Binary Search Pattern
+
+Today I learned a modified binary search strategy:
+
+```text
+Find mid
+↓
+Identify which half is sorted
+↓
+Check if target lies inside that half
+↓
+Search there
+↓
+Otherwise search the other half
+```
+
+---
+
+### Important Conditions Learned
+
+Determine sorted half:
+
+```java
+nums[start] <= nums[mid]
+```
+
+Target inside left sorted half:
+
+```java
+target >= nums[start]
+&&
+target < nums[mid]
+```
+
+Target inside right sorted half:
+
+```java
+target > nums[mid]
+&&
+target <= nums[end]
+```
+
+---
+
+### Biggest Learning
+
+This problem taught me that:
+
+```text
+Binary Search is not limited to
+completely sorted arrays.
+```
+
+By identifying sorted regions, binary search can still be applied efficiently.
+
+---
+
+## Concepts Strengthened Today
+
+### Linked Lists
+
+```text
+Dummy Node
+Tail Pointer
+Merging Two Sorted Lists
+Pointer Manipulation
+```
+
+### Binary Search
+
+```text
+Rotated Array Search
+Sorted Half Detection
+Range-Based Decisions
+Modified Binary Search
+```
+
+---
+
+## Personal Reflection
+
+Today was a concept-heavy day.
+
+I did not simply solve problems; instead, I learned two important patterns that frequently appear in interviews:
+
+```text
+Linked List Merge Pattern
++
+Rotated Binary Search Pattern
+```
+
+Both problems required understanding the underlying idea rather than memorizing code.
+
+I spent more time understanding why the solutions work instead of blindly implementing them.
+
+---
+
+## Day 15 Final Thought
+
+```text
+Today reinforced an important lesson:
+
+Good programmers do not memorize solutions.
+They recognize patterns.
+
+The more patterns I learn,
+the easier it becomes to solve unfamiliar problems.
+
+Today I added two valuable patterns to my toolkit:
+
+1. Merge Two Sorted Linked Lists
+2. Search in Rotated Sorted Array
+```
+
+SEEYA ON DAY 16..🚀
