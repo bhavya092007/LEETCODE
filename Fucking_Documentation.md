@@ -4521,3 +4521,218 @@ and understood that optimization is a skill that develops over time.
 
 
 SEE YOU ON DAY 15...🚀
+
+# DAY 15 LEARNING LOG
+
+**Date:** 31-07-2026
+
+## Today's Progress
+
+Today I solved:
+
+- LeetCode 21 — Merge Two Sorted Lists
+- LeetCode 33 — Search in Rotated Sorted Array
+
+---
+
+## LeetCode 21 — Merge Two Sorted Lists
+
+### My Initial Thought
+
+When I saw the problem, I was not worried about comparing values because I already understood the basic logic.
+
+The confusing part was:
+
+```text
+How do I create a completely new linked list
+while moving through two existing linked lists?
+```
+
+Since I recently started learning Linked Lists, I still think like an array programmer.
+
+Whenever I see a Linked List problem, my brain still tries to find:
+
+```java
+arr[i]
+length
+indexes
+```
+
+which obviously do not exist.
+
+---
+
+### What Frustrated Me
+
+The Dummy Node concept felt strange at first.
+
+I kept thinking:
+
+```text
+Why create a fake node?
+Why not directly create the answer list?
+```
+
+After visualizing it multiple times, I finally understood that the dummy node only makes handling the first element easier.
+
+---
+
+### What I Learned
+
+Today I learned another important Linked List pattern:
+
+```text
+Dummy Node
++
+Tail Pointer
+```
+
+I am slowly becoming comfortable with pointers and references.
+
+---
+
+## LeetCode 33 — Search in Rotated Sorted Array
+
+### My Initial Thought
+
+The moment I saw:
+
+```text
+O(log n)
+```
+
+I immediately knew:
+
+```text
+Binary Search
+```
+
+should be involved.
+
+That was a good sign because a few days ago I probably would not have recognized that immediately.
+
+---
+
+### Where I Got Stuck
+
+I kept trying to think about the problem using normal Binary Search.
+
+My thinking was:
+
+```java
+nums[mid] < target
+```
+
+But the array was rotated, so the usual binary search logic did not work.
+
+I was confused because:
+
+```text
+The array looked unsorted,
+yet the problem still expected O(log n).
+```
+
+---
+
+### Breakthrough Moment
+
+The biggest realization was:
+
+```text
+Even if the entire array is not sorted,
+one half is always sorted.
+```
+
+Once I understood that idea, everything started making sense.
+
+After that, the problem became:
+
+```text
+Find sorted half
+↓
+Check if target is inside it
+↓
+Search there
+```
+
+instead of normal binary search.
+
+---
+
+## Personal Thoughts
+
+Today felt less frustrating than some previous days.
+
+I noticed something encouraging:
+
+```text
+I am starting to recognize patterns faster.
+```
+
+For example:
+
+```text
+O(log n)
+→ Binary Search
+
+Linked List
+→ Pointer manipulation
+```
+
+A few weeks ago, I would immediately think:
+
+```text
+How do I code this?
+```
+
+Now I am starting to ask:
+
+```text
+What pattern does this problem belong to?
+```
+
+which feels like real progress.
+
+---
+
+## Challenges Faced
+
+- Still not fully comfortable with Linked Lists.
+- Still need visual explanations to understand pointer movement.
+- Sometimes I jump into coding before fully understanding the logic.
+- Rotated Binary Search took time because I was stuck in normal Binary Search thinking.
+
+---
+
+## What Made Me Happy Today
+
+I recognized Binary Search on my own when I saw:
+
+```text
+O(log n)
+```
+
+That felt good because it shows I am slowly building intuition.
+
+---
+
+## Day 15 Reflection
+
+Today was not about learning new syntax.
+
+It was about learning how to think differently.
+
+I learned that:
+
+```text
+Not every Binary Search problem looks sorted.
+
+Not every Linked List problem is about values.
+
+Sometimes the real challenge is identifying
+the underlying pattern.
+```
+
+I still have a long way to go, but today I felt that my problem-solving mindset improved a little.
+
+SEE YOU ON DAY 16...🚀
