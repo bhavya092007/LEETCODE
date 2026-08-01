@@ -4736,3 +4736,138 @@ the underlying pattern.
 I still have a long way to go, but today I felt that my problem-solving mindset improved a little.
 
 SEE YOU ON DAY 16...🚀
+
+# DAY 16 LEARNING LOG
+
+**Date:** 01-08-2026
+
+## Today's Activity
+
+Today was a busy day because I was outside for work and had very limited time for coding.
+
+Because of this, I could not dedicate a long study session to LeetCode or learn a new topic in depth.
+
+However, I did not want to break my consistency streak, so I made sure to solve at least one problem.
+
+---
+
+## Problem Solved
+
+### LeetCode 1688 — Count of Matches in Tournament
+
+### Difficulty
+
+Easy
+
+---
+
+## Thought Process
+
+Since I was short on time and energy, I decided not to force myself into solving a difficult problem.
+
+Instead, I chose a problem that I could complete quickly while still keeping my coding habit alive.
+
+My goal today was:
+
+```text
+Stay consistent.
+Do not break the streak.
+Keep showing up.
+```
+
+---
+
+## Concepts Reinforced
+
+### Simulation
+
+The problem was mainly based on simulating tournament rounds and counting matches.
+
+### Problem Reading
+
+I practiced understanding the problem statement carefully before writing code.
+
+### Consistency Mindset
+
+Today's biggest lesson was not technical.
+
+It was:
+
+```text
+Even one solved problem is better than solving none.
+```
+
+---
+
+## Challenges Faced
+
+- Limited time due to work.
+- Physical tiredness.
+- Very little energy left for long coding sessions.
+- Temptation to skip coding for the day.
+
+---
+
+## What I Learned Today
+
+### Small Progress Still Counts
+
+Today reminded me that:
+
+```text
+Consistency is more important than intensity.
+```
+
+Some days will be:
+
+```text
+3-4 LeetCode problems
+Learning new concepts
+Deep problem solving
+```
+
+And some days will be:
+
+```text
+One simple problem
+Protect the streak
+Keep moving forward
+```
+
+Both types of days are important.
+
+---
+
+## Personal Reflection
+
+Initially, I thought about skipping coding because I was tired and busy.
+
+But then I realized:
+
+```text
+The purpose of building a habit
+is to continue even when conditions are not perfect.
+```
+
+So I completed one problem and maintained the streak.
+
+That itself feels like a small victory.
+
+---
+
+## Day 16 Final Thought
+
+```text
+Today was not about learning a difficult algorithm.
+
+Today was about discipline.
+
+I learned that consistency is built on ordinary days,
+not only on productive days.
+
+One problem completed.
+One more day added to the journey.
+Streak continues.
+```
+
+SEE YOU ON DAY 17...🚀
