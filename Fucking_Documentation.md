@@ -4871,3 +4871,91 @@ Streak continues.
 ```
 
 SEE YOU ON DAY 17...🚀
+
+# DAY 17 — 02 AUGUST 2026
+
+Today was honestly another difficult day.
+
+I spent almost the entire day outside and by the time I got home, I was tired both physically and mentally.
+
+For most of the day, I wasn't even thinking about coding. I was thinking about whether I would have enough time to keep my streak alive.
+
+At one point I genuinely considered skipping coding for the day.
+
+Not because I didn't want to learn, but because I simply felt exhausted.
+
+Still, I kept thinking about the streak I have built over the last few weeks.
+
+I knew that if I solved even one problem, I could go to sleep knowing that I showed up.
+
+So instead of aiming for a big achievement, I changed the goal.
+
+The goal became:
+
+"Just solve one question."
+
+That decision immediately removed pressure from my mind.
+
+---
+
+I picked LeetCode 349 (Intersection of Two Arrays).
+
+At first the problem looked simple, but I quickly realized that I did not know much about HashSet.
+
+While solving it, I made several small mistakes.
+
+I accidentally stored indexes instead of values.
+
+I forgot that a HashSet is not the same thing as an array.
+
+I also got stuck thinking about how to return the final answer.
+
+Normally these small mistakes would have frustrated me.
+
+But today I was actually happy to make them because every mistake taught me something new about Java.
+
+For the first time, HashSet stopped feeling like a theory topic and started feeling like a useful tool.
+
+By the end of the problem I felt like I had unlocked a new weapon that I could use in future questions.
+
+---
+
+The funniest moment of today was LeetCode 877.
+
+I expected a complicated solution.
+
+When I saw the problem, I thought:
+
+"This definitely looks like DP."
+
+Then I discovered that the accepted solution is literally:
+
+return true;
+
+I laughed when I saw that.
+
+It reminded me that sometimes understanding the problem is more important than writing complex code.
+
+---
+
+Today was not a productive day in terms of quantity.
+
+I solved very little.
+
+But I am still proud of today.
+
+Because on days when motivation is high, coding is easy.
+
+The real challenge is coding when you're tired, busy, and tempted to skip.
+
+Today I won that battle.
+
+Not against LeetCode.
+
+Against myself.
+
+And honestly, that feels like the bigger victory.
+
+- Bhavya
+
+OUT.....DAY 18
