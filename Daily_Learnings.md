@@ -6568,3 +6568,267 @@ busy, and tempted to skip.
 Today I proved to myself that even a small step
 is better than no step at all.
 ```
+
+# DAY 17 LEARNING LOG
+
+**Date:** 02-08-2026
+
+---
+
+## Today's Situation
+
+Today was another very busy day.
+
+I spent most of the day outside and did not have enough time for a long coding session. Because of this, I focused on maintaining my consistency rather than trying to solve multiple problems.
+
+My primary goal was:
+
+```text
+Do not break the streak.
+```
+
+---
+
+# Problems Worked On
+
+## LeetCode 349 — Intersection of Two Arrays
+
+### Initial Understanding
+
+At first, I understood the problem as:
+
+```text
+Find all numbers that appear in both arrays.
+Return only unique values.
+```
+
+I was able to identify the uniqueness requirement early.
+
+---
+
+### New Concept Learned: HashSet
+
+Today was one of my first practical uses of HashSet.
+
+I learned:
+
+```java
+HashSet<Integer> set = new HashSet<>();
+```
+
+Important functions:
+
+```java
+set.add()
+set.contains()
+set.size()
+```
+
+---
+
+### Mistakes Made
+
+#### Mistake 1
+
+Initially I wrote:
+
+```java
+set.add(i);
+```
+
+Instead of:
+
+```java
+set.add(nums1[i]);
+```
+
+I accidentally stored indices instead of values.
+
+---
+
+#### Mistake 2
+
+I wanted to directly:
+
+```java
+return set;
+```
+
+But learned:
+
+```text
+HashSet<Integer> ≠ int[]
+```
+
+The return type must exactly match the method signature.
+
+---
+
+#### Mistake 3
+
+I did not initially think about how to return the answer.
+
+I learned that after collecting values inside a HashSet, I must:
+
+```text
+Convert HashSet → int[]
+```
+
+before returning.
+
+---
+
+### Important Concepts Learned
+
+#### HashSet Pattern
+
+```text
+Store first array in HashSet
+↓
+Traverse second array
+↓
+contains()
+↓
+Store common elements
+↓
+Convert to array
+```
+
+---
+
+#### Collection vs Array
+
+Today I learned:
+
+```text
+HashSet<Integer>
+ArrayList<Integer>
+
+are not the same as
+
+int[]
+```
+
+Java requires exact return types.
+
+---
+
+#### Why HashSet?
+
+Because it provides:
+
+```text
+Fast lookup
+Unique elements
+```
+
+which perfectly matched the problem requirements.
+
+---
+
+## Bonus Problem
+
+### LeetCode 877 — Stone Game
+
+This was one of the funniest LeetCode experiences so far.
+
+Initially I expected:
+
+```text
+DP
+Recursion
+Game Theory
+```
+
+But after understanding the constraints, I learned:
+
+```text
+Alex always wins.
+```
+
+Therefore the accepted solution is:
+
+```java
+return true;
+```
+
+---
+
+### Lesson Learned
+
+```text
+Not every accepted solution requires
+a complicated algorithm.
+
+Sometimes understanding the constraints
+is the entire solution.
+```
+
+This was a surprising and memorable learning moment.
+
+---
+
+# Challenges Faced Today
+
+- Very limited time.
+- Entire day spent outside.
+- Physical tiredness.
+- Low energy for coding.
+
+---
+
+# Personal Reflection
+
+Today was not about solving many problems.
+
+It was about maintaining consistency.
+
+Even though I was busy, I still sat down and solved a problem instead of skipping the day completely.
+
+I also learned my first practical HashSet pattern, which will be useful in many future problems.
+
+---
+
+# Important Learnings of Day 17
+
+```text
+HashSet basics
+
+add()
+
+contains()
+
+Unique elements
+
+Fast lookup
+
+HashSet → Array conversion
+
+Collection vs Array types
+
+Understanding constraints can sometimes
+be more important than coding complexity.
+```
+
+---
+
+# Day 17 Final Thought
+
+```text
+Some days are for grinding.
+
+Some days are for learning new concepts.
+
+And some days are simply for protecting the streak.
+
+Today I protected the streak,
+learned HashSet,
+and discovered that one accepted solution
+can literally be:
+
+return true;
+```
+
+🚀 Streak Continues.
+
+OUT....DAY 18
