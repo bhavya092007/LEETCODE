@@ -487,3 +487,133 @@ Correct Binary Search mid formula:
 
 ```java
 int mid = start + (end - start) / 2;
+
+
+## Important Concepts Gained Today
+
+### HashSet Basics
+
+Today was my first practical use of HashSet in a LeetCode problem.
+
+Learned:
+
+```java
+HashSet<Integer> set = new HashSet<>();
+```
+
+Useful methods:
+
+```java
+add()
+contains()
+size()
+```
+
+---
+
+### Fast Lookup
+
+I learned that HashSet allows quick checking of whether an element exists.
+
+```java
+set.contains(value)
+```
+
+This avoids unnecessary nested loops.
+
+---
+
+### Unique Elements
+
+HashSet automatically removes duplicates.
+
+Example:
+
+```java
+set.add(2);
+set.add(2);
+set.add(2);
+```
+
+Result:
+
+```text
+[2]
+```
+
+This perfectly matched the requirement of the Intersection problem.
+
+---
+
+### Collection vs Array
+
+Today I understood that:
+
+```text
+HashSet<Integer>
+```
+
+and
+
+```text
+int[]
+```
+
+are completely different types.
+
+A collection cannot be returned directly when the function expects an array.
+
+---
+
+### HashSet → Array Conversion
+
+Learned how to convert:
+
+```text
+HashSet<Integer>
+```
+
+into:
+
+```text
+int[]
+```
+
+before returning the final answer.
+
+---
+
+### Pattern Learned
+
+```text
+Store values
+↓
+Fast lookup using contains()
+↓
+Collect unique answers
+↓
+Convert to required format
+```
+
+This is my first HashSet-based problem-solving pattern.
+
+---
+
+### Constraint-Based Thinking
+
+From LeetCode 877 (Stone Game), I learned:
+
+```text
+Sometimes the entire solution
+comes from understanding the constraints.
+```
+
+Not every accepted solution requires a complex algorithm.
+
+Sometimes:
+
+```java
+return true;
+```
+
+is enough.
