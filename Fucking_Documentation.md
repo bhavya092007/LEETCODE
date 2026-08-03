@@ -4959,3 +4959,185 @@ And honestly, that feels like the bigger victory.
 - Bhavya
 
 OUT.....DAY 18
+
+
+# DAY 18 — 03 AUGUST 2026
+
+Today felt much more like a learning day than a grinding day.
+
+I wasn't chasing the number of questions solved. Instead, I spent more time understanding how certain concepts actually work.
+
+The biggest realization today was that I am slowly starting to see patterns instead of just solving problems.
+
+---
+
+The first problem I worked on was LeetCode 744.
+
+At first glance, it looked like another Binary Search question.
+
+Normally when I see Binary Search, my brain immediately thinks:
+
+"Find the target."
+
+But today I learned that Binary Search is much bigger than that.
+
+The target itself wasn't important.
+
+The real goal was:
+
+```text
+Find the smallest element greater than the target.
+```
+
+That completely changed my thinking.
+
+For the first time, I felt like I was using Binary Search as a tool to find a position rather than a specific value.
+
+The wrap-around logic was also interesting.
+
+When I finally understood why:
+
+```java
+st % letters.length
+```
+
+works, it felt satisfying because the solution suddenly became very elegant.
+
+The best part was that I didn't directly jump to the answer.
+
+I slowly understood:
+
+- Why we move left
+- Why we move right
+- Why we don't actually need an answer variable
+- Why `st` itself becomes the answer position
+
+That felt like genuine growth.
+
+---
+
+The second problem was Fibonacci.
+
+This problem looked simple, but it introduced me to something important:
+
+```text
+Recursion
+```
+
+For a long time recursion felt mysterious whenever I saw it.
+
+Today I finally understood the basic idea:
+
+```text
+Solve a smaller version
+of the same problem.
+```
+
+Instead of trying to understand the entire recursion tree at once, I focused on one thing:
+
+```text
+What is the smallest problem?
+```
+
+That question made everything easier.
+
+Once I understood the base case:
+
+```java
+if(n <= 1)
+{
+    return n;
+}
+```
+
+the rest of the solution started making sense.
+
+For the first time, recursion felt understandable rather than scary.
+
+---
+
+One thing I noticed today is that my thinking is slowly changing.
+
+A few weeks ago, I was mostly focused on syntax.
+
+I would get stuck on:
+
+```text
+length vs length()
+char vs String
+Array vs ArrayList
+```
+
+Now I still make mistakes, but more of my attention is going toward:
+
+```text
+Why does this algorithm work?
+Why are we moving left?
+Why are we moving right?
+Why does recursion stop?
+```
+
+That feels like progress.
+
+---
+
+Today wasn't a huge achievement day.
+
+I didn't solve difficult problems.
+
+I didn't learn an advanced algorithm.
+
+But I strengthened two very important foundations:
+
+```text
+Binary Search
+Recursion
+```
+
+And those foundations will be useful for hundreds of future problems.
+
+---
+
+## Important Concepts Added Today
+
+```text
+Binary Search can find positions,
+not only exact targets.
+
+Smallest Greater Element pattern.
+
+Wrap-around indexing using:
+
+st % length
+
+Recursion Basics.
+
+Base Case.
+
+Recursive Calls.
+
+Breaking large problems into
+smaller versions of themselves.
+```
+
+---
+
+## Personal Reflection
+
+Today felt like one of those days where growth is not obvious from the number of questions solved.
+
+But I can feel my understanding getting deeper.
+
+I am slowly moving from:
+
+"I know the syntax."
+
+to
+
+"I understand the idea."
+
+And that is probably the most important shift in my DSA journey so far.
+
+🚀 Day 18 Completed.
+
+OUT...DAY 19...🚀
