@@ -6832,3 +6832,215 @@ return true;
 🚀 Streak Continues.
 
 OUT....DAY 18
+
+
+# DAY 18 LEARNING LOG
+
+**Date:** 03-08-2026
+
+---
+
+## Problems Worked On
+
+### LeetCode 744 — Find Smallest Letter Greater Than Target
+
+Today I solved a Binary Search problem that looked different from the standard "find target" questions.
+
+Initially, my instinct was to search for the target itself, but while discussing the problem I realized that the actual goal was:
+
+```text
+Find the smallest element greater than the target.
+```
+
+This changed my thinking completely.
+
+I learned that Binary Search is not only used for finding an exact value.
+
+It can also be used to find:
+
+- First valid position
+- Smallest greater element
+- Search insertion position
+- First bad version
+
+While solving the problem, I understood why:
+
+```java
+if(letters[mid] > target)
+```
+
+means we should move left after finding a possible answer.
+
+I also learned the wrap-around trick:
+
+```java
+return letters[st % letters.length];
+```
+
+This was the most interesting part of the problem because it elegantly handled cases where no greater letter exists.
+
+### Key Learning
+
+```text
+Binary Search is often about finding positions,
+not finding exact values.
+```
+
+---
+
+### LeetCode 509 — Fibonacci Number
+
+Today I also solved Fibonacci using recursion.
+
+My solution:
+
+```java
+if(n <= 1)
+{
+    return n;
+}
+
+return fib(n - 1) + fib(n - 2);
+```
+
+This was a very important recursion problem because it helped me understand how a large problem can be broken into smaller versions of itself.
+
+I learned the importance of:
+
+```text
+Base Case
++
+Recursive Calls
+```
+
+Without the base case, recursion would continue forever.
+
+I also visualized how:
+
+```text
+fib(4)
+```
+
+creates multiple recursive calls underneath it.
+
+This was one of my first proper recursion experiences.
+
+### Key Learning
+
+```text
+Trust recursion.
+
+Solve smaller versions of the same problem
+and combine the answers.
+```
+
+---
+
+## Concepts Learned Today
+
+### Binary Search Patterns
+
+```text
+Search Target
+Search Position
+First Valid Element
+Smallest Greater Element
+```
+
+---
+
+### Wrap Around Logic
+
+```java
+st % length
+```
+
+can bring an index back to the beginning of an array.
+
+Example:
+
+```text
+4 % 4 = 0
+```
+
+---
+
+### Recursion Basics
+
+```text
+Base Case
+↓
+Recursive Call
+↓
+Smaller Subproblem
+↓
+Combine Result
+```
+
+---
+
+## Mistakes / Corrections
+
+### Binary Search
+
+Initially I wanted to store an answer variable unnecessarily.
+
+Later I understood that:
+
+```java
+st
+```
+
+already points to the answer position after Binary Search finishes.
+
+This simplified the solution significantly.
+
+---
+
+### Recursion
+
+At first, recursion feels like magic.
+
+Today I focused on understanding:
+
+```text
+What is the smallest problem?
+```
+
+instead of trying to understand the entire recursion tree at once.
+
+This made recursion much easier to follow.
+
+---
+
+## Overall Progress
+
+Today I strengthened two important DSA areas:
+
+```text
+Binary Search
+Recursion
+```
+
+Both of these topics appear repeatedly in LeetCode and interviews, so today's learning feels valuable for the future.
+
+---
+
+## Day 18 Summary
+
+```text
+Problems Solved:
+✓ 744. Find Smallest Letter Greater Than Target
+✓ 509. Fibonacci Number
+
+Concepts Learned:
+✓ Binary Search on answer position
+✓ Wrap-around indexing
+✓ Recursion basics
+✓ Base case and recursive calls
+```
+
+🚀 Day 18 Complete.
+
+
+OUT...DAY 19...🚀
