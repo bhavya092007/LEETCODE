@@ -617,3 +617,178 @@ return true;
 ```
 
 is enough.
+
+## Important Concepts Learned Today
+
+### 1. Binary Search Is Not Only For Finding a Target
+
+Before today:
+
+```text
+Binary Search = Find Target
+```
+
+After today:
+
+```text
+Binary Search = Find Position
+```
+
+It can be used for:
+
+- First Bad Version
+- Search Insert Position
+- Smallest Greater Element
+- Lower Bound
+- Upper Bound
+
+---
+
+### 2. Smallest Greater Element Pattern
+
+Learned how to find:
+
+```text
+The first element greater than target
+```
+
+using Binary Search.
+
+Pattern:
+
+```java
+if(arr[mid] > target)
+{
+    end = mid - 1;
+}
+else
+{
+    start = mid + 1;
+}
+```
+
+---
+
+### 3. Wrap-Around Logic
+
+Learned a very clever trick:
+
+```java
+start % length
+```
+
+Example:
+
+```java
+4 % 4 = 0
+```
+
+Used when the answer should return to the beginning of the array.
+
+---
+
+### 4. Final Position Binary Search
+
+A new realization:
+
+```text
+Sometimes we don't need an answer variable.
+```
+
+After Binary Search finishes:
+
+```java
+start
+```
+
+itself can represent the answer position.
+
+---
+
+### 5. Recursion Basics
+
+First proper understanding of recursion.
+
+Core idea:
+
+```text
+Solve smaller versions
+of the same problem.
+```
+
+---
+
+### 6. Base Case
+
+Most important part of recursion.
+
+Example:
+
+```java
+if(n <= 1)
+{
+    return n;
+}
+```
+
+Without a base case:
+
+```text
+Recursion never stops.
+```
+
+---
+
+### 7. Recursive Thinking
+
+Learned to think:
+
+```text
+What is the smallest version
+of this problem?
+```
+
+instead of trying to understand the entire recursion tree at once.
+
+---
+
+### 8. Fibonacci Pattern
+
+Learned:
+
+```java
+fib(n) = fib(n-1) + fib(n-2)
+```
+
+Current problem depends on:
+
+```text
+Previous two answers.
+```
+
+This is an early introduction to Dynamic Programming thinking.
+
+---
+
+### 9. Growth Observation
+
+Today's shift:
+
+```text
+Earlier:
+Focus on syntax
+
+Now:
+Focus on logic and patterns
+```
+
+Examples:
+
+```text
+Why move left?
+Why move right?
+Why recursion stops?
+Why Binary Search works?
+```
+
+This is an important improvement in problem-solving ability.
