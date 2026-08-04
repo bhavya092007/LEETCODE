@@ -7044,3 +7044,284 @@ Concepts Learned:
 
 
 OUT...DAY 19...🚀
+
+# Day 19 Technical Learning Log
+
+**Date:** 04-Aug-2026
+
+## Problems Covered
+
+### 50. Pow(x, n)
+
+* Explored recursion-based power calculation.
+* Learned Fast Power / Binary Exponentiation.
+* Understood how to reduce exponent by half instead of reducing by one.
+* Learned handling of:
+
+  * Base case (`n == 0`)
+  * Even exponents
+  * Odd exponents
+  * Negative exponents
+* Discovered integer overflow issue with `Integer.MIN_VALUE`.
+* Learned why accepted solutions use `long` instead of directly negating an `int`.
+
+### 342. Power of Four
+
+* Solved using recursion.
+* Practiced recursive reduction:
+
+  * `16 → 4 → 1`
+  * `64 → 16 → 4 → 1`
+* Strengthened understanding of:
+
+  * Base case
+  * Invalid case
+  * Recursive call
+  * Problem reduction
+
+---
+
+## Important Concepts Learned
+
+### 1. Fast Power (Binary Exponentiation)
+
+Normal approach:
+
+```text
+x × x × x × x × ...
+```
+
+Time Complexity:
+
+```text
+O(n)
+```
+
+Optimized approach:
+
+```text
+x^n = (x^(n/2)) × (x^(n/2))
+```
+
+Time Complexity:
+
+```text
+O(log n)
+```
+
+Core idea:
+
+```text
+Solve Half
+Reuse Half
+```
+
+---
+
+### 2. Even vs Odd Exponents
+
+For even exponent:
+
+```text
+x^8 = x^4 × x^4
+```
+
+For odd exponent:
+
+```text
+x^5 = x × x^2 × x^2
+```
+
+Pattern:
+
+```java
+if(n % 2 == 0)
+    half * half;
+else
+    x * half * half;
+```
+
+---
+
+### 3. Negative Exponents
+
+Mathematical identity:
+
+```text
+x^-n = 1/(x^n)
+```
+
+Examples:
+
+```text
+2^-2 = 1/4
+2^-3 = 1/8
+5^-1 = 1/5
+```
+
+---
+
+### 4. Integer Overflow Edge Case
+
+Problem:
+
+```java
+-intMinValue
+```
+
+Example:
+
+```text
+-2147483648
+```
+
+cannot become:
+
+```text
+2147483648
+```
+
+inside an `int`.
+
+Solution:
+
+```java
+long N = n;
+```
+
+Convert to `long` before negating.
+
+---
+
+### 5. Recursive Reduction Pattern
+
+Used in Power of Four:
+
+```text
+n
+↓
+n/4
+↓
+n/4
+↓
+...
+```
+
+General recursion structure:
+
+```text
+Base Case
+↓
+Invalid Case
+↓
+Reduce Problem
+↓
+Recursive Call
+```
+
+---
+
+## Java Concepts Reinforced
+
+* Recursive function calls
+* Return value propagation through recursion
+* Modulus operator for divisibility checks
+* Integer vs Long data types
+* Importance of edge cases
+* Method return flow
+
+---
+
+## Mistakes & Fixes
+
+### Mistake
+
+Tried writing:
+
+```java
+1/x^n
+```
+
+### Fix
+
+Learned that:
+
+```java
+^
+```
+
+is XOR, not exponentiation.
+
+---
+
+### Mistake
+
+Mixed negative-power logic and recursion logic together.
+
+### Fix
+
+Handle negative exponent separately before recursion.
+
+---
+
+### Mistake
+
+Forgot that after:
+
+```java
+n = -n;
+```
+
+the condition:
+
+```java
+n < 0
+```
+
+can never be true.
+
+### Fix
+
+Understand execution flow step-by-step before adding conditions.
+
+---
+
+## Patterns Added To DSA Toolbox
+
+### Pattern 1
+
+```text
+Fast Power
+```
+
+Reduce exponent by:
+
+```text
+n/2
+```
+
+---
+
+### Pattern 2
+
+```text
+Recursive Reduction
+```
+
+Reduce problem repeatedly:
+
+```text
+n → n/4 → n/16 → ...
+```
+
+until base case.
+
+---
+
+## Today's Technical Takeaway
+
+Today was my first deep exposure to Divide & Conquer recursion.
+
+I learned that recursion is not only about calling the same function repeatedly; it is also about reducing a problem efficiently and reusing previously computed results to drastically improve performance.
+
+OUT...DAY 20...🚀
