@@ -5141,3 +5141,76 @@ And that is probably the most important shift in my DSA journey so far.
 🚀 Day 18 Completed.
 
 OUT...DAY 19...🚀
+
+
+# Day 19 — August 4, 2026
+
+## Today's Reality
+
+Today wasn't one of those days where I solved a bunch of problems and felt unstoppable.
+
+I spent most of my time trying to truly understand recursion instead of just copying solutions. At multiple points, I felt confused, especially while working on **Pow(x, n)**. What looked like a simple problem turned into a deep lesson about how recursion actually works.
+
+There were moments where I thought I understood the solution, but the moment I tried implementing it myself, I got stuck. Negative powers, recursive calls, overflow issues, and even Java syntax started mixing together in my head.
+
+Instead of rushing to finish the problem, I slowed down and focused on understanding *why* each step existed.
+
+## Problems Worked On
+
+* 50. Pow(x, n)
+* 342. Power of Four
+
+## What Made Today Different
+
+The biggest win wasn't solving a problem.
+
+The biggest win was realizing that recursion is not magic.
+
+For the first time, I started seeing recursion as:
+
+1. Define a base case.
+2. Reduce the problem.
+3. Trust the smaller answer.
+4. Build the final answer from it.
+
+This mindset helped me understand both problems much better.
+
+## Frustrations
+
+* Got confused between mathematical expressions and Java syntax.
+* Mixed negative exponent logic with recursive logic.
+* Struggled to understand why accepted solutions use `long` instead of `int`.
+* Kept trying to fix code before fully understanding the underlying idea.
+
+There were moments where everything felt mixed up and I genuinely felt stuck.
+
+## Small Wins
+
+* Understood Fast Power / Binary Exponentiation.
+* Understood why solving half the problem is enough.
+* Understood the difference between even and odd exponent handling.
+* Successfully built a recursive solution for Power of Four on my own.
+* Learned an important overflow edge case involving `Integer.MIN_VALUE`.
+
+## Mindset Check
+
+Today reminded me that learning DSA isn't about collecting solved questions.
+
+It's about reaching the point where the logic starts making sense.
+
+Some days the progress is visible through accepted submissions.
+
+Other days the progress is invisible and happens through confusion, mistakes, and persistence.
+
+Today was definitely the second type of day.
+
+## Streak Status
+
+Day 19 completed.
+
+Not the cleanest day.
+Not the fastest day.
+
+But definitely a valuable one.
+
+OUT...DAY 20..🚀
