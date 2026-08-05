@@ -5214,3 +5214,44 @@ Not the fastest day.
 But definitely a valuable one.
 
 OUT...DAY 20..🚀
+
+# 📖 Day 20 Documentation (08-05-2026)
+
+Today felt different.
+
+Instead of rushing to code, I spent more time trying to understand the pattern behind each problem. I noticed that whenever I slowed down and asked myself *"What is this problem actually asking?"*, the solution became much clearer.
+
+The **Ransom Note** problem taught me not to think about whether a character simply exists, but whether enough copies of that character exist. That small shift in thinking helped me understand why frequency arrays are so useful.
+
+The **Number of Segments in a String** problem was another interesting lesson. My first instinct was to count spaces, but I quickly realized that spaces don't determine the answer—**the beginning of each word does**. That completely changed the way I approached the problem.
+
+The **Detect Capital** problem challenged my logic more than my coding. I initially wanted to check every character without a clear plan, but after thinking about the valid capitalization patterns, I realized that breaking the problem into different cases made everything much simpler.
+
+One thing I noticed today is that I am becoming more patient. A few days ago, I would have immediately asked for the solution whenever I got stuck. Today, I kept thinking, asking questions, and correcting my own logic until I finally reached the solution myself.
+
+I also made mistakes today:
+
+* I forgot Java operator precedence and learned why parentheses are important.
+* I tried to return too early inside loops.
+* I focused on checking individual characters before deciding the overall pattern.
+
+Instead of getting frustrated, I treated each mistake as a clue that helped me understand the problem better.
+
+The biggest improvement I noticed is in my mindset.
+
+Earlier, I mostly thought:
+
+> "How do I write this code?"
+
+Today, I found myself thinking:
+
+> "What pattern is this problem following?"
+
+That feels like real progress.
+
+I know I'm still making mistakes, but they are becoming more logical mistakes than syntax mistakes, and that tells me I'm moving in the right direction.
+
+Every problem I solve now feels a little less about memorizing solutions and a little more about learning how to think.
+
+**Day 20 complete. On to Day 21. 🚀**
+
