@@ -7325,3 +7325,192 @@ Today was my first deep exposure to Divide & Conquer recursion.
 I learned that recursion is not only about calling the same function repeatedly; it is also about reducing a problem efficiently and reusing previously computed results to drastically improve performance.
 
 OUT...DAY 20...🚀
+
+# 📅 Day 20 — Technical Learning Log (08-05-2026)
+
+## ✅ Problems Solved
+
+* 383. Ransom Note
+* 434. Number of Segments in a String
+* 520. Detect Capital
+
+---
+
+# 📚 What I Learned Today
+
+## 1. Character Frequency Array (Hashing)
+
+Today I learned one of the most common string patterns on LeetCode.
+
+Instead of checking whether a character exists, I learned to count **how many times** each character appears.
+
+```java
+int[] count = new int[26];
+```
+
+This array stores the frequency of every lowercase letter.
+
+```
+a → index 0
+b → index 1
+...
+z → index 25
+```
+
+While traversing the magazine:
+
+* Increase frequency.
+
+While traversing the ransom note:
+
+* Decrease frequency.
+
+If any frequency becomes negative, it means I tried to use a character that wasn't available anymore.
+
+This pattern is much faster than checking every character repeatedly.
+
+---
+
+## 2. Character Mapping
+
+Today I finally understood why people write:
+
+```java
+ch - 'a'
+```
+
+Example:
+
+```
+'a' - 'a' = 0
+'b' - 'a' = 1
+'c' - 'a' = 2
+...
+'z' - 'a' = 25
+```
+
+This lets me directly map every lowercase letter to an array index.
+
+---
+
+## 3. Word Detection Pattern
+
+The Number of Segments problem taught me something interesting.
+
+I first thought about counting spaces.
+
+Later I realized that spaces don't matter.
+
+Instead, I should count **the beginning of every word**.
+
+A new word starts only when:
+
+* Current character is **not** a space.
+* Previous character is a space **or** current index is 0.
+
+This is a completely different way of thinking compared to simply counting separators.
+
+---
+
+## 4. Operator Precedence
+
+Today I made a logical mistake because of operator precedence.
+
+I wrote something similar to:
+
+```java
+A && B || C
+```
+
+But Java evaluates it as:
+
+```java
+(A && B) || C
+```
+
+My intended logic was:
+
+```java
+A && (B || C)
+```
+
+I learned that parentheses are extremely important whenever multiple logical operators are used.
+
+---
+
+## 5. ASCII Character Comparison
+
+Instead of immediately using Java library methods, I practiced comparing characters manually.
+
+Uppercase:
+
+```java
+ch >= 'A' && ch <= 'Z'
+```
+
+Lowercase:
+
+```java
+ch >= 'a' && ch <= 'z'
+```
+
+This helped me understand how characters are actually stored.
+
+---
+
+## 6. Breaking Problems into Cases
+
+The Detect Capital problem taught me to stop coding immediately and first identify different cases.
+
+Instead of checking every character randomly, I divided the problem into patterns:
+
+* All uppercase
+* All lowercase
+* First uppercase, remaining lowercase
+
+Breaking the problem into cases made the implementation much easier.
+
+---
+
+# 🧠 Biggest Realization
+
+Today I realized that many string problems are actually **pattern recognition problems**, not coding problems.
+
+Once I identify the correct pattern, the code becomes much simpler.
+
+Instead of asking:
+
+> "How do I code this?"
+
+I started asking:
+
+> "What pattern does this problem follow?"
+
+That mindset is helping me solve problems more confidently.
+
+---
+
+# 🚀 Progress Reflection
+
+Compared to my earlier days, I noticed a change in my thinking.
+
+Earlier:
+
+* I focused mainly on syntax.
+* I often wanted to start coding immediately.
+
+Today:
+
+* I spent more time understanding the pattern first.
+* I divided problems into logical cases.
+* I understood *why* a solution works before implementing it.
+
+I feel like my problem-solving approach is improving, even if I still make small logical mistakes.
+
+Those mistakes are becoming easier to identify and fix.
+
+---
+
+**Day 20 Complete ✅**
+
+SEE YA ON DAY 21....🚀
