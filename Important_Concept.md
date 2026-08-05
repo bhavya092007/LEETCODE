@@ -1018,3 +1018,184 @@ This idea is the foundation of:
 * Merge Sort
 * Binary Search
 * Many Dynamic Programming optimizations
+
+# 📌 Day 20 – Important Concepts (08-05-2026)
+
+## 🔹 Character Frequency Array
+
+When a problem involves only lowercase English letters (`a-z`), use:
+
+```java
+int[] count = new int[26];
+```
+
+instead of a `HashMap`.
+
+Mapping:
+
+```java
+'a' - 'a' = 0
+'b' - 'a' = 1
+...
+'z' - 'a' = 25
+```
+
+Pattern:
+
+```java
+// Count frequency
+count[ch - 'a']++;
+
+// Use character
+count[ch - 'a']--;
+
+// Invalid
+if(count[ch - 'a'] < 0)
+    return false;
+```
+
+---
+
+## 🔹 Character to Index Mapping
+
+Convert a lowercase character into an array index:
+
+```java
+int index = ch - 'a';
+```
+
+Examples:
+
+```text
+'a' → 0
+'b' → 1
+'c' → 2
+...
+'z' → 25
+```
+
+---
+
+## 🔹 Word Detection Pattern
+
+Don't count spaces.
+
+Count **the beginning of every word**.
+
+A new word starts when:
+
+```java
+current != ' '
+&&
+(i == 0 || previous == ' ')
+```
+
+Pattern:
+
+```java
+if(s.charAt(i) != ' ' &&
+   (i == 0 || s.charAt(i-1) == ' '))
+{
+    count++;
+}
+```
+
+---
+
+## 🔹 Operator Precedence
+
+Remember:
+
+```java
+A && B || C
+```
+
+is evaluated as:
+
+```java
+(A && B) || C
+```
+
+If your logic is:
+
+```java
+A && (B || C)
+```
+
+always use parentheses.
+
+---
+
+## 🔹 ASCII Character Checking
+
+Uppercase:
+
+```java
+ch >= 'A' && ch <= 'Z'
+```
+
+Lowercase:
+
+```java
+ch >= 'a' && ch <= 'z'
+```
+
+Equivalent Java methods:
+
+```java
+Character.isUpperCase(ch);
+Character.isLowerCase(ch);
+```
+
+---
+
+## 🔹 Pattern Before Code
+
+Before writing code, identify the pattern.
+
+Ask:
+
+* What are the valid cases?
+* What are the invalid cases?
+* Can I divide the problem into separate scenarios?
+
+Good logic makes coding much easier.
+
+---
+
+## 🔹 Verify, Don't Assume
+
+Instead of returning inside the first iteration of a loop:
+
+* Verify every required character.
+* Return `false` immediately when an invalid case is found.
+* Return `true` only after the entire loop finishes successfully.
+
+Pattern:
+
+```java
+for(...)
+{
+    if(invalid)
+        return false;
+}
+
+return true;
+```
+
+---
+
+# ⭐ Patterns Learned Today
+
+* Character Frequency Array
+* Character → Array Index Mapping
+* Count Start of Words Pattern
+* Case-Based Problem Solving
+* ASCII Character Comparison
+* Operator Precedence (`&&` vs `||`)
+* Validate Entire Input Before Returning
+
+---
+
+**Day 20 Concepts Added ✅**
+
