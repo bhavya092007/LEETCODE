@@ -5255,3 +5255,56 @@ Every problem I solve now feels a little less about memorizing solutions and a l
 
 **Day 20 complete. On to Day 21. 🚀**
 
+# 📖 Day 21 Documentation (06-08-2026)
+
+Today was one of those days where I realized that understanding a concept is much more valuable than simply getting the correct answer.
+
+The first problem, **Move Zeroes**, completely changed the way I think about the Two Pointer technique.
+
+At first, I was convinced that "two pointers" meant using two nested loops. I kept trying to build my solution around that idea because it felt natural. But after thinking through the problem step by step, I realized that two pointers are simply two variables with different responsibilities.
+
+One pointer scans the array, while the other remembers where the next valid element should go.
+
+That small realization completely changed my perspective.
+
+I also learned that there can be multiple correct approaches to the same problem. Initially, I wanted to solve the problem using only swapping because that was the first idea that came to my mind. Later, I understood that copying values forward is also a valid solution, and that both approaches solve the same problem in different ways.
+
+The second problem, **Smallest Divisible Digit Product I**, reminded me that not every problem requires a clever trick. Sometimes, the simplest brute-force solution is exactly what the problem expects.
+
+Instead of trying to overcomplicate the logic, I simply checked every number one by one until I found the answer.
+
+While solving it, I revised one of the most important number manipulation patterns:
+
+* Extract the last digit using `% 10`.
+* Remove the last digit using `/ 10`.
+
+I also learned why creating a copy of a number is important before modifying it.
+
+Another interesting lesson today came from Java itself.
+
+For the first time, I encountered the **"Unreachable statement"** compiler error. At first, I was confused because I thought every method should end with a `return` statement.
+
+After understanding the program flow, I realized that my infinite loop already guaranteed a return statement inside it, making the final return impossible to execute.
+
+That was a nice reminder that the compiler doesn't just check syntax—it also understands logic.
+
+The biggest improvement I noticed today was in my thinking process.
+
+Earlier, I often focused on writing code as quickly as possible.
+
+Today, I spent much more time asking myself:
+
+* What is the role of each variable?
+* What is each pointer responsible for?
+* What pattern is hidden inside this problem?
+
+That small change made the coding part much smoother.
+
+Looking back, I can clearly see that my confidence is improving. I still make mistakes, but they are becoming smaller and easier to identify.
+
+Every day, I'm relying a little less on memorizing solutions and a little more on understanding patterns.
+
+That's exactly the kind of progress I wanted when I started this journey.
+
+**Day 21 Complete. On to Day 22. 🚀**
+
