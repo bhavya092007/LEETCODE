@@ -7514,3 +7514,180 @@ Those mistakes are becoming easier to identify and fix.
 **Day 20 Complete ✅**
 
 SEE YA ON DAY 21....🚀
+
+# 📅 Day 21 — Technical Learning Log (06-08-2026)
+
+## ✅ Problems Solved
+
+* 283. Move Zeroes
+* 3345. Smallest Divisible Digit Product I
+
+---
+
+# 📚 What I Learned Today
+
+## 1. Two Pointer Pattern
+
+Today I learned one of the most important array patterns in DSA.
+
+Initially, I thought **two pointers meant two nested loops**, but I realized that isn't true.
+
+A two-pointer solution usually means:
+
+* One pointer scans the array.
+* Another pointer keeps track of the position where the next valid element should be placed.
+
+For the **Move Zeroes** problem:
+
+* `j` scans every element.
+* `i` points to the position where the next non-zero element belongs.
+
+This allows the problem to be solved in a single traversal.
+
+---
+
+## 2. Two Pointers ≠ Two Loops
+
+One of the biggest misconceptions I had today was thinking:
+
+```text
+Two Pointers = Two Nested Loops
+```
+
+I learned that this is completely wrong.
+
+Nested loops restart the inner loop every iteration, resulting in **O(n²)** complexity.
+
+Two pointers simply mean two variables moving through the array together, usually resulting in **O(n)** complexity.
+
+---
+
+## 3. Swapping vs Copying
+
+While solving Move Zeroes, I first wanted to solve it entirely using swapping.
+
+Then I understood there are actually two valid approaches:
+
+* Copy non-zero elements forward and fill the remaining positions with zero.
+* Swap non-zero elements whenever needed using two pointers.
+
+Both are valid, but the interview-preferred solution is the optimized two-pointer approach.
+
+---
+
+## 4. Digit Extraction Pattern
+
+While solving **Smallest Divisible Digit Product I**, I practiced extracting digits from a number.
+
+Pattern:
+
+```java
+digit = copy % 10;
+copy /= 10;
+```
+
+This processes digits from right to left until the number becomes zero.
+
+I also learned why a separate `copy` variable is important instead of modifying the original number.
+
+---
+
+## 5. Brute Force with Validation
+
+The problem also taught me a simple brute-force strategy.
+
+Instead of trying to directly calculate the answer:
+
+* Start from `n`.
+* Check if it satisfies the condition.
+* If not, increment the number.
+* Repeat until a valid answer is found.
+
+Sometimes the simplest approach is perfectly acceptable.
+
+---
+
+## 6. Infinite Loop with Exit Condition
+
+I used:
+
+```java
+while(true)
+```
+
+for the first time in a problem.
+
+I learned that an infinite loop is acceptable when there is a guaranteed exit condition.
+
+In this problem, the loop always exits using:
+
+```java
+return n;
+```
+
+once the correct answer is found.
+
+---
+
+## 7. Unreachable Statement
+
+Today I encountered the Java compiler error:
+
+```text
+Unreachable statement
+```
+
+I understood why this happened.
+
+Since my program always returns from inside an infinite loop, any statement written after the loop can never execute.
+
+Example:
+
+```java
+while(true)
+{
+    return value;
+}
+
+return 1; // Unreachable
+```
+
+This helped me understand how Java analyzes program flow before execution.
+
+---
+
+# 🧠 Biggest Realization
+
+Today I realized that **patterns are more important than syntax**.
+
+Instead of thinking:
+
+> "Which loop should I write?"
+
+I started thinking:
+
+> "What role should each pointer play?"
+
+Once I assigned a responsibility to each pointer, writing the code became much easier.
+
+---
+
+# 🚀 Progress Reflection
+
+Today's progress felt different.
+
+Earlier, I would immediately think about nested loops whenever two indices were involved.
+
+Today, I understood the actual philosophy behind the Two Pointer technique.
+
+I also noticed that I now spend more time designing the algorithm before writing code.
+
+That habit is making debugging much easier because most mistakes now happen during the planning stage instead of after writing the entire solution.
+
+I feel much more confident solving array and digit-based problems than I did a week ago.
+
+---
+
+**Day 21 Complete ✅**
+
+SEEYA ON DAY 22...🚀
