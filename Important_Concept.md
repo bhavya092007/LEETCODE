@@ -1199,3 +1199,151 @@ return true;
 
 **Day 20 Concepts Added ✅**
 
+# 🧠 Day 21 – Important Concepts (06-08-2026)
+
+## 🔹 Two Pointer Technique
+
+* Two pointers **do not mean two nested loops**.
+* Each pointer has a different responsibility.
+* Commonly used for arrays and strings.
+* Helps reduce time complexity from **O(n²)** to **O(n)**.
+
+---
+
+## 🔹 Two Pointer Roles
+
+* **Scanning Pointer:** Traverses every element.
+* **Placement Pointer:** Tracks where the next valid element should be placed.
+
+---
+
+## 🔹 Swapping Elements
+
+```java
+int temp = nums[i];
+nums[i] = nums[j];
+nums[j] = temp;
+```
+
+Used when elements need to exchange positions in-place.
+
+---
+
+## 🔹 Digit Extraction Pattern
+
+Extract digits of a number:
+
+```java
+while (copy != 0) {
+    int digit = copy % 10;
+    copy /= 10;
+}
+```
+
+### Key Operations
+
+```java
+digit = number % 10;   // Last digit
+number /= 10;          // Remove last digit
+```
+
+---
+
+## 🔹 Copy Variable
+
+Always preserve the original number:
+
+```java
+int copy = n;
+```
+
+Modify `copy` instead of the original variable.
+
+---
+
+## 🔹 Product of Digits Pattern
+
+```java
+int product = 1;
+
+while(copy != 0){
+    int digit = copy % 10;
+    product *= digit;
+    copy /= 10;
+}
+```
+
+---
+
+## 🔹 Brute Force Search Pattern
+
+```text
+Start from n
+↓
+Check condition
+↓
+If false → n++
+↓
+Repeat
+```
+
+Useful when constraints are small.
+
+---
+
+## 🔹 Infinite Loop with Exit Condition
+
+```java
+while(true){
+    if(condition){
+        return answer;
+    }
+}
+```
+
+Safe to use when the loop has a guaranteed exit using `return` or `break`.
+
+---
+
+## 🔹 Unreachable Statement (Java)
+
+Java reports an **Unreachable Statement** when it can prove a line of code will never execute.
+
+Example:
+
+```java
+while(true){
+    return value;
+}
+
+return 1; // Unreachable
+```
+
+---
+
+## 🔹 Time Complexity
+
+### Move Zeroes
+
+* **Time:** `O(n)`
+* **Space:** `O(1)`
+
+### Smallest Divisible Digit Product I
+
+* **Time:** `O(k × d)`
+
+  * `k` = numbers checked
+  * `d` = number of digits
+* **Space:** `O(1)`
+
+---
+
+## ⭐ Patterns Learned Today
+
+* Two Pointer Technique
+* In-place Swapping
+* Digit Extraction
+* Product of Digits
+* Brute Force Search
+* Infinite Loop with Exit Condition
+* Java Program Flow (Unreachable Statement)
