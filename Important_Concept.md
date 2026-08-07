@@ -1347,3 +1347,244 @@ return 1; // Unreachable
 * Brute Force Search
 * Infinite Loop with Exit Condition
 * Java Program Flow (Unreachable Statement)
+
+# 🧠 Day 22 – Important Concepts (07-08-2026)
+
+## 📌 Problems Covered
+
+* 389. Find the Difference
+* 476. Number Complement (Concept Learning)
+
+---
+
+# 🔹 Frequency Array Pattern
+
+A frequency array stores how many times each character appears.
+
+```java
+int[] count = new int[26];
+```
+
+### Character → Index
+
+```java
+ch - 'a'
+```
+
+Example:
+
+```text
+'a' → 0
+'b' → 1
+'c' → 2
+...
+'z' → 25
+```
+
+### Index → Character
+
+```java
+(char)(index + 'a')
+```
+
+---
+
+# 🔹 Frequency Array Workflow
+
+1. Increment frequency for the first string.
+2. Decrement frequency for the second string.
+3. If any frequency becomes negative, that character is the answer.
+
+Pattern:
+
+```java
+count[ch - 'a']++;
+
+count[ch - 'a']--;
+
+if(count[ch - 'a'] < 0)
+    return ch;
+```
+
+---
+
+# 🔹 Early Return
+
+Instead of processing the entire array after finding the answer:
+
+```java
+if(condition)
+    return answer;
+```
+
+Returning immediately keeps the solution simple and efficient.
+
+---
+
+# 🔹 Binary Numbers
+
+Computers store numbers in binary.
+
+Examples:
+
+| Decimal | Binary |
+| ------: | :----: |
+|       1 |    1   |
+|       2 |   10   |
+|       3 |   11   |
+|       4 |   100  |
+|       5 |   101  |
+|       6 |   110  |
+|       7 |   111  |
+|       8 |  1000  |
+
+---
+
+# 🔹 Bitwise Operators
+
+## AND (`&`)
+
+Both bits must be **1**.
+
+```text
+1 & 1 = 1
+1 & 0 = 0
+0 & 1 = 0
+0 & 0 = 0
+```
+
+---
+
+## OR (`|`)
+
+At least one bit must be **1**.
+
+```text
+1 | 1 = 1
+1 | 0 = 1
+0 | 1 = 1
+0 | 0 = 0
+```
+
+---
+
+## XOR (`^`)
+
+Different bits → **1**
+
+Same bits → **0**
+
+```text
+1 ^ 1 = 0
+0 ^ 0 = 0
+1 ^ 0 = 1
+0 ^ 1 = 1
+```
+
+### Important Properties
+
+```text
+a ^ a = 0
+a ^ 0 = a
+```
+
+---
+
+## NOT (`~`)
+
+Flips every bit.
+
+```text
+1 → 0
+0 → 1
+```
+
+---
+
+# 🔹 Java Uses 32-bit Integers
+
+Example:
+
+```text
+5
+
+00000000000000000000000000000101
+```
+
+Using `~`:
+
+```text
+11111111111111111111111111111010
+```
+
+`~` flips **all 32 bits**, not just the meaningful bits.
+
+---
+
+# 🔹 Mask
+
+A mask is used to affect only the required bits.
+
+Example:
+
+```text
+Number
+
+101
+
+Mask
+
+111
+```
+
+Using XOR:
+
+```text
+101
+111
+---
+010
+```
+
+Only the meaningful bits are flipped.
+
+---
+
+# 🔹 Finding Significant Bits
+
+Java utility:
+
+```java
+Integer.numberOfLeadingZeros(num)
+```
+
+Used to calculate the number of meaningful bits in an integer.
+
+---
+
+# 🔹 Pattern Recognition
+
+Today's biggest realization:
+
+Different problems can use the **same underlying algorithm**.
+
+Example:
+
+* 383. Ransom Note
+* 389. Find the Difference
+
+Both use the **Frequency Array Pattern**, even though the problem statements are different.
+
+---
+
+# ⭐ Key Takeaways
+
+* Frequency Array Pattern
+* Character ↔ Index Mapping
+* Early Return
+* Binary Representation
+* Bitwise Operators (`&`, `|`, `^`, `~`)
+* XOR Properties
+* Java 32-bit Integer Representation
+* Mask Concept
+* Pattern Recognition over Memorization
