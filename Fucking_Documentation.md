@@ -5253,9 +5253,9 @@ I know I'm still making mistakes, but they are becoming more logical mistakes th
 
 Every problem I solve now feels a little less about memorizing solutions and a little more about learning how to think.
 
-**Day 20 complete. On to Day 21. 🚀**
+**Day 20 complete. 
 
-# 📖 Day 21 Documentation (06-08-2026)
+Documentation (06-08-2026)
 
 Today was one of those days where I realized that understanding a concept is much more valuable than simply getting the correct answer.
 
@@ -5306,5 +5306,85 @@ Every day, I'm relying a little less on memorizing solutions and a little more o
 
 That's exactly the kind of progress I wanted when I started this journey.
 
-**Day 21 Complete. On to Day 22. 🚀**
+**Day 21 Complete.**
+# 📖 Day 22 Documentation (07-08-2026)
+
+Today was different from my previous practice sessions because I started learning an entirely new topic: **Bit Manipulation**.
+
+The first problem, **Find the Difference**, looked like a new type of string problem. My first instinct was to think about different approaches, but after analyzing it carefully, I realized something important.
+
+It was actually the same frequency-array pattern that I had already used while solving **Ransom Note**.
+
+Instead of learning a completely new algorithm, I simply reused an existing one.
+
+That made me realize that many LeetCode problems are just different stories built around the same core idea.
+
+While solving it, I also learned that once I know the answer, I don't always need to finish traversing the entire data structure.
+
+As soon as a character's frequency became negative, I already knew it was the extra character, so returning immediately made the solution simpler and more efficient.
+
+The second part of today's learning was much more interesting.
+
+I started studying **Bit Manipulation** for the first time.
+
+Initially, binary numbers looked confusing because I always thought in decimal.
+
+After understanding that computers only work with **0s and 1s**, things slowly started making sense.
+
+I learned the basic bitwise operators:
+
+* AND (`&`)
+* OR (`|`)
+* XOR (`^`)
+* NOT (`~`)
+
+Among them, XOR immediately stood out because of its unique property:
+
+* Same bits become `0`
+* Different bits become `1`
+
+I also learned some useful identities like:
+
+* `a ^ a = 0`
+* `a ^ 0 = a`
+
+These identities are used in many DSA and interview problems.
+
+While studying **Number Complement**, I initially believed that simply using the NOT operator (`~`) would solve the problem.
+
+Later, I discovered that Java stores integers using **32 bits**, which means applying `~` flips every single bit, including the leading zeros that are not part of the number's actual binary representation.
+
+That introduced me to a completely new concept called a **mask**.
+
+Although I haven't fully mastered masks yet, I now understand why they are needed.
+
+A mask allows us to flip only the meaningful bits instead of all 32 bits.
+
+Another thing I learned today was that Java already provides utility methods like:
+
+```java
+Integer.numberOfLeadingZeros(num)
+```
+
+Although I don't want to depend on built-in methods before understanding the concept manually, it's good to know these utilities exist.
+
+The biggest lesson from today wasn't about coding.
+
+It was about recognizing patterns.
+
+Earlier, every new problem felt like a completely new challenge.
+
+Now I'm slowly starting to ask myself:
+
+* Have I solved something similar before?
+* Can I reuse an existing pattern?
+* Is this really a new algorithm, or just a new application of an old one?
+
+That mindset is helping me think more like a problem solver instead of someone who memorizes solutions.
+
+Today's learning also marked the beginning of Bit Manipulation, a topic I had always avoided because it looked complicated.
+
+After today's session, it doesn't feel scary anymore—it just feels like another pattern that I'll understand with enough practice.
+
+**Day 22 Complete.**
 
