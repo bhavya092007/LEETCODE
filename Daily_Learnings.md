@@ -7691,3 +7691,246 @@ I feel much more confident solving array and digit-based problems than I did a w
 **Day 21 Complete ✅**
 
 SEEYA ON DAY 22...🚀
+
+# 📅 Day 22 — Learning Log (07-08-2026)
+
+## ✅ Problems Solved
+
+* 389. Find the Difference
+* 476. Number Complement (Concept Learned)
+
+---
+
+# 📚 What I Learned Today
+
+## 1. Frequency Array Pattern Becomes Reusable
+
+Today's **Find the Difference** problem reinforced the frequency array pattern.
+
+Instead of thinking about the problem differently, I recognized that it is almost identical to **Ransom Note**.
+
+Approach:
+
+* Count every character from the first string.
+* Decrease the count while traversing the second string.
+* As soon as any frequency becomes negative, that character is the extra character.
+
+I realized that many string problems are actually the same pattern with a different story.
+
+---
+
+## 2. Return Immediately When the Answer Is Found
+
+Instead of scanning the frequency array after both loops, I learned that I can immediately return the answer.
+
+Example:
+
+```java
+count[index]--;
+
+if(count[index] < 0)
+    return t.charAt(j);
+```
+
+This makes the code cleaner and avoids unnecessary work.
+
+---
+
+## 3. Character ↔ Index Conversion
+
+I revised one of the most important mappings in string problems.
+
+Character to Index:
+
+```java
+ch - 'a'
+```
+
+Example:
+
+```text
+'a' → 0
+'b' → 1
+'c' → 2
+...
+'z' → 25
+```
+
+Index to Character:
+
+```java
+(char)(index + 'a')
+```
+
+---
+
+## 4. Introduction to Bit Manipulation
+
+Today I started learning Bit Manipulation from scratch.
+
+I learned that every integer is stored internally as binary bits.
+
+Example:
+
+```text
+5 = 101
+6 = 110
+8 = 1000
+```
+
+---
+
+## 5. Bitwise Operators
+
+I learned the meaning of the four basic bitwise operators.
+
+### AND (&)
+
+Both bits must be 1.
+
+```text
+1 & 1 = 1
+1 & 0 = 0
+0 & 1 = 0
+0 & 0 = 0
+```
+
+---
+
+### OR (|)
+
+At least one bit must be 1.
+
+```text
+1 | 1 = 1
+1 | 0 = 1
+0 | 1 = 1
+0 | 0 = 0
+```
+
+---
+
+### XOR (^)
+
+Different bits produce 1.
+
+Same bits produce 0.
+
+```text
+1 ^ 1 = 0
+0 ^ 0 = 0
+1 ^ 0 = 1
+0 ^ 1 = 1
+```
+
+Important properties:
+
+```text
+a ^ a = 0
+a ^ 0 = a
+```
+
+---
+
+### NOT (~)
+
+Flips every bit.
+
+```text
+1 → 0
+0 → 1
+```
+
+---
+
+## 6. Why ~ Doesn't Directly Solve Number Complement
+
+Initially I thought:
+
+```java
+~num
+```
+
+would directly give the complement.
+
+I learned that Java stores integers using **32 bits**.
+
+Example:
+
+```text
+5
+
+00000000000000000000000000000101
+```
+
+Applying `~` flips every bit:
+
+```text
+11111111111111111111111111111010
+```
+
+The problem only wants to flip the meaningful bits.
+
+This introduced me to the idea of a **mask**.
+
+---
+
+## 7. Mask Concept
+
+To flip only the useful bits, we create a mask containing all 1s.
+
+Example:
+
+```text
+Number
+
+101
+
+Mask
+
+111
+```
+
+Then:
+
+```text
+101
+111
+---
+010
+```
+
+using XOR.
+
+---
+
+## 8. Useful Built-in Java Method
+
+I learned about:
+
+```java
+Integer.numberOfLeadingZeros(num)
+```
+
+which helps determine the number of significant bits in an integer.
+
+Although I still want to understand the manual approach first, I now know this built-in method exists.
+
+---
+
+# 🧠 Biggest Takeaway
+
+Today's biggest realization was that many LeetCode problems are not about learning new algorithms every time.
+
+Instead, they are about recognizing an already known pattern.
+
+The **Find the Difference** problem looked completely different from **Ransom Note**, but internally they used the exact same frequency array technique.
+
+I also began learning Bit Manipulation, which initially looked complicated, but after understanding bits as binary switches, the operators started making much more sense.
+
+Today felt like the beginning of a completely new topic in DSA.
+
+---
+
+**Day 22 Progress Complete ✅**
+SEEYA ON DAY 23...🚀
