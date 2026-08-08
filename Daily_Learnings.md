@@ -7934,3 +7934,346 @@ Today felt like the beginning of a completely new topic in DSA.
 
 **Day 22 Progress Complete ✅**
 SEEYA ON DAY 23...🚀
+
+# 📅 Day 23 — LeetCode Learning Log
+
+**Date:** 08-08-2026
+
+## ✅ Problems Solved
+
+1. **121. Best Time to Buy and Sell Stock**
+2. **392. Is Subsequence**
+
+---
+
+# 1️⃣ 121. Best Time to Buy and Sell Stock
+
+### 🧠 Approach Learned
+
+The main idea was to track:
+
+* The **minimum price seen so far**
+* The **maximum profit seen so far**
+
+Instead of finding the overall minimum and maximum of the array, I learned that the order matters.
+
+We must:
+
+> Buy first → Sell later.
+
+So while traversing from left to right, I keep the cheapest buying price available before the current day.
+
+```java
+int minPrice = prices[0];
+int maxProfit = 0;
+```
+
+For every price:
+
+```java
+if (prices[i] < minPrice) {
+    minPrice = prices[i];
+}
+```
+
+Otherwise, calculate the possible profit:
+
+```java
+int tprofit = prices[i] - minPrice;
+```
+
+Then update the best profit:
+
+```java
+if (tprofit > maxProfit) {
+    maxProfit = tprofit;
+}
+```
+
+### 🔑 Important Pattern
+
+**Minimum-so-far + Best-result-so-far**
+
+This pattern can be useful in many array problems where we need the best result while maintaining an ordering constraint.
+
+### ❌ Mistake I Made
+
+Initially, I tried to track a `max` and `min` value and calculate:
+
+```java
+max - min
+```
+
+But that doesn't work because the maximum price could appear **before** the minimum price.
+
+Example:
+
+```text
+[7, 6, 4, 3, 1]
+```
+
+The overall maximum is `7` and minimum is `1`, but buying at `1` and selling at `7` is impossible because `7` occurred first.
+
+### 💡 Lesson
+
+Don't just look at the values.
+
+Look at their **order in the array**.
+
+---
+
+# 2️⃣ 392. Is Subsequence
+
+### 🧠 Approach Learned
+
+This problem introduced/reinforced the **Two Pointer Pattern**.
+
+I used:
+
+```java
+int j = 0;
+```
+
+to track the current character required from `s`.
+
+Then I used `i` to scan through `t`.
+
+```java
+for (int i = 0; i < t.length(); i++) {
+    if (j < s.length() && s.charAt(j) == t.charAt(i)) {
+        j++;
+    }
+}
+```
+
+Whenever the characters match:
+
+```text
+s[j] == t[i]
+```
+
+I move `j` forward.
+
+The pointer `i` always continues through `t`.
+
+### Example
+
+```text
+s = "abc"
+t = "ahbgdc"
+```
+
+Process:
+
+```text
+a → match → j = 1
+h → skip
+b → match → j = 2
+g → skip
+d → skip
+c → match → j = 3
+```
+
+Since:
+
+```java
+j == s.length()
+```
+
+the entire `s` was found.
+
+Therefore:
+
+```java
+return j == s.length();
+```
+
+### 🔑 Important Understanding
+
+`j` represents:
+
+> **How many characters of `s` have been successfully matched.**
+
+Therefore:
+
+```text
+j == s.length()
+```
+
+means:
+
+> All characters of `s` were found in the correct order.
+
+### ❌ Mistake I Made
+
+Initially, I returned:
+
+```java
+return false;
+```
+
+at the end.
+
+I learned that the final answer should depend on whether `j` reached the end of `s`.
+
+I also learned why this check is important:
+
+```java
+j < s.length()
+```
+
+before:
+
+```java
+s.charAt(j)
+```
+
+Otherwise, once `j == s.length()`, accessing `s.charAt(j)` would cause an index error.
+
+---
+
+# 🧠 Important Concepts Learned Today
+
+## 1. Minimum So Far
+
+Track the smallest value encountered while traversing.
+
+```java
+if (current < min) {
+    min = current;
+}
+```
+
+---
+
+## 2. Best Result So Far
+
+Keep updating the best answer found so far.
+
+```java
+if (currentResult > best) {
+    best = currentResult;
+}
+```
+
+---
+
+## 3. Order Matters
+
+For problems involving:
+
+* Buy → Sell
+* Before → After
+* Earlier → Later
+
+we cannot simply find the minimum and maximum independently.
+
+The traversal order matters.
+
+---
+
+## 4. Two Pointer Pattern
+
+Use two variables/pointers to process data without unnecessary nested loops.
+
+For subsequence:
+
+```text
+i → scans t
+j → tracks s
+```
+
+---
+
+## 5. Pointer Meaning
+
+A pointer becomes much easier to use when I clearly define what it represents.
+
+In today's problem:
+
+```text
+i = current position in t
+j = number of characters matched from s
+```
+
+---
+
+## 6. Character Comparison
+
+I reinforced:
+
+```java
+s.charAt(j) == t.charAt(i)
+```
+
+and the importance of using:
+
+```java
+charAt()
+```
+
+when accessing individual characters of a Java `String`.
+
+---
+
+## 7. Boundary Checking
+
+Before accessing:
+
+```java
+s.charAt(j)
+```
+
+make sure:
+
+```java
+j < s.length()
+```
+
+This prevents index-out-of-bounds errors.
+
+---
+
+# ⭐ Today's Biggest Takeaways
+
+### Array Pattern
+
+**Minimum so far + maximum result so far**
+
+### String Pattern
+
+**Two pointers + ordered matching**
+
+### Problem-Solving Mindset
+
+Today I learned that I should not immediately think about complicated algorithms.
+
+First ask:
+
+1. What exactly does each variable represent?
+2. Does order matter?
+3. Can I solve it with one traversal?
+4. Is there a known pattern?
+5. Can I maintain the answer while traversing?
+
+---
+
+# 📊 Day 23 Progress
+
+| Problem                              | Pattern                         | Status |
+| ------------------------------------ | ------------------------------- | ------ |
+| 121. Best Time to Buy and Sell Stock | Minimum So Far + Maximum Profit | ✅      |
+| 392. Is Subsequence                  | Two Pointers                    | ✅      |
+
+### 🔥 Patterns Added to My DSA Toolkit
+
+* Minimum So Far
+* Maximum Result So Far
+* Two Pointers
+* Ordered Traversal
+* Boundary Checking
+* Character Matching
+* Pattern Recognition
+
+**Day 23 complete. 🚀**
+SEEYA ON 24..🚀
