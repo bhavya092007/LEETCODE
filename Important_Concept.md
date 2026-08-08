@@ -1588,3 +1588,168 @@ Both use the **Frequency Array Pattern**, even though the problem statements are
 * Java 32-bit Integer Representation
 * Mask Concept
 * Pattern Recognition over Memorization
+
+
+# 🧠 Day 23 — Important Concepts
+
+**Date:** 08-08-2026
+
+## 1. Minimum So Far + Best Result So Far
+
+Used in **121. Best Time to Buy and Sell Stock**.
+
+Instead of finding the overall minimum and maximum, track the minimum value **while traversing**.
+
+```java
+int minPrice = prices[0];
+int maxProfit = 0;
+```
+
+For every element:
+
+```text
+minimum so far → possible current result → best result
+```
+
+### Key Idea
+
+> When the order matters, don't calculate minimum and maximum independently.
+
+---
+
+## 2. Order Matters
+
+In stock problems:
+
+```text
+BUY → SELL
+```
+
+The buying day must come before the selling day.
+
+Example:
+
+```text
+[7, 6, 4, 3, 1]
+```
+
+Overall:
+
+```text
+max = 7
+min = 1
+```
+
+But `1` occurs after `7`, so `7 - 1` is not a valid profit.
+
+### Lesson
+
+Always consider **position/order**, not just values.
+
+---
+
+## 3. Two Pointer Pattern
+
+Used in **392. Is Subsequence**.
+
+Two variables can track two different things:
+
+```text
+i → scans through t
+j → tracks the next required character of s
+```
+
+When characters match:
+
+```java
+if (s.charAt(j) == t.charAt(i)) {
+    j++;
+}
+```
+
+`i` continues scanning `t`.
+
+---
+
+## 4. Meaning of a Pointer
+
+A pointer becomes easier to use when its meaning is clearly defined.
+
+For today's problem:
+
+```text
+i = current index in t
+j = number of characters from s already matched
+```
+
+Therefore:
+
+```java
+j == s.length()
+```
+
+means:
+
+> Every character of `s` has been successfully matched.
+
+---
+
+## 5. Boundary Checking
+
+Before:
+
+```java
+s.charAt(j)
+```
+
+make sure:
+
+```java
+j < s.length()
+```
+
+Otherwise, if `j == s.length()`, accessing `s.charAt(j)` causes an index error.
+
+---
+
+## 6. One-Pass Thinking
+
+Both problems can be solved with a single traversal.
+
+### Stock
+
+```text
+Scan → update minimum → calculate profit → update maximum
+```
+
+### Subsequence
+
+```text
+Scan t → compare → move pointer when matched
+```
+
+This gives:
+
+```text
+Time Complexity → O(n)
+Space Complexity → O(1)
+```
+
+---
+
+# ⭐ Patterns Added Today
+
+```text
+1. Minimum So Far
+2. Best Result So Far
+3. Two Pointers
+4. Ordered Traversal
+5. Pointer Meaning
+6. Boundary Checking
+7. One-Pass Array/String Processing
+```
+
+## 🔥 Most Important Lesson
+
+> **Don't just ask "What value do I need?" Ask "What information do I need to remember while traversing?"**
+
