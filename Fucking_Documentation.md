@@ -5388,3 +5388,105 @@ After today's session, it doesn't feel scary anymore—it just feels like anothe
 
 **Day 22 Complete.**
 
+# 📖 Day 23 — DSA Journey Documentation
+
+**Date:** 08-08-2026
+
+Today I solved two Easy LeetCode problems: **121. Best Time to Buy and Sell Stock** and **392. Is Subsequence**.
+
+The first problem taught me an important lesson about arrays: sometimes simply finding the minimum and maximum value is not enough. The **order of elements matters**.
+
+Initially, I was thinking about keeping a `max` and `min` value and calculating their difference. But I realized that this could break the condition of the problem because the minimum price must come **before** the selling price.
+
+For example, in `[7,6,4,3,1]`, the maximum value is `7` and the minimum value is `1`, but using them together would mean selling before buying.
+
+I changed my thinking to:
+
+> "While moving from left to right, what is the cheapest price I could have bought at until today?"
+
+I maintained two variables:
+
+```java
+int minPrice = prices[0];
+int maxProfit = 0;
+```
+
+For every new price, I checked whether it was a new minimum. If it was, I updated `minPrice`. Otherwise, I calculated the profit I could make by selling on that day and compared it with the best profit found so far.
+
+This introduced me to a useful pattern:
+
+**Minimum so far + maximum result so far.**
+
+The second problem, **392. Is Subsequence**, reinforced the **two-pointer pattern**.
+
+At first, I wasn't completely sure how to handle the two strings. I eventually understood that I only need to scan through `t` while keeping a pointer `j` for the next character I need from `s`.
+
+Whenever:
+
+```java
+s.charAt(j) == t.charAt(i)
+```
+
+I increase `j`.
+
+One important thing I learned here was that `j` represents the **number of characters from `s` that have already been matched**.
+
+Therefore, when:
+
+```java
+j == s.length()
+```
+
+it means the complete string `s` has been found as a subsequence of `t`.
+
+I also learned why boundary checking matters. Before accessing:
+
+```java
+s.charAt(j)
+```
+
+I need to make sure:
+
+```java
+j < s.length()
+```
+
+Otherwise, after matching the final character, `j` could become equal to `s.length()`, and accessing that index would cause an error.
+
+The biggest thing I noticed today is that my problem-solving is slowly changing.
+
+Earlier, I often looked at a problem and immediately tried to write code. Now I'm starting to spend more time asking:
+
+* What does each variable represent?
+* Does the order of elements matter?
+* Can I solve this with one traversal?
+* Is this a pattern I've already seen?
+* Can I maintain the answer while scanning?
+
+Today's two problems looked completely different, but both were solved using simple and reusable ideas rather than complicated algorithms.
+
+For **Best Time to Buy and Sell Stock**, I learned to maintain the **minimum value so far and the best result so far**.
+
+For **Is Subsequence**, I reinforced **two pointers and ordered traversal**.
+
+This is exactly the kind of pattern recognition I want to develop during my LeetCode journey.
+
+## 📌 Day 23 Summary
+
+**Problems Solved:** 2
+
+**Main Patterns:**
+
+* Minimum So Far
+* Maximum Result So Far
+* Two Pointers
+* Ordered Traversal
+* Character Matching
+* Boundary Checking
+
+**Main Lesson:**
+
+> Don't just look at the values. Understand what each variable represents and how the order of operations affects the answer.
+
+**Day 23 — Complete ✅**
+SEEYA ON DAY 24...🚀
