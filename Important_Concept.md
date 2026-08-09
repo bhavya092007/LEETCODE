@@ -1753,3 +1753,161 @@ Space Complexity → O(1)
 
 > **Don't just ask "What value do I need?" Ask "What information do I need to remember while traversing?"**
 
+# 🧠 Day 24 — Important Concepts
+
+**Date:** 09-08-2026
+
+## 1. Minimum Tracking
+
+Instead of sorting everything, keep track of the smallest value while traversing.
+
+```java
+int min = Integer.MAX_VALUE;
+```
+
+Update when:
+
+```java
+if (value < min)
+```
+
+---
+
+## 2. Minimum + Multiple Answers
+
+When multiple elements can have the same minimum:
+
+```text
+value < min → clear old answers + add new answer
+value == min → add another answer
+value > min → ignore
+```
+
+This is an important pattern for problems where the answer is **not necessarily unique**.
+
+---
+
+## 3. Stack — Push / Pop / Peek
+
+A stack follows:
+
+**LIFO — Last In, First Out**
+
+Important operations:
+
+```text
+push()     → add
+pop()      → remove top
+peek()     → view top
+isEmpty()  → check empty
+```
+
+---
+
+## 4. Stack for Adjacent Cancellation
+
+For **1047. Remove All Adjacent Duplicates**:
+
+```text
+current == stack.peek()
+        ↓
+      pop()
+
+current != stack.peek()
+        ↓
+      push()
+```
+
+This is the main DSA pattern from today.
+
+---
+
+## 5. "Most Recently Kept" Pattern
+
+A stack is useful when the current element needs to interact with the **last element that survived**.
+
+Example:
+
+```text
+"a b b a"
+    ↓
+remove bb
+    ↓
+"a a"
+    ↓
+remove aa
+```
+
+The stack automatically exposes the previous surviving character.
+
+---
+
+## 6. StringBuilder
+
+Use `StringBuilder` when constructing a String character-by-character.
+
+```java
+StringBuilder ans = new StringBuilder();
+
+ans.append(ch);
+```
+
+Finally:
+
+```java
+return ans.toString();
+```
+
+---
+
+## 7. Java Generics
+
+Instead of:
+
+```java
+Stack stack = new Stack();
+```
+
+prefer:
+
+```java
+Stack<Character> stack = new Stack<>();
+```
+
+This tells Java exactly what type the collection stores.
+
+---
+
+## 8. String Comparison
+
+For Java Strings:
+
+```java
+str1.equals(str2)
+```
+
+not:
+
+```java
+str1 == str2
+```
+
+---
+
+# ⭐ Most Important Concepts Today
+
+```text
+1. Minimum Tracking
+2. Handling Equal Minimums
+3. Stack / LIFO
+4. Push, Pop, Peek
+5. Adjacent Cancellation
+6. Most Recently Kept Element
+7. StringBuilder
+8. Java Generics
+9. String.equals()
+```
+
+### 🔥 Biggest Concept
+
+> **If a problem repeatedly compares the current element with the most recently surviving element, think STACK.**
