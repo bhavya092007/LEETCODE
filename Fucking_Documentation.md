@@ -5490,3 +5490,163 @@ This is exactly the kind of pattern recognition I want to develop during my Leet
 
 **Day 23 — Complete ✅**
 SEEYA ON DAY 24...🚀
+
+# 📖 Day 24 — DSA Journey Documentation
+
+**Date:** 09-08-2026
+
+Today I solved two Easy LeetCode problems: **599. Minimum Index Sum of Two Lists** and **1047. Remove All Adjacent Duplicates In String**.
+
+The first problem, **Minimum Index Sum of Two Lists**, was a good exercise in using nested loops and maintaining a minimum value.
+
+My initial thought was to compare every element of `list1` with every element of `list2`. Whenever both strings matched, I calculated their index sum using:
+
+```java id="3f8w6h"
+int indexSum = i + j;
+```
+
+Then I maintained the smallest index sum.
+
+One important thing I learned was that the answer can contain **multiple strings with the same minimum index sum**. Because of this, I needed a separate `List<String>` to store the answers.
+
+The logic became:
+
+```text id="lks1y0"
+New smaller index sum → update minimum + clear old answers + add current string
+Same minimum        → add current string
+Larger minimum      → ignore
+```
+
+I initially made the mistake of setting:
+
+```java id="e8w2xk"
+int min = 0;
+```
+
+but realized that this would not work because index sums are non-negative. I learned to initialize the minimum with:
+
+```java id="1i1z7v"
+Integer.MAX_VALUE
+```
+
+I also reinforced Java concepts such as using `.equals()` for String comparison, using `List<String>` with generics, `ArrayList`, `clear()`, `add()`, and converting a list back into a `String[]`.
+
+The second problem, **Remove All Adjacent Duplicates In String**, was more interesting because I initially found the given example confusing.
+
+For:
+
+```text id="q7i9g4"
+"abbaca"
+```
+
+the process is:
+
+```text id="7k1x6r"
+abbaca
+  ↓ remove bb
+aaca
+  ↓ remove aa
+ca
+```
+
+The important observation was that after removing `bb`, the two `a`s become adjacent. This made me realize that the problem is naturally suited to a **stack**.
+
+The stack keeps the characters that have survived so far.
+
+For every character:
+
+```text id="xg7k93"
+If current character == stack top
+        → pop
+
+Otherwise
+        → push
+```
+
+For example:
+
+```text id="h0kj3d"
+a → [a]
+b → [a,b]
+b → [a]       // bb removed
+a → []        // aa removed
+c → [c]
+a → [c,a]
+```
+
+The final stack contains `c` and `a`, giving:
+
+```text id="9xj8cs"
+"ca"
+```
+
+While coding, I made several syntax and Java API mistakes. I initially tried to use methods such as `top()` directly on the String, but learned that these are stack operations.
+
+For a Java `Stack<Character>`:
+
+```text id="4g0a5b"
+isEmpty() → checks whether the stack is empty
+peek()    → looks at the top element
+pop()     → removes the top element
+push()    → adds an element
+```
+
+I also initially tried to push the index:
+
+```java id="v7d4u1"
+stack.push(i);
+```
+
+but the stack contains `Character`, so the correct value to push is:
+
+```java id="g9m2sa"
+stack.push(s.charAt(i));
+```
+
+Another small but useful lesson was using `StringBuilder` to construct the final answer. I initially used assignment when I needed to append characters. I learned the difference between:
+
+```java id="h3k8s2"
+ans = something;
+```
+
+and:
+
+```java id="x4m7q1"
+ans.append(something);
+```
+
+The first replaces the value, while the second adds to the existing `StringBuilder`.
+
+Overall, Day 24 helped me understand two useful patterns:
+
+**Minimum + collect all ties** for the first problem, and **Stack + adjacent cancellation** for the second.
+
+More importantly, I am getting better at identifying the data structure or pattern before immediately trying to code the solution.
+
+## 📌 Day 24 Summary
+
+**Problems Solved:** 2
+
+**Main Patterns Learned:**
+
+* Nested Loop Comparison
+* Minimum Value Tracking
+* Collecting Multiple Minimum Answers
+* Stack
+* Adjacent Cancellation
+* Push / Pop / Peek
+* StringBuilder
+* Java Generics
+* String `.equals()`
+
+### 🔥 Main Lesson
+
+> **First understand what needs to be remembered during the traversal, then choose the data structure that naturally stores that information.**
+
+For today's stack problem, the key realization was:
+
+> **If the current character needs to interact with the most recently kept character, think about a stack.**
+
+**Day 24 — Complete ✅**
+
+SEEYA ON DAY 25...🚀
