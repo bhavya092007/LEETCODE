@@ -8277,3 +8277,362 @@ First ask:
 
 **Day 23 complete. 🚀**
 SEEYA ON 24..🚀
+
+# 📖 Day 24 — LeetCode Learning Log
+
+**Date:** 09-08-2026
+
+## ✅ Problems Solved
+
+1. **599. Minimum Index Sum of Two Lists**
+2. **1047. Remove All Adjacent Duplicates In String**
+
+---
+
+# 1️⃣ 599. Minimum Index Sum of Two Lists
+
+### 🧠 My Initial Thought
+
+I thought of using **two loops**:
+
+```text
+for every string in list1
+    compare with every string in list2
+```
+
+When two strings match, calculate:
+
+```text
+indexSum = i + j
+```
+
+Then find the smallest index sum.
+
+This was the correct basic approach.
+
+### 🔑 Main Logic
+
+I learned to maintain:
+
+```java
+int min = Integer.MAX_VALUE;
+List<String> ans = new ArrayList<>();
+```
+
+When a common string is found:
+
+```text
+indexSum < min
+        ↓
+new minimum
+        ↓
+update min
+clear old answers
+add current string
+```
+
+If:
+
+```text
+indexSum == min
+```
+
+then the current string is another valid answer, so simply add it.
+
+### Important Pattern
+
+```text
+Smaller → replace
+Equal   → add
+Larger  → ignore
+```
+
+### ❌ Mistake
+
+Initially I used:
+
+```java
+int min = 0;
+```
+
+That doesn't work because index sums are non-negative.
+
+For example:
+
+```text
+indexSum = 1
+min = 0
+```
+
+`1 < 0` is false.
+
+So I learned to initialize a minimum-search variable with:
+
+```java
+Integer.MAX_VALUE
+```
+
+### Java Concepts Reinforced
+
+* `String.equals()`
+* `List<String>`
+* `ArrayList`
+* `clear()`
+* `add()`
+* `toArray(new String[0])`
+* Nested loops
+
+---
+
+# 2️⃣ 1047. Remove All Adjacent Duplicates In String
+
+### 🧠 Initial Understanding
+
+At first, the example:
+
+```text
+"abbaca"
+```
+
+was confusing.
+
+I understood it step-by-step:
+
+```text
+abbaca
+  ↓ remove bb
+aaca
+  ↓ remove aa
+ca
+```
+
+The important thing is that after removing characters, previously separated characters can become adjacent.
+
+### 🔑 Pattern Learned
+
+This problem is a classic:
+
+**Stack + Adjacent Cancellation**
+
+For every character:
+
+```text
+current == stack top
+        ↓
+      POP
+
+current != stack top
+        ↓
+      PUSH
+```
+
+### Example
+
+For:
+
+```text
+"abbaca"
+```
+
+The stack changes like:
+
+```text
+a     → [a]
+b     → [a,b]
+b     → [a]       ← bb cancelled
+a     → []        ← aa cancelled
+c     → [c]
+a     → [c,a]
+```
+
+Final result:
+
+```text
+"ca"
+```
+
+### 🧠 My Initial Coding Mistakes
+
+I initially tried to use:
+
+```java
+s.empty()
+s.top()
+s.pop()
+push()
+```
+
+directly on the `String`.
+
+I learned that a `String` is not a stack.
+
+For:
+
+```java
+Stack<Character> stack
+```
+
+the correct methods are:
+
+```text
+isEmpty() → check whether stack is empty
+peek()    → look at top
+pop()     → remove top
+push()    → add to top
+```
+
+I also initially confused:
+
+```java
+stack.push(i)
+```
+
+with:
+
+```java
+stack.push(s.charAt(i))
+```
+
+Since the stack contains `Character`, I need to push the character, not the integer index.
+
+### StringBuilder Learning
+
+After processing the stack, I used:
+
+```java
+StringBuilder ans = new StringBuilder();
+```
+
+Then:
+
+```java
+ans.append(stack.get(j));
+```
+
+I learned the difference between:
+
+```java
+ans = something;
+```
+
+and:
+
+```java
+ans.append(something);
+```
+
+`=` replaces the value, while `append()` adds to the existing `StringBuilder`.
+
+---
+
+# 🧠 What I Learned Today
+
+## 1. Minimum Search With Ties
+
+When searching for a minimum and multiple answers are possible:
+
+```text
+New minimum → clear previous answers
+Same minimum → keep previous answers + add current
+```
+
+---
+
+## 2. Stack as a Cancellation Mechanism
+
+A stack isn't only for brackets or traditional stack problems.
+
+It can also be used when:
+
+> The current element needs to interact with the most recently kept element.
+
+For adjacent duplicates:
+
+```text
+same as top → cancel
+different    → keep
+```
+
+---
+
+## 3. `peek()` vs `pop()`
+
+Important distinction:
+
+```java
+stack.peek()
+```
+
+looks at the top **without removing it**.
+
+```java
+stack.pop()
+```
+
+looks at and **removes** the top.
+
+---
+
+## 4. Generic Collections
+
+Instead of:
+
+```java
+Stack stack = new Stack();
+```
+
+prefer:
+
+```java
+Stack<Character> stack = new Stack<>();
+```
+
+This tells Java exactly what type the stack contains.
+
+---
+
+## 5. `String.equals()`
+
+For comparing Java strings:
+
+```java
+list1[i].equals(list2[j])
+```
+
+not:
+
+```java
+list1[i] == list2[j]
+```
+
+---
+
+# ⭐ Patterns Added to My DSA Toolkit
+
+```text
+1. Minimum + Collect Ties
+2. Nested Loop Comparison
+3. Stack Pattern
+4. Adjacent Cancellation
+5. Push / Pop / Peek
+6. StringBuilder
+7. Generic Collections
+8. Boundary / Type Awareness
+```
+
+# 📈 Day 24 Progress
+
+| Problem                              | Main Pattern           | Status |
+| ------------------------------------ | ---------------------- | ------ |
+| 599. Minimum Index Sum of Two Lists  | Minimum + Collect Ties | ✅      |
+| 1047. Remove All Adjacent Duplicates | Stack / Cancellation   | ✅      |
+
+## 🔥 Biggest Lesson of Day 24
+
+> **Don't just ask what code to write. First identify what data structure naturally represents the operation.**
+
+For `1047`, repeatedly removing adjacent characters could look complicated with strings, but once I recognized **"compare with the last character I kept"**, the stack made the problem simple.
+
+**Day 24 — Complete ✅**
+
+SEEYA ON DAY 25...🧑‍🚀🚀
