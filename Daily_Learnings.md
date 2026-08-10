@@ -8636,3 +8636,280 @@ For `1047`, repeatedly removing adjacent characters could look complicated with 
 **Day 24 — Complete ✅**
 
 SEEYA ON DAY 25...🧑‍🚀🚀
+
+# 🧠 LeetCode Journey — Day 25 Learning Log
+
+**Date:** 10-08-2026
+
+## 🚀 Problem Solved
+
+### 49. Group Anagrams
+
+**Difficulty:** Medium
+**Pattern:** HashMap + Sorting
+
+---
+
+# 💭 What I Learned
+
+I realized that this problem is closely related to **Valid Anagram**.
+
+In Valid Anagram, I check whether **two strings** contain the same characters.
+
+In Group Anagrams, I have **many strings** and need to group the strings that have the same character pattern.
+
+Example:
+
+```text
+eat → aet
+tea → aet
+ate → aet
+```
+
+Since all three produce the same sorted string, they belong to the same group.
+
+---
+
+# 🔑 Main Concept — Common Key
+
+The most important idea I learned today is:
+
+> **Create a common key for things that belong to the same group.**
+
+For anagrams, the sorted string becomes the common key.
+
+```text
+eat → aet
+tea → aet
+ate → aet
+
+tan → ant
+nat → ant
+
+bat → abt
+```
+
+Then the HashMap becomes:
+
+```text
+"aet" → ["eat", "tea", "ate"]
+"ant" → ["tan", "nat"]
+"abt" → ["bat"]
+```
+
+---
+
+# 🧠 HashMap Pattern
+
+I learned this general DSA pattern:
+
+```text
+Element
+   ↓
+Create a representative key
+   ↓
+HashMap[key]
+   ↓
+Group similar elements
+```
+
+This is more important than memorizing the exact solution.
+
+---
+
+# 💻 Important Java Concepts
+
+### 1. `toCharArray()`
+
+Converts a String into a character array.
+
+```java
+char[] chars = str.toCharArray();
+```
+
+Example:
+
+```text
+"eat"
+ ↓
+['e', 'a', 't']
+```
+
+---
+
+### 2. `Arrays.sort()`
+
+Sorts the characters:
+
+```java
+Arrays.sort(chars);
+```
+
+```text
+['e','a','t']
+      ↓
+['a','e','t']
+```
+
+---
+
+### 3. Convert Back to String
+
+```java
+String key = new String(chars);
+```
+
+So:
+
+```text
+['a','e','t']
+      ↓
+"aet"
+```
+
+---
+
+### 4. `putIfAbsent()`
+
+I learned this useful HashMap method:
+
+```java
+map.putIfAbsent(key, new ArrayList<>());
+```
+
+Meaning:
+
+> If this key doesn't exist, create an empty list.
+
+It does **not replace** the existing list if the key is already present.
+
+---
+
+### 5. `map.get(key).add(str)`
+
+This gets the list belonging to the key and adds the original string.
+
+```java
+map.get(key).add(str);
+```
+
+Example:
+
+```text
+aet → ["eat"]
+
+add "tea"
+
+aet → ["eat", "tea"]
+```
+
+---
+
+### 6. `map.values()`
+
+After grouping, I only need the groups, not the keys.
+
+```java
+map.values()
+```
+
+gives:
+
+```text
+[
+  ["eat","tea","ate"],
+  ["tan","nat"],
+  ["bat"]
+]
+```
+
+---
+
+# 🔥 Most Important DSA Pattern Today
+
+## Grouping Using a Common Key
+
+This is the main concept I should remember.
+
+> **When multiple elements need to be grouped based on some common property, create a key representing that property and use a HashMap.**
+
+For this problem:
+
+```text
+Common property = Anagram
+Common key      = Sorted characters
+Data structure  = HashMap
+```
+
+---
+
+# 🔗 Connection With Previous Learning
+
+### Valid Anagram
+
+I already learned:
+
+```text
+Character frequencies
+       ↓
+Determine whether two strings are anagrams
+```
+
+### Group Anagrams
+
+Today I extended that idea:
+
+```text
+Anagram property
+       ↓
+Create common key
+       ↓
+HashMap
+       ↓
+Group all anagrams
+```
+
+So this problem wasn't completely new — it was an **extension of a pattern I already knew**.
+
+---
+
+# 📌 Patterns Added To My DSA Toolkit
+
+```text
+1. HashMap Grouping
+2. Common Key / Representative Key
+3. Sorting as a Key
+4. String → char[]
+5. Arrays.sort()
+6. putIfAbsent()
+7. HashMap + ArrayList
+8. map.values()
+```
+
+---
+
+# ⭐ Biggest Lesson
+
+> **Don't always compare every element with every other element. Sometimes you can transform each element into a common key and let a HashMap automatically group them.**
+
+For anagrams:
+
+```text
+eat → aet ─┐
+tea → aet ─┤
+ate → aet ─┘
+           ↓
+       same group
+```
+
+## ✅ Day 25 — Problem 1 Complete
+
+**49. Group Anagrams — SOLVED ✅**
+
+**Main Pattern:** `HashMap + Common Key`
+
+**Main Learning:**
+**Transform → Create Key → Group using HashMap**
+
+
+SEEYA ON DAY 26....🚀
