@@ -5650,3 +5650,362 @@ For today's stack problem, the key realization was:
 **Day 24 — Complete ✅**
 
 SEEYA ON DAY 25...🚀
+
+# 📖 DSA Journey Documentation — Day 25
+
+**Date:** 10-08-2026
+
+## Problem Solved
+
+### 49. Group Anagrams
+
+**Difficulty:** Medium
+**Pattern:** HashMap + Sorting
+
+---
+
+## 🧠 Problem Understanding
+
+The problem gives an array of strings and asks us to group strings that are anagrams of each other.
+
+For example:
+
+```text
+["eat", "tea", "tan", "ate", "nat", "bat"]
+```
+
+The anagram groups are:
+
+```text
+["eat", "tea", "ate"]
+["tan", "nat"]
+["bat"]
+```
+
+The important thing I understood is that two strings don't need to be in the same order to be anagrams. They only need to contain the same characters with the same frequencies.
+
+---
+
+## 💭 My Initial Thinking
+
+I immediately connected this problem with **Valid Anagram**, which I had already learned.
+
+In Valid Anagram, I used a frequency array to check whether two strings contained the same characters.
+
+For Group Anagrams, however, there are many strings, so I needed a way to identify which strings belong to the same group.
+
+I decided to use a **HashMap**.
+
+The key idea was:
+
+```text
+Original String
+      ↓
+Sort its characters
+      ↓
+Use sorted string as key
+      ↓
+Store original string in that key's list
+```
+
+---
+
+## 🔑 Core Idea
+
+For every string, I sort its characters.
+
+For example:
+
+```text
+eat → aet
+tea → aet
+ate → aet
+```
+
+Since all three produce `"aet"`, they can use the same HashMap key.
+
+The HashMap concept becomes:
+
+```text
+"aet" → ["eat", "tea", "ate"]
+"ant" → ["tan", "nat"]
+"abt" → ["bat"]
+```
+
+This allows all anagrams to automatically fall into the same group.
+
+---
+
+## 💻 Approach
+
+### Step 1 — Create the HashMap
+
+```java
+HashMap<String, List<String>> map = new HashMap<>();
+```
+
+The structure is:
+
+```text
+Key   → Value
+String → List<String>
+```
+
+The key is the sorted representation, and the value is the group of original strings.
+
+### Step 2 — Traverse Every String
+
+```java
+for (String str : strs)
+```
+
+Process one string at a time.
+
+### Step 3 — Convert String to Character Array
+
+```java
+char[] chars = str.toCharArray();
+```
+
+This allows the characters to be sorted.
+
+### Step 4 — Sort the Characters
+
+```java
+Arrays.sort(chars);
+```
+
+Example:
+
+```text
+"tea"
+ ↓
+['t','e','a']
+ ↓
+['a','e','t']
+```
+
+### Step 5 — Create the Key
+
+```java
+String key = new String(chars);
+```
+
+Now:
+
+```text
+"tea" → "aet"
+```
+
+### Step 6 — Create a Group if Necessary
+
+```java
+map.putIfAbsent(key, new ArrayList<>());
+```
+
+If the key doesn't exist, create an empty list.
+
+### Step 7 — Add the Original String
+
+```java
+map.get(key).add(str);
+```
+
+Important: I add the **original string**, not the sorted string.
+
+### Step 8 — Return All Groups
+
+```java
+return new ArrayList<>(map.values());
+```
+
+The keys are only used for grouping, so I return the values.
+
+---
+
+# 🧩 Example Walkthrough
+
+Input:
+
+```text
+["eat","tea","tan","ate","nat","bat"]
+```
+
+Processing:
+
+```text
+eat → aet → aet: [eat]
+
+tea → aet → aet: [eat, tea]
+
+tan → ant → ant: [tan]
+
+ate → aet → aet: [eat, tea, ate]
+
+nat → ant → ant: [tan, nat]
+
+bat → abt → abt: [bat]
+```
+
+Final:
+
+```text
+[
+    ["eat","tea","ate"],
+    ["tan","nat"],
+    ["bat"]
+]
+```
+
+The order doesn't matter.
+
+---
+
+# 📚 Java Concepts Learned
+
+Today I reinforced several Java concepts:
+
+* `HashMap`
+* `List<String>`
+* `ArrayList`
+* `toCharArray()`
+* `Arrays.sort()`
+* `new String(char[])`
+* `putIfAbsent()`
+* `map.get(key)`
+* `map.values()`
+* Generics
+* Nested collection structure: `List<List<String>>`
+
+---
+
+# 🔥 Important DSA Pattern
+
+The biggest pattern I learned today is:
+
+## Common Key → HashMap Grouping
+
+When multiple elements need to be grouped according to some property:
+
+```text
+Element
+   ↓
+Find common representation
+   ↓
+Use it as HashMap key
+   ↓
+Store elements with same key together
+```
+
+For this problem:
+
+```text
+Property → Anagram
+Key      → Sorted characters
+Structure → HashMap
+```
+
+---
+
+# 🔗 Connection With Previous Problems
+
+This problem connected directly with **Valid Anagram**.
+
+### Before:
+
+```text
+Two strings
+    ↓
+Check character frequencies
+    ↓
+Are they anagrams?
+```
+
+### Today:
+
+```text
+Many strings
+    ↓
+Create common anagram key
+    ↓
+HashMap
+    ↓
+Group them
+```
+
+This was a good example of taking an already-learned concept and applying it to a more advanced problem.
+
+---
+
+# 📈 Growth / Improvement
+
+Today I learned that I don't always need to compare every string with every other string.
+
+Instead of doing:
+
+```text
+eat ↔ tea
+eat ↔ tan
+eat ↔ ate
+...
+```
+
+I can transform every string into a common representation.
+
+```text
+eat → aet
+tea → aet
+ate → aet
+```
+
+Then the HashMap handles the grouping.
+
+This is an important improvement in how I think about DSA problems:
+
+> **Look for a property that can become a key instead of repeatedly comparing elements.**
+
+---
+
+# 🎯 What I Should Remember
+
+### Main Pattern
+
+**HashMap + Common Key**
+
+### Anagram Key
+
+**Sort characters → use sorted string as key**
+
+### Useful Java Pattern
+
+```java
+map.putIfAbsent(key, new ArrayList<>());
+map.get(key).add(str);
+```
+
+### Mental Model
+
+```text
+Transform
+    ↓
+Create Key
+    ↓
+HashMap
+    ↓
+Group
+```
+
+---
+
+# ✅ Day 25 Status
+
+**Problem Solved:** 1
+**Problem:** 49. Group Anagrams
+**Difficulty:** Medium
+**Main Pattern:** HashMap + Sorting
+**Previous Concept Reused:** Valid Anagram
+**New Major Concept:** Common-key HashMap grouping
+
+## 🚀 Day 25 — Problem 1 Complete
+
+SEEYA ON DAY 26...🚀
