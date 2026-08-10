@@ -1911,3 +1911,156 @@ str1 == str2
 ### 🔥 Biggest Concept
 
 > **If a problem repeatedly compares the current element with the most recently surviving element, think STACK.**
+
+
+# 🧠 Day 25 — Important Concepts
+
+**Date:** 10-08-2026
+**Problem:** 49. Group Anagrams
+
+## ⭐ Most Important Concepts
+
+### 1. HashMap Grouping
+
+Use a `HashMap` when you want to group multiple elements based on a common property.
+
+```text
+Common Key → Group of Values
+```
+
+---
+
+### 2. Common Key / Representative Key
+
+The biggest concept today.
+
+Different strings can be converted into the same representation.
+
+```text
+eat → aet
+tea → aet
+ate → aet
+```
+
+So `"aet"` becomes the **common key**.
+
+---
+
+### 3. HashMap + List
+
+A single key can have multiple values:
+
+```java
+HashMap<String, List<String>>
+```
+
+Example:
+
+```text
+"aet" → ["eat", "tea", "ate"]
+```
+
+This is an important data-structure combination.
+
+---
+
+### 4. Sorting to Create a Key
+
+For anagrams:
+
+```text
+String
+  ↓
+char[]
+  ↓
+sort
+  ↓
+String key
+```
+
+Important Java methods:
+
+```java
+str.toCharArray();
+Arrays.sort(chars);
+new String(chars);
+```
+
+---
+
+### 5. `putIfAbsent()`
+
+Useful when creating groups:
+
+```java
+map.putIfAbsent(key, new ArrayList<>());
+```
+
+Meaning:
+
+> Create the list only if this key doesn't already exist.
+
+---
+
+### 6. `map.get(key).add(value)`
+
+Once the group exists:
+
+```java
+map.get(key).add(str);
+```
+
+This adds the original string to its corresponding group.
+
+---
+
+### 7. `map.values()`
+
+When the keys were only used for grouping, we can retrieve all groups using:
+
+```java
+map.values()
+```
+
+---
+
+### 8. Reusing Previous Patterns
+
+Today's problem is an extension of **Valid Anagram**.
+
+```text
+Valid Anagram
+→ identify same character pattern
+
+Group Anagrams
+→ use that pattern as a key
+→ group all matching strings
+```
+
+This is an important skill: **recognizing when an old pattern can solve a new problem.**
+
+---
+
+# 🔥 Pattern to Remember
+
+```text
+Element
+   ↓
+Create common representation
+   ↓
+Use representation as HashMap key
+   ↓
+Group elements with same key
+```
+
+### For Anagrams:
+
+```text
+Sort characters → Common Key → HashMap Group
+```
+
+## 🎯 Most Important Concept Today
+
+> **When different elements share a common property, try converting that property into a key and use a HashMap to group them.**
+
+**Day 25 — Important Concepts Complete ✅**
