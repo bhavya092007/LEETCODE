@@ -8913,3 +8913,251 @@ ate → aet ─┘
 
 
 SEEYA ON DAY 26....🚀
+
+# 🧠 LeetCode Learning Log — Day 26
+
+**Date:** 11-08-2026
+
+## Problems Solved
+
+1. **2996 — Smallest Missing Integer Greater Than Sequential Prefix Sum**
+2. **1475 — Final Prices With a Special Discount in a Shop**
+3. **1512 — Number of Good Pairs**
+
+---
+
+## 🔥 Concepts Learned
+
+### 1. Sequential Prefix
+
+A prefix is sequential when every element is exactly `previous + 1`.
+
+```text
+[3, 4, 5, 1, 12]
+ ↑   ↑   ↑
+Sequential prefix
+```
+
+Important pattern:
+
+```java
+if (nums[i] == nums[i - 1] + 1)
+```
+
+Once this condition becomes false, the longest sequential prefix is finished.
+
+---
+
+### 2. HashSet for Fast Existence Checking
+
+In **2996**, HashSet was used to answer:
+
+> "Does this number exist in the array?"
+
+Pattern:
+
+```java
+while (set.contains(sum)) {
+    sum++;
+}
+```
+
+Important idea:
+
+**HashSet → fast membership/existence checking.**
+
+---
+
+### 3. Separating Logic Into Different Jobs
+
+For 2996, we separated:
+
+```text
+Find sequential prefix
+        ↓
+Calculate sum
+        ↓
+Check whether sum exists
+        ↓
+Increase until missing
+```
+
+This is an important problem-solving habit: **don't mix unrelated logic into one loop.**
+
+---
+
+### 4. Nested Loops / Look-Ahead
+
+In **1475**, we used:
+
+```java
+for (int j = i + 1; j < prices.length; j++)
+```
+
+This means:
+
+> Look only at elements to the right of the current element.
+
+Important pattern:
+
+```text
+Current element
+      ↓
+Search to the RIGHT
+      ↓
+Find first valid element
+      ↓
+Use it
+      ↓
+break
+```
+
+---
+
+### 5. `break` After Finding the First Valid Answer
+
+In 1475:
+
+```java
+if (prices[j] <= prices[i]) {
+    ans[i] = prices[i] - prices[j];
+    break;
+}
+```
+
+The `break` is important because the problem asks for the **first** smaller/equal price.
+
+---
+
+### 6. Default Answer Initialization
+
+Learned this useful pattern:
+
+```java
+ans[i] = prices[i];
+```
+
+Meaning:
+
+> Assume there is no discount.
+
+If a valid discount is found, update the answer.
+
+This prevents the answer from staying at Java's default `0`.
+
+---
+
+### 7. Good Pairs
+
+In **1512**, a good pair satisfies:
+
+```text
+nums[i] == nums[j]
+i < j
+```
+
+Nested-loop pattern:
+
+```java
+for (int i = 0; i < nums.length; i++) {
+    for (int j = i + 1; j < nums.length; j++) {
+        if (nums[i] == nums[j]) {
+            count++;
+        }
+    }
+}
+```
+
+Important insight:
+
+`j = i + 1` automatically guarantees:
+
+```text
+i < j
+```
+
+---
+
+### 8. Frequency Counting Pattern
+
+The bigger concept behind **1512** is:
+
+```text
+number → frequency seen so far
+```
+
+When a number appears again:
+
+```text
+new pairs = previous frequency
+```
+
+Example:
+
+```text
+1 → seen 0 times → +0
+1 → seen 1 time  → +1
+1 → seen 2 times → +2
+1 → seen 3 times → +3
+```
+
+This leads to the important HashMap pattern:
+
+```text
+count += frequency
+frequency++
+```
+
+---
+
+# 🎯 Most Important Patterns From Day 26
+
+### Pattern 1 — Sequential Prefix
+
+```text
+nums[i] == nums[i-1] + 1
+```
+
+### Pattern 2 — HashSet Membership
+
+```text
+set.contains(value)
+```
+
+### Pattern 3 — Search to the Right
+
+```text
+j = i + 1
+```
+
+### Pattern 4 — First Valid Element
+
+```text
+find → use → break
+```
+
+### Pattern 5 — Default + Update
+
+```text
+answer = original value
+        ↓
+update only if condition is satisfied
+```
+
+### Pattern 6 — Frequency → Pair Counting
+
+```text
+new pairs = previous frequency
+```
+
+---
+
+## 💡 Day 26 Key Takeaway
+
+> **Don't just learn the solution. Learn the pattern behind the solution.**
+
+Today you worked with **sequential patterns, HashSet, nested loops, look-ahead searching, `break`, default initialization, and frequency counting**.
+
+**Day 26 — Complete ✅**
+
+SEEYA ON DAY 27....🚀
