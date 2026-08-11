@@ -6009,3 +6009,125 @@ Group
 ## 🚀 Day 25 — Problem 1 Complete
 
 SEEYA ON DAY 26...🚀
+
+# Day 26 — LeetCode Documentation
+
+**Date:** 11-08-2026
+
+## Problems Solved
+
+### 1. 2996 — Smallest Missing Integer Greater Than Sequential Prefix Sum
+
+**Approach:** HashSet + Sequential Prefix
+
+**What I learned:**
+
+* A sequential prefix continues when `nums[i] == nums[i - 1] + 1`.
+* Calculate the sum only until the sequential prefix breaks.
+* Use a `HashSet` to store all array elements.
+* Use `set.contains(sum)` to check whether the current number exists.
+* Keep increasing `sum` until a missing number is found.
+
+**Pattern:**
+
+```text
+Find sequential prefix
+        ↓
+Calculate prefix sum
+        ↓
+HashSet membership check
+        ↓
+Increase until missing
+```
+
+---
+
+### 2. 1475 — Final Prices With a Special Discount in a Shop
+
+**Approach:** Nested Loops / Brute Force
+
+**What I learned:**
+
+* For every element, search only to its right.
+* Start `j` from `i + 1`.
+* Find the **first** price satisfying `prices[j] <= prices[i]`.
+* Apply the discount and immediately `break`.
+* Initialize `ans[i] = prices[i]` because there may be no discount.
+
+**Pattern:**
+
+```text
+Current element
+      ↓
+Search to the right
+      ↓
+First valid element
+      ↓
+Update answer
+      ↓
+break
+```
+
+**Complexity:**
+
+* Time: `O(n²)`
+* Space: `O(n)`
+
+---
+
+### 3. 1512 — Number of Good Pairs
+
+**Approach:** Nested Loops
+
+**What I learned:**
+
+* A good pair requires `nums[i] == nums[j]` and `i < j`.
+* Starting `j` from `i + 1` automatically guarantees `i < j`.
+* Count every matching pair.
+
+**Pattern:**
+
+```java
+for (int i = 0; i < nums.length; i++) {
+    for (int j = i + 1; j < nums.length; j++) {
+        if (nums[i] == nums[j]) {
+            count++;
+        }
+    }
+}
+```
+
+**Complexity:**
+
+* Time: `O(n²)`
+* Space: `O(1)`
+
+---
+
+# 🧠 Important Concepts — Day 26
+
+1. **Sequential Prefix**
+2. **HashSet for Membership Checking**
+3. **Nested Loops**
+4. **Look to the Right using `j = i + 1`**
+5. **First Valid Element + `break`**
+6. **Default Answer Initialization**
+7. **Frequency Counting**
+8. **Good Pair Condition**
+9. **Separating Different Parts of a Problem**
+
+## 🔥 Biggest Learning
+
+One important pattern from today was:
+
+```text
+Previous Frequency → Number of New Pairs
+```
+
+If a number has already appeared `k` times, seeing it again creates exactly `k` new good pairs.
+
+This is the foundation of the more optimized **HashMap frequency-counting solution** for problems like Number of Good Pairs.
+
+**Day 26 — Completed Successfully ✅**
+
+SEEYA ON DAY 27...🚀
