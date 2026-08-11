@@ -2064,3 +2064,126 @@ Sort characters → Common Key → HashMap Group
 > **When different elements share a common property, try converting that property into a key and use a HashMap to group them.**
 
 **Day 25 — Important Concepts Complete ✅**
+
+
+# 🧠 Day 26 — Important Concepts
+
+**Date:** 11-08-2026
+
+### 1. Sequential Prefix
+
+A prefix is sequential when:
+
+```java
+nums[i] == nums[i - 1] + 1
+```
+
+When this becomes false, the sequential prefix ends.
+
+---
+
+### 2. HashSet — Membership Checking
+
+Use:
+
+```java
+set.contains(value)
+```
+
+when the main question is:
+
+> "Does this value exist?"
+
+---
+
+### 3. Search to the Right
+
+For problems where `j > i`:
+
+```java
+for (int j = i + 1; j < n; j++)
+```
+
+This automatically guarantees:
+
+```text
+i < j
+```
+
+---
+
+### 4. First Valid Element → `break`
+
+When a problem asks for the **first** valid element:
+
+```text
+Search → Find → Use → break
+```
+
+This was important in **1475. Final Prices**.
+
+---
+
+### 5. Default Answer + Update
+
+Initialize with the value that should be returned if no special condition occurs:
+
+```java
+ans[i] = prices[i];
+```
+
+Then update only when a valid discount is found.
+
+---
+
+### 6. Good Pair Pattern
+
+A good pair requires:
+
+```text
+nums[i] == nums[j]
+i < j
+```
+
+Using:
+
+```java
+j = i + 1
+```
+
+automatically satisfies `i < j`.
+
+---
+
+### 7. Frequency → New Pairs
+
+If a number has appeared `k` times before, the next occurrence creates exactly `k` new pairs.
+
+```text
+frequency = 0 → +0 pairs
+frequency = 1 → +1 pair
+frequency = 2 → +2 pairs
+frequency = 3 → +3 pairs
+```
+
+This is the key **HashMap frequency-counting pattern**.
+
+---
+
+### ⭐ Most Important Concept
+
+> **Previous frequency tells you how many new pairs the current element creates.**
+
+Remember this pattern:
+
+```text
+See number
+   ↓
+Check previous frequency
+   ↓
+Add frequency to answer
+   ↓
+Increase frequency
+```
+
+**Day 26 Important Concepts — Done ✅**
