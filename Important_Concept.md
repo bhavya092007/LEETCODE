@@ -2187,3 +2187,197 @@ Increase frequency
 ```
 
 **Day 26 Important Concepts — Done ✅**
+
+# 🧠 Day 27 — Important Concepts
+
+**Date:** 12-08-2026
+
+## 1. 2D Array Traversal
+
+```java
+array[i][j]
+```
+
+```text
+i → row
+j → column
+```
+
+---
+
+## 2. Row vs Element
+
+```java
+array[i]       // entire row
+array[i][j]    // individual element
+```
+
+This is a **recurring mistake** I need to remember.
+
+---
+
+## 3. `length` in 2D Arrays
+
+```java
+array.length
+```
+
+→ number of rows
+
+```java
+array[i].length
+```
+
+→ number of elements in row `i`
+
+Correct traversal:
+
+```java
+for (int i = 0; i < array.length; i++) {
+    for (int j = 0; j < array[i].length; j++) {
+        // array[i][j]
+    }
+}
+```
+
+---
+
+## 4. Row Sum
+
+```java
+sum += array[i][j];
+```
+
+Use this when each row represents one object or customer and we need its total.
+
+---
+
+## 5. Maximum Value Pattern
+
+```java
+if (value > max) {
+    max = value;
+}
+```
+
+Pattern:
+
+```text
+Calculate current value
+        ↓
+Compare with max
+        ↓
+Update max
+```
+
+---
+
+## 6. Main Diagonal
+
+For a square matrix:
+
+```java
+mat[i][i]
+```
+
+Example:
+
+```text
+[1 2 3]
+[4 5 6]
+[7 8 9]
+
+1 → 5 → 9
+```
+
+---
+
+## 7. Secondary Diagonal
+
+```java
+mat[i][n - 1 - i]
+```
+
+Example:
+
+```text
+[1 2 3]
+[4 5 6]
+[7 8 9]
+
+3 → 5 → 7
+```
+
+---
+
+## 8. Center Element Double Counting
+
+For an odd-sized matrix, the center belongs to both diagonals.
+
+```java
+if (n % 2 == 1) {
+    sum -= mat[n / 2][n / 2];
+}
+```
+
+---
+
+## 9. HashMap Frequency
+
+```text
+element → frequency
+```
+
+Use a `HashMap` when we need to track how many times an element appears.
+
+---
+
+## 10. Sliding Window — Introduction
+
+Basic idea:
+
+```text
+right → expand window
+left  → shrink window
+```
+
+Useful for contiguous subarray or substring problems.
+
+For `2958`:
+
+```text
+frequency of every element <= k
+```
+
+---
+
+## 11. TLE Recognition
+
+The brute-force approach for `2958` used nested loops:
+
+```text
+O(n²)
+```
+
+and resulted in **TLE**.
+
+Important lesson:
+
+> A solution can be logically correct but still too slow.
+
+When the same elements are repeatedly checked, look for an optimization such as **Sliding Window**.
+
+---
+
+# ⭐ Most Important Concept
+
+> **In a 2D array, always identify exactly what each index represents before writing the loop.**
+
+```text
+array[i]       → row
+array[i][j]    → element
+i              → row index
+j              → column index
+```
+
+**Day 27 — Important Concepts Complete ✅**
