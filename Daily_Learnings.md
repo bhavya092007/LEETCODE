@@ -9161,3 +9161,664 @@ Today you worked with **sequential patterns, HashSet, nested loops, look-ahead s
 **Day 26 — Complete ✅**
 
 SEEYA ON DAY 27....🚀
+
+# 📖 DSA Journey Documentation --- Day 27
+
+**Date:** 12-08-2026
+
+## Problems Worked On
+
+### 2958. Length of Longest Subarray With at Most K Frequency
+
+**Difficulty:** Medium\
+**Pattern:** HashMap + Sliding Window\
+**Status:** ⏸️ Paused
+
+------------------------------------------------------------------------
+
+## 🧠 Problem Understanding
+
+The problem gives an integer array `nums` and an integer `k`.
+
+We need to find the **longest contiguous subarray** where every element
+appears at most `k` times.
+
+For example:
+
+``` text
+nums = [1,2,3,1,2,3,1,2]
+k = 2
+```
+
+The longest valid subarray is:
+
+``` text
+[1,2,3,1,2,3]
+```
+
+because each number appears exactly two times.
+
+------------------------------------------------------------------------
+
+## 💭 My Initial Thinking
+
+I first thought this was mainly a **HashMap / HashSet** problem because
+the problem talks about frequency.
+
+I tried a brute-force approach:
+
+``` text
+Choose starting index i
+        ↓
+Traverse using j
+        ↓
+Count frequency
+        ↓
+If frequency > k → break
+        ↓
+Calculate length
+        ↓
+Update maximum
+```
+
+The approach made sense logically, but it resulted in **TLE**.
+
+------------------------------------------------------------------------
+
+## ❌ Why I Got TLE
+
+The nested loops repeatedly check many of the same elements.
+
+The approximate complexity is:
+
+``` text
+O(n²)
+```
+
+For a large input, this becomes too slow.
+
+------------------------------------------------------------------------
+
+## 🔑 New Concept Introduced --- Sliding Window
+
+The optimized pattern for this problem is:
+
+``` text
+HashMap + Sliding Window
+```
+
+Basic idea:
+
+``` text
+right → expand the window
+left  → shrink the window when invalid
+```
+
+The HashMap stores:
+
+``` text
+element → frequency
+```
+
+When an element's frequency becomes greater than `k`, the current window
+is invalid, so we move `left` forward and decrease the frequency of
+removed elements.
+
+I have **paused this problem** because I want to understand Sliding
+Window properly instead of memorizing the solution.
+
+------------------------------------------------------------------------
+
+# 1672. Richest Customer Wealth
+
+**Difficulty:** Easy\
+**Pattern:** 2D Array Traversal + Maximum Value\
+**Status:** ✅ Solved
+
+------------------------------------------------------------------------
+
+## 🧠 Problem Understanding
+
+The problem gives a 2D array where:
+
+``` java
+accounts[i][j]
+```
+
+represents the money customer `i` has in bank `j`.
+
+We need to calculate the total wealth of every customer and return the
+maximum.
+
+Example:
+
+``` text
+accounts = [
+    [1,2,3],
+    [3,2,1]
+]
+```
+
+First customer:
+
+``` text
+1 + 2 + 3 = 6
+```
+
+Second customer:
+
+``` text
+3 + 2 + 1 = 6
+```
+
+Answer:
+
+``` text
+6
+```
+
+------------------------------------------------------------------------
+
+## 💭 My Initial Thinking
+
+I understood that this was a **2D array traversal** problem, so I needed
+nested loops.
+
+However, I initially confused:
+
+``` java
+accounts.length
+```
+
+with:
+
+``` java
+accounts[i].length
+```
+
+This was the same type of mistake I have made before with 2D arrays.
+
+------------------------------------------------------------------------
+
+## 🔑 Important 2D Array Concept
+
+``` java
+accounts.length
+```
+
+means:
+
+``` text
+Number of rows
+```
+
+while:
+
+``` java
+accounts[i].length
+```
+
+means:
+
+``` text
+Number of elements in row i
+```
+
+Therefore:
+
+``` java
+for (int i = 0; i < accounts.length; i++) {
+    for (int j = 0; j < accounts[i].length; j++) {
+        sum += accounts[i][j];
+    }
+}
+```
+
+------------------------------------------------------------------------
+
+## ⚠️ Recurring Mistake --- Row vs Element
+
+I noticed that I repeatedly confuse:
+
+``` java
+accounts[i]
+```
+
+and:
+
+``` java
+accounts[i][j]
+```
+
+Remember:
+
+``` text
+accounts[i]       → entire row
+accounts[i][j]    → one element
+```
+
+And:
+
+``` text
+i → row
+j → column
+```
+
+This is now a **recurring DSA mistake** that I should actively check
+whenever I solve a 2D array problem.
+
+------------------------------------------------------------------------
+
+## 🔥 Maximum Value Pattern
+
+After calculating each customer's wealth:
+
+``` java
+if (sum > max) {
+    max = sum;
+}
+```
+
+General pattern:
+
+``` text
+Calculate current value
+        ↓
+Compare with max
+        ↓
+Update max if current value is larger
+```
+
+This is the **Maximum Value Pattern**.
+
+------------------------------------------------------------------------
+
+# 1572. Matrix Diagonal Sum
+
+**Difficulty:** Easy\
+**Pattern:** 2D Array + Diagonal Indexing\
+**Status:** ✅ Solved
+
+------------------------------------------------------------------------
+
+## 🧠 Problem Understanding
+
+The problem gives a square matrix and asks for the sum of both
+diagonals.
+
+Example:
+
+``` text
+[1 2 3]
+[4 5 6]
+[7 8 9]
+```
+
+Main diagonal:
+
+``` text
+1 + 5 + 9 = 15
+```
+
+Secondary diagonal:
+
+``` text
+3 + 5 + 7 = 15
+```
+
+The center `5` is counted twice, so it must be subtracted once.
+
+Final answer:
+
+``` text
+25
+```
+
+------------------------------------------------------------------------
+
+## 🔑 Main Diagonal
+
+The main diagonal follows:
+
+``` java
+mat[i][i]
+```
+
+Example:
+
+``` text
+mat[0][0] → 1
+mat[1][1] → 5
+mat[2][2] → 9
+```
+
+Pattern:
+
+``` text
+[i][i]
+```
+
+------------------------------------------------------------------------
+
+## 🔑 Secondary Diagonal
+
+The secondary diagonal follows:
+
+``` java
+mat[i][n - 1 - i]
+```
+
+Example:
+
+``` text
+mat[0][2] → 3
+mat[1][1] → 5
+mat[2][0] → 7
+```
+
+Pattern:
+
+``` text
+[i][n - 1 - i]
+```
+
+------------------------------------------------------------------------
+
+## ⚠️ Center Element
+
+If the matrix size is odd, the center element belongs to both diagonals.
+
+Therefore:
+
+``` java
+if (n % 2 == 1) {
+    sum -= mat[n / 2][n / 2];
+}
+```
+
+This prevents counting the center twice.
+
+------------------------------------------------------------------------
+
+# 📚 Java / DSA Concepts Learned Today
+
+-   2D array traversal
+-   Nested loops
+-   Rows and columns
+-   `array[i]` vs `array[i][j]`
+-   `accounts.length`
+-   `accounts[i].length`
+-   Row sum
+-   Maximum value pattern
+-   Main diagonal indexing
+-   Secondary diagonal indexing
+-   Handling duplicate center elements
+-   HashMap frequency
+-   Subarray concept
+-   Sliding Window introduction
+-   Recognizing TLE
+-   Understanding `O(n²)` brute force
+
+------------------------------------------------------------------------
+
+# 🔥 Important Concepts --- Day 27
+
+## 1. 2D Array Traversal
+
+``` java
+array[i][j]
+```
+
+``` text
+i → row
+j → column
+```
+
+## 2. Row vs Element
+
+``` java
+array[i]       // entire row
+array[i][j]    // individual element
+```
+
+## 3. Correct Inner Loop
+
+``` java
+for (int j = 0; j < array[i].length; j++)
+```
+
+The inner loop should use the current row's length when traversing its
+columns.
+
+## 4. Row Sum
+
+``` java
+sum += accounts[i][j];
+```
+
+## 5. Maximum Value Pattern
+
+``` java
+if (sum > max) {
+    max = sum;
+}
+```
+
+## 6. Main Diagonal
+
+``` java
+mat[i][i]
+```
+
+## 7. Secondary Diagonal
+
+``` java
+mat[i][n - 1 - i]
+```
+
+## 8. Frequency Pattern
+
+``` text
+element → frequency
+```
+
+## 9. Sliding Window
+
+``` text
+right → expand
+left  → shrink
+```
+
+## 10. TLE Recognition
+
+A brute-force nested-loop solution can become:
+
+``` text
+O(n²)
+```
+
+and may cause TLE when the input size is large.
+
+------------------------------------------------------------------------
+
+# 🔗 Connection With Previous Problems
+
+### HashMap
+
+I previously used HashMap in problems such as:
+
+``` text
+49. Group Anagrams
+```
+
+Today I recognized that frequency-based problems can also use HashMap:
+
+``` text
+element → frequency
+```
+
+This is useful for problems where we need to know how many times an
+element appears.
+
+### Maximum Value Pattern
+
+The same pattern appears again:
+
+``` java
+if (value > max) {
+    max = value;
+}
+```
+
+Used in:
+
+``` text
+1672. Richest Customer Wealth
+```
+
+### 2D Arrays
+
+Today I practiced two different types of 2D array problems:
+
+``` text
+1672 → row traversal + row sum
+1572 → diagonal indexing
+```
+
+This helped me understand that correct indexing is one of the most
+important parts of working with matrices.
+
+------------------------------------------------------------------------
+
+# 📝 Recurring Mistake To Remember
+
+## 2D Array Row vs Element Confusion
+
+I repeatedly confuse:
+
+``` java
+array[i]
+```
+
+with:
+
+``` java
+array[i][j]
+```
+
+Remember:
+
+``` text
+array[i]
+    ↓
+entire row
+
+array[i][j]
+    ↓
+one element
+```
+
+And:
+
+``` text
+i → row
+j → column
+```
+
+Before writing a 2D array loop, I should first identify:
+
+``` text
+How many rows?
+How many columns in the current row?
+What does i represent?
+What does j represent?
+```
+
+------------------------------------------------------------------------
+
+# 📈 Growth / Improvement
+
+Today I strengthened my understanding of **2D arrays, nested loops,
+matrix indexing, row sums, and maximum-value patterns**.
+
+I also started recognizing when a brute-force solution is too slow.
+
+The 2958 problem was difficult because it introduced **Sliding Window**.
+I understood the reason my nested-loop approach got TLE, but I decided
+to pause the problem and learn the pattern properly before solving it.
+
+Most importantly, I identified a recurring mistake:
+
+> I sometimes confuse `array[i]` (the complete row) with `array[i][j]`
+> (a single element).
+
+I need to keep checking this whenever I work with 2D arrays.
+
+------------------------------------------------------------------------
+
+# 🎯 What I Should Remember
+
+``` text
+2D Array:
+array[i][j]
+
+i → row
+j → column
+
+Entire row:
+array[i]
+
+Individual element:
+array[i][j]
+
+Number of rows:
+array.length
+
+Number of columns:
+array[i].length
+
+Main diagonal:
+mat[i][i]
+
+Secondary diagonal:
+mat[i][n - 1 - i]
+
+Maximum pattern:
+if (value > max)
+    max = value;
+
+Frequency:
+element → frequency
+
+Sliding Window:
+right → expand
+left → shrink
+```
+
+------------------------------------------------------------------------
+
+# ✅ Day 27 Status
+
+**Problems Solved:** 2\
+**Problem Paused:** 1\
+**Problems Worked On:** 2958, 1672, 1572\
+**Main Topics:** 2D Arrays, HashMap, Frequency, Maximum Value, Matrix
+Diagonals, Sliding Window
+
+## 🚀 Day 27 --- Completed
+
+Today I solved two Easy problems and strengthened my understanding of
+**2D array traversal, row sums, maximum-value patterns, and matrix
+diagonal indexing**.
+
+I also attempted a Medium Sliding Window problem and understood why my
+brute-force approach resulted in TLE.
+
+I identified a recurring mistake in my DSA journey:
+
+> **`array[i]` is a row, while `array[i][j]` is an individual element.**
+
+This is something I need to remember in every future 2D array problem.
+
+# 👋 See You on Day 28!
+
