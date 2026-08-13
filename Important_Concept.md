@@ -2381,3 +2381,19 @@ j              → column index
 ```
 
 **Day 27 — Important Concepts Complete ✅**
+
+
+3. Single Number Pattern
+
+When every number appears twice except one:
+
+duplicate ^ duplicate = 0
+
+so the duplicates disappear and the unique value remains.
+
+General pattern:
+int ans = 0;
+
+for (int num : nums) {
+    ans ^= num;
+}
