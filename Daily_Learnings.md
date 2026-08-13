@@ -9822,3 +9822,582 @@ This is something I need to remember in every future 2D array problem.
 
 # 👋 See You on Day 28!
 
+# 📖 DSA Journey Documentation — Day 28
+
+**Date:** 13-08-2026
+
+## Problems Solved
+
+### 1. 1486. XOR Operation in an Array
+
+**Difficulty:** Easy  
+**Pattern:** XOR + Array Traversal  
+**Status:** ✅ Solved
+
+---
+
+## 🧠 Problem Understanding
+
+The problem defines an array using:
+
+```text
+nums[i] = start + 2 * i
+```
+
+So instead of creating the complete array first, I can directly generate each value while traversing.
+
+For example:
+
+```text
+n = 5
+start = 0
+```
+
+The generated values are:
+
+```text
+0, 2, 4, 6, 8
+```
+
+The task is to XOR all of them.
+
+---
+
+## 💭 My Approach
+
+I used a variable:
+
+```java
+int ans = 0;
+```
+
+Then for every `i`:
+
+```java
+ans = ans ^ (start + 2 * i);
+```
+
+This avoids creating a separate array.
+
+---
+
+## 🔑 XOR Concepts Reinforced
+
+Important XOR properties:
+
+```text
+x ^ x = 0
+x ^ 0 = x
+```
+
+XOR is useful for problems where values can cancel each other.
+
+---
+
+# 2. 136. Single Number
+
+**Difficulty:** Easy  
+**Pattern:** XOR  
+**Status:** ✅ Solved
+
+---
+
+## 🧠 Problem Understanding
+
+The problem gives an array where every number appears twice except one number.
+
+The goal is to find the number that appears only once.
+
+For example:
+
+```text
+[4,1,2,1,2]
+```
+
+The answer is:
+
+```text
+4
+```
+
+---
+
+## 💭 My Approach
+
+I used XOR again:
+
+```java
+int ans = 0;
+
+for (int num : nums) {
+    ans = ans ^ num;
+}
+```
+
+Because equal numbers cancel each other:
+
+```text
+1 ^ 1 = 0
+2 ^ 2 = 0
+```
+
+So:
+
+```text
+0 ^ 4 ^ 1 ^ 2 ^ 1 ^ 2
+```
+
+becomes:
+
+```text
+4
+```
+
+---
+
+## 🔥 Important XOR Pattern
+
+```text
+0 ^ duplicate ^ duplicate ^ unique
+```
+
+All duplicates cancel and the unique number remains.
+
+---
+
+# 3. 1859. Sorting the Sentence
+
+**Difficulty:** Easy  
+**Pattern:** String Manipulation + Index Placement  
+**Status:** ✅ Solved
+
+---
+
+## 🧠 Problem Understanding
+
+Each word contains its original position at the end.
+
+Example:
+
+```text
+"is2 sentence4 This1 a3"
+```
+
+The numbers tell us where each word belongs:
+
+```text
+is2       → position 2
+sentence4 → position 4
+This1     → position 1
+a3        → position 3
+```
+
+So the original sentence is:
+
+```text
+"This is a sentence"
+```
+
+---
+
+## 💭 My Approach
+
+I first understood the problem in Java, then tried the solution in Python.
+
+The Python solution was:
+
+```python
+words = s.split()
+ans = [""] * len(words)
+
+for word in words:
+    pos = int(word[-1])
+    ans[pos - 1] = word[:-1]
+
+return " ".join(ans)
+```
+
+---
+
+## 🔑 Python Concepts Learned
+
+### `split()`
+
+```python
+s.split()
+```
+
+Turns a sentence into a list of words.
+
+```text
+"is2 sentence4 This1 a3"
+        ↓
+["is2", "sentence4", "This1", "a3"]
+```
+
+### Negative Indexing
+
+```python
+word[-1]
+```
+
+gets the last character.
+
+For:
+
+```text
+"This1"
+```
+
+it gives:
+
+```text
+"1"
+```
+
+### `int()`
+
+```python
+int(word[-1])
+```
+
+converts the number into an integer.
+
+### Slicing
+
+```python
+word[:-1]
+```
+
+removes the final character.
+
+```text
+"This1" → "This"
+```
+
+### `join()`
+
+```python
+" ".join(ans)
+```
+
+combines the words with spaces.
+
+---
+
+## 🔗 Important Java/Python Connection
+
+The algorithm is the same even when the language changes:
+
+```text
+Split
+  ↓
+Read position
+  ↓
+Place word
+  ↓
+Remove position number
+  ↓
+Join
+```
+
+Only the syntax changes.
+
+This helped me realize that **DSA logic is more important than programming-language syntax**.
+
+---
+
+# 4. 1925. Count Square Sum Triples
+
+**Difficulty:** Easy  
+**Pattern:** Brute Force + Triplet Search  
+**Status:** ✅ Solved
+
+---
+
+## 🧠 Problem Understanding
+
+A square triple is a triplet:
+
+```text
+(a, b, c)
+```
+
+such that:
+
+```text
+a² + b² = c²
+```
+
+and:
+
+```text
+1 <= a,b,c <= n
+```
+
+For:
+
+```text
+n = 5
+```
+
+the valid triples are:
+
+```text
+(3,4,5)
+(4,3,5)
+```
+
+Both count separately because `a` and `b` are ordered positions in the triplet.
+
+---
+
+## 💭 My Initial Thinking
+
+At first, I was unsure how to decide what values should be used for `a`, `b`, and `c`.
+
+I realized I don't need to guess special values.
+
+I can simply try every possible value from `1` to `n`.
+
+So:
+
+```text
+a → 1 to n
+b → 1 to n
+c → 1 to n
+```
+
+Then check:
+
+```text
+a² + b² == c²
+```
+
+---
+
+## 💻 Final Approach
+
+```java
+int count = 0;
+
+for (int i = 1; i <= n; i++) {
+    for (int j = 1; j <= n; j++) {
+        for (int k = 1; k <= n; k++) {
+
+            if (i * i + j * j == k * k) {
+                count++;
+            }
+        }
+    }
+}
+
+return count;
+```
+
+Here:
+
+```text
+i → a
+j → b
+k → c
+```
+
+---
+
+## 🔥 Important Concept
+
+This is a classic **Brute Force Triplet Search**:
+
+```text
+Choose a
+   ↓
+Choose b
+   ↓
+Choose c
+   ↓
+Check condition
+   ↓
+Count if valid
+```
+
+Because `n` is small, the `O(n³)` solution is acceptable.
+
+---
+
+# 📚 Java / DSA Concepts Learned Today
+
+- XOR operator
+- XOR cancellation
+- XOR accumulation
+- Bitwise operations
+- Enhanced `for` loop
+- Formula-based array generation
+- String splitting
+- String indexing
+- Negative indexing in Python
+- Python slicing
+- Python `join()`
+- Brute force
+- Triplet search
+- Nested loops
+- Condition-based counting
+- Understanding when `O(n³)` is acceptable
+
+---
+
+# 🔥 Important Patterns From Day 28
+
+### Pattern 1 — XOR Accumulation
+
+```java
+ans ^= value;
+```
+
+Useful when duplicate values should cancel.
+
+### Pattern 2 — XOR Duplicate Cancellation
+
+```text
+x ^ x = 0
+x ^ 0 = x
+```
+
+### Pattern 3 — Formula-Based Generation
+
+Instead of creating an array:
+
+```text
+value = start + 2 * i
+```
+
+generate the value directly during the loop.
+
+### Pattern 4 — Position-Based String Reconstruction
+
+```text
+word
+ ↓
+last character = position
+ ↓
+place word at position - 1
+```
+
+### Pattern 5 — Brute Force Triplets
+
+```text
+for a
+    for b
+        for c
+            check condition
+```
+
+---
+
+# 🔗 Connection With Previous Learning
+
+### XOR
+
+Earlier I learned what XOR means in Java.
+
+Today I actually applied it to:
+
+```text
+1486. XOR Operation in an Array
+136. Single Number
+```
+
+This helped me move from understanding the operator to recognizing when it is useful.
+
+### String Handling
+
+The `1859` problem reinforced the string concepts I have been learning in Java, while also giving me practice with Python string functions.
+
+### Brute Force
+
+The `1925` problem reinforced that brute force is not always bad.
+
+The key is:
+
+> **If the input constraints are small enough, a simple brute-force solution can be the best choice.**
+
+---
+
+# 📈 Growth / Improvement
+
+Today I worked with several different patterns instead of focusing on only one data structure.
+
+I practiced:
+
+```text
+XOR
+Strings
+Python syntax
+Nested loops
+Brute force
+Formula-based generation
+```
+
+I also learned that the same DSA idea can be expressed in different programming languages.
+
+The biggest improvement today was recognizing that I do not always need a complicated data structure. Sometimes the cleanest solution is simply:
+
+```text
+Generate
+Traverse
+Check
+Count
+```
+
+---
+
+# 🎯 What I Should Remember
+
+```text
+XOR:
+x ^ x = 0
+x ^ 0 = x
+
+Single Number:
+ans ^= num
+
+XOR Operation:
+ans ^= (start + 2 * i)
+
+String Position:
+word[-1] → position
+word[:-1] → remove position
+
+Brute Force Triplets:
+a = 1..n
+b = 1..n
+c = 1..n
+
+Check:
+a² + b² = c²
+```
+
+---
+
+# ✅ Day 28 Status
+
+**Problems Solved:** 4
+
+**Problems:**
+- 1486. XOR Operation in an Array ✅
+- 136. Single Number ✅
+- 1859. Sorting the Sentence ✅
+- 1925. Count Square Sum Triples ✅
+
+**Main Topics:** XOR, Strings, Python Syntax, Brute Force, Nested Loops, Triplet Search
+
+## 🚀 Day 28 — Completed
+
+Today I strengthened my understanding of **XOR**, learned how to use it to cancel duplicate values, practiced **Python string operations**, and reinforced the idea of using **simple brute force when the constraints are small**.
+
+The most important takeaway is:
+
+> **First understand the pattern and constraints. Then choose the simplest solution that fits.**
+
+# 👋 See You on Day 29!
+
