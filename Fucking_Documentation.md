@@ -6771,3 +6771,88 @@ I identified a recurring mistake in my DSA journey:
 This is something I need to remember in every future 2D array problem.
 
 # 👋 See You on Day 28!
+
+# 📖 DSA Journey Documentation — Day 28
+
+**Date:** 13-08-2026
+
+Today was a really interesting DSA session because I worked with different types of problems instead of staying with one pattern.
+
+I started with **1486. XOR Operation in an Array**. The problem looked simple, and I was able to understand the formula behind the array quickly. Instead of creating the array first, I realized that I could generate each value directly while traversing it and keep combining the values. This was a good reminder that I don't always need to explicitly create the data mentioned in the problem. Sometimes I can work with it directly.
+
+After that, I solved **136. Single Number**. This felt easier because I was able to connect it with the XOR concept from the previous problem. The biggest improvement here was recognizing that the idea I had just learned could immediately be reused in another problem. I didn't have to treat the problem as something completely new.
+
+Then I worked on **1859. Sorting the Sentence**. This was different because I decided to try solving it in **Python**, even though most of my recent LeetCode work has been in Java. I already understood the logic of the problem, so instead of worrying about the algorithm, I focused on learning how Python expresses the same idea. This helped me realize that once the problem-solving logic is clear, changing the language mainly becomes a syntax challenge rather than a DSA challenge.
+
+The final problem was **1925. Count Square Sum Triples**. At first, I was confused about how to decide which values should be used for `a`, `b`, and `c`. I was looking for some special way to choose them, but then I realized that I didn't need to guess anything. I could simply try every possible value within the given range and check whether the condition was satisfied. That helped reinforce an important mindset: when the constraints are small, a straightforward brute-force solution can be completely reasonable.
+
+### 💭 How My Thinking Was Today
+
+One thing I noticed today is that I am becoming better at breaking problems into smaller questions.
+
+Instead of immediately asking:
+
+> "What is the code?"
+
+I am starting to ask:
+
+> "What exactly is the problem asking me to find?"
+
+and then:
+
+> "What values are possible?"
+
+and finally:
+
+> "Can I simply check all possibilities?"
+
+That change in thinking is important.
+
+### ❌ Mistakes I Made Today
+
+My biggest mistake today was not really a coding mistake. It was **overthinking the choice of values** in the square-triples problem.
+
+I initially thought I somehow needed to know in advance which numbers should become `a`, `b`, and `c`.
+
+I eventually realized that I don't always need to predict the answer. Sometimes I can let the algorithm **try the possibilities and verify them**.
+
+Another thing I noticed is that I still sometimes focus too much on the programming language syntax before fully settling the algorithm. Working on the Python problem showed me that the better order is:
+
+**Understand the logic first → then worry about syntax.**
+
+### 📈 Improvements Today
+
+I feel that my problem-solving is becoming more flexible.
+
+Earlier, I often tried to find a specific trick immediately. Today I was more comfortable with:
+
+* Reusing a pattern I had just learned.
+* Switching from Java to Python without changing the underlying logic.
+* Using brute force when the constraints allow it.
+* Generating values directly instead of unnecessarily creating extra structures.
+* Breaking a problem into "generate → check → count" instead of overcomplicating it.
+
+### 🧠 What I Want to Improve
+
+I still want to get faster at recognizing **what kind of problem I am looking at**.
+
+I also want to become better at deciding when brute force is enough and when I should look for an optimized approach.
+
+Most importantly, I want to stop feeling that every Medium-looking problem needs some complicated trick. Sometimes the simplest correct idea is enough.
+
+### 🎯 Biggest Lesson of Day 28
+
+> **Don't try to be clever before understanding the problem.**
+
+Today showed me that many problems become much easier when I first understand:
+what I have, what I need, and what possibilities I am allowed to check.
+
+My goal is not just to solve more problems. It is to become better at **thinking through problems before touching the code**.
+
+## ✅ Day 28 — Completed
+
+Today I solved four problems and, more importantly, practiced different ways of thinking instead of relying on one single pattern.
+
+**Day 28 complete. 🚀**
+
+# 👋 See You on Day 29!
