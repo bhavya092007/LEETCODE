@@ -2397,3 +2397,221 @@ int ans = 0;
 for (int num : nums) {
     ans ^= num;
 }
+
+# 🧠 Day 29 — Important Concepts
+
+**Date:** 14-08-2026
+
+## 1. Sliding Window
+
+Used in `3090. Maximum Length Substring With Two Occurrences`.
+
+Basic idea:
+
+```text
+right → expand the window
+left  → shrink the window when invalid
+```
+
+The goal is to maintain a valid continuous substring while finding the maximum length.
+
+---
+
+## 2. Frequency Tracking
+
+Keep track of how many times each character appears inside the current window.
+
+```text
+character → frequency
+```
+
+For this problem:
+
+```text
+frequency <= 2
+```
+
+If a character becomes `3`, the window is invalid.
+
+---
+
+## 3. Shrinking the Window
+
+When the current window becomes invalid:
+
+```text
+frequency > 2
+        ↓
+remove the character at left
+        ↓
+decrease its frequency
+        ↓
+left++
+```
+
+Important:
+
+> Moving `left` means an element is leaving the window, so its frequency must also be decreased.
+
+---
+
+## 4. Window Length
+
+For a window from `left` to `right`:
+
+```text
+length = right - left + 1
+```
+
+This gives the number of characters currently inside the window.
+
+---
+
+## 5. Prefix
+
+A **prefix** must start from the beginning of a string.
+
+Example:
+
+```text
+"attention"
+
+"at"   → prefix ✅
+"att"  → prefix ✅
+"tion" → prefix ❌
+```
+
+Java method:
+
+```java
+word.startsWith(pref)
+```
+
+---
+
+## 6. Substring
+
+A **substring** can appear anywhere inside a string, but it must be continuous.
+
+Example:
+
+```text
+"abcdef"
+
+"abc" → substring ✅
+"cde" → substring ✅
+"def" → substring ✅
+"ace" → substring ❌
+```
+
+Java method:
+
+```java
+word.contains(pattern)
+```
+
+---
+
+## 7. `startsWith()` vs `contains()`
+
+```text
+startsWith() → checks only the beginning
+contains()   → checks anywhere
+```
+
+This was an important distinction between problems `2185` and `1967`.
+
+---
+
+## 8. Array vs Element
+
+A recurring mistake:
+
+```java
+words       // entire String array
+words[i]    // one String
+```
+
+So String methods such as:
+
+```java
+startsWith()
+contains()
+```
+
+must be called on:
+
+```java
+words[i]
+```
+
+when working with an array of strings.
+
+---
+
+## 9. `charAt()`
+
+Java String character access:
+
+```java
+s.charAt(i)
+```
+
+Not:
+
+```java
+s.countAt(i)
+```
+
+---
+
+## 10. Frequency Array for Lowercase Letters
+
+For lowercase English letters:
+
+```java
+int[] freq = new int[26];
+```
+
+Character index:
+
+```java
+s.charAt(i) - 'a'
+```
+
+Example:
+
+```text
+'a' - 'a' = 0
+'b' - 'a' = 1
+'c' - 'a' = 2
+```
+
+---
+
+# ⭐ Most Important Concepts Today
+
+```text
+1. Sliding Window
+2. Expand with right
+3. Shrink with left
+4. Frequency tracking
+5. Window length = right - left + 1
+6. Prefix → startsWith()
+7. Substring → contains()
+8. Array vs individual element
+9. charAt()
+10. Frequency array
+```
+
+## 🎯 Day 29 Takeaway
+
+> **Prefix means beginning. Substring means anywhere but continuous.**
+
+And for frequency-limited substring problems:
+
+```text
+expand → check frequency → shrink → update maximum
+```
+
+**Day 29 — Important Concepts Complete ✅**
