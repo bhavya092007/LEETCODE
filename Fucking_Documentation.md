@@ -6856,3 +6856,196 @@ Today I solved four problems and, more importantly, practiced different ways of 
 **Day 28 complete. 🚀**
 
 # 👋 See You on Day 29!
+
+# 📖 DSA Journey Documentation — Day 29
+
+**Date:** 14-08-2026
+
+Today was an important day in my DSA journey because I finally started understanding a pattern that I had struggled with before.
+
+I began with **3090. Maximum Length Substring With Two Occurrences**. At first, I did not understand the problem statement clearly. The phrase "at most two occurrences" confused me, and I was not sure what the problem actually wanted.
+
+After breaking the statement down into a simple sentence, I understood it as:
+
+> Find the longest continuous part of the string where no character appears more than two times.
+
+At first, I thought about whether the problem might be related to Binary Search, but after understanding the structure of the problem, I realized that it was a **Sliding Window** problem.
+
+This was important because I had already struggled with **2958** earlier and had paused it because I could not understand Sliding Window properly.
+
+While solving 3090, I made several small mistakes. I initially used the wrong Java string method, confused the frequency array with the frequency of the current character, and tried to move the `left` pointer without actually removing the character that was leaving the current substring.
+
+The biggest breakthrough came when I understood what `left` really means.
+
+> `left` is not just a variable that moves. It represents the beginning of the current substring.
+
+So when `left` moves forward, the character at the old position is no longer part of the current substring and its frequency must be reduced.
+
+Once that clicked, the whole pattern became much easier to understand:
+
+```text
+Expand the substring
+        ↓
+Check the condition
+        ↓
+If invalid, shrink from the left
+        ↓
+Continue
+```
+
+This problem gave me confidence because something that previously felt confusing in 2958 finally started making sense.
+
+---
+
+## 💭 My Thinking Improvement
+
+One of the biggest improvements today was that I stopped trying to memorize the Sliding Window code.
+
+Instead, I started understanding **why the window moves**.
+
+Earlier, I was thinking:
+
+> "What code do I need for Sliding Window?"
+
+Today, I started thinking:
+
+> "What is inside my current window, why is it invalid, and what needs to leave?"
+
+That is a much better way of learning.
+
+---
+
+# 2185. Counting Words With a Given Prefix
+
+The second problem was much easier.
+
+The main thing I had to understand was the word **prefix**.
+
+I understood that a prefix must start from the beginning of the word.
+
+For example:
+
+```text
+attention
+```
+
+contains prefixes such as:
+
+```text
+a
+at
+att
+atte
+```
+
+but something in the middle is not a prefix.
+
+The problem itself was straightforward once I understood the definition.
+
+I did make a small mistake while coding. I tried using the string method on the entire array instead of the individual word.
+
+That reminded me of a mistake I have made before:
+
+> I sometimes confuse the collection itself with the individual element inside it.
+
+I corrected it by focusing on what `words[i]` actually represents.
+
+This was another useful reminder that before using a method, I should check **what type of object I am calling it on**.
+
+---
+
+# 1967. Number of Strings That Appear as Substrings in Word
+
+This problem was connected directly to the previous one, which made it easier.
+
+The important thing I had to understand was the difference between a **prefix** and a **substring**.
+
+A prefix must be at the beginning.
+
+A substring can appear anywhere, but it must remain continuous.
+
+Once I understood this difference, the problem became very simple.
+
+The nice part was that I could connect it directly with the previous question:
+
+```text
+2185 → starts with the pattern
+1967 → contains the pattern anywhere
+```
+
+This helped me understand that sometimes two problems look almost identical, but one small change in the wording changes exactly what I need to check.
+
+---
+
+# ❌ Mistakes I Made Today
+
+The main mistakes today were:
+
+- Not understanding the problem statement clearly at the beginning.
+- Confusing the whole array with an individual string.
+- Using the wrong Java string method initially.
+- Moving the sliding-window `left` pointer without removing the character from the current window.
+- Thinking about the algorithm before fully understanding the definition in the problem.
+
+These are not just coding mistakes. They show me that I need to slow down during the **problem-understanding stage**.
+
+---
+
+# 📈 What Improved Today
+
+Today I improved in a few important ways.
+
+First, I finally made real progress with **Sliding Window**, which had been a weak point for me.
+
+Second, I became more comfortable reading problem statements and translating them into simple language.
+
+Third, I started noticing the importance of small wording differences:
+
+```text
+prefix     → beginning
+substring  → anywhere, but continuous
+```
+
+Fourth, I became more comfortable reusing ideas from one problem in another.
+
+The biggest improvement was not the code itself.
+
+It was my **thinking process**.
+
+---
+
+# 🧠 What I Want To Remember
+
+Before coding, I should ask myself:
+
+```text
+What exactly is the problem asking?
+What does each important word mean?
+What is the current window / current element?
+What makes the current situation invalid?
+What needs to change to make it valid again?
+```
+
+I also want to remember:
+
+> **Don't rush into code when the problem statement itself is still unclear.**
+
+Understanding the problem first makes the coding much easier.
+
+---
+
+# 🎯 Biggest Lesson of Day 29
+
+> **A pattern becomes easier when I understand why it works instead of memorizing its code.**
+
+Today, Sliding Window finally started making sense because I understood the role of `left` and `right`, not because I memorized a template.
+
+That is the kind of progress I want to keep making in my DSA journey.
+
+# ✅ Day 29 — Completed
+
+Today I solved three Easy problems, improved my understanding of Sliding Window, strengthened my string-problem thinking, and learned to pay more attention to the exact wording of a problem.
+
+This was a good step forward.
+
+# 👋 See You on Day 30!
