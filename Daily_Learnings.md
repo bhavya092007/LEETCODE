@@ -10401,3 +10401,486 @@ The most important takeaway is:
 
 # 👋 See You on Day 29!
 
+# 📖 LeetCode Learning Log — Day 29
+
+**Date:** 14-08-2026
+
+## Problems Solved
+
+### 1. 3090. Maximum Length Substring With Two Occurrences
+
+**Difficulty:** Easy  
+**Pattern:** Sliding Window + Frequency Array  
+**Status:** ✅ Solved
+
+---
+
+## 🧠 Problem Understanding
+
+The problem asks for the longest **substring** where every character appears at most two times.
+
+For example:
+
+```text
+s = "aaaa"
+```
+
+Valid:
+
+```text
+"a"   ✅
+"aa"  ✅
+```
+
+Invalid:
+
+```text
+"aaa"  ❌
+"aaaa" ❌
+```
+
+because the character `a` appears more than two times.
+
+---
+
+## 💭 My Initial Thinking
+
+At first, I was confused by the problem statement and wasn't sure what exactly "at most two occurrences" meant.
+
+After breaking it down, I understood that I need to find the longest **continuous part of the string** where no character appears more than twice.
+
+I initially wondered whether this was something like Binary Search, but then I understood that it is a **Sliding Window** problem.
+
+---
+
+## 🔑 Main Idea I Learned
+
+The window has two ends:
+
+```text
+left  → starting position
+right → ending position
+```
+
+The idea is:
+
+```text
+right → expand the substring
+left  → shrink the substring when it becomes invalid
+```
+
+A frequency array keeps track of how many times each character appears inside the current window.
+
+---
+
+## ❌ My Coding Mistakes
+
+I initially used:
+
+```java
+s.countAt(i)
+```
+
+but Java uses:
+
+```java
+s.charAt(i)
+```
+
+I also tried checking:
+
+```java
+if (freq > 2)
+```
+
+but `freq` is an entire array. I needed to check the frequency of the current character.
+
+Another mistake was moving `left` without actually removing the character from the frequency array.
+
+I learned that when `left` moves, the element leaving the window must also have its frequency decreased.
+
+---
+
+## ✅ Final Thinking
+
+The flow became:
+
+```text
+Add current character
+        ↓
+Frequency becomes > 2?
+        ↓
+YES → remove characters from the left
+        ↓
+Continue until window is valid
+        ↓
+Calculate current window length
+        ↓
+Update maximum
+```
+
+This was the first time I properly understood the sliding-window process.
+
+---
+
+## 📈 Improvement
+
+This was especially important because I had previously paused **2958. Length of Longest Subarray With at Most K Frequency** because I didn't understand Sliding Window.
+
+Working through `3090` helped me understand the same idea in a simpler form using a string.
+
+The main breakthrough was understanding:
+
+> **Moving `left` means removing an element from the current window, not just changing the pointer.**
+
+---
+
+# 2. 2185. Counting Words With a Given Prefix
+
+**Difficulty:** Easy  
+**Pattern:** String Traversal + Prefix Checking  
+**Status:** ✅ Solved
+
+---
+
+## 🧠 Problem Understanding
+
+The problem asks how many words start with a given prefix.
+
+For example:
+
+```text
+words = ["pay","attention","practice","attend"]
+pref = "at"
+```
+
+Check:
+
+```text
+pay        → ❌
+attention  → ✅
+practice   → ❌
+attend     → ✅
+```
+
+Answer:
+
+```text
+2
+```
+
+---
+
+## 💭 My Initial Thinking
+
+I understood that I only needed to check every word and count the ones that begin with the given prefix.
+
+I initially made a small mistake by using:
+
+```java
+words.startsWith(pref)
+```
+
+But `words` is an array, not a String.
+
+The correct object is the individual element:
+
+```java
+words[i].startsWith(pref)
+```
+
+---
+
+## 🔑 Important Learning
+
+I reinforced the difference between:
+
+```text
+words      → entire String array
+words[i]   → one String
+```
+
+This is similar to the 2D-array row-vs-element mistake I have been tracking.
+
+The method I learned here is:
+
+```java
+startsWith()
+```
+
+which checks only the beginning of a string.
+
+---
+
+## ✅ Final Logic
+
+```text
+For every word
+      ↓
+Check startsWith(pref)
+      ↓
+YES → count++
+NO  → ignore
+```
+
+---
+
+# 3. 1967. Number of Strings That Appear as Substrings in Word
+
+**Difficulty:** Easy  
+**Pattern:** String Traversal + Substring Checking  
+**Status:** ✅ Solved
+
+---
+
+## 🧠 Problem Understanding
+
+The problem gives:
+
+```text
+patterns
+word
+```
+
+For every pattern, I need to check whether that pattern appears **anywhere continuously** inside `word`.
+
+Example:
+
+```text
+patterns = ["a","abc","bc","d"]
+word = "abc"
+```
+
+Results:
+
+```text
+"a"   → ✅
+"abc" → ✅
+"bc"  → ✅
+"d"   → ❌
+```
+
+Answer:
+
+```text
+3
+```
+
+---
+
+## 💭 My Initial Thinking
+
+I first wanted to make sure I understood the difference between a **prefix** and a **substring**.
+
+A prefix must be at the beginning:
+
+```text
+"abcdef"
+"abc" ✅ prefix
+"cde" ❌ prefix
+```
+
+A substring can appear anywhere as long as it is continuous:
+
+```text
+"abcdef"
+"abc" ✅
+"cde" ✅
+"def" ✅
+"ace" ❌
+```
+
+Once I understood this difference, the problem became very straightforward.
+
+---
+
+## 🔑 Java Method Learned
+
+The method I used is:
+
+```java
+word.contains(patterns[i])
+```
+
+`contains()` checks whether the given string appears anywhere inside another string.
+
+This is different from:
+
+```java
+startsWith()
+```
+
+because:
+
+```text
+startsWith() → beginning only
+contains()   → anywhere
+```
+
+---
+
+## ✅ Final Logic
+
+```text
+For every pattern
+       ↓
+Check whether word contains it
+       ↓
+YES → count++
+NO  → ignore
+```
+
+---
+
+# 📚 Java / DSA Concepts Learned Today
+
+- Sliding Window
+- Two pointers
+- Frequency array
+- Character frequency tracking
+- `charAt()`
+- `startsWith()`
+- `contains()`
+- String vs String array
+- Prefix vs substring
+- Contiguous substring
+- Maximum length tracking
+- Expanding and shrinking a window
+
+---
+
+# 🔥 Important Patterns From Day 29
+
+### Pattern 1 — Sliding Window
+
+```text
+right → expand
+left  → shrink when invalid
+```
+
+### Pattern 2 — Frequency Tracking
+
+```text
+character → frequency
+```
+
+### Pattern 3 — Prefix Checking
+
+```java
+word.startsWith(pref)
+```
+
+### Pattern 4 — Substring Checking
+
+```java
+word.contains(pattern)
+```
+
+### Pattern 5 — Count Valid Matches
+
+```text
+condition true → count++
+```
+
+---
+
+# 🔗 Connection With Previous Learning
+
+The biggest connection today was between:
+
+```text
+2958 → array + frequency limit
+3090 → string + frequency limit
+```
+
+I had struggled with `2958` because Sliding Window was unfamiliar.
+
+After solving `3090`, the pattern became much clearer because the problem was simpler and used a frequency array instead of a more complicated setup.
+
+I also connected today's string problems:
+
+```text
+2185 → startsWith()
+1967 → contains()
+```
+
+This helped me clearly understand the difference between a **prefix** and a **substring**.
+
+---
+
+# 📈 Growth / Improvement
+
+Today I improved in two important areas.
+
+First, I finally started understanding **Sliding Window** instead of just seeing it as a pattern to memorize.
+
+Second, I became more comfortable identifying the exact Java operation needed for a string problem.
+
+Instead of manually checking every character, I can recognize when Java already provides a useful method:
+
+```text
+startsWith()
+contains()
+```
+
+This makes my solutions simpler and also helps me focus more on the actual problem logic.
+
+---
+
+# 🎯 What I Should Remember
+
+```text
+Sliding Window:
+right → expand
+left  → shrink
+
+Frequency:
+track how many times each character appears
+
+Prefix:
+startsWith()
+
+Substring:
+contains()
+
+Array element:
+words[i]
+
+String:
+words[i] is one String
+```
+
+## ⭐ Biggest Lesson of Day 29
+
+> **Understand exactly what the problem is asking before choosing the code.**
+
+A small difference in wording can completely change the method:
+
+```text
+prefix    → startsWith()
+substring → contains()
+```
+
+And for frequency-limited substring problems:
+
+```text
+expand → check frequency → shrink → update answer
+```
+
+# ✅ Day 29 Status
+
+**Problems Solved:** 3
+
+**Problems:**
+
+- `3090. Maximum Length Substring With Two Occurrences` ✅
+- `2185. Counting Words With a Given Prefix` ✅
+- `1967. Number of Strings That Appear as Substrings in Word` ✅
+
+**Main Topics:** Sliding Window, Frequency Arrays, Strings, Prefixes, Substrings
+
+## 🚀 Day 29 — Completed
+
+Today I finally made progress on the **Sliding Window** pattern that I had struggled with earlier, and I also became more confident with Java String methods.
+
+# 👋 See You on Day 30!
