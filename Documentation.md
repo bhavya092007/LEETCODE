@@ -7049,3 +7049,172 @@ Today I solved three Easy problems, improved my understanding of Sliding Window,
 This was a good step forward.
 
 # 👋 See You on Day 30!
+
+
+# 📖 DSA Journey Documentation — Day 30
+
+**Date:** 15-08-2026
+
+Today was a good day for understanding how much my problem-solving is changing compared to when I started this journey.
+
+I worked on four problems today: **724. Find Pivot Index**, **1991. Find the Middle Index in Array**, **747. Largest Number At Least Twice of Others**, and **1534. Count Good Triplets**.
+
+The biggest thing I noticed today was **pattern recognition**.
+
+When I started `724`, my first thought was to create separate arrays for the left sums and right sums. That was a natural way for me to think about the problem, but while working through it, I realized that I didn't actually need to store everything. I could use the total sum and keep track of the left side while calculating the right side from what I already knew.
+
+That was an important improvement in my thinking. Instead of storing more information than necessary, I started asking:
+
+> “What information do I really need at this moment?”
+
+Then I came across **1991**, which was almost the same idea as `724`. Instead of treating it as a completely new problem, I recognized the connection immediately and reused the same way of thinking.
+
+This was probably my biggest win today.
+
+I am slowly starting to understand that DSA is not about memorizing hundreds of separate solutions. A lot of problems are different versions of ideas I have already seen.
+
+---
+
+## 💭 How My Thinking Changed
+
+In `747`, I initially wanted to solve everything in one loop.
+
+I was trying to make the solution shorter and more clever, but I realized that this was not actually helping me understand the problem better.
+
+I ended up using two simple passes:
+
+1. Find the largest element and its index.
+2. Check it against every other element.
+
+The important realization was that **using two loops does not automatically mean the solution is slow**.
+
+I was focusing too much on the number of loops instead of thinking about the overall efficiency.
+
+That is something I want to remember going forward:
+
+> **Don't try to reduce the number of loops just for the sake of writing fewer loops.**
+
+A clear solution with good overall complexity is better than a confusing "one-loop" solution.
+
+---
+
+## ❌ Mistakes I Made Today
+
+One mistake that stood out was confusing an **index** with a **value**.
+
+I was using a variable to represent the position of the largest element, but then I accidentally treated that position as if it were the actual number.
+
+That reminded me of the array-related mistakes I have made before.
+
+I need to keep asking myself:
+
+> “Am I storing the position, or am I storing the actual value?”
+
+Another mistake was trying to force an unnecessarily clever solution when the straightforward solution was already good enough.
+
+---
+
+## 💡 1534 and Connection With Previous Problems
+
+When I reached `1534`, I immediately recognized it as another problem where I could simply try combinations and check the conditions.
+
+This connected directly with **1925. Count Square Sum Triples**, which I solved earlier.
+
+That made `1534` much easier.
+
+Instead of thinking:
+
+> “I have never solved this exact problem before.”
+
+I started thinking:
+
+> “This looks like something I have already done, just with a different condition.”
+
+That is exactly the kind of thinking I want to develop through this journey.
+
+---
+
+## 📈 Improvements Today
+
+Today I feel I improved in three major ways.
+
+### 1. Pattern Recognition
+
+I recognized:
+
+```text
+724 → 1991
+1534 → 1925
+```
+
+The problems were not exactly identical, but the underlying way of thinking was very similar.
+
+### 2. Simpler Thinking
+
+I am becoming more comfortable with simple solutions when the constraints allow them.
+
+I don't want to force an advanced algorithm just because it looks more impressive.
+
+### 3. Understanding Before Optimizing
+
+I am starting to separate these two questions:
+
+```text
+Does my logic work?
+        ↓
+Is my solution efficient enough?
+```
+
+First I want to understand the problem correctly. Then I can think about optimization.
+
+---
+
+## 🧠 What I Want To Remember
+
+Today reminded me that a very important DSA skill is:
+
+> **Recognizing something familiar inside something that looks new.**
+
+I also want to remember:
+
+```text
+Don't confuse index with value.
+Don't force fewer loops unnecessarily.
+Reuse patterns from previous problems.
+Understand first, optimize second.
+```
+
+---
+
+## 🎯 Biggest Lesson of Day 30
+
+> **The real progress in DSA is not just the number of problems solved. It is how quickly I can recognize the thinking behind a new problem.**
+
+Today I saw multiple examples of that.
+
+`1991` reminded me of `724`.
+
+`1534` reminded me of `1925`.
+
+And `747` taught me that a simple two-pass solution can be better for me than forcing everything into one loop.
+
+That makes me feel like I am slowly moving from:
+
+**“How do I solve this?”**
+
+to:
+
+**“Which pattern does this remind me of?”**
+
+That is a change I want to keep building.
+
+# ✅ Day 30 — Completed
+
+Today I solved four problems and focused more on **thinking patterns, connections, and mistakes** than just the final code.
+
+The goal is becoming clearer:
+
+> **I don't want to memorize solutions. I want to become someone who can figure out the solution.**
+
+# 👋 See You on Day 31!
+
