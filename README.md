@@ -30,6 +30,16 @@ Instead of only saving accepted solutions, I try to document:
 This repository will continue evolving as my DSA knowledge improves.
 
 ---
+# Contact / Connect
+
+**GitHub:** [Bhavya Shah](https://github.com/bhavya092007)
+
+**LinkedIn:** [Bhavya Shah](https://www.linkedin.com/in/bhavyashah272/)
+
+**Portfolio:** [Bhavya Shah Portfolio](https://bhavyashahportfolio.vercel.app/)
+
+**Email:** [sbhavya838@gmail.com](mailto:sbhavya838@gmail.com)
+---
 
 # Who This Repository Is For
 
@@ -769,16 +779,6 @@ But to reach a point where I can look at a new problem and think:
 That's the skill I'm trying to build.
 
 ---
-
-# Contact / Connect
-
-**GitHub:** [Bhavya Shah](https://github.com/bhavya092007)
-
-**LinkedIn:** [Bhavya Shah](https://www.linkedin.com/in/bhavyashah272/)
-
-**Portfolio:** [Bhavya Shah Portfolio](https://bhavyashahportfolio.vercel.app/)
-
-**Email:** [sbhavya838@gmail.com](mailto:sbhavya838@gmail.com)
 
 ---
 
