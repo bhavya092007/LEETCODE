@@ -2615,3 +2615,205 @@ expand → check frequency → shrink → update maximum
 ```
 
 **Day 29 — Important Concepts Complete ✅**
+
+# 🧠 Day 30 — Important Concepts
+
+**Date:** 15-08-2026
+
+## 1. Total Sum + Left Sum
+
+For pivot/middle-index problems:
+
+```text
+total = leftSum + current + rightSum
+```
+
+Therefore:
+
+```text
+rightSum = total - leftSum - current
+```
+
+This avoids repeatedly calculating the right side.
+
+---
+
+## 2. Running Sum
+
+Instead of storing every left sum, keep one variable:
+
+```java
+leftSum += nums[i];
+```
+
+The left sum is updated **after checking the current index** because the current element does not belong to either side.
+
+---
+
+## 3. Pattern Reuse
+
+Similar problems can use the same approach.
+
+```text
+724 → Find Pivot Index
+1991 → Find Middle Index
+```
+
+Both use:
+
+```text
+total sum
+    ↓
+left sum
+    ↓
+calculate right sum
+    ↓
+compare
+```
+
+Important habit:
+
+> Before creating a new solution, check whether the problem resembles something already solved.
+
+---
+
+## 4. Index vs Value
+
+Keep these separate:
+
+```text
+maxIndex       → position
+nums[maxIndex] → actual value
+```
+
+Never confuse an index with the value stored at that index.
+
+---
+
+## 5. Finding Maximum With Its Index
+
+Use the index of the current maximum:
+
+```java
+if (nums[i] > nums[maxIndex]) {
+    maxIndex = i;
+}
+```
+
+This lets you keep both the largest value and its position.
+
+---
+
+## 6. Validate the Maximum Against Other Values
+
+For problems like `747`, first find the maximum, then check:
+
+```text
+maximum >= 2 × every other value
+```
+
+A simple second loop is completely fine when the total complexity is still `O(n)`.
+
+---
+
+## 7. Triplet Brute Force
+
+For problems requiring three indexes:
+
+```text
+choose i
+choose j
+choose k
+check conditions
+count if valid
+```
+
+When the problem requires:
+
+```text
+i < j < k
+```
+
+use:
+
+```java
+j = i + 1
+k = j + 1
+```
+
+This automatically maintains the correct order.
+
+---
+
+## 8. `Math.abs()`
+
+Absolute difference in Java:
+
+```java
+Math.abs(x - y)
+```
+
+Useful when a condition depends on the distance between two values.
+
+---
+
+## 9. Brute Force Depends on Constraints
+
+Brute force is not automatically bad.
+
+If the input size is small, even:
+
+```text
+O(n³)
+```
+
+can be acceptable.
+
+Important habit:
+
+> Check the constraints before deciding that brute force is too slow.
+
+---
+
+## 10. Don't Force Fewer Loops
+
+Using fewer loops does not automatically mean a better solution.
+
+For example:
+
+```text
+2 loops → O(n)
+1 loop  → O(n)
+```
+
+Both are linear.
+
+A clear and understandable solution is often better than a complicated one-loop solution.
+
+---
+
+# ⭐ Most Important Concepts Today
+
+```text
+1. Total Sum + Running Left Sum
+2. Right Sum = Total - Left - Current
+3. Pattern Reuse
+4. Index vs Value
+5. Finding Maximum + Index
+6. Validating Maximum Against Others
+7. Triplet Brute Force
+8. i < j < k
+9. Math.abs()
+10. Choosing Brute Force Using Constraints
+11. Don't Force Fewer Loops
+```
+
+## 🎯 Day 30 Takeaway
+
+> **Understand the pattern and complexity instead of focusing on how many loops the code has.**
+
+```text
+Recognize → Reuse → Simplify → Optimize only when necessary
+```
+
+**Day 30 — Important Concepts Complete ✅**
