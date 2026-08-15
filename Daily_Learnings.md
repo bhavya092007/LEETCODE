@@ -10884,3 +10884,641 @@ expand → check frequency → shrink → update answer
 Today I finally made progress on the **Sliding Window** pattern that I had struggled with earlier, and I also became more confident with Java String methods.
 
 # 👋 See You on Day 30!
+
+# 📖 LeetCode Learning Log — Day 30
+
+**Date:** 15-08-2026
+
+## Problems Solved
+
+### 1. 724. Find Pivot Index
+
+**Difficulty:** Easy  
+**Pattern:** Total Sum + Running Left Sum  
+**Status:** ✅ Solved
+
+---
+
+## 🧠 Problem Understanding
+
+The problem asks for an index where the sum of all elements strictly to the left is equal to the sum of all elements strictly to the right.
+
+For example:
+
+```text
+nums = [1,7,3,6,5,6]
+```
+
+At index `3`:
+
+```text
+Left  = 1 + 7 + 3 = 11
+Right = 5 + 6 = 11
+```
+
+So the pivot index is `3`.
+
+---
+
+## 💭 My Initial Thinking
+
+At first, I thought about creating two arrays:
+
+```text
+leftSum[]
+rightSum[]
+```
+
+and then comparing them at every index.
+
+That approach would work, but I realized I could avoid storing both arrays.
+
+---
+
+## 🔑 Main Idea I Learned
+
+First calculate the total sum of the entire array.
+
+Then maintain a running `leftSum`.
+
+For the current index:
+
+```text
+total = leftSum + current element + rightSum
+```
+
+Therefore:
+
+```text
+rightSum = total - leftSum - nums[i]
+```
+
+Then compare:
+
+```text
+leftSum == rightSum
+```
+
+If they are equal, return the index.
+
+---
+
+## 💡 Important Insight
+
+The total sum is not the answer itself.
+
+It is used to calculate the right-side sum efficiently without traversing the right side again.
+
+Instead of calculating both sides repeatedly, I can use:
+
+```text
+total sum
+   ↓
+left sum
+   ↓
+calculate right sum
+```
+
+---
+
+## 💻 Final Approach
+
+```java
+int total = 0;
+
+for (int num : nums) {
+    total += num;
+}
+
+int leftSum = 0;
+
+for (int i = 0; i < nums.length; i++) {
+    int rightSum = total - leftSum - nums[i];
+
+    if (leftSum == rightSum) {
+        return i;
+    }
+
+    leftSum += nums[i];
+}
+
+return -1;
+```
+
+---
+
+## 📊 Complexity
+
+```text
+Time: O(n)
+Space: O(1)
+```
+
+---
+
+# 2. 1991. Find the Middle Index in Array
+
+**Difficulty:** Easy  
+**Pattern:** Total Sum + Running Left Sum  
+**Status:** ✅ Solved
+
+---
+
+## 🧠 Problem Understanding
+
+This problem uses essentially the same idea as `724. Find Pivot Index`.
+
+We need to find the leftmost index where:
+
+```text
+sum of elements on left = sum of elements on right
+```
+
+---
+
+## 💭 My Approach
+
+I recognized that I had already solved almost the same problem.
+
+Instead of trying to invent a new approach, I reused the logic from `724`.
+
+This was useful because it helped me understand that two different LeetCode problems can test the **same underlying pattern**.
+
+---
+
+## 🔗 Pattern Connection
+
+```text
+724 → Pivot Index
+1991 → Middle Index
+```
+
+Both use:
+
+```text
+Total Sum
+   ↓
+Running Left Sum
+   ↓
+Right Sum = Total - Left - Current
+   ↓
+Compare
+```
+
+---
+
+## 🎯 Main Learning
+
+One of the biggest DSA skills is recognizing when a new problem is actually a variation of something I already know.
+
+Instead of solving every problem from zero:
+
+> **Look for patterns from previous problems.**
+
+---
+
+# 3. 747. Largest Number At Least Twice of Others
+
+**Difficulty:** Easy  
+**Pattern:** Find Maximum + Validate Against Others  
+**Status:** ✅ Solved
+
+---
+
+## 🧠 Problem Understanding
+
+We need to find the largest number and check whether it is at least twice every other number.
+
+Example:
+
+```text
+nums = [3,6,1,0]
+```
+
+Largest:
+
+```text
+6
+```
+
+Check:
+
+```text
+6 >= 2*3 ✅
+6 >= 2*1 ✅
+6 >= 2*0 ✅
+```
+
+So return the index of `6`.
+
+---
+
+## 💭 My Initial Thinking
+
+Initially, I tried to do everything in a single loop.
+
+But I mixed up:
+
+```text
+index
+```
+
+and:
+
+```text
+value
+```
+
+For example, I used a variable like `maxIndex` and then compared an array value directly with that index.
+
+That was incorrect.
+
+---
+
+## 🔑 Important Concept
+
+I learned to keep these two ideas separate:
+
+```text
+maxIndex      → position of largest element
+nums[maxIndex] → actual largest value
+```
+
+This distinction is important whenever a problem asks for both a value and its index.
+
+---
+
+## 💭 Improved Approach
+
+I decided to make the problem into two clear steps:
+
+```text
+1. Find the largest element and its index.
+2. Check the largest element against every other element.
+```
+
+This made the problem much easier to reason about.
+
+---
+
+## 💻 Final Approach
+
+```java
+int maxIndex = 0;
+
+for (int i = 1; i < nums.length; i++) {
+    if (nums[i] > nums[maxIndex]) {
+        maxIndex = i;
+    }
+}
+
+for (int j = 0; j < nums.length; j++) {
+    if (j != maxIndex && nums[maxIndex] < 2 * nums[j]) {
+        return -1;
+    }
+}
+
+return maxIndex;
+```
+
+---
+
+## 📊 Complexity
+
+```text
+Time: O(n)
+Space: O(1)
+```
+
+---
+
+## 🎯 Main Learning
+
+Although I wanted to solve it in one loop, I learned that a two-loop solution can still be optimal when the total complexity remains `O(n)`.
+
+The important thing is not to force everything into one loop just because it looks shorter.
+
+> **Readable and understandable logic is more important than unnecessary cleverness.**
+
+---
+
+# 4. 1534. Count Good Triplets
+
+**Difficulty:** Easy  
+**Pattern:** Brute Force + Triplet Search  
+**Status:** ✅ Solved
+
+---
+
+## 🧠 Problem Understanding
+
+A good triplet uses three indexes:
+
+```text
+i < j < k
+```
+
+and must satisfy three conditions:
+
+```text
+|arr[i] - arr[j]| <= a
+|arr[j] - arr[k]| <= b
+|arr[i] - arr[k]| <= c
+```
+
+---
+
+## 💭 My Initial Thinking
+
+I immediately recognized this as another **three-loop brute-force** problem.
+
+This connected with:
+
+```text
+1925. Count Square Sum Triples
+```
+
+which I had solved earlier.
+
+Instead of trying to find a complicated optimization, I could simply try every valid combination of three indexes and check the conditions.
+
+---
+
+## 🔑 Important Improvement
+
+I initially wrote loops like:
+
+```java
+i = 1 to n
+j = 1 to n
+k = 1 to n
+```
+
+but I realized that these are **indexes**, not values.
+
+The array size is:
+
+```java
+arr.length
+```
+
+and the required condition is:
+
+```text
+i < j < k
+```
+
+So the loops should naturally be:
+
+```java
+for (int i = 0; i < arr.length; i++)
+for (int j = i + 1; j < arr.length; j++)
+for (int k = j + 1; k < arr.length; k++)
+```
+
+This automatically guarantees the correct index order.
+
+---
+
+## 💻 Final Approach
+
+```java
+int count = 0;
+
+for (int i = 0; i < arr.length; i++) {
+    for (int j = i + 1; j < arr.length; j++) {
+        for (int k = j + 1; k < arr.length; k++) {
+
+            if (Math.abs(arr[i] - arr[j]) <= a &&
+                Math.abs(arr[j] - arr[k]) <= b &&
+                Math.abs(arr[i] - arr[k]) <= c) {
+                count++;
+            }
+        }
+    }
+}
+
+return count;
+```
+
+---
+
+## 📊 Complexity
+
+```text
+Time: O(n³)
+Space: O(1)
+```
+
+The brute-force solution is acceptable because the constraints are small.
+
+---
+
+# 📚 Java / DSA Concepts Learned Today
+
+- Total sum
+- Running sum
+- Pivot index
+- Reusing patterns across similar problems
+- Difference between index and value
+- Finding maximum element with its index
+- Validating a maximum against all other elements
+- Nested loops
+- Triplet search
+- `i < j < k` index ordering
+- `Math.abs()`
+- Brute-force decision based on constraints
+- O(1) extra space
+- Keeping code simple and readable
+
+---
+
+# 🔥 Important Patterns From Day 30
+
+### Pattern 1 — Total Sum + Left Sum
+
+```text
+total
+  ↓
+leftSum
+  ↓
+rightSum = total - leftSum - current
+```
+
+### Pattern 2 — Reuse Previous Patterns
+
+```text
+724 → 1991
+```
+
+Same core idea, different problem statement.
+
+### Pattern 3 — Index vs Value
+
+```text
+maxIndex       → position
+nums[maxIndex] → value
+```
+
+### Pattern 4 — Triplet Brute Force
+
+```text
+for i
+    for j = i + 1
+        for k = j + 1
+            check conditions
+```
+
+### Pattern 5 — Constraints Decide Optimization
+
+If the input is small, a simple brute-force solution can be better than forcing a complicated optimization.
+
+---
+
+# 🔗 Connection With Previous Learning
+
+## Pivot / Prefix Sum Problems
+
+`724` and `1991` showed me that I can reuse a solution pattern instead of treating every problem as completely new.
+
+## Brute Force Triplets
+
+`1534` connected directly with `1925`.
+
+Both problems use:
+
+```text
+three loops
+   ↓
+choose three values/indexes
+   ↓
+check a condition
+   ↓
+count valid combinations
+```
+
+## Array Indexing
+
+The `747` and `1534` problems reinforced that I need to distinguish:
+
+```text
+index → position
+value → nums[index]
+```
+
+This connects with my earlier recurring mistakes involving arrays and their elements.
+
+---
+
+# 📈 Growth / Improvement
+
+Today I improved most in **pattern recognition**.
+
+I recognized that:
+
+```text
+1991 ≈ 724
+1534 ≈ 1925
+```
+
+Instead of treating them as completely new problems, I reused ideas I had already learned.
+
+I also realized that I sometimes try to make a solution unnecessarily clever.
+
+For example, in `747`, I wanted to force a one-loop solution even though the simple two-loop solution was already `O(n)`.
+
+This taught me:
+
+> **Don't optimize the number of loops; optimize the actual time complexity and keep the logic understandable.**
+
+---
+
+# 📝 Mistakes I Want To Remember
+
+### 1. Index vs Value Confusion
+
+Do not compare an array value with an index.
+
+Remember:
+
+```text
+index → position
+array[index] → value
+```
+
+### 2. Trying To Force One Loop
+
+A solution does not become better just because it uses fewer loops.
+
+Always look at the overall complexity.
+
+### 3. Using the Wrong Range for Indexes
+
+For an array:
+
+```java
+0 <= index < arr.length
+```
+
+And when the problem says:
+
+```text
+i < j < k
+```
+
+use:
+
+```java
+j = i + 1
+k = j + 1
+```
+
+---
+
+# 🎯 What I Should Remember
+
+```text
+Pivot / Middle Index:
+right = total - left - current
+
+Maximum + Index:
+maxIndex → position
+nums[maxIndex] → value
+
+Triplets:
+i < j < k
+
+Absolute Difference:
+Math.abs(x - y)
+
+Brute Force:
+Use it when constraints are small.
+
+Optimization:
+Focus on time complexity, not just number of loops.
+```
+
+---
+
+# ✅ Day 30 Status
+
+**Problems Solved:** 4
+
+**Problems:**
+
+- `724. Find Pivot Index` ✅
+- `1991. Find the Middle Index in Array` ✅
+- `747. Largest Number At Least Twice of Others` ✅
+- `1534. Count Good Triplets` ✅
+
+**Main Topics:** Prefix/Total Sum, Maximum Value, Index Handling, Brute Force, Triplet Search
+
+## 🚀 Day 30 — Completed
+
+Today I solved four problems and, more importantly, started recognizing when a new problem is just a variation of a pattern I already know.
+
+The biggest takeaway from today is:
+
+> **Don't solve every problem from scratch. Look for connections with problems you've already solved.**
+
+# 👋 See You on Day 31!
