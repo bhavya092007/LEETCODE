@@ -7218,3 +7218,229 @@ The goal is becoming clearer:
 
 # 👋 See You on Day 31!
 
+# 📖 DSA Journey Documentation — Day 31
+
+**Date:** 16-08-2026
+
+Today was a special day in my DSA journey because I crossed a milestone that I had been working toward for a long time:
+
+# 🏆 101 LeetCode Problems Solved
+
+Seeing the number go from two digits to **101 solved problems** felt different.
+
+It is not just a number.
+
+It represents all the times I was confused by a problem, made a wrong assumption, wrote incorrect code, got stuck, tried again, and eventually understood it.
+
+Today I solved six problems, but the bigger achievement was realizing how much my way of thinking has changed.
+
+---
+
+## 💭 How I Approached Today's Problems
+
+The first problem I worked on was about **odd-length subarrays**.
+
+At first, I made a simple mistake: I was checking the length of the entire array instead of thinking about the length of the current subarray.
+
+That made me stop and rethink what the problem was actually asking.
+
+I then started thinking in terms of:
+
+```text
+Where does the subarray start?
+Where does it end?
+How long is it?
+```
+
+This was a useful reminder that I need to understand the exact object the problem is talking about before writing code.
+
+I also initially thought I might need an extra loop to calculate the sum of every subarray. While working through it, I found a better way to keep track of the sum as the subarray grew.
+
+That felt like a genuine improvement in my thinking because I was able to simplify my own approach instead of depending on a completely different solution.
+
+---
+
+The second problem was another **2D array** problem.
+
+Interestingly, I made the same kind of indexing mistake that I have made several times before.
+
+I again confused the whole row with an individual element.
+
+This is now clearly a recurring mistake in my DSA journey.
+
+The positive part is that I noticed it quickly and corrected it.
+
+I think this is something important about learning:
+
+> Repeated mistakes are not a problem if I am actually becoming faster at recognizing them.
+
+I don't expect myself to stop making every mistake immediately.
+
+I want to become better at catching them.
+
+---
+
+The number-digit problem was much more straightforward.
+
+I was comfortable breaking the number down digit by digit and maintaining the values I needed.
+
+This kind of problem now feels much more natural compared to when I first started DSA.
+
+---
+
+The binary-tree problem was also very simple.
+
+What I liked about it was that I did not overthink it.
+
+I saw exactly what the problem was asking and directly checked the relationship between the root and its children.
+
+That is something I want to become better at:
+
+> Not every problem needs a complicated thought process.
+
+Sometimes understanding the statement clearly is enough.
+
+---
+
+The operations problem was another good exercise in thinking step by step.
+
+I treated it like a simulation:
+
+```text
+Do the operation
+↓
+Update the values
+↓
+Count the operation
+↓
+Repeat
+```
+
+This felt natural.
+
+I didn't try to search for a clever trick immediately.
+
+I just followed the rules of the problem.
+
+That is a small but meaningful improvement in my problem-solving style.
+
+---
+
+The final problem was the robot movement problem.
+
+I tracked what was happening to the robot as each move came in.
+
+Again, I focused on the state of the problem rather than trying to overcomplicate it.
+
+At this point, I am starting to feel more comfortable with problems where the answer comes from simply tracking what changes over time.
+
+---
+
+# 🧠 What I Realized Today
+
+The biggest lesson from today wasn't from any single problem.
+
+It was about **consistency**.
+
+When I look back at the problems I was struggling with earlier in this journey, many things that seemed confusing are now becoming more familiar.
+
+I'm starting to recognize things like:
+
+```text
+"This looks similar to something I already solved."
+```
+
+That is probably one of the biggest signs of progress.
+
+---
+
+# ❌ Mistakes I Still Make
+
+I still make repeated mistakes.
+
+The biggest one today was again related to 2D arrays.
+
+I also sometimes misunderstand what exactly the problem is asking before I start coding.
+
+And sometimes I make things harder than they need to be because I try to find a "better" solution before making sure my simple solution is fully understood.
+
+These are things I want to keep improving.
+
+---
+
+# 📈 How I Am Improving
+
+I think my biggest improvement is that I am becoming more comfortable with being stuck.
+
+Earlier, getting stuck felt like:
+
+> "I don't know this."
+
+Now it feels more like:
+
+> "I haven't figured this out yet."
+
+That difference matters.
+
+I'm also getting better at:
+
+- breaking problems into smaller parts
+- connecting new problems with old ones
+- recognizing when I am repeating a mistake
+- staying with a problem longer
+- keeping the solution simple when simplicity is enough
+
+---
+
+# 🏆 101 Problems — What It Means To Me
+
+Reaching 101 solved problems today feels like proof that consistency works.
+
+I didn't solve 100 problems in one day.
+
+I didn't suddenly become good at DSA.
+
+It happened because I kept showing up.
+
+Some days I solved a lot.
+
+Some days I got stuck.
+
+Some problems I paused and came back to later.
+
+Some mistakes appeared again and again.
+
+But I continued.
+
+That's what got me here.
+
+---
+
+# 🎯 Biggest Lesson of Day 31
+
+> **Progress is not about never getting stuck. Progress is about getting unstuck faster than before.**
+
+I want to continue learning this way.
+
+Not just collecting solved problems, but improving the way I think through them.
+
+Today I reached:
+
+# 🚀 101 Problems Solved
+
+And this feels less like an ending and more like the beginning of the next stage.
+
+# ✅ Day 31 — Completed
+
+**6 problems solved today.**
+
+**101 total LeetCode problems solved.**
+
+**44 active days.**
+
+**33-day maximum streak.**
+
+The journey continues.
+
+# 👋 See You on Day 32!
+
