@@ -11522,3 +11522,586 @@ The biggest takeaway from today is:
 > **Don't solve every problem from scratch. Look for connections with problems you've already solved.**
 
 # 👋 See You on Day 31!
+
+# 📖 LeetCode Learning Log — Day 31
+
+**Date:** 16-08-2026
+
+## Problems Solved
+
+### 1. 1588. Sum of All Odd Length Subarrays
+
+**Difficulty:** Easy  
+**Pattern:** Subarray Traversal + Running Sum  
+**Status:** ✅ Solved
+
+## 🧠 Problem Understanding
+
+The problem asks for the sum of all **odd-length subarrays**.
+
+An odd-length subarray has length:
+
+```text
+1, 3, 5, 7, ...
+```
+
+A subarray must be continuous.
+
+## 💭 My Initial Thinking
+
+At first, I checked:
+
+```java
+arr.length % 2 == 1
+```
+
+but that checks the length of the whole array, not each subarray.
+
+I then understood that I need:
+
+```text
+i → starting index
+j → ending index
+```
+
+and:
+
+```text
+length = j - i + 1
+```
+
+## ❌ My Mistake
+
+I initially tried:
+
+```java
+sum = arr[i] + arr[j];
+```
+
+But that only adds the first and last elements.
+
+For:
+
+```text
+[1,4,2]
+```
+
+the sum must be:
+
+```text
+1 + 4 + 2
+```
+
+I first thought I would need a third loop to calculate the subarray sum.
+
+## 🔑 Improvement
+
+Instead, I learned to maintain a running sum:
+
+```java
+subsum += arr[j];
+```
+
+So the process becomes:
+
+```text
+Fix i
+  ↓
+Move j forward
+  ↓
+Keep updating subsum
+  ↓
+Check if length is odd
+  ↓
+Add subsum if odd
+```
+
+This removed the unnecessary third loop.
+
+---
+
+# 2. 1351. Count Negative Numbers in a Sorted Matrix
+
+**Difficulty:** Easy  
+**Pattern:** 2D Array Traversal  
+**Status:** ✅ Solved
+
+## 🧠 Problem Understanding
+
+The task is to count all negative numbers in a 2D matrix.
+
+The straightforward idea is:
+
+```text
+Visit every element
+    ↓
+If element < 0
+    ↓
+count++
+```
+
+## 💭 My Initial Thinking
+
+I understood the overall logic quickly, but I made another 2D-array indexing mistake.
+
+I used the wrong loop boundary and also tried to access:
+
+```java
+grid[j]
+```
+
+instead of the actual element.
+
+## ❌ My Mistake
+
+I again confused:
+
+```text
+grid.length
+grid[i].length
+grid[i][j]
+```
+
+I need to remember:
+
+```text
+grid.length       → rows
+grid[i].length    → columns in row i
+grid[i][j]        → one element
+```
+
+## 🔑 Improvement
+
+After correcting the indexes, the solution became straightforward:
+
+```text
+Traverse every row
+    ↓
+Traverse every element
+    ↓
+Check if negative
+    ↓
+Count
+```
+
+---
+
+# 3. 1281. Subtract the Product and Sum of Digits of an Integer
+
+**Difficulty:** Easy  
+**Pattern:** Digit Extraction  
+**Status:** ✅ Solved
+
+## 🧠 Problem Understanding
+
+The problem asks for the product of the digits minus the sum of the digits.
+
+## 💭 My Approach
+
+For each digit:
+
+```java
+int digit = n % 10;
+```
+
+gets the last digit.
+
+Then:
+
+```java
+n /= 10;
+```
+
+removes the last digit.
+
+I kept a running `sum` and `product`.
+
+## 🔑 Main Pattern
+
+```text
+n % 10 → get last digit
+n / 10 → remove last digit
+```
+
+This is useful for many number problems.
+
+---
+
+# 4. 2236. Root Equals Sum of Children
+
+**Difficulty:** Easy  
+**Pattern:** Binary Tree Node Access  
+**Status:** ✅ Solved
+
+## 🧠 Problem Understanding
+
+The problem simply checks whether:
+
+```text
+root value = left child value + right child value
+```
+
+For example:
+
+```text
+       10
+      /       4    6
+```
+
+Then:
+
+```text
+10 = 4 + 6
+```
+
+so the answer is `true`.
+
+## 💭 My Approach
+
+I used:
+
+```java
+root.val
+root.left.val
+root.right.val
+```
+
+and compared them directly.
+
+## 🔑 Main Learning
+
+For a binary tree node:
+
+```text
+root.val        → current value
+root.left       → left child
+root.right      → right child
+root.left.val   → left child value
+root.right.val  → right child value
+```
+
+---
+
+# 5. 2169. Count Operations to Obtain Zero
+
+**Difficulty:** Easy  
+**Pattern:** Simulation + While Loop  
+**Status:** ✅ Solved
+
+## 🧠 Problem Understanding
+
+The problem repeatedly subtracts the smaller number from the larger until one becomes zero.
+
+Every subtraction counts as one operation.
+
+## 💭 My Approach
+
+I used:
+
+```text
+If num1 >= num2
+    subtract num2 from num1
+Otherwise
+    subtract num1 from num2
+
+count++
+```
+
+and continued while both numbers were non-zero.
+
+## 🔑 Main Learning
+
+This is a simple simulation pattern:
+
+```text
+Check condition
+    ↓
+Update state
+    ↓
+Count operation
+    ↓
+Repeat
+```
+
+---
+
+# 6. 657. Robot Return to Origin
+
+**Difficulty:** Easy  
+**Pattern:** State Tracking / Simulation  
+**Status:** ✅ Solved
+
+## 🧠 Problem Understanding
+
+The robot receives movement commands:
+
+```text
+U → Up
+D → Down
+L → Left
+R → Right
+```
+
+The goal is to check whether it returns to the starting position.
+
+## 💭 My Approach
+
+I tracked two values:
+
+```text
+leftright
+updown
+```
+
+Then:
+
+```text
+U → updown++
+D → updown--
+L → leftright--
+R → leftright++
+```
+
+At the end, both must be zero.
+
+## 🔑 Main Learning
+
+This is another state-tracking pattern:
+
+```text
+Read command
+   ↓
+Update state
+   ↓
+Continue
+   ↓
+Check final state
+```
+
+---
+
+# 🏆 100+ LeetCode Milestone
+
+Today I also crossed an important milestone:
+
+## **101 LeetCode Problems Solved 🎉**
+
+Current progress shown today:
+
+```text
+Total Solved: 101
+Easy: 93
+Medium: 8
+Hard: 0
+Active Days: 44
+Max Streak: 33
+Submissions: 139
+```
+
+The biggest achievement is not just the number `101`.
+
+I am beginning to recognize connections between problems:
+
+```text
+724 + 1991
+→ Same total-sum / left-sum idea
+
+1925 + 1534
+→ Similar brute-force triplet thinking
+
+2958 + 3090
+→ Similar frequency-limited Sliding Window thinking
+```
+
+---
+
+# 📚 Java / DSA Concepts Learned Today
+
+- Odd-length subarrays
+- Running subarray sum
+- 2D array traversal
+- Recurring 2D indexing
+- Digit extraction
+- `% 10` and `/ 10`
+- Binary tree node access
+- Simulation
+- State tracking
+- `while` loops
+- Counting operations
+- Pattern recognition
+
+---
+
+# 🔥 Important Patterns From Day 31
+
+### Pattern 1 — Running Subarray Sum
+
+```java
+subsum += arr[j];
+```
+
+### Pattern 2 — Odd-Length Check
+
+```java
+length % 2 == 1
+```
+
+### Pattern 3 — 2D Array Traversal
+
+```text
+grid.length       → rows
+grid[i].length    → columns
+grid[i][j]        → element
+```
+
+### Pattern 4 — Digit Extraction
+
+```text
+n % 10 → last digit
+n / 10 → remove last digit
+```
+
+### Pattern 5 — Tree Node Access
+
+```text
+root.val
+root.left.val
+root.right.val
+```
+
+### Pattern 6 — Simulation
+
+```text
+Read input
+   ↓
+Update state
+   ↓
+Repeat
+   ↓
+Check final state
+```
+
+---
+
+# 📝 Mistakes I Want To Remember
+
+### 1. 2D Array Indexing
+
+I am still repeating this mistake:
+
+```text
+grid.length
+grid[i].length
+grid[i][j]
+```
+
+I need to slow down and identify what `i` and `j` represent before writing the inner loop.
+
+### 2. Whole Array vs Subarray Length
+
+I initially checked:
+
+```java
+arr.length
+```
+
+when I actually needed:
+
+```java
+j - i + 1
+```
+
+The whole array length and the current subarray length are different things.
+
+### 3. Recalculating Instead of Maintaining
+
+For odd-length subarrays, I first thought about a third loop.
+
+I learned that a running `subsum` is enough.
+
+---
+
+# 📈 Growth / Improvement
+
+Today I solved several problems that looked very different:
+
+```text
+Subarrays
+2D arrays
+Numbers
+Binary trees
+Simulation
+Movement tracking
+```
+
+But I am starting to see repeated ideas underneath them:
+
+```text
+Maintain a value
+Track state
+Traverse
+Check a condition
+Update an answer
+```
+
+The biggest improvement is that I am becoming more comfortable starting with a **simple direct approach** instead of immediately searching for a complicated trick.
+
+And crossing **100+ solved problems** today shows that the consistency is paying off.
+
+---
+
+# 🎯 What I Should Remember
+
+```text
+Odd subarray length:
+j - i + 1
+
+Running subarray sum:
+subsum += arr[j]
+
+2D array:
+grid[i][j]
+
+Digit:
+n % 10
+
+Remove digit:
+n /= 10
+
+Tree:
+root.val
+root.left.val
+root.right.val
+
+Simulation:
+update state → repeat → check result
+```
+
+---
+
+# ✅ Day 31 Status
+
+**Problems Solved Today:** 6
+
+**Problems:**
+
+- `1588. Sum of All Odd Length Subarrays` ✅
+- `1351. Count Negative Numbers in a Sorted Matrix` ✅
+- `1281. Subtract the Product and Sum of Digits of an Integer` ✅
+- `2236. Root Equals Sum of Children` ✅
+- `2169. Count Operations to Obtain Zero` ✅
+- `657. Robot Return to Origin` ✅
+
+**Major Milestone:** **101 LeetCode problems solved 🎉**
+
+**Main Topics:** Subarrays, 2D Arrays, Digit Processing, Binary Trees, Simulation, State Tracking
+
+## 🚀 Day 31 — Completed
+
+Today I crossed **100 solved LeetCode problems** and reached **101 total solves**.
+
+More importantly, I am starting to see the common thinking behind different problems instead of treating every problem as completely new.
+
+> **The goal is not just to solve more problems. The goal is to recognize patterns faster and think more clearly.**
+
+# 👋 See You on Day 32!
