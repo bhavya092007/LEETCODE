@@ -2817,3 +2817,199 @@ Recognize → Reuse → Simplify → Optimize only when necessary
 ```
 
 **Day 30 — Important Concepts Complete ✅**
+
+# 🧠 Day 31 — Important Concepts
+
+**Date:** 16-08-2026
+
+## 1. Odd-Length Subarray
+
+A subarray is **odd-length** when:
+
+```java
+length % 2 == 1
+```
+
+For a subarray from `i` to `j`:
+
+```java
+length = j - i + 1;
+```
+
+---
+
+## 2. Running Subarray Sum
+
+Instead of using a third loop to calculate every subarray's sum:
+
+```java
+subsum += arr[j];
+```
+
+As `j` moves forward, `subsum` keeps the current subarray's sum.
+
+---
+
+## 3. 2D Array Traversal
+
+```text
+grid.length       → number of rows
+grid[i].length    → number of columns
+grid[i][j]        → individual element
+```
+
+Remember:
+
+```text
+i → row
+j → column
+```
+
+This is still a **recurring mistake** and needs attention.
+
+---
+
+## 4. Digit Extraction
+
+To get the last digit:
+
+```java
+n % 10
+```
+
+To remove the last digit:
+
+```java
+n /= 10;
+```
+
+General pattern:
+
+```text
+get digit → process digit → remove digit → repeat
+```
+
+---
+
+## 5. Binary Tree Node Access
+
+For a tree node:
+
+```java
+root.val
+```
+
+→ current node value
+
+```java
+root.left.val
+```
+
+→ left child value
+
+```java
+root.right.val
+```
+
+→ right child value
+
+---
+
+## 6. Simulation Pattern
+
+Some problems simply require following the rules repeatedly:
+
+```text
+Read current state
+      ↓
+Perform operation
+      ↓
+Update state
+      ↓
+Repeat
+      ↓
+Check final state
+```
+
+Used in problems like `2169` and `657`.
+
+---
+
+## 7. State Tracking
+
+Instead of storing every step, maintain only the information needed to describe the current state.
+
+For the robot problem:
+
+```text
+leftright → horizontal position
+updown     → vertical position
+```
+
+At the end:
+
+```text
+leftright == 0
+updown == 0
+```
+
+means the robot returned to the origin.
+
+---
+
+## 8. `while` Loop for Unknown Number of Operations
+
+When you don't know beforehand how many operations will happen:
+
+```java
+while (condition) {
+    // perform operation
+}
+```
+
+Example:
+
+```java
+while (num1 != 0 && num2 != 0)
+```
+
+The loop continues until the required stopping condition is reached.
+
+---
+
+## 9. Pattern Recognition
+
+Today's problems reinforced several patterns:
+
+```text
+Subarray → running sum
+2D array → row + column traversal
+Number → digit extraction
+Tree → node/child access
+Repeated operation → simulation
+Movement → state tracking
+```
+
+The important skill is recognizing the underlying pattern even when the problem statement looks different.
+
+---
+
+# ⭐ Most Important Concepts Today
+
+```text
+1. Odd subarray length = j - i + 1
+2. Running subarray sum
+3. 2D array indexing
+4. Digit extraction using % 10 and / 10
+5. Binary tree node access
+6. Simulation
+7. State tracking
+8. while loop for repeated operations
+9. Pattern recognition
+```
+
+## 🎯 Day 31 Takeaway
+
+> **Different problems can use the same basic idea: maintain the right information, update it as you traverse, and check the final condition.**
+
+**Day 31 — Important Concepts Complete ✅**
