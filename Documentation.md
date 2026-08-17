@@ -7444,3 +7444,70 @@ The journey continues.
 
 # 👋 See You on Day 32!
 
+# 📖 DSA Journey Documentation — Day 32
+
+**Date:** 17-08-2026
+
+Today I worked on **1854. Maximum Population Year**, and honestly, this problem taught me more about understanding problem statements than about coding.
+
+## 😂 The “Easy” Problem That Took 1.2 Hours
+
+I thought LeetCode Easy would be… easy. 😭
+
+Then I opened **1854. Maximum Population Year**.
+
+The coding part? Pretty straightforward.
+
+The description? **This pretty shit** 💀
+
+I just invested **1.2 hours** trying to understand what the problem was actually asking. 😂
+
+Once I translated the LeetCode language into normal human language, I realized the problem was simply:
+
+👉 Given people's birth and death years, find the year in which the **most people were alive**.
+
+For example:
+
+`[1993, 1999]` means the person is alive from 1993 to 1998.
+
+So the idea becomes:
+
+- Birth year → population `+1`
+- Death year → population `-1`
+- Keep a running population for each year
+- Track the earliest year with the maximum population
+
+I ended up using a **difference array**, which made the solution much cleaner.
+
+One thing I'm realizing while learning DSA:
+
+**Sometimes the hardest part of an Easy problem isn't the algorithm — it's understanding what the problem is actually asking.**
+
+**1.2 hours understanding the problem. A few minutes writing the solution.** 😭
+
+Still learning. Still getting humbled by “Easy” problems. 😂
+
+---
+
+## 🧠 What I Took Away
+
+The biggest lesson from today was that **problem understanding comes before implementation**.
+
+I spent most of the time figuring out what the question actually meant. Once I understood the timeline and the population changes, the code became much easier.
+
+That experience reminded me that being slow on one problem does not mean I'm bad at DSA. Sometimes the difficult part is learning a new way to look at the problem.
+
+## ✅ Day 32 — Completed
+
+**Problem Solved:**
+- `1854. Maximum Population Year` ✅
+
+**Biggest Lesson:**
+> Understand the problem in normal language first. The code becomes much easier after that.
+
+**1.2 hours understanding. A few minutes coding. Still progress.** 🚀
+
+#DSA #LeetCode #Java #LearningInPublic #CodingJourney
+
+# 👋 See You on Day 33!
+
