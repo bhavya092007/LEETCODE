@@ -3013,3 +3013,203 @@ The important skill is recognizing the underlying pattern even when the problem 
 > **Different problems can use the same basic idea: maintain the right information, update it as you traverse, and check the final condition.**
 
 **Day 31 — Important Concepts Complete ✅**
+
+# 🧠 Day 32 — Important Concepts
+
+**Date:** 17-08-2026
+
+## 1. Difference Array / Change Tracking
+
+Instead of calculating the population from scratch for every year, track only when the population changes.
+
+```text
+Birth year  → +1
+Death year  → -1
+```
+
+Then scan through the years and keep a running population.
+
+```java
+current += change[i];
+```
+
+---
+
+## 2. Birth Year Is Included
+
+For a person:
+
+```text
+[birth, death]
+```
+
+they are counted starting from the birth year.
+
+Condition:
+
+```text
+birth <= year
+```
+
+---
+
+## 3. Death Year Is Not Included
+
+The person is **not** counted in their death year.
+
+Full condition:
+
+```text
+birth <= year < death
+```
+
+For:
+
+```text
+[1993, 1999]
+```
+
+the person is counted in:
+
+```text
+1993 → 1998
+```
+
+but not `1999`.
+
+---
+
+## 4. Population as a Running Total
+
+After recording the changes:
+
+```text
+current population = previous population + change
+```
+
+Example:
+
+```text
+1950 → +1
+1960 → +1
+1961 → -1
+1971 → -1
+```
+
+Scanning these changes gives the population for each year.
+
+---
+
+## 5. Mapping Years to Array Indexes
+
+The years are limited to:
+
+```text
+1950 → 2050
+```
+
+So there are:
+
+```text
+2050 - 1950 + 1 = 101
+```
+
+possible years.
+
+Convert a year to an array index using:
+
+```java
+year - 1950
+```
+
+Examples:
+
+```text
+1950 → index 0
+1960 → index 10
+2050 → index 100
+```
+
+---
+
+## 6. Earliest Maximum
+
+The problem asks for the **earliest** year when the population is maximum.
+
+So update the answer only when:
+
+```java
+current > maxPopulation
+```
+
+not:
+
+```java
+current >= maxPopulation
+```
+
+Why?
+
+If:
+
+```text
+1960 → population 2
+1970 → population 2
+```
+
+we keep `1960`.
+
+---
+
+## 7. Constraint-Based Thinking
+
+The small year range is important.
+
+Because there are only `101` possible years, we can safely build an array representing those years.
+
+General lesson:
+
+> Always look at the constraints before deciding how to represent the problem.
+
+---
+
+## 8. Overlapping Ranges
+
+The population of a year is determined by how many people's alive ranges include that year.
+
+Think:
+
+```text
+Person A: [1950,1961)
+Person B: [1960,1971)
+
+1960:
+A → alive ✅
+B → alive ✅
+
+Population = 2
+```
+
+The half-open range notation `[birth, death)` is a useful way to remember that birth is included but death is excluded.
+
+---
+
+# ⭐ Most Important Concepts Today
+
+```text
+1. Difference Array / Change Tracking
+2. Birth → +1
+3. Death → -1
+4. Alive condition = birth <= year < death
+5. Running population
+6. Year → index using year - 1950
+7. Earliest maximum → use >
+8. Constraints can simplify the solution
+9. Population comes from overlapping alive ranges
+```
+
+## 🎯 Day 32 Takeaway
+
+> **When something changes at specific points in time, track the changes and build the running state instead of recalculating everything repeatedly.**
+
+**Day 32 — Important Concepts Complete ✅**
