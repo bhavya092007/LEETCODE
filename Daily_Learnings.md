@@ -12105,3 +12105,469 @@ More importantly, I am starting to see the common thinking behind different prob
 > **The goal is not just to solve more problems. The goal is to recognize patterns faster and think more clearly.**
 
 # 👋 See You on Day 32!
+
+# 📖 LeetCode Learning Log — Day 32
+
+**Date:** 17-08-2026
+
+## Problem Solved
+
+### 1. 1854. Maximum Population Year
+
+**Difficulty:** Easy  
+**Pattern:** Difference Array + Running Population  
+**Status:** ✅ Solved
+
+---
+
+## 🧠 Problem Understanding
+
+The problem gives a list of people's birth and death years.
+
+For each person:
+
+```text
+[birth, death]
+```
+
+the person is counted in every year from:
+
+```text
+birth
+```
+
+up to:
+
+```text
+death - 1
+```
+
+The goal is to find the year with the **maximum population**.
+
+If multiple years have the same maximum population, return the **earliest** year.
+
+---
+
+## 💭 My Initial Thinking
+
+I spent a lot of time trying to understand what the problem was actually asking.
+
+My first thought was:
+
+```text
+death - birth
+```
+
+because I thought I could use that to determine the number of years a person lived.
+
+That calculation is valid, but it answers a different question.
+
+It tells me:
+
+```text
+how many years one person was alive
+```
+
+The actual problem asks:
+
+```text
+how many people were alive in each year
+```
+
+That was the first important distinction I had to understand.
+
+---
+
+## ❌ Initial Confusion
+
+I then started thinking:
+
+> "For a particular year, I need to check whether each person's birth/death range includes that year."
+
+For example:
+
+```text
+Person 1 = [1950, 1961]
+Person 2 = [1960, 1971]
+```
+
+For year `1960`:
+
+```text
+Person 1 → alive ✅
+Person 2 → alive ✅
+```
+
+So:
+
+```text
+population(1960) = 2
+```
+
+This helped me finally understand that the problem is about **overlapping lifetimes**.
+
+---
+
+## 💡 First Possible Approach I Understood
+
+I realized I could conceptually do:
+
+```text
+For every year
+    ↓
+Check every person
+    ↓
+If birth <= year < death
+    ↓
+count++
+    ↓
+compare population
+```
+
+This helped me understand the problem.
+
+But then I noticed that there should be a better way because I do not actually need to repeatedly ask which people are alive.
+
+---
+
+## 🔥 Main Breakthrough
+
+The biggest moment was realizing:
+
+```text
+Birth year → population increases by 1
+Death year → population decreases by 1
+```
+
+For example:
+
+```text
+[1950, 1961]
+```
+
+can be viewed as:
+
+```text
+1950 → +1
+1961 → -1
+```
+
+Then I can scan through the years and maintain the current population.
+
+This completely changed how I was thinking about the problem.
+
+Instead of:
+
+```text
+"Who is alive this year?"
+```
+
+I started thinking:
+
+```text
+"When does the population change?"
+```
+
+That was the key insight.
+
+---
+
+## 🧠 Constraint Insight
+
+The problem gives:
+
+```text
+1950 <= birth < death <= 2050
+```
+
+So the year range is very small.
+
+There are only:
+
+```text
+2050 - 1950 + 1 = 101
+```
+
+possible years.
+
+That is why using:
+
+```java
+int[] change = new int[101];
+```
+
+makes sense.
+
+The array position represents an offset from `1950`.
+
+For example:
+
+```text
+1950 → index 0
+1951 → index 1
+1952 → index 2
+...
+2050 → index 100
+```
+
+---
+
+## 💻 Final Approach
+
+```java
+class Solution {
+    public int maximumPopulation(int[][] logs) {
+        int[] change = new int[101];
+
+        for (int i = 0; i < logs.length; i++) {
+            int birth = logs[i][0];
+            int death = logs[i][1];
+
+            change[birth - 1950]++;
+            change[death - 1950]--;
+        }
+
+        int current = 0;
+        int maxPopulation = 0;
+        int answer = 0;
+
+        for (int j = 0; j < change.length; j++) {
+            current += change[j];
+
+            if (current > maxPopulation) {
+                maxPopulation = current;
+                answer = j + 1950;
+            }
+        }
+
+        return answer;
+    }
+}
+```
+
+---
+
+## 🔍 How I Understand the Final Code
+
+For each person:
+
+```text
+birth → +1
+death → -1
+```
+
+Then scan the years.
+
+The running value:
+
+```text
+current
+```
+
+represents the population for that year.
+
+When:
+
+```text
+current > maxPopulation
+```
+
+I update the answer.
+
+I use `>` instead of `>=` because the problem wants the **earliest** year when the maximum population occurs.
+
+So if:
+
+```text
+1960 → population 2
+1970 → population 2
+```
+
+the answer remains:
+
+```text
+1960
+```
+
+---
+
+## ❌ Mistakes I Made
+
+### 1. Confusing Lifetime With Population
+
+I kept thinking about:
+
+```text
+death - birth
+```
+
+but that only tells me how long one person is alive.
+
+I needed to think about **how many people's ranges overlap a particular year**.
+
+### 2. Confusing the Data Structure With the Actual Question
+
+Initially, I focused too much on traversing:
+
+```text
+logs[i][j]
+```
+
+instead of asking:
+
+> "What is the problem actually asking me to count?"
+
+This reminded me that understanding the problem comes before writing loops.
+
+### 3. Taking Time To Recognize the Optimization
+
+I spent around **1.2 hours** understanding this problem.
+
+At first, that felt too long, but by the end I understood the change-based approach myself.
+
+The important part is that I did not just memorize the solution.
+
+I understood why:
+
+```text
+birth = +1
+death = -1
+```
+
+works.
+
+---
+
+## 📈 Growth / Improvement
+
+This problem took much longer than some of the previous Easy problems.
+
+But it taught me something important:
+
+> **A problem can be Easy by LeetCode's label and still require a completely new way of thinking.**
+
+I also learned that spending a lot of time on one problem is not automatically bad if I actually understand the idea by the end.
+
+Today I went through:
+
+```text
+Confusion
+   ↓
+Wrong interpretation
+   ↓
+Understand one year
+   ↓
+Think about checking every person
+   ↓
+Notice population changes
+   ↓
+Birth = +1
+Death = -1
+   ↓
+Understand difference array
+```
+
+That entire process was valuable.
+
+---
+
+# 🔥 Important Pattern Learned
+
+## Difference Array / Change Tracking
+
+Instead of storing the whole population for every person:
+
+```text
+record when something starts
+record when something ends
+then accumulate the changes
+```
+
+For this problem:
+
+```text
+birth → +1
+death → -1
+```
+
+Then:
+
+```text
+current += change[year]
+```
+
+gives the population.
+
+---
+
+# 🔗 Connection With Previous Learning
+
+This problem was different from most of the brute-force problems I had been solving.
+
+Earlier, I often thought:
+
+```text
+Try every possibility
+Check the condition
+Count
+```
+
+Here I learned a different mindset:
+
+```text
+Track changes
+Accumulate the state
+Find the maximum
+```
+
+This is a useful step forward because I am starting to see that DSA is not only about loops and conditions.
+
+Sometimes the important part is recognizing **how the data changes over time**.
+
+---
+
+# 🎯 What I Should Remember
+
+```text
+death - birth
+→ person's lifetime
+
+population(year)
+→ number of people alive that year
+
+birth
+→ +1
+
+death
+→ -1
+
+running population
+→ current += change[year]
+
+tie
+→ keep the earlier year
+```
+
+---
+
+# ✅ Day 32 Status
+
+**Problems Solved:** 1
+
+**Problem:**
+
+- `1854. Maximum Population Year` ✅
+
+**Main Topic:** Difference Array / Change Tracking
+
+**Biggest Lesson:**
+
+> **Don't just ask what each individual value means. Ask how the entire state changes over time.**
+
+## 🚀 Day 32 — In Progress
+
+This problem took me around **1.2 hours to truly understand**, but that time gave me a new way of thinking about timeline-based problems.
+
+I am learning that **understanding is more important than speed**.
+
+# 👋 On day 33
