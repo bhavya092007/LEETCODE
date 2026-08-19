@@ -12571,3 +12571,333 @@ This problem took me around **1.2 hours to truly understand**, but that time gav
 I am learning that **understanding is more important than speed**.
 
 # 👋 On day 33
+
+# 📖 LeetCode Learning Log — Day 33
+
+**Date:** 18-08-2026
+
+## Problems Solved
+
+### 1. 2016. Maximum Difference Between Increasing Elements
+
+**Difficulty:** Easy  
+**Pattern:** Array Traversal / Pair Comparison  
+**Status:** ✅ Solved
+
+### 2. 2057. Smallest Index With Equal Value
+
+**Difficulty:** Easy  
+**Pattern:** Array Traversal / Index-Value Comparison  
+**Status:** ✅ Solved
+
+---
+
+# 🧩 Problem 1 — 2016. Maximum Difference Between Increasing Elements
+
+## 🧠 Problem Understanding
+
+We need to find the maximum:
+
+```text
+nums[j] - nums[i]
+```
+
+with:
+
+```text
+i < j
+nums[i] < nums[j]
+```
+
+The first element must appear before the second, and the second must be larger.
+
+If no valid pair exists, return `-1`.
+
+## 💭 My Initial Approach
+
+I thought of using two loops:
+
+```text
+Choose i
+Choose j
+Check nums[i] < nums[j]
+Calculate nums[j] - nums[i]
+Keep the best answer
+```
+
+This is a valid brute-force way to think about the problem.
+
+## ❌ Mistakes I Made
+
+### 1. Wrong starting point for `j`
+
+I initially had:
+
+```java
+for(int j = 1; j < nums.length; j++)
+```
+
+But the condition is `i < j`, so:
+
+```java
+j = i + 1
+```
+
+is the correct starting point.
+
+### 2. Used minimum instead of maximum
+
+I initially created:
+
+```java
+int min = 0;
+```
+
+But the problem asks for the **maximum difference**.
+
+The correct thinking is:
+
+```text
+current difference
+        ↓
+is it greater than my best?
+        ↓
+yes → update best
+```
+
+### 3. Returned too early
+
+I had `return ans` inside the loop.
+
+That stops the program before checking all possible pairs.
+
+The answer should be returned after all required pairs have been checked.
+
+## 🔥 Main Lesson
+
+The important conditions are:
+
+```text
+i < j
+nums[i] < nums[j]
+```
+
+Only then calculate:
+
+```text
+nums[j] - nums[i]
+```
+
+Index order is part of the problem.
+
+---
+
+# 🧩 Problem 2 — 2057. Smallest Index With Equal Value
+
+## 🧠 Problem Understanding
+
+Find the smallest index `i` where:
+
+```text
+i % 10 == nums[i]
+```
+
+For example:
+
+```text
+i = 3
+nums[i] = 3
+```
+
+Then:
+
+```text
+3 % 10 = 3
+```
+
+so index `3` satisfies the condition.
+
+## 💡 My Approach
+
+I used one loop:
+
+```java
+for(int i = 0; i < nums.length; i++)
+```
+
+and checked:
+
+```java
+if(i % 10 == nums[i])
+```
+
+If true:
+
+```java
+return i;
+```
+
+Otherwise, after the whole array:
+
+```java
+return -1;
+```
+
+## ⭐ Why Immediate Return Works
+
+The problem asks for the **smallest index**.
+
+Since I traverse:
+
+```text
+0 → 1 → 2 → 3 → ...
+```
+
+the first valid index is automatically the smallest.
+
+---
+
+# 🔥 Important Concepts From Day 33
+
+## 1. Nested Loop Pair Checking
+
+For two indexes, carefully follow restrictions such as:
+
+```text
+i < j
+```
+
+## 2. `j = i + 1`
+
+When the second index must come after the first:
+
+```java
+for(int j = i + 1; j < nums.length; j++)
+```
+
+## 3. Maximum Tracking
+
+When searching for a maximum:
+
+```text
+if(current > best)
+    best = current
+```
+
+## 4. Smallest / Leftmost Index
+
+Traverse from left to right:
+
+```text
+0 → 1 → 2 → 3 → ...
+```
+
+The first valid index is the smallest valid index.
+
+## 5. Modulo `%`
+
+Examples:
+
+```text
+0 % 10 = 0
+3 % 10 = 3
+7 % 10 = 7
+10 % 10 = 0
+12 % 10 = 2
+25 % 10 = 5
+```
+
+## 6. Index-Value Comparison
+
+In problem 2057:
+
+```text
+index → i
+value → nums[i]
+```
+
+and the condition is:
+
+```java
+i % 10 == nums[i]
+```
+
+---
+
+# 📚 Patterns Learned Today
+
+```text
+Two indexes
+    ↓
+i < j
+    ↓
+j = i + 1
+```
+
+```text
+Maximum
+    ↓
+current > best
+```
+
+```text
+Smallest index
+    ↓
+left-to-right traversal
+    ↓
+return first valid index
+```
+
+```text
+Modulo
+    ↓
+i % 10
+```
+
+---
+
+# ❌ Mistakes / Things To Watch
+
+```text
+1. Don't start j from 1 when the condition is i < j.
+2. Don't use minimum logic when searching for maximum.
+3. Don't return before checking all required pairs.
+4. Pay attention to whether the problem asks for the smallest index.
+5. Remember that an array index can itself be part of the condition.
+```
+
+---
+
+# 🎯 Day 33 Takeaway
+
+> **Read the exact conditions before writing the loops. Small details like `i < j`, maximum vs minimum, and smallest index completely change how the code should work.**
+
+---
+
+# ✅ Day 33 Summary
+
+**Date:** 18-08-2026
+
+**Problems Solved:** 2
+
+```text
+2016. Maximum Difference Between Increasing Elements ✅
+2057. Smallest Index With Equal Value ✅
+```
+
+**Main Concepts:**
+
+```text
+✓ Pair comparison
+✓ Nested loops
+✓ i < j
+✓ j = i + 1
+✓ Maximum tracking
+✓ Smallest-index tracking
+✓ Left-to-right traversal
+✓ Modulo operator
+✓ Index-value comparison
+```
+
+**Day 33 Complete ✅**
+
