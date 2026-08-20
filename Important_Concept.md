@@ -3213,3 +3213,41 @@ The half-open range notation `[birth, death)` is a useful way to remember that b
 > **When something changes at specific points in time, track the changes and build the running state instead of recalculating everything repeatedly.**
 
 **Day 32 — Important Concepts Complete ✅**
+
+# Important Concepts & Patterns — Day 36
+**Date:** August 20, 2026  
+**Day Number:** Day 36
+
+---
+
+## 1. Key Algorithmic Concepts & Patterns
+
+### 1. Reverse Iteration / Suffix Accumulation Pattern
+* **Concept:** When a problem requires computing a property across all elements to the right of each position, traversing backwards (from right to left) allows maintaining a running state in $O(1)$ auxiliary space and $O(n)$ time.
+* **Mental Rule:** Whenever you find yourself re-scanning the remainder of a list inside a loop, ask: *"If I walk backward from the end, do I already have the answer ready for the current position?"*
+
+### 2. Independent Dynamic Buffers with Pointers
+* **Concept:** When splitting a stream into multiple growing collections using primitive arrays:
+  * Allocate buffer space to the theoretical maximum size (`n`).
+  * Maintain an isolated pointer/counter for each buffer (`idx1`, `idx2`).
+  * **Pointer Invariants:**
+    * Write target: `buffer[idx] = val; idx++;`
+    * Tail inspection (last appended element): `buffer[idx - 1]`
+    * Active length / slice boundary: `0` to `idx - 1`
+
+### 3. Array Copy Semantics (`System.arraycopy` vs. Manual Loops)
+* When working with pre-allocated buffers that are only partially filled:
+  * Only transfer elements in the range `[0, active_size)`.
+  * For destination offsets: the second partition must start at destination index equal to `size1`, not a static constant.
+
+---
+
+## 2. Summary of Questions Solved
+
+* **Total Questions Solved:** 2
+  1. LeetCode 1299 — *Replace Elements with Greatest Element on Right Side*
+  2. LeetCode 3069 — *Distribute Elements Into Two Arrays I*
+
+---
+
+*See you on Day 37*
