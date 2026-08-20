@@ -7511,3 +7511,47 @@ That experience reminded me that being slow on one problem does not mean I'm bad
 
 # 👋 See You on Day 33!
 
+# Problem Solving & Metacognition Documentation — Day 36
+**Date:** August 20, 2026  
+**Day Number:** Day 36
+
+---
+
+## 1. Mental Models & Problem Decomposition
+
+### LeetCode 1299: Overcoming Forward-Scanning Bias
+* **Initial Intuition:** The direct mental model of the problem statement reads left-to-right ("look at everything to your right"). This naturally leads to writing an outer loop for the current element and an inner loop scanning the rest of the array.
+* **Cognitive Shift:** Recognizing redundant computation. Scanning index `2` to `n-1` repeats the work just done when scanning index `1` to `n-1`. By flipping the direction of time/traversal (moving right-to-left), the "future" maximum is already known and can be carried backwards in a single accumulator variable.
+
+---
+
+### LeetCode 3069: Pointer Management & State Tracking
+* **Initial Intuition & Data Structure Selection:**
+  * First instinct leaned toward `HashMap`, reflecting a quick association with collection problems.
+  * Pausing to analyze requirements showed that no key-value association was needed—only ordered appending and peek operations on the tail element.
+  * Transitioned to primitive arrays for lower overhead and direct memory access.
+
+* **Mistakes & Debugging Process:**
+  1. **Zero-Capacity Allocation:** Initially declared `new int[0]`, which leads to immediate boundary exceptions upon writing. Corrected by allocating worst-case capacity `new int[n]`.
+  2. **Coupled Indexing vs. Independent Pointers (`i - 2` Trap):**
+     * Mistake: Attempted to use the loop counter expression `i - 2` to access the last element in both arrays.
+     * Realization: `arr1` and `arr2` grow asynchronously. Using a shared index assumes equal distribution, which breaks when one array receives consecutive elements.
+     * Resolution: Introduced independent state pointers `idx1` and `idx2`.
+  3. **Off-by-One in Tail Access (`idx - 2` vs. `idx - 1`):**
+     * Mistake: Subtracted 2 instead of 1 when reading the last element, causing negative index crashes.
+     * Realization: Since `idx` represents the *next insertion point*, the item inserted immediately prior resides at `idx - 1`.
+  4. **Array Concatenation Nuances:**
+     * Mistake: Attempted to copy full buffer length `n` instead of the active slice length `idx1` / `idx2`, which would introduce unwanted default zero values.
+     * Resolution: Iterated strictly through valid elements using dedicated output pointers.
+
+---
+
+## 2. Summary of Questions Solved
+
+* **Total Questions Solved:** 2
+  1. LeetCode 1299 — *Replace Elements with Greatest Element on Right Side*
+  2. LeetCode 3069 — *Distribute Elements Into Two Arrays I*
+
+---
+
+*See you on Day 37*
