@@ -3251,3 +3251,46 @@ The half-open range notation `[birth, death)` is a useful way to remember that b
 ---
 
 *See you on Day 37*
+
+# Important Concepts & Patterns — Day 37
+**Date:** August 21, 2026  
+**Day Number:** Day 37
+
+---
+
+## 1. Key Algorithmic Concepts & Patterns
+
+### 1. Lookahead Invariant in Greedy String Processing
+* **Concept:** When processing sequences where an item's semantic value depends on future context, a 1-step lookahead (`peek(i + 1)`) simplifies parsing without requiring a full sliding window or state machine.
+* **Pattern Template:**
+  ```java
+  if (i + 1 < length && value(s[i]) < value(s[i + 1])) {
+      total -= value(s[i]);
+  } else {
+      total += value(s[i]);
+  }
+  ```
+
+### 2. General Carry-Sum Simulation (Base-K Arithmetic)
+* **Concept:** Adding numbers represented as strings without numeric overflow.
+* **Invariant:** Traverse both strings right-to-left. Continue as long as either string has remaining digits OR a carry is nonzero.
+* **Formulas for Base-$K$:**
+  * $	ext{Digit to Append} = (	ext{digit}_A + 	ext{digit}_B + 	ext{carry}) \pmod K$
+  * $	ext{Next Carry} = (	ext{digit}_A + 	ext{digit}_B + 	ext{carry}) / K$
+
+### 3. Primitive Lookup vs. Object Map Overhead
+* In micro-benchmarks and high-frequency checks:
+  * `HashMap<Character, Integer>` introduces boxing (`char` $	o$ `Character`, `int` $	o$ `Integer`), hashing, and heap lookups.
+  * A `switch` expression or fixed ASCII array `int[128]` provides true $O(1)$ zero-allocation lookups with direct cache locality.
+
+---
+
+## 2. Summary of Questions Solved
+
+* **Total Questions Solved:** 2
+  1. LeetCode 13 — *Roman to Integer*
+  2. LeetCode 67 — *Add Binary*
+
+---
+
+*See you on Day 38*
