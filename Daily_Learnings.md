@@ -13954,3 +13954,60 @@ Analysing
 ---
 
 *See you on Day 37*
+
+# Learning Log — Day 37
+**Date:** August 21, 2026  
+**Day Number:** Day 37
+
+---
+
+## 1. Problem Overview & Technical Breakdown
+
+### Problem 1: LeetCode 13 — Roman to Integer
+* **Category:** String Traversal / Hash Table / Greedy Subtraction
+* **Core Task:** Convert a Roman numeral string into its corresponding base-10 integer representation.
+
+#### Technical Implementation Details
+* **Mapping:** Used a `HashMap<Character, Integer>` to store the static symbol values (`I=1, V=5, X=10, L=50, C=100, D=500, M=1000`).
+* **Evaluation Condition:** 
+  * Linear traversal looking one step ahead:
+    ```java
+    if (i + 1 < s.length() && current < map.get(s.charAt(i + 1))) {
+        result -= current;
+    } else {
+        result += current;
+    }
+    ```
+* **Time Complexity:** $O(n)$ — Single pass over string length $n$ (effectively $O(1)$ given the fixed upper limit of valid Roman numbers).
+* **Space Complexity:** $O(1)$ — Constant hash map containing 7 entries.
+
+---
+
+### Problem 2: LeetCode 67 — Add Binary
+* **Category:** Math / Bit Manipulation / Two Pointers / Arbitrary-Precision Arithmetic
+* **Core Task:** Given two binary strings, compute their sum and return it as a binary string.
+
+#### Approach 1: BigInteger Built-in (Implemented)
+* **Mechanism:** Leveraged `java.math.BigInteger` with base-2 parsing (`new BigInteger(val, 2)`), added them, and formatted back with `.toString(2)`.
+* **Time Complexity:** $O(N \log N)$ to $O(N^2)$ due to string-to-number radixed conversions and arbitrary-precision addition internally.
+* **Space Complexity:** $O(N)$ for object allocation.
+
+#### Approach 2: Manual Column-by-Column Simulation (Optimal Interview Standard)
+* **Mechanism:** Two-pointer simulation starting from least-significant bits (`i = a.length() - 1`, `j = b.length() - 1`) maintaining a `carry` variable:
+  * Current bit: `sum % 2`
+  * Carry forward: `sum / 2`
+  * Termination: `while (i >= 0 || j >= 0 || carry > 0)`
+* **Time Complexity:** $O(\max(N, M))$ — Single linear pass.
+* **Space Complexity:** $O(\max(N, M))$ for the `StringBuilder` output.
+
+---
+
+## 2. Summary of Questions Solved
+
+* **Total Questions Solved:** 2
+  1. LeetCode 13 — *Roman to Integer*
+  2. LeetCode 67 — *Add Binary*
+
+---
+
+*See you on Day 38*
