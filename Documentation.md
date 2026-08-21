@@ -7555,3 +7555,37 @@ That experience reminded me that being slow on one problem does not mean I'm bad
 ---
 
 *See you on Day 37*
+
+# Problem Solving & Metacognition Documentation — Day 37
+**Date:** August 21, 2026  
+**Day Number:** Day 37
+
+---
+
+## 1. Mental Models & Problem Decomposition
+
+### LeetCode 13: Lookahead vs. State Machine
+* **Mental Model:** Roman numeral parsing requires disambiguating single-character additions from subtractive combinations (`IV`, `IX`, etc.).
+* **Logical Structuring:** Instead of grouping characters into composite multi-character tokens (`"IV"`), evaluated the string strictly element-by-element with a **1-step lookahead**.
+* **Invariant:** If the current value is strictly smaller than the immediately succeeding value, it acts as a negative offset to the total; otherwise, it is additive.
+* **Boundary Safeguard:** Guarded lookahead comparisons with an explicit `i + 1 < s.length()` check to prevent index out-of-bounds exceptions on the tail character.
+
+---
+
+### LeetCode 67: Leveraging Standard Libraries vs. Fundamental Simulation
+* **Mental Model:** Recognize the trade-off between practical production tools and core algorithmic expectations:
+  * Using language-level arbitrary-precision utilities (`BigInteger`) solves integer overflow cleanly and handles variable length automatically.
+  * In problem-solving practice, this bypasses the core structural simulation of ripple-carry adders.
+* **Algorithmic Takeaway:** Standardizing the column-by-column addition mental model (iterating backwards from least-significant bits, carrying `sum / base`, appending `sum % base`) generalizes across binary addition, decimal string addition (LeetCode 415), and arbitrary base conversions.
+
+---
+
+## 2. Summary of Questions Solved
+
+* **Total Questions Solved:** 2
+  1. LeetCode 13 — *Roman to Integer*
+  2. LeetCode 67 — *Add Binary*
+
+---
+
+*See you on Day 38*
