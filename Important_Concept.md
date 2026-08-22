@@ -3294,3 +3294,32 @@ The half-open range notation `[birth, death)` is a useful way to remember that b
 ---
 
 *See you on Day 38*
+
+# Important Concepts & Patterns — Day 38
+**Date:** August 22, 2026  
+**Day Number:** Day 38
+
+---
+
+## 1. Key Algorithmic Concepts & Patterns
+
+### 1. String Periodicity & The Doubling Theorem
+* **Core Rule:** A string $s$ is periodic ($s = P^k$ for integer $k \ge 2$) if and only if $s$ is a substring of $(s + s)[1 \dots 2n - 2]$.
+* **Why it works:**
+  * Concatenation $s + s$ guarantees $2k$ periods.
+  * Stripping boundary indices 0 and $2n-1$ removes exactly the initial and trailing period occurrences.
+  * A full match of $s$ survives if and only if $2k - 2 \ge k \implies k \ge 2$.
+
+### 2. Java String Immutability
+* Methods like `.substring()`, `.replace()`, and `.concat()` never mutate the source string object; they always allocate and return a new string reference.
+
+---
+
+## 2. Summary of Questions Solved
+
+* **Total Questions Solved:** 1
+  1. LeetCode 459 — *Repeated Substring Pattern*
+
+---
+
+*See you on Day 39*
