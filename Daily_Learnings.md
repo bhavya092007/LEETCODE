@@ -14011,3 +14011,43 @@ Analysing
 ---
 
 *See you on Day 38*
+
+# Learning Log — Day 38
+**Date:** August 22, 2026  
+**Day Number:** Day 38
+
+---
+
+## 1. Problem Overview & Technical Breakdown
+
+### Problem 1: LeetCode 459 — Repeated Substring Pattern
+* **Category:** String Manipulation / Pattern Matching / Math
+* **Core Task:** Determine if a given non-empty string can be constructed by taking a substring of it and appending multiple copies of the substring together.
+
+#### Technical Implementation Details (String Doubling Trick)
+* **Algorithm:**
+  1. Concatenate the string with itself: `String doubled = s + s;`
+  2. Strip the first and last character of the combined string to destroy the original outer boundary occurrences: `doubled.substring(1, doubled.length() - 1)`
+  3. Verify if the original string $s$ exists within the inner substring: `.contains(s)`
+* **Implementation:**
+  ```java
+  class Solution {
+      public boolean repeatedSubstringPattern(String s) {
+          String doubled = s + s;
+          return doubled.substring(1, doubled.length() - 1).contains(s);
+      }
+  }
+  ```
+* **Time Complexity:** $O(n)$ — String duplication and underlying pattern search algorithms (such as KMP / Boyer-Moore).
+* **Space Complexity:** $O(n)$ — Memory allocated for the concatenated string.
+
+---
+
+## 2. Summary of Questions Solved
+
+* **Total Questions Solved:** 1
+  1. LeetCode 459 — *Repeated Substring Pattern*
+
+---
+
+*See you on Day 39*
