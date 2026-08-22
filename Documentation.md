@@ -7589,3 +7589,34 @@ That experience reminded me that being slow on one problem does not mean I'm bad
 ---
 
 *See you on Day 38*
+
+# Problem Solving & Metacognition Documentation — Day 38
+**Date:** August 22, 2026  
+**Day Number:** Day 38
+
+---
+
+## 1. Mental Models & Problem Decomposition
+
+### LeetCode 459: Moving Beyond Substring Generation
+* **Initial Intuition & Misconception:**
+  * Initial thought leaned toward using a `Stack`, confusing periodic pattern checking with nested structure / bracket validation.
+* **Cognitive Shift & Structural Insight:**
+  * Re-evaluated periodicity from a mathematical perspective:
+    * If $s = P^k$ (where $k \ge 2$), then concatenating $s + s$ produces $2k$ copies of unit $P$.
+    * Removing the first and last characters destroys the original copy at the start and the original copy at the end, leaving $2k - 2$ copies intact.
+    * If $k \ge 2$, at least $k$ intact copies of $P$ remain contiguous in the middle, allowing $s$ to be detected via a substring match.
+* **Implementation Reflections:**
+  * Recognized that loops are unnecessary when checking whole-string periodicity.
+  * Accounted for Java string immutability (ensuring substring operations are chained or stored rather than assuming in-place alteration).
+
+---
+
+## 2. Summary of Questions Solved
+
+* **Total Questions Solved:** 1
+  1. LeetCode 459 — *Repeated Substring Pattern*
+
+---
+
+*See you on Day 39*
