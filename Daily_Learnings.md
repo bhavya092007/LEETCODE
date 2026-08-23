@@ -14051,3 +14051,66 @@ Analysing
 ---
 
 *See you on Day 39*
+
+# Learning Log — Day 39
+**Date:** August 23, 2026  
+**Day Number:** Day 39
+
+---
+
+## 1. Problem Overview & Technical Breakdown
+
+### Problem 1: LeetCode 1071 — Greatest Common Divisor of Strings
+* **Category:** Math / String Manipulation / Euclidean Algorithm
+* **Core Task:** Given two strings `str1` and `str2`, return the largest string `x` such that `x` divides both strings.
+
+#### Technical Implementation Details
+* **Pattern Compatibility Invariant:**
+  * Two strings share a common base divisor if and only if $(str1 + str2).equals(str2 + str1)$.
+* **Euclidean Reduction:**
+  * If valid, the length of the greatest divisor string is $\gcd(|str1|, |str2|)$.
+* **Algorithm:**
+  ```java
+  class Solution {
+      public String gcdOfStrings(String str1, String str2) {
+          if (!(str1 + str2).equals(str2 + str1)) return "";
+          int a = str1.length(), b = str2.length();
+          while (b != 0) {
+              int temp = a % b;
+              a = b;
+              b = temp;
+          }
+          return str1.substring(0, a);
+      }
+  }
+  ```
+* **Time Complexity:** $O(n + m)$ — Linear concatenation and comparison; logarithmic GCD loop.
+* **Space Complexity:** $O(n + m)$ — Intermediate string allocations.
+
+---
+
+### Problem 2: LeetCode 1309 — Decrypt String from Alphabet to Integer Mapping
+* **Category:** String Parsing / Greedy Lookahead / Character Encoding
+* **Core Task:** Map strings of digits and `'#'` back to lowercase characters (`'1'-'9'` $\to$ `'a'-'i'`, `'10#'-'26#'` $\to$ `'j'-'z'`).
+
+#### Technical Implementation Details
+* **Lookahead Condition:**
+  * Check two characters ahead (`i + 2 < s.length() && s.charAt(i + 2) == '#'`).
+  * If true: Parse two digits (`s.substring(i, i + 2)`), map to character, and advance pointer by 3.
+  * If false: Parse single digit (`s.charAt(i) - '0'`), map to character, and advance pointer by 1.
+* **Character Decoding:**
+  $$\text{char} = (\text{char}) ('a' + \text{num} - 1)$$
+* **Time Complexity:** $O(n)$ — Single linear pass over string of length $n$.
+* **Space Complexity:** $O(n)$ — Auxiliary space for the decoded output buffer.
+
+---
+
+## 2. Summary of Questions Solved
+
+* **Total Questions Solved:** 2
+  1. LeetCode 1071 — *Greatest Common Divisor of Strings*
+  2. LeetCode 1309 — *Decrypt String from Alphabet to Integer Mapping*
+
+---
+
+*See you on Day 40*
