@@ -7620,3 +7620,35 @@ That experience reminded me that being slow on one problem does not mean I'm bad
 ---
 
 *See you on Day 39*
+
+# Problem Solving & Metacognition Documentation — Day 39
+**Date:** August 23, 2026  
+**Day Number:** Day 39
+
+---
+
+## 1. Mental Models & Problem Decomposition
+
+### LeetCode 1071: Commutativity as an Equivalence Test
+* **Mental Model:** String periodicity behaves algebraically. If $S = P^a$ and $T = P^b$, concatenation must commute ($S + T = T + S$).
+* **Reduction:** Checking string commutativity completely isolates the structural check from the numerical GCD computation, reducing string problem complexity to arithmetic.
+
+---
+
+### LeetCode 1309: Multi-Character Token Disambiguation
+* **Mental Model:** Resolving token ambiguity (single vs. double digit) by identifying the delimiter token (`'#'`).
+* **Lookahead vs. Lookbehind:**
+  * **Forward Traversal (Lookahead):** Checking index `i + 2` for `'#'` allows greedy token resolution from the front.
+  * **Pointer Increment Discipline:** When using a `for` loop with `i++`, advancing by 2 (`i += 2`) inside the conditional block results in a net advancement of 3 steps. Using `StringBuilder` avoids the quadratic $O(n^2)$ overhead of repeated immutable string concatenation.
+
+---
+
+## 2. Summary of Questions Solved
+
+* **Total Questions Solved:** 2
+  1. LeetCode 1071 — *Greatest Common Divisor of Strings*
+  2. LeetCode 1309 — *Decrypt String from Alphabet to Integer Mapping*
+
+---
+
+*See you on Day 40*
