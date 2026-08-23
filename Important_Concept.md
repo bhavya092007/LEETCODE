@@ -3323,3 +3323,36 @@ The half-open range notation `[birth, death)` is a useful way to remember that b
 ---
 
 *See you on Day 39*
+
+# Important Concepts & Patterns — Day 39
+**Date:** August 23, 2026  
+**Day Number:** Day 39
+
+---
+
+## 1. Key Algorithmic Concepts & Patterns
+
+### 1. Commutative String Concatenation Pattern
+* Two strings $S$ and $T$ share a common repeating unit if and only if $S + T == T + S$.
+* The maximal length of that shared unit is always $\gcd(|S|, |T|)$.
+
+### 2. Lookahead Token Parsing
+* **Pattern Invariant:** When variable-length tokens are terminated by a special delimiter (e.g., `'#'` for two-digit numbers), a lookahead of fixed offset `k` allows deterministic left-to-right tokenization without backtracking.
+* **ASCII Character Arithmetic:**
+  * Convert digit to int: `c - '0'`
+  * Convert 1-indexed number to char: `(char) ('a' + num - 1)`
+
+### 3. StringBuilder vs. String Concatenation Invariant
+* In Java, strings are immutable. Using `ans += c` inside a loop creates an $O(n^2)$ copying bottleneck. Always prefer `StringBuilder` for $O(n)$ linear accumulation.
+
+---
+
+## 2. Summary of Questions Solved
+
+* **Total Questions Solved:** 2
+  1. LeetCode 1071 — *Greatest Common Divisor of Strings*
+  2. LeetCode 1309 — *Decrypt String from Alphabet to Integer Mapping*
+
+---
+
+*See you on Day 40*
