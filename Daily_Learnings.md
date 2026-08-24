@@ -14114,3 +14114,56 @@ Analysing
 ---
 
 *See you on Day 40*
+
+# Learning Log — Day 40
+**Date:** August 24, 2026  
+**Day Number:** Day 40
+
+---
+
+## 1. Problem Overview & Technical Breakdown
+
+### Problem 1: LeetCode 1614 — Maximum Nesting Depth of the Parentheses
+* **Category:** String / Stack / Simulation / Counter Pattern
+* **Core Task:** Given a valid parentheses string (VPS) `s`, return the maximum nesting depth of parentheses.
+
+#### Technical Implementation Details
+* **Mechanism:** 
+  * Maintained a running counter `openedbr` representing currently open (unmatched) parentheses.
+  * Maintained `max` to track the peak value reached by `openedbr`.
+  * Incremented on `'('` and checked `Math.max(max, openedbr)`.
+  * Decremented on `')'`.
+  * Ignored digits, operators, and other non-parentheses characters.
+* **Code Implementation:**
+  ```java
+  class Solution {
+      public int maxDepth(String s) {
+          int openedbr = 0;
+          int max = 0;
+          for (int i = 0; i < s.length(); i++) {
+              char c = s.charAt(i);
+              if (c == '(') {
+                  openedbr++;
+                  max = Math.max(max, openedbr);
+              } else if (c == ')') {
+                  openedbr--;
+              }
+          }
+          return max;
+      }
+  }
+  ```
+* **Complexity Analysis:**
+  * **Time Complexity:** $O(n)$ — Single linear traversal over the string of length $n$.
+  * **Space Complexity:** $O(1)$ — Only two primitive integer counters are used, requiring zero additional heap or stack memory.
+
+---
+
+## 2. Summary of Questions Solved
+
+* **Total Questions Solved:** 1
+  1. LeetCode 1614 — *Maximum Nesting Depth of the Parentheses*
+
+---
+
+*See you on Day 41*
