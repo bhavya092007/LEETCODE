@@ -7652,3 +7652,32 @@ That experience reminded me that being slow on one problem does not mean I'm bad
 ---
 
 *See you on Day 40*
+
+# Problem Solving & Metacognition Documentation — Day 40
+**Date:** August 24, 2026  
+**Day Number:** Day 40
+
+---
+
+## 1. Mental Models & Problem Decomposition
+
+### LeetCode 1614: Replacing Explicit Stacks with Invariant Counters
+* **Mental Model:** 
+  * Parentheses nesting problems often trigger the instinct to use an explicit `Stack<Character>` data structure.
+  * Because the problem guarantees a valid parentheses string (VPS) and only asks for the *maximum depth* (not validation or index matching), the actual content of the stack is homogeneous (only `'('`).
+* **Cognitive Shift & Optimization:**
+  * Storing identical `'('` characters in dynamic heap memory via `Stack` is redundant.
+  * A single integer counter tracking the current size of the conceptual stack (`openedbr`) completely simulates the stack's depth in $O(1)$ auxiliary space.
+* **Brute Force vs Optimal Clarification:**
+  * Even though simple counting feels basic, this single-pass counter approach is strictly optimal ($O(n)$ time, $O(1)$ space).
+
+---
+
+## 2. Summary of Questions Solved
+
+* **Total Questions Solved:** 1
+  1. LeetCode 1614 — *Maximum Nesting Depth of the Parentheses*
+
+---
+
+*See you on Day 41*
