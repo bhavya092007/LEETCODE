@@ -3356,3 +3356,33 @@ The half-open range notation `[birth, death)` is a useful way to remember that b
 ---
 
 *See you on Day 40*
+
+# Important Concepts & Patterns — Day 40
+**Date:** August 24, 2026  
+**Day Number:** Day 40
+
+---
+
+## 1. Key Algorithmic Concepts & Patterns
+
+### 1. Counter as an Implicit Monotonic Stack
+* **Concept:** When all pushed elements are identical and only the depth / count of nested structures matters, an integer variable can replace a full Stack collection.
+* **Pattern Template:**
+  * Push equivalent: `count++`
+  * Pop equivalent: `count--`
+  * Peak depth tracking: `maxDepth = Math.max(maxDepth, count)`
+* **Space Benefit:** Reduces space complexity from $O(n)$ heap allocation down to $O(1)$ register space.
+
+### 2. Valid Parentheses String (VPS) Invariant
+* In a valid parentheses string, the counter value never drops below 0 during traversal and finishes at exactly 0 at the end of the string.
+
+---
+
+## 2. Summary of Questions Solved
+
+* **Total Questions Solved:** 1
+  1. LeetCode 1614 — *Maximum Nesting Depth of the Parentheses*
+
+---
+
+*See you on Day 41*
