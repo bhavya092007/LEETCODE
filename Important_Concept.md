@@ -3386,3 +3386,46 @@ The half-open range notation `[birth, death)` is a useful way to remember that b
 ---
 
 *See you on Day 41*
+# Important Concepts & Patterns — Day 41
+**Date:** August 25, 2026  
+**Day Number:** Day 41
+
+---
+
+## 1. Key Algorithmic Concepts & Patterns
+
+### 1. Loop-State Scope & Flag Isolation
+* Tracking flags must have their scope properly bound to the iteration they measure. Placing state flags outside outer iteration loops causes persistence bugs across test candidates.
+
+### 2. Array Length vs String Length in Java
+* Array length property: `words.length` (field)
+* String length method: `word.length()` (method)
+
+### 3. Substring & Character Transformation Mechanics
+* Substring from index to end: `s.substring(startIdx)`
+* Character case adjustment: `Character.toUpperCase(char)` / `Character.toLowerCase(char)`
+* String-wide case adjustment: `s.toLowerCase()` / `s.toUpperCase()`
+
+### 4. Delimiter Boundary Invariant
+* When joining array tokens with a delimiter without trailing formatting:
+  ```java
+  if (i < array.length - 1) {
+      sb.append(" ");
+  }
+  ```
+
+### 5. String Concatenation vs StringBuilder Performance
+* Repeated `+=` on standard `String` creates new memory allocations on every operation ($O(N^2)$).
+* `StringBuilder` provides amortized $O(1)$ appends, ensuring true $O(N)$ linear reconstruction.
+
+---
+
+## 2. Summary of Questions Solved
+
+* **Total Questions Solved:** 2
+  1. LeetCode 3718 — *Smallest Missing Multiple of K*
+  2. LeetCode 2129 — *Capitalize the Title*
+
+---
+
+*See you on Day 42*
