@@ -14167,3 +14167,102 @@ Analysing
 ---
 
 *See you on Day 41*
+
+# Learning Log — Day 41
+**Date:** August 25, 2026  
+**Day Number:** Day 41
+
+---
+
+## 1. Problem Overview & Technical Breakdown
+
+### Problem 1: LeetCode 3718 — Smallest Missing Multiple of K
+* **Category:** Array / Math / Simulation / Hash Table
+* **Core Task:** Given an integer array `nums` and an integer `k`, return the smallest positive multiple of `k` missing from `nums`.
+
+#### Technical Implementation Details
+* **Approach 1: Linear Scan Simulation**
+  * Generate candidate multiples incrementally ($k, 2k, 3k, \dots$).
+  * Scan through `nums` using an inner loop to check if candidate exists.
+  * Reset inner boolean flag on each outer iteration.
+  * Return candidate when `!found`.
+  * **Code Implementation:**
+    ```java
+    class Solution {
+        public int missingMultiple(int[] nums, int k) {
+            for (int i = 1; ; i++) {
+                boolean found = false;
+                int mul = k * i;
+                for (int j = 0; j < nums.length; j++) {
+                    if (mul == nums[j]) {
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found) {
+                    return mul;
+                }
+            }
+        }
+    }
+    ```
+  * **Time Complexity:** $O(M \cdot N)$ where $N = 	ext{nums.length}$ and $M$ is the index of the missing multiple.
+  * **Space Complexity:** $O(1)$ constant extra space.
+
+* **Approach 2: HashSet $O(1)$ Membership (Optimal)**
+  * Add elements to `HashSet<Integer>`, test multiples in steps of $k$.
+  * **Time Complexity:** $O(N + M)$
+  * **Space Complexity:** $O(N)$
+
+---
+
+### Problem 2: LeetCode 2129 — Capitalize the Title
+* **Category:** String Manipulation / Parsing / Array Traversal
+* **Core Task:** Format words in a title string according to length rules:
+  * Word length $\le 2$: All characters lowercase.
+  * Word length $\ge 3$: First character uppercase, remaining characters lowercase.
+  * Preserve original single space separation between words.
+
+#### Technical Implementation Details
+* **Tokenization:** Split input title into individual words using `title.split(" ")`.
+* **String Transformation:**
+  * For $	ext{len} \le 2$: `word.toLowerCase()`
+  * For $	ext{len} \ge 3$: `Character.toUpperCase(word.charAt(0)) + word.substring(1).toLowerCase()`
+* **Delimiter Handling:** Append space `" "` for all indices $i < 	ext{words.length} - 1$.
+* **Optimal Implementation:**
+  ```java
+  class Solution {
+      public String capitalizeTitle(String title) {
+          String[] words = title.split(" ");
+          StringBuilder sb = new StringBuilder();
+          
+          for (int i = 0; i < words.length; i++) {
+              if (words[i].length() <= 2) {
+                  sb.append(words[i].toLowerCase());
+              } else {
+                  sb.append(Character.toUpperCase(words[i].charAt(0)));
+                  sb.append(words[i].substring(1).toLowerCase());
+              }
+              
+              if (i < words.length - 1) {
+                  sb.append(" ");
+              }
+          }
+          return sb.toString();
+      }
+  }
+  ```
+* **Time Complexity:** $O(N)$ where $N$ is total length of the title string.
+* **Space Complexity:** $O(N)$ to store split tokens and the output buffer.
+
+---
+
+## 2. Summary of Questions Solved
+
+* **Total Questions Solved:** 2
+  1. LeetCode 3718 — *Smallest Missing Multiple of K*
+  2. LeetCode 2129 — *Capitalize the Title*
+
+---
+
+*See you on Day 42*
