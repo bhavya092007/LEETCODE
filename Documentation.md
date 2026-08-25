@@ -7681,3 +7681,62 @@ That experience reminded me that being slow on one problem does not mean I'm bad
 ---
 
 *See you on Day 41*
+
+# Problem Solving & Metacognition Documentation — Day 41
+**Date:** August 25, 2026  
+**Day Number:** Day 41
+
+---
+
+## Thought Process & Problem Solving Journey
+
+### LeetCode 3718: Smallest Missing Multiple of K
+
+* **Initial Understanding & Approach:**
+  * The goal is to find the lowest positive multiple of $k$ that does not exist in `nums`.
+  * My initial idea was straightforward: start generating multiples of $k$ one by one ($k 	imes 1, k 	imes 2, k 	imes 3, \dots$) and compare each against the numbers in the array.
+
+* **Tracking the Logic & Finding Bugs:**
+  * I set up an open loop to calculate `mul = k * i` and nested a second loop to search through `nums`.
+  * During the process, I ran into a state bug where the boolean flag `found` was placed outside the loop. This meant once a multiple was found in the array, `found` stayed `true` permanently, preventing future missing numbers from ever being returned.
+  * Moving `boolean found = false;` inside the loop ensured each multiple started with a clean slate.
+  * I also realized that once a match is found in the array, adding a `break` immediately saves unnecessary comparisons.
+
+---
+
+### LeetCode 2129: Capitalize the Title
+
+* **Breaking Down the Problem Requirements:**
+  * The input is a full sentence, but the rules apply to individual words independently:
+    * Length $\le 2$: complete lowercase.
+    * Length $\ge 3$: first letter uppercase, rest lowercase.
+  * To process each word, the first step is to split the sentence by spaces into an array of words (`title.split(" ")`).
+
+* **Stepping Through Word by Word:**
+  * Using a standard loop over the words array, I separated the logic into two clear branches based on `words[i].length()`:
+    * For 1 or 2 letters: apply `.toLowerCase()` to the entire word.
+    * For 3 or more letters: split the word conceptually into two parts—take the first letter (`charAt(0)`), uppercase it, then take everything from index 1 onwards (`substring(1)`) and lowercase it.
+
+* **Formatting the Spacing:**
+  * Joining the words back together requires spaces between words, but no trailing space at the very end.
+  * By checking `if (i < words.length - 1)`, I ensured spaces were only appended after words that were not the final word.
+
+* **Interview Reflection & Thought Structure:**
+  * The ideal way to tackle string manipulation in an interview is:
+    1. Clarify what needs to be isolated (words vs. characters).
+    2. Split into clean chunks.
+    3. Loop through and apply branch conditions based on length or constraints.
+    4. Recombine cleanly while maintaining correct delimiters.
+    5. Be mindful of string immutability in Java and transition from `ans += ...` to `StringBuilder` for $O(N)$ efficiency.
+
+---
+
+## Summary of Questions Solved
+
+* **Total Questions Solved:** 2
+  1. LeetCode 3718 — *Smallest Missing Multiple of K*
+  2. LeetCode 2129 — *Capitalize the Title*
+
+---
+
+*See you on Day 42*
