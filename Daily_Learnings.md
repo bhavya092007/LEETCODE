@@ -14266,3 +14266,60 @@ Analysing
 ---
 
 *See you on Day 42*
+
+# Learning Log — Day 42
+**Date:** August 26, 2026  
+**Day Number:** Day 42
+
+---
+
+## 1. Problem Overview & Technical Breakdown
+
+### Problem 1: LeetCode 705 — Design HashSet
+* **Category:** Design / Array / Hash Table / Direct Index Mapping
+* **Core Task:** Design a HashSet without using any built-in hash table libraries, supporting `add(key)`, `remove(key)`, and `contains(key)`.
+
+#### Technical Implementation Details
+* **Direct Address Table (Boolean Array):**
+  * Given constraint $0 \le \text{key} \le 10^6$, allocated a static array of size $10^6 + 1$ (`1000001` elements) to cover all valid key indices from $0$ to $1000000$.
+* **Operations:**
+  * `add(key)`: Directly assigns `set[key] = true`.
+  * `remove(key)`: Directly assigns `set[key] = false`.
+  * `contains(key)`: Directly returns the boolean state at `set[key]`.
+* **Code Implementation:**
+  ```java
+  class MyHashSet {
+      private boolean[] set;
+
+      public MyHashSet() {
+          set = new boolean[1000001];
+      }
+
+      public void add(int key) {
+          set[key] = true;
+      }
+
+      public void remove(int key) {
+          set[key] = false;
+      }
+
+      public boolean contains(int key) {
+          return set[key];
+      }
+  }
+  ```
+* **Complexity Analysis:**
+  * **Time Complexity:** $O(1)$ for `add`, `remove`, and `contains` operations.
+  * **Space Complexity:** $O(K)$ where $K = 1,000,001$ booleans (approximately $1\text{ MB}$ of memory).
+
+---
+
+## 2. Summary of Questions Solved
+
+* **Total Questions Solved:** 1
+  1. LeetCode 705 — *Design HashSet*
+
+---
+
+*See you on Day 43*
+
