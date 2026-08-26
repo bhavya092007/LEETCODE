@@ -7740,3 +7740,41 @@ That experience reminded me that being slow on one problem does not mean I'm bad
 ---
 
 *See you on Day 42*
+
+# Problem Solving & Metacognition Documentation — Day 42
+**Date:** August 26, 2026  
+**Day Number:** Day 42
+
+---
+
+## Thought Process & Problem Solving Journey
+
+### LeetCode 705: Design HashSet
+
+* **Initial Understanding & Unpacking the Problem:**
+  * When I first looked at the problem, designing a "HashSet" from scratch sounded like it would require complex hash functions, bucketing, and collision handling.
+  * But after reading the constraints carefully, I noticed that the keys are strictly between $0$ and $1,000,000$.
+  * This was the key breakthrough: because the universe of keys is bounded and non-negative, I don't need a complex hash table—I can directly use a boolean array where the array index itself represents the key.
+
+* **Working Through Confusions & Fixing Early Mistakes:**
+  * **Mistake 1 (Self-Instantiating Class):** Early on, I wrote `MyHashSet myHashSet = new MyHashSet();` inside the class itself. I quickly realized this creates infinite recursion because the class *is* the data structure, not a wrapper holding another instance of itself.
+  * **Mistake 2 (Hardcoded Values):** I initially thought about writing specific values like `myHashSet.add(1)`, but remembered that the method parameter `int key` gives us dynamic input that must be mapped directly: `set[key] = true`.
+  * **Clarifying Store vs. Return:** I had a major conceptual hurdle around `set[key] = true`. I was confusing assigning state with returning a value. I realized that `add` and `remove` have a `void` return type—their only job is to update/store state in memory (`set[key] = true` or `false`). Only `contains()` needs to read and `return set[key]`.
+
+* **Mental Model Summary:**
+  * The index is the key itself.
+  * `set[5] = true` means "number 5 exists in the set".
+  * `set[5] = false` means "number 5 has been removed".
+  * `return set[5]` tells the caller whether 5 is present or not.
+  * Looking at constraints first simplifies what looks like a complicated design problem into direct array indexing.
+
+---
+
+## Summary of Questions Solved
+
+* **Total Questions Solved:** 1
+  1. LeetCode 705 — *Design HashSet*
+
+---
+
+*See you on Day 43*
