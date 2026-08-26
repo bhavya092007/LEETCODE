@@ -3429,3 +3429,35 @@ The half-open range notation `[birth, death)` is a useful way to remember that b
 ---
 
 *See you on Day 42*
+
+# Important Concepts & Patterns — Day 42
+**Date:** August 26, 2026  
+**Day Number:** Day 42
+
+---
+
+## 1. Key Algorithmic Concepts & Patterns
+
+### 1. Direct Address Table Pattern
+* **Concept:** When key values fall within a known, small, non-negative range ($0 \le \text{key} \le M$), an array of size $M + 1$ can act as a direct hash table.
+* **Why $M + 1$:** To include index $M$, the array size must be $M + 1$ (e.g., $0$ to $1,000,000$ requires size `1000001`).
+* **Lookup Time:** Pure $O(1)$ operations with zero collision resolution overhead.
+
+### 2. State Mutation vs. Query Return
+* **State Mutation (`void` methods):** `add()` and `remove()` alter internal state (`array[index] = value`) and produce side effects without returning data.
+* **State Query (`boolean` methods):** `contains()` inspects current state and returns `array[index]`.
+
+### 3. Class Design & Instance Scope
+* A data structure class encapsulates its own storage fields (`private boolean[] set`).
+* Methods operate directly on internal state fields without creating nested copies of the class itself.
+
+---
+
+## 2. Summary of Questions Solved
+
+* **Total Questions Solved:** 1
+  1. LeetCode 705 — *Design HashSet*
+
+---
+
+*See you on Day 43*
