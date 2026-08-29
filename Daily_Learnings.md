@@ -14354,3 +14354,326 @@ Analysing
 ---
 
 *See you on Day 45*
+
+# Learning Log — Day 45
+**Date:** August 29, 2026  
+**Day Number:** Day 45
+
+---
+
+# LeetCode 643 — Maximum Average Subarray I
+
+**Language:** Java  
+**Difficulty:** Easy  
+**Approach:** Brute Force
+
+## My Approach
+
+At first, I misunderstood what `k` meant. I thought I only needed to handle the case where `k == nums.length`. I also started my loop from index `1` and stopped at `nums.length - 1`, which skipped elements.
+
+Then I understood that `k` represents the size of the subarray. I need to check every continuous subarray containing exactly `k` elements, calculate its sum, and find the maximum sum.
+
+For example:
+
+nums = [1, 12, -5, -6, 50, 3]
+k = 4
+
+Possible subarrays:
+
+[1, 12, -5, -6]
+[12, -5, -6, 50]
+[-5, -6, 50, 3]
+
+I calculate the sum of each subarray and store the largest sum in `max`.
+
+Since every subarray has exactly `k` elements, the subarray with the largest sum will also have the largest average.
+
+## My Mistakes
+
+### 1. Misunderstood k
+
+I initially used:
+
+`if(k == nums.length)`
+
+But `k` is not necessarily the array length. It represents the number of elements in each subarray.
+
+### 2. Started the loop from 1
+
+I initially wrote:
+
+`for(int i = 1; ...)`
+
+This skips the first element of the array.
+
+The correct starting index is:
+
+`i = 0`
+
+### 3. Wrong loop boundary
+
+I initially used:
+
+`i < nums.length - 1`
+
+This does not correctly check every possible subarray of size `k`.
+
+The correct outer loop is:
+
+`for(int i = 0; i <= nums.length - k; i++)`
+
+This makes sure that enough elements are available to create a subarray of size `k`.
+
+### 4. Divided the sum inside the loop
+
+I initially did:
+
+`ans += nums[i];`
+`ans /= k;`
+
+This is wrong because I was dividing before completing the sum.
+
+The correct order is:
+
+Add all k elements
+→ calculate complete sum
+→ divide by k
+
+### 5. Hardcoded 4
+
+I initially used:
+
+`fans = ans / 4;`
+
+This is wrong because `k` can have different values.
+
+I should use:
+
+`sum / k`
+
+### 6. Did not find the maximum
+
+The problem asks for the maximum average, so I need to compare the sum of every subarray.
+
+I used:
+
+`if(sum > max) {`
+`    max = sum;`
+`}`
+
+### 7. Initially used max = 0
+
+I first tried:
+
+`int max = 0;`
+
+This fails when all numbers are negative.
+
+Example:
+
+nums = [-1, -2, -3, -4]
+k = 2
+
+Subarray sums:
+
+[-1, -2] → -3
+[-2, -3] → -5
+[-3, -4] → -7
+
+If `max = 0`, none of these sums are greater than 0, so `max` incorrectly remains 0.
+
+I fixed this by using:
+
+`int max = Integer.MIN_VALUE;`
+
+This allows negative sums to be handled correctly.
+
+## Correct Code
+
+    class Solution {
+
+        public double findMaxAverage(int[] nums, int k) {
+
+            int max = Integer.MIN_VALUE;
+
+            for(int i = 0; i <= nums.length - k; i++) {
+
+                int sum = 0;
+
+                for(int j = i; j < i + k; j++) {
+                    sum += nums[j];
+                }
+
+                if(sum > max) {
+                    max = sum;
+                }
+            }
+
+            return (double) max / k;
+        }
+    }
+
+## Understanding the Loops
+
+The outer loop:
+
+`for(int i = 0; i <= nums.length - k; i++)`
+
+controls the starting position of each subarray.
+
+The inner loop:
+
+`for(int j = i; j < i + k; j++)`
+
+takes exactly `k` continuous elements starting from `i`.
+
+For:
+
+nums = [1, 12, -5, -6, 50, 3]
+k = 4
+
+When i = 0:
+
+j = 0, 1, 2, 3
+
+Subarray:
+
+[1, 12, -5, -6]
+
+When i = 1:
+
+j = 1, 2, 3, 4
+
+Subarray:
+
+[12, -5, -6, 50]
+
+When i = 2:
+
+j = 2, 3, 4, 5
+
+Subarray:
+
+[-5, -6, 50, 3]
+
+So:
+
+`j < i + k`
+
+means:
+
+Start from `i` and take exactly `k` elements.
+
+And:
+
+`i <= nums.length - k`
+
+means:
+
+Only start a subarray when at least `k` elements are available.
+
+## Important Concept: Subarray
+
+A subarray is a continuous part of an array.
+
+For:
+
+[1, 2, 3]
+
+Valid subarrays include:
+
+[1]
+[2]
+[3]
+[1, 2]
+[2, 3]
+[1, 2, 3]
+
+But:
+
+[1, 3]
+
+is not a subarray because the elements are not continuous.
+
+## Java Syntax Learned
+
+For an array:
+
+`nums.length`
+
+is correct.
+
+I should not use:
+
+`nums.length()`
+
+because `length()` is used for Strings.
+
+Also, if:
+
+`int k = 4;`
+
+then:
+
+`k.length`
+
+is invalid because `k` is an integer, not an array.
+
+For getting a decimal result:
+
+`(double) max / k`
+
+converts `max` to double before division.
+
+## Complexity
+
+Time Complexity: O(n × k)
+
+Space Complexity: O(1)
+
+The reason for O(n × k) is that for every possible starting position, I go through `k` elements again to calculate the sum.
+
+## New Pattern I Discovered: Sliding Window
+
+This problem introduced me to the Sliding Window pattern.
+
+My current solution recalculates the entire sum for every subarray.
+
+For example:
+
+[1, 12, -5, -6]
+[12, -5, -6, 50]
+
+The elements `12, -5, -6` are repeated, so recalculating their sum is unnecessary.
+
+Sliding Window solves this by removing the element that leaves the window and adding the new element that enters the window.
+
+Basic idea:
+
+Old Sum - Element Leaving + Element Entering = New Sum
+
+This can reduce the time complexity from O(n × k) to O(n).
+
+## Final Learning
+
+This problem taught me to first understand what each variable represents:
+
+nums → original array
+k → size of each subarray
+i → starting index of the subarray
+j → moves through the current subarray
+sum → sum of the current subarray
+max → maximum sum found
+
+The main pattern is:
+
+Find every possible subarray of size k
+→ Calculate its sum
+→ Compare it with max
+→ Return max / k
+
+The biggest lesson from this problem was understanding loop boundaries, handling negative numbers, and recognizing that repeated work can be optimized using Sliding Window.
+
+**Next Goal:** Implement the Sliding Window version with O(n) time complexity.
+
+*See you on Day 46*
