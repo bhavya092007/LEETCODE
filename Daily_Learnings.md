@@ -14677,3 +14677,44 @@ The biggest lesson from this problem was understanding loop boundaries, handling
 **Next Goal:** Implement the Sliding Window version with O(n) time complexity.
 
 *See you on Day 46*
+
+# Learning Log — Day 46
+**Date:** August 30, 2026  
+**Day Number:** Day 46
+
+---
+
+## 1. Problem Overview & Technical Breakdown
+
+### Problem 1: LeetCode 682 — Baseball Game
+* **Category:** Stack / Simulation / String Parsing
+* **Core Task:** Calculate the total score of a baseball game with special operations (`+`, `D`, `C`, or integer score).
+
+#### Technical Implementation Details
+* **Data Structure:** Explicit `Stack<Integer>` used to maintain dynamic score history with LIFO (Last-In-First-Out) semantics.
+* **Operation Handling:**
+  * `"C"` (Cancel): `stack.pop()` to invalidate the previous score.
+  * `"D"` (Double): `stack.push(stack.peek() * 2)` to record double of the previous score.
+  * `"+"` (Sum Previous Two): Temporary pop of the top element to read the second element, push the top back, and push the combined sum:
+    ```java
+    int last = stack.pop();
+    int secondL = stack.peek();
+    stack.push(last);
+    stack.push(last + secondL);
+    ```
+  * Integer value: `stack.push(Integer.parseInt(op))` to record a new score directly.
+* **Final Aggregation:** Summed all remaining valid scores stored in the stack.
+* **Complexity Analysis:**
+  * **Time Complexity:** $O(N)$ — Each operation takes $O(1)$ time, and the final summation loop iterates over at most $N$ elements.
+  * **Space Complexity:** $O(N)$ — To store score values in the stack.
+
+---
+
+## 2. Summary of Questions Solved
+
+* **Total Questions Solved:** 1
+  1. LeetCode 682 — *Baseball Game*
+
+---
+
+*See you on Day 47*
