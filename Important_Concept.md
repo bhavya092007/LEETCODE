@@ -3461,3 +3461,37 @@ The half-open range notation `[birth, death)` is a useful way to remember that b
 ---
 
 *See you on Day 43*
+
+# Important Concepts & Patterns — Day 46
+**Date:** August 30, 2026  
+**Day Number:** Day 46
+
+---
+
+## 1. Key Algorithmic Concepts & Patterns
+
+### 1. Stack for History-Dependent Operations (LIFO)
+* **Concept:** When operations require inspecting, modifying, or reverting the most recent actions, a Stack provides natural $O(1)$ access to the state tail.
+
+### 2. Peeking the Second-Top Element
+* To read the top two elements without losing their positions:
+  ```java
+  int top1 = stack.pop();
+  int top2 = stack.peek();
+  stack.push(top1);
+  stack.push(top1 + top2);
+  ```
+
+### 3. Java String Equality Invariant
+* Always use `.equals()` instead of `==` when checking string values in Java (`operations[i].equals("C")`).
+
+---
+
+## 2. Summary of Questions Solved
+
+* **Total Questions Solved:** 1
+  1. LeetCode 682 — *Baseball Game*
+
+---
+
+*See you on Day 47*
