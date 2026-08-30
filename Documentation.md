@@ -7810,3 +7810,41 @@ That experience reminded me that being slow on one problem does not mean I'm bad
 ---
 
 *See you on Day 45*
+
+# Problem Solving & Metacognition Documentation — Day 46
+**Date:** August 30, 2026  
+**Day Number:** Day 46
+
+---
+
+## Thought Process & Problem Solving Journey
+
+### LeetCode 682: Baseball Game
+
+* **Initial Understanding & Approach:**
+  * When reading the rules, the operations naturally rely on recent history:
+    * We frequently need the most recent score (`"D"` and `"+"`).
+    * We occasionally need the second most recent score (`"+"`).
+    * We need to remove the most recent score entirely (`"C"`).
+  * Because every special rule refers strictly to the last entered elements, a **Stack** is the most natural and clean mental model.
+
+* **Handling Stack Operations & The `"+"` Case:**
+  * For `"C"`, a simple `pop()` removes the last score.
+  * For `"D"`, `peek()` allows us to read the top without removing it, calculate double, and push it back.
+  * The interesting case was `"+"`: we need both the top score and the one right below it. To get the second element without destroying history, I popped the top element, peeked at the second, pushed the top back, and then pushed their sum.
+  * Any normal number string is parsed into an integer using `Integer.parseInt()` and pushed directly.
+
+* **Final Summation Reflection:**
+  * Once all operations are processed, whatever numbers remain on the stack represent the valid scores of the game.
+  * Looping through the stack elements and summing them up gives the final answer cleanly.
+
+---
+
+## Summary of Questions Solved
+
+* **Total Questions Solved:** 1
+  1. LeetCode 682 — *Baseball Game*
+
+---
+
+*See you on Day 47*
