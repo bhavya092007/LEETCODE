@@ -7848,3 +7848,46 @@ That experience reminded me that being slow on one problem does not mean I'm bad
 ---
 
 *See you on Day 47*
+
+# Problem Solving & Metacognition Documentation — Day 47
+**Date:** August 31, 2026  
+**Day Number:** Day 47
+
+---
+
+## Thought Process & Problem Solving Journey
+
+### LeetCode 2351: First Letter to Appear Twice
+
+* **Initial Intuition & The Stack Misconception:**
+  * When I first saw the problem, my intuition went toward using a Stack or checking `current == previous`.
+  * I thought: push characters and check if the incoming character equals the top.
+  * However, dry-running an example like `"nwcn"` immediately exposed the flaw in that mental model:
+    * A stack/adjacent check only detects **consecutive duplicates** (`"abcc"` where `'c'` is next to `'c'`).
+    * It completely misses **non-consecutive repeats** (`"nwcn"` where `'n'` reappears after several other characters).
+
+* **Mental Model Shift (Consecutive vs. Global History):**
+  * I realized the fundamental question: *Do I only care about the adjacent previous element, or do I care about ANY prior occurrence across the entire prefix history?*
+  * The problem requires finding if a character exists anywhere in the preceding sequence.
+
+* **Developing the Prefix-Scan Approach:**
+  * To check the entire preceding prefix, I designed a two-loop structure:
+    * Outer loop: advances the current character $i$ from left to right.
+    * Inner loop: scans all previously visited characters $j$ where $0 \le j < i$.
+  * The exact moment $s[i] == s[j]$, we are guaranteed that $s[i]$ is the first character to reach a frequency count of 2 because the outer loop moves sequentially from left to right.
+  * We can immediately return $s[i]$ without further checks.
+
+* **Looking Ahead to Optimal Lookups:**
+  * While the nested loop approach solves the problem cleanly in $O(1)$ extra memory, searching the past prefix costs $O(n^2)$ time.
+  * In future problems involving prefix history checks, using a `boolean[26]` array or `HashSet` will allow us to check historical presence in $O(1)$ time per step.
+
+---
+
+## Summary of Questions Solved
+
+* **Total Questions Solved:** 1
+  1. LeetCode 2351 — *First Letter to Appear Twice*
+
+---
+
+*See you on Day 48*
