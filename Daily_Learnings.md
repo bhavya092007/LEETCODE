@@ -14718,3 +14718,54 @@ The biggest lesson from this problem was understanding loop boundaries, handling
 ---
 
 *See you on Day 47*
+
+# Learning Log — Day 47
+**Date:** August 31, 2026  
+**Day Number:** Day 47
+
+---
+
+## 1. Problem Overview & Technical Breakdown
+
+### Problem 1: LeetCode 2351 — First Letter to Appear Twice
+* **Category:** String / Array / Hash Table / Bit Manipulation / Two-Pointers
+* **Core Task:** Given a string `s` consisting of lowercase English letters, return the first letter to appear twice during a left-to-right scan.
+
+#### Technical Implementation Details
+* **Approach 1: Nested Search (Linear History Verification)**
+  * For each character at index $i$, scan all preceding indices $j < i$.
+  * The moment $s[i] == s[j]$, return $s[i]$ immediately.
+  * **Code Implementation:**
+    ```java
+    class Solution {
+        public char repeatedCharacter(String s) {
+            for (int i = 1; i < s.length(); i++) {
+                for (int j = 0; j < i; j++) {
+                    if (s.charAt(i) == s.charAt(j)) {
+                        return s.charAt(i);
+                    }
+                }
+            }
+            return '\0';
+        }
+    }
+    ```
+  * **Time Complexity:** $O(n^2)$ — Quadratic search over prefix history.
+  * **Space Complexity:** $O(1)$ — Zero auxiliary data structures.
+
+* **Approach 2: Boolean Frequency Array / Hash Set (Optimal $O(n)$)**
+  * Maintain a boolean array `seen = new boolean[26]` or a `HashSet<Character>`.
+  * If `seen[c - 'a']` is `true`, return `c` immediately; otherwise mark `seen[c - 'a'] = true`.
+  * **Time Complexity:** $O(n)$ — Single linear pass.
+  * **Space Complexity:** $O(1)$ auxiliary space (fixed alphabet size 26).
+
+---
+
+## 2. Summary of Questions Solved
+
+* **Total Questions Solved:** 1
+  1. LeetCode 2351 — *First Letter to Appear Twice*
+
+---
+
+*See you on Day 48*
