@@ -14769,3 +14769,59 @@ The biggest lesson from this problem was understanding loop boundaries, handling
 ---
 
 *See you on Day 48*
+
+# Learning Log — Day 48
+**Date:** September 1, 2026  
+**Day Number:** Day 48
+
+---
+
+## 1. Problem Overview & Technical Breakdown
+
+### Problem 1: LeetCode 1748 — Sum of Unique Elements
+* **Category:** Array / Hash Table / Counting / Frequency Analysis
+* **Core Task:** Given an integer array `nums`, return the sum of all unique elements (elements that appear exactly once in the array).
+
+#### Technical Implementation Details
+* **Approach 1: Full Array Frequency Scan (Nested Loops)**
+  * For each element `nums[i]`, iterate over the entire array `0 <= j < nums.length` to count total occurrences.
+  * If `count == 1`, add `nums[i]` to `sum`.
+  * **Code Implementation:**
+    ```java
+    class Solution {
+        public int sumOfUnique(int[] nums) {
+            int sum = 0;
+            for (int i = 0; i < nums.length; i++) {
+                int count = 0;
+                for (int j = 0; j < nums.length; j++) {
+                    if (nums[i] == nums[j]) {
+                        count++;
+                    }
+                }
+                if (count == 1) {
+                    sum += nums[i];
+                }
+            }
+            return sum;
+        }
+    }
+    ```
+  * **Time Complexity:** $O(n^2)$ — Quadratic traversal due to nested scans across the entire array for each element.
+  * **Space Complexity:** $O(1)$ — Zero auxiliary data structures.
+
+* **Approach 2: Frequency Array / Hash Map (Optimal $O(n)$)**
+  * Count occurrences using a frequency array `int[] freq = new int[101]` (given $1 \le 	ext{nums}[i] \le 100$) or a `HashMap<Integer, Integer>`.
+  * Iterate through keys/indices and sum elements where `freq[x] == 1`.
+  * **Time Complexity:** $O(n)$ — Two linear passes.
+  * **Space Complexity:** $O(1)$ / $O(n)$ auxiliary memory.
+
+---
+
+## 2. Summary of Questions Solved
+
+* **Total Questions Solved:** 1
+  1. LeetCode 1748 — *Sum of Unique Elements*
+
+---
+
+*See you on Day 49*
