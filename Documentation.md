@@ -7891,3 +7891,42 @@ That experience reminded me that being slow on one problem does not mean I'm bad
 ---
 
 *See you on Day 48*
+
+# Problem Solving & Metacognition Documentation — Day 48
+**Date:** September 1, 2026  
+**Day Number:** Day 48
+
+---
+
+## Thought Process & Problem Solving Journey
+
+### LeetCode 1748: Sum of Unique Elements
+
+* **Initial Intuition & Early Obstacles:**
+  * My first instinct was to compare the current element with preceding elements and add to the sum if no match was found.
+  * I encountered several logic errors in that early attempt:
+    * `j = 1` accidentally skipped the first element at index 0.
+    * An early `return 0` terminated the whole algorithm as soon as any duplicate was detected anywhere.
+    * Summing `nums[j]` directly risked repeated additions.
+
+* **The Shift to Counting & The Prefix Trap:**
+  * I adjusted the logic to use a `count` variable, incrementing it when duplicates were detected before index `i` (`0 <= j < i`).
+  * However, dry running `[1, 2, 3, 2]` exposed the prefix trap:
+    * At `i = 1` (the first `2`), looking only backwards showed `count = 0` (no preceding `2`), making it appear unique at that moment even though another `2` existed later in the array.
+    * I realized: *Prefix history only tells if an element is repeated up to now; it cannot confirm global uniqueness.*
+
+* **Global Frequency Realization:**
+  * To determine if an element is truly unique, we must count its total occurrences across the entire array (`0 <= j < nums.length`).
+  * If an element's total frequency across the entire array is exactly `1`, it is added to the running sum.
+  * This cemented the core distinction: *Checking for historical duplication is not the same as verifying global uniqueness.*
+
+---
+
+## Summary of Questions Solved
+
+* **Total Questions Solved:** 1
+  1. LeetCode 1748 — *Sum of Unique Elements*
+
+---
+
+*See you on Day 49*
