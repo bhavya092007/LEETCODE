@@ -3495,3 +3495,31 @@ The half-open range notation `[birth, death)` is a useful way to remember that b
 ---
 
 *See you on Day 47*
+
+# Important Concepts & Patterns — Day 48
+**Date:** September 1, 2026  
+**Day Number:** Day 48
+
+---
+
+## 1. Key Algorithmic Concepts & Patterns
+
+### 1. Prefix Scans vs. Global Frequency Invariant
+* **Prefix Check (`0 <= j < i`):** Identifies whether an element has been *previously encountered*. Useful for finding the first duplicate (e.g., LeetCode 2351).
+* **Global Scan (`0 <= j < n`):** Determines the *exact total frequency* across the complete dataset. Mandatory when an operation depends on global uniqueness (`count == 1`).
+
+### 2. Evolution to Frequency Mapping
+* Nested full-array counting ($O(n^2)$) can be decomposed into two linear passes ($O(n)$):
+  1. **Pass 1:** Build frequency table (`map.put(x, map.getOrDefault(x, 0) + 1)` or `freq[x]++`).
+  2. **Pass 2:** Accumulate keys where `frequency == 1`.
+
+---
+
+## 2. Summary of Questions Solved
+
+* **Total Questions Solved:** 1
+  1. LeetCode 1748 — *Sum of Unique Elements*
+
+---
+
+*See you on Day 49*
