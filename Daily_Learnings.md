@@ -14825,3 +14825,108 @@ The biggest lesson from this problem was understanding loop boundaries, handling
 ---
 
 *See you on Day 49*
+
+# Learning Log — Day 49
+**Date:** September 2, 2026  
+**Day Number:** Day 49
+
+---
+
+## 1. Problem Overview & Technical Breakdown
+
+### Problem 1: LeetCode 844 — Backspace String Compare
+* **Category:** Stack / Two Pointers / Simulation / String Manipulation
+* **Core Task:** Given two strings `s` and `t`, return `true` if they are equal when both are typed into empty text editors where `'#'` acts as a backspace.
+
+#### Technical Implementation Details
+* **Approach 1: Direct Dual-Stack Simulation**
+  * Use two independent `Stack<Character>` collections to reconstruct the surviving characters for `s` and `t`.
+  * For regular characters: `stack.push(ch)`.
+  * For `'#'`: invoke `stack.pop()` only if `!stack.isEmpty()` to avoid `EmptyStackException`.
+  * Compare final stack states via `stack1.equals(stack2)`.
+  * **Code Implementation:**
+    ```java
+    import java.util.Stack;
+
+    class Solution {
+        public boolean backspaceCompare(String s, String t) {
+            Stack<Character> stack1 = new Stack<>();
+            Stack<Character> stack2 = new Stack<>();
+
+            for (int i = 0; i < s.length(); i++) {
+                char ch = s.charAt(i);
+                if (ch == '#') {
+                    if (!stack1.isEmpty()) {
+                        stack1.pop();
+                    }
+                } else {
+                    stack1.push(ch);
+                }
+            }
+
+            for (int i = 0; i < t.length(); i++) {
+                char ch = t.charAt(i);
+                if (ch == '#') {
+                    if (!stack2.isEmpty()) {
+                        stack2.pop();
+                    }
+                } else {
+                    stack2.push(ch);
+                }
+            }
+
+            return stack1.equals(stack2);
+        }
+    }
+    ```
+  * **Time Complexity:** $O(N + M)$ — Linear pass over each string.
+  * **Space Complexity:** $O(N + M)$ — Memory allocated for character stacks.
+
+* **Approach 2: Two Pointers from Right-to-Left (Optimal $O(1)$ Space)**
+  * Traverse backwards maintaining backspace skip counters (`skipS`, `skipT`).
+  * Compare valid non-skipped characters on the fly.
+  * **Time Complexity:** $O(N + M)$
+  * **Space Complexity:** $O(1)$ constant space.
+
+---
+
+### Problem 2: LeetCode 3875 — Construct Uniform Parity Array I
+* **Category:** Math / Parity / Constructive Algorithms
+* **Core Task:** Given distinct integers `nums1`, decide if an array `nums2` can be formed where all elements share uniform parity (all odd or all even), choosing either `nums2[i] = nums1[i]` or `nums2[i] = nums1[i] - nums1[j]` ($j 
+eq i$).
+
+#### Technical Implementation Details
+* **Mathematical Invariant & Parity Rules:**
+  * $	ext{even} - 	ext{odd} = 	ext{odd}$
+  * $	ext{odd} - 	ext{even} = 	ext{odd}$
+  * $	ext{even} - 	ext{even} = 	ext{even}$
+  * $	ext{odd} - 	ext{odd} = 	ext{even}$
+  * Case 1 (All numbers already even or already odd): Keep `nums2[i] = nums1[i]` for all $i$.
+  * Case 2 (Mixed parity):
+    * Target **all odd**: Take any existing odd number $j$. For any even number $i$, choose $nums1[i] - nums1[j] = 	ext{even} - 	ext{odd} = 	ext{odd}$. All numbers become odd.
+    * Target **all even**: For any odd number $i$, pick an odd number $j$ ($i 
+eq j$) if at least two odd numbers exist: $	ext{odd} - 	ext{odd} = 	ext{even}$.
+  * Since target "all odd" is universally constructible whenever at least one odd number exists (and if no odd numbers exist, all numbers are already even), it is mathematically guaranteed that a uniform parity array can **always** be constructed.
+* **Code Implementation:**
+  ```java
+  class Solution {
+      public boolean uniformArray(int[] nums1) {
+          return true;
+      }
+  }
+  ```
+* **Complexity Analysis:**
+  * **Time Complexity:** $O(1)$
+  * **Space Complexity:** $O(1)$
+
+---
+
+## 2. Summary of Questions Solved
+
+* **Total Questions Solved:** 2
+  1. LeetCode 844 — *Backspace String Compare*
+  2. LeetCode 3875 — *Construct Uniform Parity Array I*
+
+---
+
+*See you on Day 50*
