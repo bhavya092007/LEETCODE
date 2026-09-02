@@ -3523,3 +3523,36 @@ The half-open range notation `[birth, death)` is a useful way to remember that b
 ---
 
 *See you on Day 49*
+
+# Important Concepts & Patterns — Day 49
+**Date:** September 2, 2026  
+**Day Number:** Day 49
+
+---
+
+## 1. Key Algorithmic Concepts & Patterns
+
+### 1. Editor Simulation & Stack Guard Invariants
+* **LIFO Deletion:** Interactive typing/backspacing maps directly to push/pop mechanics.
+* **Empty Boundary Protection:** When popping dynamic buffers based on user input, always guard with `!stack.isEmpty()` (or equivalent size checks).
+
+### 2. Collection Equality in Java
+* `stack1.equals(stack2)` evaluates structural and sequential value equivalence in $O(N)$ without needing manual conversion to strings.
+
+### 3. Parity Transformation Rules
+* $	ext{even} \pm 	ext{odd} = 	ext{odd}$
+* $	ext{odd} \pm 	ext{odd} = 	ext{even}$
+* $	ext{even} \pm 	ext{even} = 	ext{even}$
+* In constructive math problems, analyzing invariant algebraic rules often proves that an answer is unconditionally valid ($O(1)$ constant return), bypassing simulation entirely.
+
+---
+
+## 2. Summary of Questions Solved
+
+* **Total Questions Solved:** 2
+  1. LeetCode 844 — *Backspace String Compare*
+  2. LeetCode 3875 — *Construct Uniform Parity Array I*
+
+---
+
+*See you on Day 50*
