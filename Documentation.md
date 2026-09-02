@@ -7930,3 +7930,28 @@ That experience reminded me that being slow on one problem does not mean I'm bad
 ---
 
 *See you on Day 49*
+
+eq i$) to ensure the final array is either entirely even or entirely odd.
+  * I wondered: *Can we always satisfy this condition, or is there an edge case that fails?*
+
+* **Unpacking Parity Arithmetic:**
+  * If the array is already all even or all odd, we do nothing and keep `nums2[i] = nums1[i]`. Condition satisfied.
+  * If the array has mixed elements (both evens and odds):
+    * Suppose we aim to make everything **odd**:
+      * The odd numbers can stay untouched.
+      * For any even number, we can subtract any available odd number: $	ext{even} - 	ext{odd} = 	ext{odd}$.
+      * This flips every even number into an odd number!
+    * Because we have at least one odd number in a mixed array, we can always transform every even number into an odd number.
+  * Hence, regardless of the input array, it is always possible to construct a uniform parity array. Simply returning `true` satisfies the problem completely.
+
+---
+
+## Summary of Questions Solved
+
+* **Total Questions Solved:** 2
+  1. LeetCode 844 — *Backspace String Compare*
+  2. LeetCode 3875 — *Construct Uniform Parity Array I*
+
+---
+
+*See you on Day 50*
