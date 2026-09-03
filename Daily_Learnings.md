@@ -14930,3 +14930,97 @@ eq j$) if at least two odd numbers exist: $	ext{odd} - 	ext{odd} = 	ext{even}$.
 ---
 
 *See you on Day 50*
+
+# Learning Log — Day 50
+**Date:** September 3, 2026  
+**Day Number:** Day 50
+
+---
+
+## 1. Problem Overview & Technical Breakdown
+
+### Problem 1: LeetCode 1544 — Make The String Great
+* **Category:** String / Simulation / Stack / Two Pointers
+* **Core Task:** Repeatedly remove adjacent pairs of characters where the characters are the same letter with opposing capitalization (`|c1 - c2| == 32`), until no such pairs remain.
+
+#### Technical Implementation Details
+* **Approach 1: In-Place Mutation via StringBuilder**
+  * Wrap string in a mutable `StringBuilder`.
+  * Scan indices using invariant `i < sb.length() - 1`.
+  * If adjacent pair is bad:
+    * Delete pair via `sb.delete(i, i + 2)`.
+    * Shift index backwards to check cascade reactions (`i = Math.max(-1, i - 2)`).
+  * **Code Implementation:**
+    ```java
+    class Solution {
+        public String makeGood(String s) {
+            StringBuilder sb = new StringBuilder(s);
+            for (int i = 0; i < sb.length() - 1; i++) {
+                char c1 = sb.charAt(i);
+                char c2 = sb.charAt(i + 1);
+                if (Math.abs(c1 - c2) == 32) {
+                    sb.delete(i, i + 2);
+                    i = Math.max(-1, i - 2);
+                }
+            }
+            return sb.toString();
+        }
+    }
+    ```
+  * **Time Complexity:** $O(N^2)$ in worst-case cascade deletions due to shifting in `StringBuilder.delete()`.
+  * **Space Complexity:** $O(N)$ for string buffer.
+
+* **Approach 2: Stack Simulation (Optimal $O(N)$)**
+  * Treat output buffer as a stack. If incoming character matches top with opposing case, pop; otherwise push.
+  * **Time Complexity:** $O(N)$
+  * **Space Complexity:** $O(N)$
+
+---
+
+### Problem 2: LeetCode 1598 — Crawler Log Folder
+* **Category:** Array / Simulation / Stack / Counter
+* **Core Task:** Determine the minimum number of steps to return to the main folder after performing directory navigation operations (`"../"`, `"./"`, `"x/"`).
+
+#### Technical Implementation Details
+* **Optimized Counter Approach:**
+  * Rather than storing folder history in a `Stack<String>`, track the scalar directory depth using an integer counter `depth`.
+  * For `"../"`: decrement if `depth > 0` (cannot go above root directory).
+  * For `"./"`: no-op (stay in current directory).
+  * For any folder name `"x/"`: increment `depth++`.
+* **Code Implementation:**
+  ```java
+  class Solution {
+      public int minOperations(String[] logs) {
+          int depth = 0;
+
+          for (int i = 0; i < logs.length; i++) {
+              if (logs[i].equals("../")) {
+                  if (depth > 0) {
+                      depth--;
+                  }
+              } else if (logs[i].equals("./")) {
+                  // Do nothing
+              } else {
+                  depth++;
+              }
+          }
+
+          return depth;
+      }
+  }
+  ```
+* **Complexity Analysis:**
+  * **Time Complexity:** $O(N)$ — Single linear scan through `logs`.
+  * **Space Complexity:** $O(1)$ — Single primitive variable `depth`.
+
+---
+
+## 2. Summary of Questions Solved
+
+* **Total Questions Solved:** 2
+  1. LeetCode 1544 — *Make The String Great*
+  2. LeetCode 1598 — *Crawler Log Folder*
+
+---
+
+*See you on Day 51*
