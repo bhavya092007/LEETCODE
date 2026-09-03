@@ -7955,3 +7955,57 @@ eq i$) to ensure the final array is either entirely even or entirely odd.
 ---
 
 *See you on Day 50*
+
+# Problem Solving & Metacognition Documentation — Day 50
+**Date:** September 3, 2026  
+**Day Number:** Day 50
+
+---
+
+## Thought Process & Problem Solving Journey
+
+### LeetCode 1544: Make The String Great
+
+* **Understanding In-Place Mutation Challenges:**
+  * Since `String` is immutable, handling continuous character removals requires a mutable buffer like `StringBuilder`.
+  * To delete an adjacent pair, I used `sb.delete(i, i + 2)` because the end index is exclusive.
+  * However, deleting elements shrinks the string dynamically and shifts subsequent characters left, which introduces boundary hazards.
+
+* **Tracking the Index Shift and Edge Cases:**
+  * **Lookahead Out-of-Bounds:** When accessing `i + 1`, loop termination must be `i < sb.length() - 1` rather than `<=`.
+  * **The Cascade Reaction:** Removing a middle pair like `"bB"` in `"abBA"` merges previously non-adjacent characters (`"aA"`). To re-evaluate newly created pairs, I had to move the index backward (`i -= 2`).
+  * **Negative Index Trap:** If the deletion occurs at index 0, moving backwards (`i - 2`) pushes `i` to `-2`. When the loop increments it to `-1`, accessing `sb.charAt(-1)` throws a `StringIndexOutOfBoundsException`.
+  * Fixing this with `i = Math.max(-1, i - 2)` ensures the index stays safe while allowing proper re-evaluation.
+
+---
+
+### LeetCode 1598: Crawler Log Folder
+
+* **Initial Intuition vs. Minimal State Realization:**
+  * My immediate thought was to use a `Stack<String>` to simulate folder navigation:
+    * `"d1/"` $\to$ push
+    * `"../"` $\to$ pop
+    * `"./"` $\to$ ignore
+  * But before implementing, I stopped and asked myself: *Do I actually care about the folder names?*
+  * The problem only asks for the number of steps required to return to the root folder, which is simply the current directory depth.
+
+* **Simplifying from Stack to Counter:**
+  * Storing names in a stack wastes memory when only depth is needed.
+  * Replaced the stack with a single integer: `int depth = 0`.
+  * Rule boundaries:
+    * `"../"` $\to$ `if (depth > 0) depth--` (preventing negative depth below root).
+    * `"./"` $\to$ no change.
+    * `"x/"` $\to$ `depth++`.
+  * This reduced space complexity from $O(N)$ down to $O(1)$.
+
+---
+
+## Summary of Questions Solved
+
+* **Total Questions Solved:** 2
+  1. LeetCode 1544 — *Make The String Great*
+  2. LeetCode 1598 — *Crawler Log Folder*
+
+---
+
+*See you on Day 51*
