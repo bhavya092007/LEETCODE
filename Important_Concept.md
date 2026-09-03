@@ -3556,3 +3556,35 @@ The half-open range notation `[birth, death)` is a useful way to remember that b
 ---
 
 *See you on Day 50*
+
+# Important Concepts & Patterns — Day 50
+**Date:** September 3, 2026  
+**Day Number:** Day 50
+
+---
+
+## 1. Key Algorithmic Concepts & Patterns
+
+### 1. In-Place Mutation Index Management
+* When mutating a sequence during iteration (`delete(start, end)`):
+  * Length changes dynamically; bound lookaheads to `i < sb.length() - 1`.
+  * Deletions shift trailing elements left. To recheck adjacent boundaries after a collapse, rewind index safely using `i = Math.max(-1, i - k)`.
+
+### 2. State Minimization Pattern (Stack vs. Counter)
+* Before choosing a Stack for LIFO-style operations, evaluate if individual historical values matter.
+* If only the **count or distance** from origin matters, replace the $O(N)$ Stack with an $O(1)$ scalar counter clamped at the baseline (`depth = Math.max(0, depth - 1)`).
+
+### 3. Substring / Range Deletion Invariant
+* In Java's `StringBuilder.delete(start, end)`, the range is $[start, end)$ (start is inclusive, end is exclusive).
+
+---
+
+## 2. Summary of Questions Solved
+
+* **Total Questions Solved:** 2
+  1. LeetCode 1544 — *Make The String Great*
+  2. LeetCode 1598 — *Crawler Log Folder*
+
+---
+
+*See you on Day 51*
