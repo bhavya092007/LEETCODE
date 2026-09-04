@@ -3588,3 +3588,34 @@ The half-open range notation `[birth, death)` is a useful way to remember that b
 ---
 
 *See you on Day 51*
+
+# Important Concepts & Patterns — Day 51
+**Date:** September 4, 2026  
+**Day Number:** Day 51
+
+---
+
+## 1. Key Algorithmic Concepts & Patterns
+
+### 1. Extremum Initialization Safeguards
+* Never initialize a minimum tracking variable to `0` when data points are $\ge 0$, as it artificially acts as an unreachable floor.
+* Always initialize tracking variables using domain values (`nums[i]`) or language boundary constants (`Integer.MAX_VALUE`, `Integer.MIN_VALUE`).
+
+### 2. Independent Range Scans vs. Loop Nesting
+* When computing metrics across disjoint or overlapping sub-arrays (Prefix: $[0 \dots i]$ vs. Suffix: $[i \dots n-1]$):
+  * Keep range scans as **sequential peer loops** within the outer iteration.
+  * Avoid nesting range scans within each other, which multiplies complexity unnecessarily ($O(n^3)$ instead of $O(n^2)$) and recalculates redundant comparisons.
+
+### 3. Early-Return Boundary Invariant
+* Because the outer loop moves sequentially ($i = 0 \to n - 1$), the first index satisfying `max - min <= k` is guaranteed to be the minimal (first) stable index.
+
+---
+
+## 2. Summary of Questions Solved
+
+* **Total Questions Solved:** 1
+  1. *First Stable Index (Prefix Max & Suffix Min Stability)*
+
+---
+
+*See you on Day 52*
