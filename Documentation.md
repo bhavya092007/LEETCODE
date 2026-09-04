@@ -8009,3 +8009,43 @@ eq i$) to ensure the final array is either entirely even or entirely odd.
 ---
 
 *See you on Day 51*
+
+# Problem Solving & Metacognition Documentation — Day 51
+**Date:** September 4, 2026  
+**Day Number:** Day 51
+
+---
+
+## Thought Process & Problem Solving Journey
+
+### First Stable Index: Prefix Max & Suffix Min Stability
+
+* **Problem Understanding & Strategy Selection:**
+  * For each index $i$, the goal is to evaluate the instability score: $\max(\text{nums}[0 \dots i]) - \min(\text{nums}[i \dots n-1])$.
+  * If this difference is $\le k$, index $i$ is stable.
+  * Because the constraint is small ($n \le 100$), an $O(n^2)$ brute-force simulation checking each index independently is fully viable and easy to reason through.
+
+* **Identifying and Correcting Implementation Pitfalls:**
+  * **Variable Indexing Bug:** In my first attempt inside the inner loops, I accidentally used `nums[i]` instead of the iteration index `nums[j]` / `nums[l]`. I corrected this so that each loop accurately checks the current candidate element.
+  * **Minimum Initialization Trap:** Setting `int min = 0;` caused a silent logic error because all values in `nums` are non-negative ($\ge 0$). A default of `0` would prevent `min` from ever capturing a higher actual minimum. Initializing `min = nums[i]` guarantees a valid baseline from the suffix range.
+  * **Scope & Resetting:** Both `min` and `max` must be declared and reset inside the outer loop so that each candidate index $i$ starts with a fresh baseline.
+  * **Sequential vs. Nested Scans:** I initially nested the suffix loop inside the prefix loop. I realized this was structurally incorrect: the prefix maximum and suffix minimum are independent calculations over separate ranges. They must run sequentially, and only after both finish should `ans = max - min` be computed.
+  * **Return Value Clarification:** I initially wrote `return k;` out of habit, but caught myself—the problem asks for the *first stable index*, so returning `i` upon the first match (and `-1` if no index qualifies) is required.
+
+* **Metacognitive Takeaway:**
+  * When problem statements define metrics combining multiple ranges (e.g., prefix $0 \dots i$ vs. suffix $i \dots n-1$), break the process into distinct, sequential sub-steps:
+    1. Scan left range.
+    2. Scan right range.
+    3. Evaluate boundary condition.
+  * Always initialize extremum variables with elements from the actual domain rather than arbitrary zeroes when values can be positive.
+
+---
+
+## Summary of Questions Solved
+
+* **Total Questions Solved:** 1
+  1. *First Stable Index (Prefix Max & Suffix Min Stability)*
+
+---
+
+*See you on Day 52*
