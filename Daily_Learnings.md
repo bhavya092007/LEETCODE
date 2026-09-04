@@ -15024,3 +15024,77 @@ eq j$) if at least two odd numbers exist: $	ext{odd} - 	ext{odd} = 	ext{even}$.
 ---
 
 *See you on Day 51*
+
+# Learning Log — Day 51
+**Date:** September 4, 2026  
+**Day Number:** Day 51
+
+---
+
+## 1. Problem Overview & Technical Breakdown
+
+### Problem 1: First Stable Index (Prefix Max & Suffix Min Stability)
+* **Category:** Array / Simulation / Prefix & Suffix Scanning / Boundary Search
+* **Core Task:** Given an integer array `nums` of length $n$ and an integer threshold $k$, find the first index $i$ where the instability score $\max(\text{nums}[0 \dots i]) - \min(\text{nums}[i \dots n-1]) \le k$. If no such index exists, return $-1$.
+
+#### Technical Implementation Details
+* **Approach 1: Nested Range Scan Simulation (Brute Force)**
+  * Loop index $i$ from $0$ to $n - 1$.
+  * For each index $i$:
+    * Initialize `max = nums[0]` (or `0` when elements are non-negative) and scan $0 \le j \le i$ to compute the prefix maximum.
+    * Initialize `min = nums[i]` and scan $i \le l < n$ to compute the suffix minimum.
+    * Compute instability score: `ans = max - min`.
+    * Return $i$ immediately if `ans <= k` (ensuring the first valid index is returned).
+  * If loop completes without any index satisfying the condition, return `-1`.
+  * **Code Implementation:**
+    ```java
+    class Solution {
+        public int firstStableIndex(int[] nums, int k) {
+            int n = nums.length;
+            for (int i = 0; i < n; i++) {
+                int min = nums[i];
+                int max = 0;
+
+                for (int j = 0; j <= i; j++) {
+                    if (nums[j] > max) {
+                        max = nums[j];
+                    }
+                }
+
+                for (int l = i; l < n; l++) {
+                    if (nums[l] < min) {
+                        min = nums[l];
+                    }
+                }
+
+                int ans = max - min;
+
+                if (ans <= k) {
+                    return i;
+                }
+            }
+
+            return -1;
+        }
+    }
+    ```
+  * **Complexity Analysis:**
+    * **Time Complexity:** $O(n^2)$ — For each index $i$, prefix scan takes $O(i)$ and suffix scan takes $O(n - i)$, resulting in $O(n)$ work per index across $n$ elements. With $n \le 100$, total operations are $\approx 10^4$, executing well within time limits.
+    * **Space Complexity:** $O(1)$ — Only scalar tracking variables (`min`, `max`, `ans`) are maintained.
+
+* **Approach 2: Prefix and Suffix Precomputation (Optimal $O(n)$)**
+  * Precompute `prefixMax[i]` from left to right and `suffixMin[i]` from right to left in two separate $O(n)$ passes.
+  * Check `prefixMax[i] - suffixMin[i] <= k` in a final linear pass.
+  * **Time Complexity:** $O(n)$
+  * **Space Complexity:** $O(n)$
+
+---
+
+## 2. Summary of Questions Solved
+
+* **Total Questions Solved:** 1
+  1. *First Stable Index (Prefix Max & Suffix Min Stability)*
+
+---
+
+*See you on Day 52*
