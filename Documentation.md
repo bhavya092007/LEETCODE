@@ -8049,3 +8049,50 @@ eq i$) to ensure the final array is either entirely even or entirely odd.
 ---
 
 *See you on Day 52*
+
+# Problem Solving & Metacognition Documentation — Day 52
+**Date:** September 5, 2026  
+**Day Number:** Day 52
+
+---
+
+## Thought Process & Problem Solving Journey
+
+### LeetCode 876: Middle of the Linked List
+
+* **Initial Understanding & Naive Perspective:**
+  * When looking at this problem initially, finding the middle naturally sounded like a counting task:
+    * Run a pointer to the end to count the total nodes ($N$).
+    * Divide by 2 ($N / 2$) to find the middle index.
+    * Run a second pointer from the head for $N / 2$ steps.
+  * While this approach is completely valid and runs in $O(N)$ time with $O(1)$ extra space, it requires traversing the list twice.
+
+* **Discovering the Multi-Speed Pointer Mental Model:**
+  * I learned that traversal does not have to be limited to a single pointer moving at a uniform speed.
+  * By introducing two pointers moving at different speeds:
+    * `slow` advances 1 node per cycle.
+    * `fast` advances 2 nodes per cycle.
+  * Because `fast` covers distance at $2	imes$ the rate of `slow`, by the time `fast` reaches the end of the list, `slow` is guaranteed to have covered half that distance ($N / 2$), landing directly on the middle node.
+
+* **Guard Conditions and Null Safety:**
+  * To safely execute `fast = fast.next.next`, we must verify that both the current node and its immediate successor exist:
+    * If `fast == null`, accessing `fast.next` causes a `NullPointerException`.
+    * If `fast.next == null`, accessing `fast.next.next` causes a `NullPointerException`.
+  * The compound condition `while (fast != null && fast.next != null)` cleanly protects both scenarios.
+  * For odd-length lists (e.g. 5 nodes), the loop terminates because `fast.next == null`.
+  * For even-length lists (e.g. 6 nodes), the loop terminates because `fast == null`, naturally placing `slow` on the second middle node as required by the problem.
+
+* **Key Takeaway:**
+  * Moving from a two-pass counter to a single-pass slow/fast pointer represents an essential shift in linked list thinking.
+  * This pattern serves as the foundation for detecting cycles (Floyd's Cycle-Finding Algorithm) and finding list split points in merge sort.
+
+---
+
+## Summary of Questions Solved
+
+* **Total Questions Solved:** 1
+  1. LeetCode 876 — *Middle of the Linked List*
+
+---
+
+*See you on Day 53*
