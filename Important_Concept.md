@@ -3619,3 +3619,41 @@ The half-open range notation `[birth, death)` is a useful way to remember that b
 ---
 
 *See you on Day 52*
+
+# Important Concepts & Patterns â€” Day 52
+**Date:** September 5, 2026  
+**Day Number:** Day 52
+
+---
+
+## 1. Key Algorithmic Concepts & Patterns
+
+### 1. Slow and Fast Pointer Pattern (Tortoise and Hare)
+* **Concept:** Maintaining two pointers traversing at different velocities ($1$ step vs. $2$ steps per iteration).
+* **Relative Speed Invariant:** At any step $k$:
+  $$	ext{dist}(slow) = k, \quad 	ext{dist}(fast) = 2k$$
+* When $	ext{dist}(fast)  pprox N$, $	ext{dist}(slow)  pprox N/2$.
+
+### 2. Null-Safety Guard for 2-Step Lookaheads
+* When hopping two links (`fast.next.next`), short-circuit evaluation prevents null pointer exceptions:
+  ```java
+  while (fast != null && fast.next != null)
+  ```
+  * `fast != null` protects the first dereference (`fast.next`).
+  * `fast.next != null` protects the second dereference (`fast.next.next`).
+
+### 3. Even vs. Odd List Parity Termination
+* **Odd Length:** `fast.next == null` triggers termination; `slow` points to the exact unique median node.
+* **Even Length:** `fast == null` triggers termination; `slow` points to the second median node ($\lfloor N/2 
+floor + 1$).
+
+---
+
+## 2. Summary of Questions Solved
+
+* **Total Questions Solved:** 1
+  1. LeetCode 876 â€” *Middle of the Linked List*
+
+---
+
+*See you on Day 53*
