@@ -15098,3 +15098,64 @@ eq j$) if at least two odd numbers exist: $	ext{odd} - 	ext{odd} = 	ext{even}$.
 ---
 
 *See you on Day 52*
+
+# Learning Log — Day 52
+**Date:** September 5, 2026  
+**Day Number:** Day 52
+
+---
+
+## 1. Problem Overview & Technical Breakdown
+
+### Problem 1: LeetCode 876 — Middle of the Linked List
+* **Category:** Linked List / Two Pointers / Slow & Fast Pointers
+* **Core Task:** Given the `head` of a singly linked list, return the middle node. If there are two middle nodes (even total length), return the second middle node.
+
+#### Technical Implementation Details
+* **Approach 1: Two-Pass Traversal (Counting Nodes)**
+  * Pass 1: Traverse the linked list from `head` to `null` to count total nodes $N$.
+  * Compute target middle index: $	ext{mid} = \lfloor N / 2 
+floor$.
+  * Pass 2: Reset pointer to `head` and advance $	ext{mid}$ steps to reach the target node.
+  * **Time Complexity:** $O(N)$ — Requires $N + \lfloor N / 2 
+floor = 1.5N$ node visits.
+  * **Space Complexity:** $O(1)$ — Only tracking pointers and counters.
+
+* **Approach 2: One-Pass Tortoise and Hare (Slow & Fast Pointers)**
+  * Initialize two reference pointers at `head`: `slow` and `fast`.
+  * In each iteration, advance `slow` by 1 step (`slow = slow.next`) and `fast` by 2 steps (`fast = fast.next.next`).
+  * Invariant: `fast` travels at double the speed of `slow` ($v_{fast} = 2 \cdot v_{slow}$).
+  * Termination condition: `while (fast != null && fast.next != null)`.
+    * For odd-length lists: terminates when `fast.next == null` (`slow` lands on exact middle).
+    * For even-length lists: terminates when `fast == null` (`slow` lands on the second middle node).
+  * **Code Implementation:**
+    ```java
+    class Solution {
+        public ListNode middleNode(ListNode head) {
+            ListNode slow = head;
+            ListNode fast = head;
+
+            while (fast != null && fast.next != null) {
+                slow = slow.next;
+                fast = fast.next.next;
+            }
+
+            return slow;
+        }
+    }
+    ```
+  * **Complexity Analysis:**
+    * **Time Complexity:** $O(N)$ — Single pass; the list is traversed once with $\lceil N / 2 
+ceil$ loop iterations.
+    * **Space Complexity:** $O(1)$ — Auxiliary memory limited to two reference pointers.
+
+---
+
+## 2. Summary of Questions Solved
+
+* **Total Questions Solved:** 1
+  1. LeetCode 876 — *Middle of the Linked List*
+
+---
+
+*See you on Day 53*
