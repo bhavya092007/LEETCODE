@@ -15159,3 +15159,56 @@ ceil$ loop iterations.
 ---
 
 *See you on Day 53*
+
+# Learning Log — Day 53
+**Date:** September 6, 2026  
+**Day Number:** Day 53
+
+---
+
+## 1. Problem Overview & Technical Breakdown
+
+### Problem 1: LeetCode 191 — Number of 1 Bits (Hamming Weight)
+* **Category:** Bit Manipulation / String Simulation / Number Theory
+* **Core Task:** Given a positive integer `n`, return the number of set bits (`1`s) in its binary representation.
+
+#### Technical Implementation Details
+* **Approach 1: Binary String Conversion & Linear Scan**
+  * Use Java's built-in `Integer.toBinaryString(n)` to convert the integer into a binary string representation.
+  * Initialize an accumulator `count = 0`.
+  * Traverse the string from index `0` to `binary.length() - 1` using `binary.charAt(j)`.
+  * If `binary.charAt(j) == '1'`, increment `count++`.
+  * Return `count`.
+  * **Code Implementation:**
+    ```java
+    class Solution {
+        public int hammingWeight(int n) {
+            String binary = Integer.toBinaryString(n);
+            int count = 0;
+            for (int j = 0; j < binary.length(); j++) {
+                if (binary.charAt(j) == '1') {
+                    count++;
+                }
+            }
+            return count;
+        }
+    }
+    ```
+  * **Complexity Analysis:**
+    * **Time Complexity:** $O(B)$ where $B \le 32$ is the length of the binary string. Since an integer is at most 32 bits, this runs in bounded $O(1)$ constant time.
+    * **Space Complexity:** $O(B)$ where $B \le 32$ for the newly created string in memory, effectively $O(1)$ bounded extra space.
+
+* **Approach 2: Brian Kernighan’s Algorithm (Optimal Bit Manipulation)**
+  * Repeatedly clear the lowest set bit using `n = n & (n - 1)` until `n == 0`.
+  * Runs in $O(K)$ time where $K$ is the exact count of set bits ($K \le 32$) with pure $O(1)$ auxiliary space.
+
+---
+
+## 2. Summary of Questions Solved
+
+* **Total Questions Solved:** 1
+  1. LeetCode 191 — *Number of 1 Bits*
+
+---
+
+*See you on Day 54*
