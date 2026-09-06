@@ -8096,3 +8096,41 @@ eq i$) to ensure the final array is either entirely even or entirely odd.
 ---
 
 *See you on Day 53*
+
+# Problem Solving & Metacognition Documentation — Day 53
+**Date:** September 6, 2026  
+**Day Number:** Day 53
+
+---
+
+## Thought Process & Problem Solving Journey
+
+### LeetCode 191: Number of 1 Bits
+
+* **Deconstructing the Problem:**
+  * The problem asks for the number of set bits (`1`s) in the binary representation of an integer `n`.
+  * Instead of jumping directly to unfamiliar bitwise operators (`&`, `|`, `^`, `>>`), I focused on the core concept: convert the number into its binary form and count the occurrences of `'1'`.
+
+* **Step-by-Step Discovery of Java Methods:**
+  * **Conversion:** Discovered `Integer.toBinaryString(n)` in Java, which converts an integer into its binary representation as a standard `String`.
+  * **String Traversal:** Used `binary.length()` to get total characters and `binary.charAt(j)` to inspect the character at each index.
+  * **Data Type Precision (`char` vs `String`):** Noticed the crucial distinction between character literal `'1'` and string literal `"1"`. Since `charAt()` returns a primitive `char`, comparing via `== '1'` is both syntactically correct and fast.
+
+* **Building Confidence Before Optimization:**
+  * While algorithms like Brian Kernighan's bit manipulation (`n & (n - 1)`) exist, prioritizing a simple, working mental model first builds confidence:
+    1. Understand what the problem is asking.
+    2. Convert it into the simplest representation (String).
+    3. Process that representation with straightforward logic.
+    4. Test and dry-run with concrete examples (`n = 11` $\to$ `"1011"` $\to$ 3).
+    5. Study the bitwise optimization afterward as an advanced technique.
+
+---
+
+## Summary of Questions Solved
+
+* **Total Questions Solved:** 1
+  1. LeetCode 191 — *Number of 1 Bits*
+
+---
+
+*See you on Day 54*
