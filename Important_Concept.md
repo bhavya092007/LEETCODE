@@ -3657,3 +3657,37 @@ floor + 1$).
 ---
 
 *See you on Day 53*
+
+# Important Concepts & Patterns — Day 53
+**Date:** September 6, 2026  
+**Day Number:** Day 53
+
+---
+
+## 1. Key Algorithmic Concepts & Patterns
+
+### 1. Integer-to-Binary String Representation
+* `Integer.toBinaryString(int n)`: Generates an unsigned base-2 string without leading zeroes (e.g., `11` becomes `"1011"`).
+
+### 2. Primitive `char` vs. Object `String` Invariant
+* **`char` Literal:** Represented with single quotes (`'1'`). Compared using primitive equality operator `==`.
+* **`String` Literal:** Represented with double quotes (`"1"`). Compared using `.equals()`.
+* When using `s.charAt(i)`, always compare against `'1'`, not `"1"`.
+
+### 3. Bit Manipulation Mental Model vs. String Simulation
+* **String Simulation Approach:** Intuitive for readability and beginner habit formation; creates an intermediate string buffer ($O(B)$ memory).
+* **Bitwise Arithmetic Approach:** Operates in-place on CPU registers ($O(1)$ memory):
+  * Check lowest bit: `(n & 1) == 1`
+  * Shift right: `n = n >>> 1`
+  * Clear least significant set bit (Kernighan's): `n = n & (n - 1)`
+
+---
+
+## 2. Summary of Questions Solved
+
+* **Total Questions Solved:** 1
+  1. LeetCode 191 — *Number of 1 Bits*
+
+---
+
+*See you on Day 54*
