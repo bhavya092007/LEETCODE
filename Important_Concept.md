@@ -3691,3 +3691,39 @@ floor + 1$).
 ---
 
 *See you on Day 54*
+
+# Important Concepts & Patterns — Day 54
+**Date:** September 7, 2026  
+**Day Number:** Day 54
+
+---
+
+## 1. Key Algorithmic Concepts & Patterns
+
+### 1. Mathematical vs Bitwise Binary Equivalences
+* **Extracting LSB:**
+  * Arithmetic: `num % 2`
+  * Bitwise: `num & 1`
+* **Right Shift (Discard LSB):**
+  * Arithmetic: `num / 2`
+  * Bitwise: `num >> 1`
+
+### 2. Loop Termination Invariant
+* In `while (variable > 0)` loops, ensure the loop step explicitly mutates `variable` towards termination. Evaluating an outer invariant (`n > 0`) while mutating a local copy (`num`) causes an infinite loop.
+
+### 3. Transitioning from Simulation to Dynamic Programming
+* **Pattern Recognition:** When computing an array of sequential numerical properties where each state $i$ depends directly on $i / 2$, avoid full recalculation from scratch.
+* **Recurrence Invariant:**
+  $$\text{bits}(i) = \text{bits}(i \gg 1) + (i \ \& \ 1)$$
+  This collapses an $O(n \log n)$ simulation down to a single-pass $O(n)$ state lookup.
+
+---
+
+## 2. Summary of Questions Solved
+
+* **Total Questions Solved:** 1
+  1. LeetCode 338 — *Counting Bits*
+
+---
+
+*See you on Day 55*
