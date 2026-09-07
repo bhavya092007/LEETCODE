@@ -15212,3 +15212,85 @@ ceil$ loop iterations.
 ---
 
 *See you on Day 54*
+
+# Learning Log — Day 54
+**Date:** September 7, 2026  
+**Day Number:** Day 54
+
+---
+
+## 1. Problem Overview & Technical Breakdown
+
+### Problem 1: LeetCode 338 — Counting Bits
+* **Category:** Bit Manipulation / Dynamic Programming / Array Simulation
+* **Core Task:** Given an integer `n`, return an integer array `ans` of length `n + 1` such that `ans[i]` is the count of set bits (`1`s) in the binary representation of `i`.
+
+#### Technical Implementation Details
+* **Approach 1: Direct Binary Decomposition via Modulo & Division**
+  * Allocate an array `int[] ans = new int[n + 1]`.
+  * Loop `i` from `0` to `n`.
+  * Extract bits of `num = i` iteratively:
+    * `rem = num % 2`: isolates the least significant bit (LSB).
+    * Increment `count++` if `rem == 1`.
+    * `num = num / 2`: shifts the number right by one binary place.
+  * Store computed `count` into `ans[i]`.
+  * **Code Implementation:**
+    ```java
+    class Solution {
+        public int[] countBits(int n) {
+            int[] ans = new int[n + 1];
+
+            for (int i = 0; i <= n; i++) {
+                int num = i;
+                int count = 0;
+
+                while (num > 0) {
+                    int rem = num % 2;
+
+                    if (rem == 1) {
+                        count++;
+                    }
+
+                    num = num / 2;
+                }
+
+                ans[i] = count;
+            }
+
+            return ans;
+        }
+    }
+    ```
+  * **Complexity Analysis:**
+    * **Time Complexity:** $O(n \log n)$ — For each number from $0$ to $n$, binary decomposition executes $\lfloor \log_2(i) \rfloor + 1$ division steps.
+    * **Space Complexity:** $O(n)$ to store the result array ($O(1)$ auxiliary space).
+
+* **Approach 2: 1D Dynamic Programming (Optimal $O(n)$)**
+  * Recurrence relation based on right shift:
+    $$ans[i] = ans[i / 2] + (i \% 2) = ans[i \gg 1] + (i \ \& \ 1)$$
+  * The number of set bits in $i$ equals the set bits in $i/2$ plus the LSB of $i$.
+  * **Code Implementation:**
+    ```java
+    class Solution {
+        public int[] countBits(int n) {
+            int[] ans = new int[n + 1];
+            for (int i = 1; i <= n; i++) {
+                ans[i] = ans[i >> 1] + (i & 1);
+            }
+            return ans;
+        }
+    }
+    ```
+  * **Time Complexity:** $O(n)$ — Single pass using previously computed subproblems.
+  * **Space Complexity:** $O(n)$ to store the output array.
+
+---
+
+## 2. Summary of Questions Solved
+
+* **Total Questions Solved:** 1
+  1. LeetCode 338 — *Counting Bits*
+
+---
+
+*See you on Day 55*
