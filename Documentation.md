@@ -8134,3 +8134,55 @@ eq i$) to ensure the final array is either entirely even or entirely odd.
 ---
 
 *See you on Day 54*
+
+# Problem Solving & Metacognition Documentation — Day 54
+**Date:** September 7, 2026  
+**Day Number:** Day 54
+
+---
+
+## Thought Process & Problem Solving Journey
+
+### LeetCode 338: Counting Bits
+
+* **Problem Framing & Moving Beyond String Conversion:**
+  * The problem requires computing set bit counts for every number from $0$ up to $n$.
+  * Rather than relying on `Integer.toBinaryString(i)` as on Day 53, I wanted to understand and implement the underlying binary arithmetic myself.
+  * I recognized that extracting binary digits mathematically relies on basic arithmetic:
+    * `num % 2` isolates the lowest binary digit (0 or 1).
+    * `num / 2` shifts the binary representation to the right, discarding the extracted bit.
+
+* **Tracking and Debugging the TLE Bug:**
+  * During my initial implementation, I hit a Time Limit Exceeded (TLE) error.
+  * In the inner loop, I wrote:
+    ```java
+    int num = i;
+    while (n > 0) {
+        int rem = n % 2;
+        ...
+        num = num / 2;
+    }
+    ```
+  * Checking `n > 0` while updating `num = num / 2` left `n` unchanged, creating an infinite loop whenever $n > 0$.
+  * Fixing the condition to `while (num > 0)` resolved the issue immediately.
+  * *Lesson:* Always verify that the variable evaluated in a `while` predicate is the exact variable being modified within the loop body.
+
+* **Recognizing Repeated Subproblems (Progression to DP):**
+  * When processing number 5 (`101` in binary):
+    * Removing the rightmost bit leaves `10` (which is decimal 2).
+    * The number of ones in 5 is simply the number of ones in 2 plus whatever was stripped off (1).
+    * Since 2 has already been processed earlier in the loop, we are recalculating work that is already sitting in our `ans` array.
+  * This insight transitions the algorithm from $O(n \log n)$ recalculation into $O(n)$ Dynamic Programming:
+    * `ans[i] = ans[i / 2] + (i % 2)`
+    * Or in bitwise notation: `ans[i] = ans[i >> 1] + (i & 1)`
+
+---
+
+## Summary of Questions Solved
+
+* **Total Questions Solved:** 1
+  1. LeetCode 338 — *Counting Bits*
+
+---
+
+*See you on Day 55*
