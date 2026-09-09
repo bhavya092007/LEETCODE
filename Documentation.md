@@ -419,7 +419,7 @@ Used in:
 - Sum Multiples
 
 
-Pattern:
+Pattern::
 
 
 ```java
