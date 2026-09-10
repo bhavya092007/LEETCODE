@@ -3727,3 +3727,36 @@ floor + 1$).
 ---
 
 *See you on Day 55*
+
+# Important Concepts & Patterns — Day 57
+**Date:** September 10, 2026  
+**Day Number:** Day 57
+
+---
+
+## 1. Key Algorithmic Concepts & Patterns
+
+### 1. Bitwise Extraction and Progression Invariants
+* **Extract LSB:** `num & 1` returns the least significant bit ($0$ or $1$).
+* **Advance Bit Stream:** `num >> 1` shifts binary representation right by 1, dividing by 2 and dropping the LSB.
+
+### 2. Multi-Operand Exhaustion Invariant (`||` vs `&&`)
+* When streaming through numbers of unequal bit length:
+  * `while (x > 0 || y > 0)` ensures the shorter bit length number pads implicitly with `0`s until the longer number is completely processed.
+  * `while (x > 0 && y > 0)` prematurely terminates when the smaller value exhausts its bits.
+
+### 3. XOR ($\oplus$) as Difference Detector
+* XOR outputs `1` if and only if operands have different values.
+* Consequently, Hamming Distance is mathematically equivalent to:
+  $$\text{HammingDistance}(x, y) = \text{popcount}(x \oplus y)$$
+
+---
+
+## 2. Summary of Questions Solved
+
+* **Total Questions Solved:** 1
+  1. LeetCode 461 — *Hamming Distance*
+
+---
+
+*See you on Day 58*
