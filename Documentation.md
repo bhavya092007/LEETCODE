@@ -8186,3 +8186,49 @@ eq i$) to ensure the final array is either entirely even or entirely odd.
 ---
 
 *See you on Day 55*
+
+# Problem Solving & Metacognition Documentation — Day 57
+**Date:** September 10, 2026  
+**Day Number:** Day 57
+
+---
+
+## Thought Process & Problem Solving Journey
+
+### LeetCode 461: Hamming Distance
+
+* **Understanding the Real Objective:**
+  * Hamming distance is defined as the number of corresponding positions where bits differ.
+  * Instead of converting integers to strings or full arrays, I reasoned that this is fundamentally a stream of pairwise bit comparisons:
+    * Compare LSB of `x` with LSB of `y`.
+    * Move to the second bit and compare.
+    * Repeat across all bit positions.
+
+* **Formulating the Mental Model with Basic Operators:**
+  * **Extracting the Current Bit:** The operation `num & 1` masks out everything except the least significant bit, giving strictly `0` or `1`.
+  * **Comparing Parity:** If `bit1 != bit2`, it indicates a mismatch at the current position, so `count` increments.
+  * **Advancing to the Next Bit:** `num >> 1` shifts the bits right by one place, effectively discarding the evaluated bit.
+
+* **Loop Boundary Verification:**
+  * A crucial realization was using `while (x > 0 || y > 0)` instead of `&&`.
+  * If $x = 8$ (`1000`) and $y = 1$ (`0001`), after the first iteration $y$ drops to $0$ while $x$ still has higher-order bits (`100`).
+  * Using logical OR (`||`) guarantees that the comparison continues until all set bits in both numbers are fully accounted for.
+
+* **Connecting to the Broader Bitwise Toolkit:**
+  * While the bit-by-bit shift simulation is easy to trace, XOR (`x ^ y`) naturally encapsulates the exact logic:
+    * $0 \oplus 0 = 0$
+    * $1 \oplus 1 = 0$
+    * $0 \oplus 1 = 1$
+    * $1 \oplus 0 = 1$
+  * `x ^ y` isolates all differing positions as `1`s, reducing Hamming distance directly to counting set bits (the problem solved on Day 53).
+
+---
+
+## Summary of Questions Solved
+
+* **Total Questions Solved:** 1
+  1. LeetCode 461 — *Hamming Distance*
+
+---
+
+*See you on Day 58*
