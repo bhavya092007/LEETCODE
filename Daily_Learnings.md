@@ -15294,3 +15294,69 @@ ceil$ loop iterations.
 ---
 
 *See you on Day 55*
+
+# Learning Log — Day 57
+**Date:** September 10, 2026  
+**Day Number:** Day 57
+
+---
+
+## 1. Problem Overview & Technical Breakdown
+
+### Problem 1: LeetCode 461 — Hamming Distance
+* **Category:** Bit Manipulation / Simulation / Math
+* **Core Task:** Given two integers `x` and `y`, return the Hamming distance between them (the number of positions at which the corresponding binary bits differ).
+
+#### Technical Implementation Details
+* **Approach 1: Bit-by-Bit Extraction and Right-Shift Simulation**
+  * Use a loop conditioned on `while (x > 0 || y > 0)` to handle numbers of mismatched bit lengths.
+  * Extract the least significant bit (LSB) of both integers using bitwise AND:
+    * `bit1 = x & 1`
+    * `bit2 = y & 1`
+  * Check if bits differ (`bit1 != bit2`) and increment counter `count++`.
+  * Discard evaluated bits by right shifting both integers:
+    * `x = x >> 1`
+    * `y = y >> 1`
+  * Continue until both integers become zero.
+  * **Code Implementation:**
+    ```java
+    class Solution {
+        public int hammingDistance(int x, int y) {
+            int count = 0;
+
+            while (x > 0 || y > 0) {
+                int bit1 = x & 1;
+                int bit2 = y & 1;
+
+                if (bit1 != bit2) {
+                    count++;
+                }
+
+                x = x >> 1;
+                y = y >> 1;
+            }
+
+            return count;
+        }
+    }
+    ```
+  * **Complexity Analysis:**
+    * **Time Complexity:** $O(\max(\log_2 x, \log_2 y)) \le O(31) \approx O(1)$ — Bound by 32 bits for standard integers in Java.
+    * **Space Complexity:** $O(1)$ — Only scalar integer variables used.
+
+* **Approach 2: XOR Difference + Set Bit Counting (Optimal)**
+  * Use bitwise XOR (`x ^ y`) to produce `1` exclusively where bits differ.
+  * Count set bits using `Integer.bitCount(x ^ y)` or Brian Kernighan's algorithm.
+  * **Time Complexity:** $O(1)$
+  * **Space Complexity:** $O(1)$
+
+---
+
+## 2. Summary of Questions Solved
+
+* **Total Questions Solved:** 1
+  1. LeetCode 461 — *Hamming Distance*
+
+---
+
+*See you on Day 58*
