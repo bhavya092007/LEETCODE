@@ -8232,3 +8232,53 @@ eq i$) to ensure the final array is either entirely even or entirely odd.
 ---
 
 *See you on Day 58*
+
+# Problem Solving & Metacognition Documentation — Day 59
+**Date:** September 12, 2026  
+**Day Number:** Day 59
+
+---
+
+## Thought Process & Problem Solving Journey
+
+### LeetCode 268: Missing Number
+
+* **Problem Formulation & Strategy Evaluation:**
+  * The goal is to detect the single missing value from the continuous range $0$ through $n$.
+  * Evaluating potential options:
+    * Sorting the array allows scanning for index mismatches, but costs $O(n \log n)$ time.
+    * A `HashSet` or boolean presence array provides $O(1)$ lookups, but incurs $O(n)$ auxiliary space.
+  * The challenge demands both optimal time and space: $O(n)$ time and $O(1)$ space.
+
+* **Developing the XOR Cancellation Model:**
+  * I recognized that this problem can be framed as comparing two multisets:
+    1. Numbers that SHOULD exist: $\{0, 1, 2, \dots, n\}$
+    2. Numbers that DO exist: $\{nums[0], nums[1], \dots, nums[n-1]\}$
+  * Bitwise XOR has the property that any number XORed with itself cancels to zero: $x \oplus x = 0$.
+  * If we XOR all elements from both sets together, every present number appears exactly twice (once in the expected range and once in the array), canceling out completely.
+  * The missing number appears only once (in the expected range), leaving it as the only remaining value.
+
+* **Handling Range Boundaries & Loop Invariant:**
+  * The array has length $n$, with indices running from $0$ to $n - 1$.
+  * The expected numbers run from $0$ to $n$.
+  * If we only loop up to $n - 1$, the number $n$ would be left out of the expected range.
+  * To solve this cleanly without an extra operation outside the loop, I initialized `result = nums.length` ($n$).
+  * Inside the loop, `result = result ^ i ^ nums[i]` pairs index $i$ and `nums[i]` simultaneously, covering all expected values $[0, n]$ in a single pass.
+
+* **Interview Delivery Structure:**
+  * When explaining this approach:
+    1. State the requirements: $O(n)$ time, $O(1)$ extra space.
+    2. Define the cancellation invariant: $x \oplus x = 0$ and $x \oplus 0 = x$.
+    3. Explain that XORing expected indices with array values causes present numbers to cancel in pairs.
+    4. Highlight why starting with `result = nums.length` accounts for the upper boundary $n$.
+
+---
+
+## Summary of Questions Solved
+
+* **Total Questions Solved:** 1
+  1. LeetCode 268 — *Missing Number*
+
+---
+
+*See you on Day 60*
