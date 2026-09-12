@@ -15360,3 +15360,62 @@ ceil$ loop iterations.
 ---
 
 *See you on Day 58*
+
+# Learning Log — Day 59
+**Date:** September 12, 2026  
+**Day Number:** Day 59
+
+---
+
+## 1. Problem Overview & Technical Breakdown
+
+### Problem 1: LeetCode 268 — Missing Number
+* **Category:** Array / Bit Manipulation / Math / Hash Table
+* **Core Task:** Given an array `nums` containing $n$ distinct numbers in the range $[0, n]$, return the only number in the range that is missing from the array.
+
+#### Technical Implementation Details
+* **Approach 1: XOR Cancellation Invariant**
+  * Exploit algebraic properties of bitwise XOR:
+    * $x \oplus x = 0$ (Self-inverse / Cancellation)
+    * $x \oplus 0 = x$ (Identity)
+    * Commutative and associative: order of operations does not affect the output.
+  * Initialize `result = nums.length` ($n$) to cover the upper boundary of the range $[0, n]$.
+  * Single loop from $i = 0$ to $n - 1$:
+    * In each iteration, XOR both the loop index $i$ (expected sequence) and `nums[i]` (actual element present):
+      $$\text{result} = \text{result} \oplus i \oplus \text{nums}[i]$$
+  * Every present number appears exactly twice across both sets and cancels to $0$. The sole missing element appears only once in the index sequence and survives in `result`.
+  * **Code Implementation:**
+    ```java
+    class Solution {
+        public int missingNumber(int[] nums) {
+            int result = nums.length;
+
+            for (int i = 0; i < nums.length; i++) {
+                result = result ^ i ^ nums[i];
+            }
+
+            return result;
+        }
+    }
+    ```
+  * **Complexity Analysis:**
+    * **Time Complexity:** $O(n)$ — Single linear pass over the array of length $n$.
+    * **Space Complexity:** $O(1)$ — Only a single primitive tracking accumulator `result` is used.
+
+* **Approach 2: Gauss' Sum Formula (Math Alternative)**
+  * Expected sum: $S = \frac{n(n + 1)}{2}$.
+  * Subtract every element in `nums` from $S$.
+  * **Trade-off:** XOR is immune to integer overflow hazards, whereas Gauss' sum requires checking for potential arithmetic overflow when $n$ is very large.
+  * **Time Complexity:** $O(n)$
+  * **Space Complexity:** $O(1)$
+
+---
+
+## 2. Summary of Questions Solved
+
+* **Total Questions Solved:** 1
+  1. LeetCode 268 — *Missing Number*
+
+---
+
+*See you on Day 60*
