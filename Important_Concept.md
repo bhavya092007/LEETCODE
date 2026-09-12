@@ -3760,3 +3760,38 @@ floor + 1$).
 ---
 
 *See you on Day 58*
+
+# Important Concepts & Patterns — Day 59
+**Date:** September 12, 2026  
+**Day Number:** Day 59
+
+---
+
+## 1. Key Algorithmic Concepts & Patterns
+
+### 1. XOR Self-Inverse Invariant
+* **Fundamental Identity:**
+  $$x \oplus x = 0, \quad x \oplus 0 = x$$
+* **Multiset Pairing:** When combining two identical sets where one element is omitted from the second set, XORing all values from both sets annihilates duplicate pairs, isolating the singleton:
+  $$\left(\bigoplus_{i=0}^{n} i\right) \oplus \left(\bigoplus_{x \in nums} x\right) = \text{missing}$$
+
+### 2. Boundary Alignment in Index-Value Matching
+* When an array of length $n$ maps to a mathematical range of size $n + 1$ ($[0, n]$):
+  * Indices only supply $0 \dots n - 1$.
+  * Seed the accumulator with the missing boundary value: `int result = nums.length;`
+  * This guarantees that all $n + 1$ expected elements are evaluated without an auxiliary operation after the loop.
+
+### 3. Bitwise XOR vs. Arithmetic Sum
+* **Sum Approach:** Requires computing $\sum_{i=0}^n i - \sum nums$, which carries potential arithmetic overflow risks for large values of $n$.
+* **XOR Approach:** Operates purely bitwise on machine words with zero overflow risk, making it mathematically safer across all language environments.
+
+---
+
+## 2. Summary of Questions Solved
+
+* **Total Questions Solved:** 1
+  1. LeetCode 268 — *Missing Number*
+
+---
+
+*See you on Day 60*
