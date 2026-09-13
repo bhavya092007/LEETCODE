@@ -3795,3 +3795,36 @@ floor + 1$).
 ---
 
 *See you on Day 60*
+
+# Important Concepts & Patterns — Day 60
+**Date:** September 13, 2026  
+**Day Number:** Day 60
+
+---
+
+## 1. Key Algorithmic Concepts & Patterns
+
+### 1. Bitwise Accumulator Pipeline
+* **Pattern:** To reverse or build a bit stream from left to right:
+  $$\text{result} = (\text{result} \ll 1) \mid (\text{source} \ \& \ 1)$$
+  * `result << 1`: Opens empty slot at position 0.
+  * `source & 1`: Extracts current bit.
+  * `|`: Merges the extracted bit into position 0.
+
+### 2. Unsigned Right Shift (`>>>`) vs. Signed Right Shift (`>>`)
+* **`>>` (Signed / Arithmetic Shift):** Copies the sign bit (MSB) into vacant positions on the left. If MSB is 1 (negative), it fills with 1s.
+* **`>>>` (Unsigned / Logical Shift):** Always shifts in zeros from the left, regardless of sign. Mandatory when treating 32-bit words as raw bit patterns.
+
+### 3. Fixed-Width Invariant
+* Unlike numerical algorithms that terminate on `while (n != 0)`, bit-reversal depends on fixed word length ($32$ bits). Leading zeroes in the input become trailing zeroes in the output, necessitating an exact 32-step iteration.
+
+---
+
+## 2. Summary of Questions Solved
+
+* **Total Questions Solved:** 1
+  1. LeetCode 190 — *Reverse Bits*
+
+---
+
+*See you on Day 61*
