@@ -15419,3 +15419,59 @@ ceil$ loop iterations.
 ---
 
 *See you on Day 60*
+
+# Learning Log — Day 60
+**Date:** September 13, 2026  
+**Day Number:** Day 60
+
+---
+
+## 1. Problem Overview & Technical Breakdown
+
+### Problem 1: LeetCode 190 — Reverse Bits
+* **Category:** Bit Manipulation / Simulation / Divide and Conquer
+* **Core Task:** Given a 32-bit unsigned integer `n`, reverse its binary bits and return the resulting value.
+
+#### Technical Implementation Details
+* **Approach 1: 32-Step Bitwise Accumulation Loop**
+  * Initialize an accumulator `result = 0`.
+  * Execute a loop for exactly 32 iterations (`for (int i = 0; i < 32; i++)`):
+    * Extract the least significant bit (LSB) of `n` using bitwise AND: `n & 1`.
+    * Shift `result` to the left by 1 position: `result << 1` to open space at the 0th bit.
+    * Append the extracted bit using bitwise OR: `(result << 1) | (n & 1)`.
+    * Shift `n` right by 1 position using unsigned right shift: `n = n >>> 1`.
+  * Return `result`.
+  * **Code Implementation:**
+    ```java
+    class Solution {
+        public int reverseBits(int n) {
+            int result = 0;
+
+            for (int i = 0; i < 32; i++) {
+                result = (result << 1) | (n & 1);
+                n = n >>> 1;
+            }
+
+            return result;
+        }
+    }
+    ```
+  * **Complexity Analysis:**
+    * **Time Complexity:** $O(32)  pprox O(1)$ — The loop executes a fixed 32 iterations regardless of input magnitude.
+    * **Space Complexity:** $O(1)$ — Uses a single integer accumulator.
+
+* **Approach 2: Divide and Conquer / Byte-Level Masking (Optimal for repeated calls)**
+  * Reverse bits in chunks using masks: swap adjacent 16-bit blocks, then 8-bit, 4-bit, 2-bit, and single bits.
+  * **Time Complexity:** $O(1)$ (5 bitwise operations).
+  * **Space Complexity:** $O(1)$.
+
+---
+
+## 2. Summary of Questions Solved
+
+* **Total Questions Solved:** 1
+  1. LeetCode 190 — *Reverse Bits*
+
+---
+
+*See you on Day 61*
