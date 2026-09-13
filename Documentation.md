@@ -8282,3 +8282,53 @@ eq i$) to ensure the final array is either entirely even or entirely odd.
 ---
 
 *See you on Day 60*
+
+# Problem Solving & Metacognition Documentation — Day 60
+**Date:** September 13, 2026  
+**Day Number:** Day 60
+
+---
+
+## Thought Process & Problem Solving Journey
+
+### LeetCode 190: Reverse Bits
+
+* **Problem Framing & Moving Beyond String Reversal:**
+  * My initial intuition was string conversion: convert `n` using `Integer.toBinaryString(n)`, reverse the string, and parse it back.
+  * However, `Integer.toBinaryString(n)` strips leading zeros (e.g., $5 	o 	ext{"101"}$ instead of 32 bits).
+  * Manually padding up to 32 characters adds string-handling overhead, making direct bitwise manipulation much cleaner and faster.
+
+* **Identifying and Debugging the Loop Predicate:**
+  * In my first implementation attempt, I mistakenly wrote:
+    ```java
+    while (n <= 32)
+    ```
+  * I confused the constant bit-width (32 bits) with the numerical value of $n$. For numbers like $43261596$, $n \le 32$ evaluates to `false` on the very first check, preventing the loop from ever executing.
+  * I also realized that `while (n != 0)` is insufficient because leading zeros must be shifted across all 32 positions to become trailing zeros in the reversed output.
+  * *Correction:* Use a deterministic loop: `for (int i = 0; i < 32; i++)`.
+
+* **Building the Bitwise Pipeline (Get $	o$ Shift $	o$ Place):**
+  * **Extract:** `n & 1` isolates the rightmost bit of $n$.
+  * **Shift Result:** `result << 1` shifts the accumulated bits left, creating a clean zero at the LSB.
+  * **Place Bit:** `| (n & 1)` injects the extracted bit into that vacant LSB position.
+  * Combined pipeline:
+    ```java
+    result = (result << 1) | (n & 1);
+    ```
+
+* **Arithmetic vs. Logical Right Shift (`>>` vs. `>>>`):**
+  * In Java, `int` is a signed 32-bit primitive.
+  * `>>` is an arithmetic right shift that preserves the sign bit by filling the leftmost positions with `1` if negative.
+  * `>>>` is a logical/unsigned right shift that always fills the leftmost positions with `0`.
+  * Using `n = n >>> 1` ensures that negative inputs are treated purely as raw 32-bit sequences without sign-extension interference.
+
+---
+
+## Summary of Questions Solved
+
+* **Total Questions Solved:** 1
+  1. LeetCode 190 — *Reverse Bits*
+
+---
+
+*See you on Day 61*
