@@ -3828,3 +3828,36 @@ floor + 1$).
 ---
 
 *See you on Day 61*
+# Important Concepts & Patterns — Day 61
+**Date:** September 14, 2026  
+**Day Number:** Day 61
+
+---
+
+## 1. Key Algorithmic Concepts & Patterns
+
+### 1. Complement / Elimination Technique
+* **Principle:** When affirmative conditions require verifying multiple interrelated criteria, evaluate the negation / complement instead:
+  $$\text{Overlap} = \neg(\text{Left} \lor \text{Right} \lor \text{Above} \lor \text{Below})$$
+* If any mutually exclusive separation condition holds, terminate immediately via early exit.
+
+### 2. 2D Axis-Aligned Decomposition into 1D Intervals
+* Two axis-aligned 2D rectangles overlap if and only if their 1D projection intervals overlap simultaneously on both dimensions:
+  $$\text{Overlap}_{2D} = \text{Overlap}_{X} \land \text{Overlap}_{Y}$$
+* Interval $[a_1, a_2]$ and $[b_1, b_2]$ have positive overlap if:
+  $$\max(a_1, b_1) < \min(a_2, b_2) \iff a_1 < b_2 \land a_2 > b_1$$
+
+### 3. Boundary Strictness Invariant (Area vs. Point/Edge Contact)
+* **Positive Area Overlap:** Requires strict inequalities in overlap tests ($<, >$), or non-strict inequalities in separation tests ($\le, \ge$).
+* Equality signifies zero-width or zero-height contact (edges/vertices), yielding zero area.
+
+---
+
+## 2. Summary of Questions Solved
+
+* **Total Questions Solved:** 1
+  1. LeetCode 836 — *Rectangle Overlap*
+
+---
+
+*See you on Day 62*
