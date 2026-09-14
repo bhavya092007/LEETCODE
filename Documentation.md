@@ -8332,3 +8332,47 @@ eq i$) to ensure the final array is either entirely even or entirely odd.
 ---
 
 *See you on Day 61*
+
+# Problem Solving & Metacognition Documentation — Day 61
+**Date:** September 14, 2026  
+**Day Number:** Day 61
+
+---
+
+## Thought Process & Problem Solving Journey
+
+### LeetCode 836: Rectangle Overlap
+
+* **Deconstructing Problem Constraints & Overlap Semantics:**
+  * Each rectangle is defined by bottom-left $(x_1, y_1)$ and top-right $(x_2, y_2)$ coordinates.
+  * The problem requires a **positive intersection area**.
+  * Merely touching along an edge (e.g., $x_2^{(1)} = x_1^{(2)}$) or at a corner creates a zero-width or zero-height line/point, meaning the area is $0$ and must return `false`.
+
+* **Framing the Problem via Complement Logic:**
+  * Rather than checking all valid overlapping geometry configurations, I asked: *When is an overlap guaranteed to be impossible?*
+  * Separation occurs in four independent geometric directions:
+    1. Left: `rec1[2] <= rec2[0]` (rec1 is fully left of rec2)
+    2. Right: `rec1[0] >= rec2[2]` (rec1 is fully right of rec2)
+    3. Below: `rec1[3] <= rec2[1]` (rec1 is fully below rec2)
+    4. Above: `rec1[1] >= rec2[3]` (rec1 is fully above rec2)
+  * Since separation in *any single direction* destroys the possibility of intersection, these four conditions must be connected with the logical OR (`||`) operator.
+
+* **Why Boundary Equality (`<=` and `>=`) is Mandatory:**
+  * If we used strict inequality `<` or `>`, touching boundaries like `rec1 = [0,0,1,1]` and `rec2 = [1,0,2,1]` (meeting at $x = 1$) would bypass the non-overlap check and incorrectly report `true`.
+  * Including equality handles zero-area edge and vertex collisions cleanly.
+
+* **General Problem-Solving Reflection:**
+  * Using the complement ($	ext{Overlap} = 
+eg	ext{Non-Overlap}$) simplifies conditional complexity dramatically.
+  * Eliminating impossible states is frequently cleaner to formulate and test than enumerating all valid permutations.
+
+---
+
+## Summary of Questions Solved
+
+* **Total Questions Solved:** 1
+  1. LeetCode 836 — *Rectangle Overlap*
+
+---
+
+*See you on Day 62*
