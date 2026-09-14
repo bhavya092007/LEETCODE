@@ -15475,3 +15475,63 @@ ceil$ loop iterations.
 ---
 
 *See you on Day 61*
+
+# Learning Log — Day 61
+**Date:** September 14, 2026  
+**Day Number:** Day 61
+
+---
+
+## 1. Problem Overview & Technical Breakdown
+
+### Problem 1: LeetCode 836 — Rectangle Overlap
+* **Category:** Geometry / Math / Arrays / Logical Operators
+* **Core Task:** Given two axis-aligned rectangles `rec1 = [x1, y1, x2, y2]` and `rec2 = [x1, y1, x2, y2]`, determine if they overlap with a positive area (touching at points or edges does not count).
+
+#### Technical Implementation Details
+* **Approach 1: Complement Logic / Non-Overlap Elimination (De Morgan's Laws)**
+  * Identify the four directional boundaries where overlap is impossible:
+    * Completely to the right: `rec1[0] >= rec2[2]`
+    * Completely to the left: `rec1[2] <= rec2[0]`
+    * Completely above: `rec1[1] >= rec2[3]`
+    * Completely below: `rec1[3] <= rec2[1]`
+  * If any of these four boundary conditions evaluates to `true`, the rectangles cannot share positive area (return `false`).
+  * Otherwise, they must overlap (return `true`).
+  * **Code Implementation:**
+    ```java
+    class Solution {
+        public boolean isRectangleOverlap(int[] rec1, int[] rec2) {
+            if (rec1[0] >= rec2[2] ||
+                rec1[2] <= rec2[0] ||
+                rec1[1] >= rec2[3] ||
+                rec1[3] <= rec2[1]) {
+
+                return false;
+            }
+
+            return true;
+        }
+    }
+    ```
+  * **Complexity Analysis:**
+    * **Time Complexity:** $O(1)$ — Exact 4 boundary comparisons with short-circuit evaluation.
+    * **Space Complexity:** $O(1)$ — Zero auxiliary data structures.
+
+* **Approach 2: Direct 1D Interval Overlap (Horizontal & Vertical Projections)**
+  * Check that both 1D axis projections have strictly positive intersection:
+    * Horizontal overlap: `rec1[0] < rec2[2] && rec1[2] > rec2[0]`
+    * Vertical overlap: `rec1[1] < rec2[3] && rec1[3] > rec2[1]`
+  * Combine both conditions using logical AND (`&&`).
+  * **Time Complexity:** $O(1)$
+  * **Space Complexity:** $O(1)$
+
+---
+
+## 2. Summary of Questions Solved
+
+* **Total Questions Solved:** 1
+  1. LeetCode 836 — *Rectangle Overlap*
+
+---
+
+*See you on Day 62*
