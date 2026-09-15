@@ -3861,3 +3861,40 @@ floor + 1$).
 ---
 
 *See you on Day 62*
+
+# Important Concepts & Patterns — Day 62
+**Date:** September 15, 2026  
+**Day Number:** Day 62
+
+---
+
+## 1. Key Algorithmic Concepts & Patterns
+
+### 1. Base-$2^k$ Bit Nibble Extraction
+* When converting to any base that is a power of 2 ($B = 2^k$):
+  * **Mask:** $(2^k - 1)$ isolates the lowest $k$ bits (`num & ((1 << k) - 1)`).
+  * **Step Shift:** `num >>> k` advances to the next digit block.
+  * For Hexadecimal ($B = 16 = 2^4$):
+    $$\text{digit} = \text{num} \ \& \ 15, \quad \text{num} = \text{num} \ggg 4$$
+
+### 2. Two's Complement Invariant with `>>>`
+* In Java, negative numbers have leading sign bits (`1`).
+* An arithmetic shift (`>>`) sign-extends with `1`, preventing `num != 0` termination for negative numbers.
+* A logical shift (`>>>`) fills vacated high-order bits with `0`, allowing two's complement representations (e.g. `-1` $\to$ `ffffffff`) to terminate deterministically.
+
+### 3. Digit Stream Prepending vs. Appending
+* Low-order bits are processed first (little-endian order).
+* Since standard numeral strings require high-order digits first (big-endian order), each converted character must be prepended:
+  $$\text{ans} = \text{hex}[\text{digit}] + \text{ans}$$
+  *(Or appended to a `StringBuilder` and reversed at the end for $O(1)$ amortized appends).*
+
+---
+
+## 2. Summary of Questions Solved
+
+* **Total Questions Solved:** 1
+  1. LeetCode 405 — *Convert a Number to Hexadecimal*
+
+---
+
+*See you on Day 63*
