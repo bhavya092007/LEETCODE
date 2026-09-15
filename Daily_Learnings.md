@@ -15535,3 +15535,60 @@ ceil$ loop iterations.
 ---
 
 *See you on Day 62*
+
+# Learning Log — Day 62
+**Date:** September 15, 2026  
+**Day Number:** Day 62
+
+---
+
+## 1. Problem Overview & Technical Breakdown
+
+### Problem 1: LeetCode 405 — Convert a Number to Hexadecimal
+* **Category:** Bit Manipulation / Math / String Simulation
+* **Core Task:** Given an integer `num`, convert it into its hexadecimal representation. Two's complement representation must be preserved for negative numbers, without leading zeroes (except when `num == 0`).
+
+#### Technical Implementation Details
+* **Approach 1: 4-Bit Masking & Unsigned Logical Shift**
+  * Edge Case: If `num == 0`, immediately return `"0"`.
+  * Define character lookup array: `char[] hex = "0123456789abcdef".toCharArray()`.
+  * Loop condition: `while (num != 0)`.
+    * Extract lowest 4 bits via mask: `digit = num & 15` ($15_{10} = 1111_2$).
+    * Map integer $[0, 15]$ to hexadecimal character: `hex[digit]`.
+    * Prepend character to accumulator: `ans = hex[digit] + ans` (since bits are extracted LSB to MSB).
+    * Shift right logically by 4 bits: `num = num >>> 4` (injects 0s on the left, handling two's complement negative numbers seamlessly).
+  * **Code Implementation:**
+    ```java
+    class Solution {
+        public String toHex(int num) {
+            if (num == 0) {
+                return "0";
+            }
+
+            char[] hex = "0123456789abcdef".toCharArray();
+            String ans = "";
+
+            while (num != 0) {
+                int digit = num & 15;
+                ans = hex[digit] + ans;
+                num = num >>> 4;
+            }
+
+            return ans;
+        }
+    }
+    ```
+  * **Complexity Analysis:**
+    * **Time Complexity:** $O(1)$ — Since a 32-bit integer produces at most 8 hex digits ($32 / 4 = 8$), the loop runs at most 8 times.
+    * **Space Complexity:** $O(1)$ — Only a fixed-size char array and intermediate string variables are allocated.
+
+---
+
+## 2. Summary of Questions Solved
+
+* **Total Questions Solved:** 1
+  1. LeetCode 405 — *Convert a Number to Hexadecimal*
+
+---
+
+*See you on Day 63*
