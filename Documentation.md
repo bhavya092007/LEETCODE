@@ -8376,3 +8376,47 @@ eg	ext{Non-Overlap}$) simplifies conditional complexity dramatically.
 ---
 
 *See you on Day 62*
+
+# Problem Solving & Metacognition Documentation — Day 62
+**Date:** September 15, 2026  
+**Day Number:** Day 62
+
+---
+
+## Thought Process & Problem Solving Journey
+
+### LeetCode 405: Convert a Number to Hexadecimal
+
+* **Initial Intuition & Moving Beyond Built-ins:**
+  * While `Integer.toHexString(num)` solves the problem directly, my goal is to build deep intuition for bit manipulation.
+  * I recognized that $16 = 2^4$, meaning exactly 4 binary bits map to 1 hexadecimal digit:
+    * `0000` $\to$ `'0'`
+    * `1010` $\to$ `'a'`
+    * `1111` $\to$ `'f'`
+
+* **Deconstructing the Bitmask & Nibble Extraction:**
+  * To extract 4 bits at a time from right to left, I needed a mask of four ones (`1111_2`), which is $15$ in decimal ($0xF$).
+  * The operation `num & 15` isolates the lowest 4-bit nibble into a value from $0$ to $15$.
+  * Mapping this value to a character is done cleanly using a lookup array: `hex[num & 15]`.
+
+* **Handling Stream Direction & Negative Numbers:**
+  * **Reversed Digit Order:** Because bit extraction processes the least significant bits first, appending (`ans + hex[digit]`) reverses the number. Prepending (`hex[digit] + ans`) keeps the correct most-significant-digit-first format.
+  * **Unsigned Right Shift (`>>>`):** Negative numbers in Java are represented in 32-bit two's complement. Using signed right shift `>> 4` keeps copying the sign bit `1`, causing an infinite loop. Using logical right shift `num >>> 4` always shifts in `0`s, naturally terminating the loop after at most 8 iterations for negative numbers like `-1`.
+
+* **Metacognitive Reflection:**
+  * Bit masking with power-of-two bases ($2^k$) follows a uniform pattern:
+    * Binary ($2^1$): `& 1`, `>>> 1`
+    * Octal ($2^3$): `& 7`, `>>> 3`
+    * Hexadecimal ($2^4$): `& 15`, `>>> 4`
+  * This reinforces that base conversion is bit-group extraction rather than repeated arithmetic division.
+
+---
+
+## Summary of Questions Solved
+
+* **Total Questions Solved:** 1
+  1. LeetCode 405 — *Convert a Number to Hexadecimal*
+
+---
+
+*See you on Day 63*
