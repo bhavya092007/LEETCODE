@@ -3898,3 +3898,37 @@ floor + 1$).
 ---
 
 *See you on Day 63*
+
+# Important Concepts & Patterns — Day 63
+**Date:** September 16, 2026  
+**Day Number:** Day 63
+
+---
+
+## 1. Key Algorithmic Concepts & Patterns
+
+### 1. Dual-Stack Level Synchronization Pattern
+* **Core Principle:** Whenever an aggregate metric (such as $\min$ or $\max$) must be tracked under LIFO constraints in $O(1)$ time, maintain an auxiliary stack synchronized in size 1:1 with the primary stack.
+* Each entry in the auxiliary stack records the state of that metric for the prefix ending at that exact depth.
+
+### 2. Java Stack API vs. Array Mechanics
+* Arrays: Indexed random access (`arr[i] = val`), fixed size.
+* `Stack<T>`:
+  * `push(E item)`: Appends to top.
+  * `pop()`: Removes and returns top (no arguments).
+  * `peek()`: Inspects top without removal.
+  * `empty()`: Returns boolean status.
+
+### 3. Object Construction & Recursion Invariant
+* Never instantiate an enclosing class within its own parameterless constructor (`new MyClass()` inside `MyClass()`), as this triggers an infinite instantiation loop and crashes the runtime call stack.
+
+---
+
+## 2. Summary of Questions Solved
+
+* **Total Questions Solved:** 1
+  1. LeetCode 155 — *Min Stack*
+
+---
+
+*See you on Day 64*
