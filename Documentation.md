@@ -8420,3 +8420,47 @@ eg	ext{Non-Overlap}$) simplifies conditional complexity dramatically.
 ---
 
 *See you on Day 63*
+
+# Problem Solving & Metacognition Documentation — Day 63
+**Date:** September 16, 2026  
+**Day Number:** Day 63
+
+---
+
+## Thought Process & Problem Solving Journey
+
+### LeetCode 155: Min Stack
+
+* **Deconstructing the Core Problem:**
+  * While `push`, `pop`, and `top` are standard $O(1)$ operations on a LIFO stack, `getMin()` usually requires an $O(n)$ scan across all elements if done naively.
+  * To achieve $O(1)$ retrieval without scanning, the minimum cannot be calculated lazily on demand; it must be recorded proactively during each state modification.
+
+* **Tracking and Correcting Early OOP & Java Syntax Misconceptions:**
+  1. **Infinite Recursive Constructor:**
+     * Initially tried instantiating `MinStack minStack = new MinStack();` inside the constructor.
+     * Recognized that calling `new MinStack()` inside `MinStack()` causes infinite recursive calls leading to a `StackOverflowError`.
+     * Fixed by declaring fields as `Stack<Integer>` and initializing standard Java `Stack` objects.
+  2. **Array Access vs. Collection API:**
+     * Attempted array syntax like `stack[top] = value`.
+     * Clarified that Java's `Stack` is an object requiring method calls: `.push(val)`.
+  3. **Method Signatures and Return Values:**
+     * Corrected `stack.pop(value)` to `stack.pop()` (pop removes the head implicitly, taking no arguments).
+     * Corrected `stack.seek()` to `stack.peek()`.
+     * Corrected `getMin() = minStack.top()` to `return minStack.peek();`.
+
+* **The Breakthrough: Snapshotting Minimums per Stack Level:**
+  * The critical question: *When an element is popped, how do we know what the minimum was before that element was pushed?*
+  * If we only push new minimums, popping requires historical reconstruction.
+  * By pushing the current minimum onto `minStack` at *every single push*, every index in `minStack` acts as a historical snapshot of the minimum of the prefix sub-stack below it.
+  * Popping both stacks in lockstep guarantees that the top of `minStack` always reflects the minimum of the remaining elements in $O(1)$ time.
+
+---
+
+## Summary of Questions Solved
+
+* **Total Questions Solved:** 1
+  1. LeetCode 155 — *Min Stack*
+
+---
+
+*See you on Day 64*
