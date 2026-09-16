@@ -15592,3 +15592,84 @@ ceil$ loop iterations.
 ---
 
 *See you on Day 63*
+
+# Learning Log — Day 63
+**Date:** September 16, 2026  
+**Day Number:** Day 63
+
+---
+
+## 1. Problem Overview & Technical Breakdown
+
+### Problem 1: LeetCode 155 — Min Stack
+* **Category:** Stack / Design / Data Structure Architecture
+* **Core Task:** Design a stack that supports `push`, `pop`, `top`, and retrieving the minimum element (`getMin`) in $O(1)$ constant time.
+
+#### Technical Implementation Details
+* **Approach: Dual-Stack Synchronization Pattern**
+  * Maintain two parallel `Stack<Integer>` instances:
+    * `stack`: Stores all actual element entries in standard LIFO order.
+    * `minStack`: Tracks the running minimum element corresponding to each stack level.
+  * **Operations Breakdown:**
+    * `push(value)`:
+      * Always push `value` onto `stack`.
+      * For `minStack`: if empty, push `value`. If `value < minStack.peek()`, push `value`. Otherwise, re-push the current minimum (`minStack.peek()`) to keep stack depths synchronized 1:1.
+    * `pop()`:
+      * Simultaneously pop from both `stack.pop()` and `minStack.pop()`.
+    * `top()`:
+      * Return `stack.peek()`.
+    * `getMin()`:
+      * Return `minStack.peek()`.
+  * **Code Implementation:**
+    ```java
+    import java.util.Stack;
+
+    class MinStack {
+        private Stack<Integer> stack;
+        private Stack<Integer> minStack;
+
+        public MinStack() {
+            stack = new Stack<>();
+            minStack = new Stack<>();
+        }
+
+        public void push(int value) {
+            stack.push(value);
+
+            if (minStack.empty()) {
+                minStack.push(value);
+            } else if (value < minStack.peek()) {
+                minStack.push(value);
+            } else {
+                minStack.push(minStack.peek());
+            }
+        }
+
+        public void pop() {
+            stack.pop();
+            minStack.pop();
+        }
+
+        public int top() {
+            return stack.peek();
+        }
+
+        public int getMin() {
+            return minStack.peek();
+        }
+    }
+    ```
+  * **Complexity Analysis:**
+    * **Time Complexity:** $O(1)$ for all operations (`push`, `pop`, `top`, `getMin`) — zero linear scans or loop iterations required.
+    * **Space Complexity:** $O(n)$ — Storing $n$ items in `stack` and $n$ minimum snapshots in `minStack`.
+
+---
+
+## 2. Summary of Questions Solved
+
+* **Total Questions Solved:** 1
+  1. LeetCode 155 — *Min Stack*
+
+---
+
+*See you on Day 64*
