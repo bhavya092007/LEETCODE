@@ -8464,3 +8464,49 @@ eg	ext{Non-Overlap}$) simplifies conditional complexity dramatically.
 ---
 
 *See you on Day 64*
+
+# Problem Solving & Metacognition Documentation — Day 68
+**Date:** September 21, 2026  
+**Day Number:** Day 68
+
+---
+
+## Thought Process & Problem Solving Journey
+
+### LeetCode 14: Longest Common Prefix
+
+* **Context & Motivation for Revisiting:**
+  * This fundamental problem slipped past my initial schedule. While reviewing progress after 77 days, I noticed it was still open.
+  * Rather than looking up standard code, I rebuilt the approach from scratch to solidify the core mental model.
+
+* **Developing the Vertical Scanning Mental Model:**
+  * Horizontal prefix comparison reduces words pairwise (`LCP(LCP(s1, s2), s3)`).
+  * In contrast, **Vertical Scanning** compares column by column down the matrix of strings:
+    * Index 0: check character in every word.
+    * Index 1: check character in every word.
+    * Stop at the very first index where any word runs out of characters or contains a differing letter.
+  * This matches human visual alignment when looking at stacked words.
+
+* **Key Invariants and Guardrails:**
+  * **Reference Word Selection:** Pick `strs[0]` as the baseline character source.
+  * **Peer Loop Indexing:** Inner loop begins at `j = 1` because comparing `strs[0]` against itself is redundant.
+  * **Boundary Guard Before Indexing:** When testing strings of varying lengths (e.g., `"flower"` vs. `"flow"`), index 4 does not exist in `"flow"`.
+  * **Short-Circuit Protection with `||`:**
+    ```java
+    if (i >= strs[j].length() || strs[j].charAt(i) != c)
+    ```
+    Placing the length check *first* leverages Java's short-circuit evaluation, ensuring `charAt(i)` is never called on an out-of-bounds index.
+
+* **Metacognitive Insight:**
+  * In string comparison problems, early termination is king: the prefix is bounded by the *shortest* matching character run. Never check further than the first mismatch.
+
+---
+
+## Summary of Questions Solved
+
+* **Total Questions Solved:** 1
+  1. LeetCode 14 — *Longest Common Prefix*
+
+---
+
+*See you on Day 69*
