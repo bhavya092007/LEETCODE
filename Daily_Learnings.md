@@ -15673,3 +15673,67 @@ ceil$ loop iterations.
 ---
 
 *See you on Day 64*
+
+# Learning Log — Day 68
+**Date:** September 21, 2026  
+**Day Number:** Day 68
+
+---
+
+## 1. Problem Overview & Technical Breakdown
+
+### Problem 1: LeetCode 14 — Longest Common Prefix
+* **Category:** String / Array / Vertical Scanning
+* **Core Task:** Find the longest common prefix string among an array of strings `strs`. If there is no common prefix, return an empty string `""`.
+
+#### Technical Implementation Details
+* **Approach: Vertical Scanning with Reference String & Short-Circuit Bounds Protection**
+  * Use `strs[0]` as the reference word.
+  * Outer loop iterates character-by-character over the reference string (`i = 0` to `strs[0].length() - 1`).
+  * Inner loop iterates over all remaining strings (`j = 1` to `strs.length - 1`).
+  * **Termination Condition:**
+    * Word length exhaustion: `i >= strs[j].length()` (the current string has run out of characters).
+    * Character mismatch: `strs[j].charAt(i) != c`.
+  * Using logical OR (`||`) guarantees short-circuiting: `strs[j].charAt(i)` is never invoked if `i >= strs[j].length()`, eliminating `StringIndexOutOfBoundsException`.
+  * Return accumulated `prefix` immediately upon encountering either condition.
+  * If the inner loop validates all words for index `i`, append character `c` to `prefix` and advance.
+  * **Code Implementation:**
+    ```java
+    class Solution {
+        public String longestCommonPrefix(String[] strs) {
+            if (strs == null || strs.length == 0) {
+                return "";
+            }
+
+            String prefix = "";
+
+            for (int i = 0; i < strs[0].length(); i++) {
+                char c = strs[0].charAt(i);
+
+                for (int j = 1; j < strs.length; j++) {
+                    if (i >= strs[j].length() || strs[j].charAt(i) != c) {
+                        return prefix;
+                    }
+                }
+
+                prefix += c;
+            }
+
+            return prefix;
+        }
+    }
+    ```
+  * **Complexity Analysis:**
+    * **Time Complexity:** $O(S)$, where $S$ is the total sum of characters across all strings. In the worst case (identical strings), all $N$ words are checked up to length $M$, giving $O(N \cdot M)$.
+    * **Space Complexity:** $O(1)$ auxiliary space (excluding the returned result string).
+
+---
+
+## 2. Summary of Questions Solved
+
+* **Total Questions Solved:** 1
+  1. LeetCode 14 — *Longest Common Prefix*
+
+---
+
+*See you on Day 69*
