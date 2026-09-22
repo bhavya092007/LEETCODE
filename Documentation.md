@@ -8510,3 +8510,41 @@ eg	ext{Non-Overlap}$) simplifies conditional complexity dramatically.
 ---
 
 *See you on Day 69*
+
+# Problem Solving & Metacognition Documentation — Day 69
+**Date:** September 22, 2026  
+**Day Number:** Day 69
+
+---
+
+## Thought Process & Problem Solving Journey
+
+### LeetCode 66: Plus One
+
+* **Initial Misconceptions & Syntax Traps:**
+  * **Index Out of Bounds Trap:** Attempting `digits[digits.length]` causes an out-of-bounds error because 0-indexed arrays terminate at `digits.length - 1`.
+  * **Loop Condition:** Using `i <= digits.length` visits an invalid index. Standard forward iteration requires `i < digits.length`.
+  * **Directionality of Addition:** Addition cannot be processed left-to-right. Elementary arithmetic processes the least significant digit first (from the right).
+
+* **The Carry Mental Model:**
+  * When adding 1 to the rightmost digit:
+    * If `digit < 9`: increment and exit immediately. No further digits are affected.
+    * If `digit == 9`: it rolls over to `0`, generating a carry of `1` that flows leftward.
+  * This cascading carry only continues as long as preceding digits are also `9`.
+
+* **Deconstructing the "All 9s" Boundary Case:**
+  * If the input is `[9, 9, 9]`, every position rolls over to `0`, leaving `[0, 0, 0]` with an unhandled carry.
+  * The result must expand in length: $999 + 1 = 1000$.
+  * Instead of copying values, I leveraged Java's language specification: newly instantiated integer arrays are initialized with zeroes by default.
+  * Setting `result[0] = 1` on an array of length `digits.length + 1` completes the required answer `[1, 0, 0, 0]` directly in $O(1)$ operations after the loop.
+
+---
+
+## Summary of Questions Solved
+
+* **Total Questions Solved:** 1
+  1. LeetCode 66 — *Plus One*
+
+---
+
+*See you on Day 70*
