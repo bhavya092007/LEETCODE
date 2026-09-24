@@ -8548,3 +8548,53 @@ eg	ext{Non-Overlap}$) simplifies conditional complexity dramatically.
 ---
 
 *See you on Day 70*
+
+# Problem Solving & Metacognition Documentation — Day 71
+**Date:** September 24, 2026  
+**Day Number:** Day 71
+
+---
+
+## Thought Process & Problem Solving Journey
+
+### Smallest Index With Digit Sum Equal to Index
+
+* **Context & Returning to the Routine:**
+  * Returning on Day 71 (September 24, 2026) after missing Day 70 due to college celebrations. The focus is to immediately regain momentum through deliberate metacognition.
+
+* **Initial High-Level Framing & Identifying the Missing Piece:**
+  * I started by drafting the high-level control loop:
+    ```java
+    for (int i = 0; i < nums.length; i++) {
+        if (sumofdigit(nums[i]) == i) return i;
+    }
+    return -1;
+    ```
+  * While conceptually clear, I realized that writing `sumofdigit(nums[i])` assumes an operation that does not natively exist in Java.
+  * Instead of bloating the main method with nested inner loops, this prompted a deliberate architectural decision: **decompose the problem into two distinct, single-responsibility layers.**
+
+* **Decomposing into a Helper Method (Single Responsibility Principle):**
+  * **Component 1 (`smallestIndex`):** Responsible solely for linear traversal, boundary checking, and returning the first index matching the predicate.
+  * **Component 2 (`sumOfDigit`):** Responsible solely for taking an integer $n$ and extracting its base-10 digit sum.
+
+* **Developing Decimal Extraction Mechanics:**
+  * Just as bit extraction uses `% 2` and `/ 2` (or `& 1` and `>> 1` from earlier days), decimal digit extraction maps to:
+    * `n % 10`: isolates the least significant base-10 digit.
+    * `n / 10`: shifts the decimal number right by one place, stripping the processed digit.
+  * **Edge Case Evaluation (`n == 0`):**
+    * I initially added an explicit guard: `if (n == 0) return 0;`.
+    * On dry running, I realized `sum` is initialized to `0` and the condition `while (n > 0)` naturally evaluates to false when `n == 0`. Hence, the loop naturally handles zero without redundant branch checks.
+
+* **Key Takeaway:**
+  * "Don't try to solve the entire problem in one thought." Whenever a condition requires compound math, isolate it into a private helper function. It improves readability, eliminates mental overload during debugging, and creates reusable components.
+
+---
+
+## Summary of Questions Solved
+
+* **Total Questions Solved:** 1
+  1. *Smallest Index With Digit Sum Equal to Index*
+
+---
+
+*See you on Day 72*
