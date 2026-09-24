@@ -15794,3 +15794,62 @@ ceil$ loop iterations.
 ---
 
 *See you on Day 70*
+
+# Learning Log â€” Day 71
+**Date:** September 24, 2026  
+**Day Number:** Day 71
+
+---
+
+## 1. Problem Overview & Technical Breakdown
+
+### Problem 1: Smallest Index With Digit Sum Equal to Index
+* **Category:** Array / Math / Modular Arithmetic / Modular Code Decomposition
+* **Core Task:** Given an integer array `nums`, find the smallest index `i` such that the sum of the digits of `nums[i]` is equal to `i`. If no such index exists, return `-1`.
+
+#### Technical Implementation Details
+* **Approach: Linear Scan with Helper Function Decomposition**
+  * Modularize logic by splitting the task into two subproblems:
+    1. Outer search: sequentially evaluate indices $i \in [0, n - 1]$.
+    2. Sub-procedure: compute the sum of digits of a given integer using decimal extraction (`n % 10` and `n / 10`).
+  * **Early Exit Invariant:** Since index $i$ increments monotonically from $0$, the very first element satisfying `sumOfDigit(nums[i]) == i` is guaranteed to be the smallest valid index.
+  * If loop exhausts all $n$ indices without a match, return `-1`.
+  * **Code Implementation:**
+    ```java
+    class Solution {
+        public int smallestIndex(int[] nums) {
+            for (int i = 0; i < nums.length; i++) {
+                if (sumOfDigit(nums[i]) == i) {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
+        private int sumOfDigit(int n) {
+            int sum = 0;
+
+            while (n > 0) {
+                sum += n % 10;
+                n /= 10;
+            }
+
+            return sum;
+        }
+    }
+    ```
+  * **Complexity Analysis:**
+    * **Time Complexity:** $O(n \cdot d)$, where $n$ is the number of elements in `nums` and $d$ is the maximum number of decimal digits in any element ($d  pprox \lfloor \log_{10}(	ext{nums}[i]) 
+floor + 1$). Since integer values in standard competitive programming fit within 32 bits ($d \le 10$), this is bounded by $O(10n)  pprox O(n)$.
+    * **Space Complexity:** $O(1)$ auxiliary space â€” only scalar primitive variables (`i`, `sum`, `n`) are allocated on the call stack.
+
+---
+
+## 2. Summary of Questions Solved
+
+* **Total Questions Solved:** 1
+  1. *Smallest Index With Digit Sum Equal to Index*
+
+---
+
+*See you on Day 72*
