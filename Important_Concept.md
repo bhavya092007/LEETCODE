@@ -3932,3 +3932,36 @@ floor + 1$).
 ---
 
 *See you on Day 64*
+
+# Important Concepts & Patterns — Day 74
+**Date:** September 27, 2026  
+**Day Number:** Day 74
+
+---
+
+## 1. Key Algorithmic Concepts & Patterns
+
+### 1. Nested Scope State Preservation via Prefix Stacks
+* **Pattern:** When processing expressions with nested parentheses where inner scopes affect outer scopes:
+  * **Open Scope (`(`):** Push the un-evaluated parent prefix onto the stack and reset the active buffer.
+  * **Close Scope (`)`):** Evaluate/transform the inner buffer, pop the parent prefix, and merge them:
+    $$\text{active} = \text{parent} + \text{transform}(\text{inner})$$
+
+### 2. High-Efficiency `StringBuilder` Operations
+* **Buffer Clearing:** `sb.setLength(0)` resets the internal write pointer to 0 without reallocating underlying char buffers.
+* **In-Place Mutation:** `sb.reverse()` avoids manual character swaps or two-pointer code.
+* **Prepend Mechanics:** `sb.insert(0, str)` shifts existing characters right to place the new prefix at index 0.
+
+### 3. Hierarchical Bracket LIFO Invariant
+* Because brackets obey strict nesting, the top of the stack always holds the immediate enclosing scope of the current substring.
+
+---
+
+## 2. Summary of Questions Solved
+
+* **Total Questions Solved:** 1
+  1. LeetCode 1190 — *Reverse Substrings Between Each Pair of Parentheses*
+
+---
+
+*See you on Day 75*
