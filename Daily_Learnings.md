@@ -15853,3 +15853,75 @@ floor + 1$). Since integer values in standard competitive programming fit within
 ---
 
 *See you on Day 72*
+
+# Learning Log — Day 74
+**Date:** September 27, 2026  
+**Day Number:** Day 74
+
+---
+
+## 1. Problem Overview & Technical Breakdown
+
+### Problem 1: LeetCode 1190 — Reverse Substrings Between Each Pair of Parentheses
+* **Category:** Stack / String Manipulation / Simulation
+* **Core Task:** Reverse strings enclosed in each pair of matching parentheses, starting from the innermost pair out to the outermost pair. The final result should contain no parentheses.
+
+#### Technical Implementation Details
+* **Approach: Stack of Prefix Strings with Dynamic StringBuilder**
+  * Maintain a `Stack<String>` to remember the accumulated prefix strings from parent scope levels.
+  * Use a dynamic `StringBuilder current` to build the substring at the active nesting level.
+  * Traverse character-by-character:
+    * `c == '('`: An inner scope begins. Push the snapshot of the enclosing prefix `stack.push(current.toString())` and reset the current buffer `current.setLength(0)`.
+    * `c == ')'`: An inner scope closes.
+      * Reverse the contents of the completed scope: `current.reverse()`.
+      * Retrieve the parent prefix: `String previous = stack.pop()`.
+      * Attach the reversed scope to the end of the parent prefix: `current.insert(0, previous)`.
+    * Character letter: Append to the active level buffer: `current.append(c)`.
+  * Return `current.toString()`.
+  * **Code Implementation:**
+    ```java
+    import java.util.Stack;
+
+    class Solution {
+        public String reverseParentheses(String s) {
+            Stack<String> stack = new Stack<>();
+            StringBuilder current = new StringBuilder();
+
+            for (int i = 0; i < s.length(); i++) {
+                char c = s.charAt(i);
+                if (c == '(') {
+                    stack.push(current.toString());
+                    current.setLength(0);
+                } else if (c == ')') {
+                    current.reverse();
+                    String previous = stack.pop();
+                    current.insert(0, previous);
+                } else {
+                    current.append(c);
+                }
+            }
+
+            return current.toString();
+        }
+    }
+    ```
+  * **Complexity Analysis:**
+    * **Time Complexity:** $O(N^2)$ in the worst-case of deeply nested parentheses due to repeatedly reversing and prepending strings with `current.insert(0, previous)`. For constraints $N \le 2000$, this executes in a few milliseconds.
+    * **Space Complexity:** $O(N)$ auxiliary space for the stack storing prefix segments and the `StringBuilder` buffers.
+
+* **Approach 2: Wormhole Teleportation (Optimal $O(N)$)**
+  * Precompute paired bracket jump indices in an array `pair[i]`.
+  * Traverse through characters, switching direction ($d = -d$) whenever encountering a bracket.
+  * **Time Complexity:** $O(N)$
+  * **Space Complexity:** $O(N)$
+
+---
+
+## 2. Summary of Questions Solved
+
+* **Total Questions Solved:** 1
+  1. LeetCode 1190 — *Reverse Substrings Between Each Pair of Parentheses*
+
+---
+
+*See you on Day 75*
