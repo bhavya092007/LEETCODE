@@ -8598,3 +8598,48 @@ eg	ext{Non-Overlap}$) simplifies conditional complexity dramatically.
 ---
 
 *See you on Day 72*
+
+# Problem Solving & Metacognition Documentation — Day 74
+**Date:** September 27, 2026  
+**Day Number:** Day 74
+
+---
+
+## Thought Process & Problem Solving Journey
+
+### LeetCode 1190: Reverse Substrings Between Each Pair of Parentheses
+
+* **Mental Model: Scope Nesting and LIFO Processing:**
+  * When reading the problem statement, parentheses indicate hierarchical scope levels: innermost expressions must be resolved and reversed first before the enclosing layers can proceed.
+  * Because the most recently opened parenthesis `(` is the first one closed by a matching `)`, a **Stack** is the natural structure to store context across nested boundaries.
+
+* **Managing Prefix History Across Nesting Levels:**
+  * If we have an input like `"a(bc)d"`, `"a"` is typed before entering the parentheses.
+  * When encountering `'('`:
+    * The active prefix (`"a"`) must be saved without being reversed.
+    * Storing `stack.push(current.toString())` preserves the outer environment.
+    * Clearing the buffer with `current.setLength(0)` creates an isolated workspace for `"bc"`.
+
+* **Resolving Completed Scopes on Closing Parenthesis:')'**
+  * When encountering `')'`:
+    1. The active buffer contains the inner string `"bc"`.
+    2. We reverse it: `current.reverse()` $	o$ `"cb"`.
+    3. We pop the saved parent context: `previous = stack.pop()` $	o$ `"a"`.
+    4. We attach the reversed inner content onto the parent context: `current.insert(0, previous)` $	o$ `"acb"`.
+  * This merges the completed child scope back into the parent scope seamlessly.
+
+* **Key StringBuilder Methods Practiced:**
+  * `current.setLength(0)`: Clears the buffer in $O(1)$ without allocating a new object in memory.
+  * `current.reverse()`: Reverses the contents of the buffer in-place.
+  * `current.insert(0, previous)`: Prepends the parent string to the current reversed block.
+
+---
+
+## Summary of Questions Solved
+
+* **Total Questions Solved:** 1
+  1. LeetCode 1190 — *Reverse Substrings Between Each Pair of Parentheses*
+
+---
+
+*See you on Day 75*
