@@ -8643,3 +8643,51 @@ eg	ext{Non-Overlap}$) simplifies conditional complexity dramatically.
 ---
 
 *See you on Day 75*
+
+# Problem Solving & Metacognition Documentation ‚Äî Day 77
+**Date:** September 30, 2026  
+**Day Number:** Day 77
+
+---
+
+## Thought Process & Problem Solving Journey
+
+### LeetCode 1111: Maximum Nesting Depth of Two Valid Parentheses Strings
+
+* **Understanding the Goal:**
+  * The problem requires dividing a valid parenthesis string into two valid subsequences ($A$ and $B$, labeled 0 and 1) such that neither subsequence has a large depth.
+  * If the overall depth is $D$, we want each subsequence to absorb roughly half the depth ($ pprox D / 2$).
+
+* **Recognizing Depth Tracking without Extra Space:**
+  * At first, parenthesis problems look like they require an explicit `Stack<Character>`.
+  * But as learned on Day 50 (Crawler Log Folder), when only depth matters, an integer counter `curr` tracks nesting perfectly:
+    * `'('` increases depth.
+    * `')'` decreases depth.
+
+* **The Parity Alternation Insight:**
+  * How do we split the depth equally between two groups?
+  * We can alternate groups by depth level using **parity (`curr % 2`)**:
+    * Depth 1 $\to$ Group 1
+    * Depth 2 $\to$ Group 0
+    * Depth 3 $\to$ Group 1
+    * Depth 4 $\to$ Group 0
+  * By alternating levels, neither group ever holds two adjacent nesting levels simultaneously, effectively halving the maximum depth.
+
+* **Critical Order of Operations (Matching Pairs):**
+  * A closing bracket `')'` must belong to the **same group** as its matching opening bracket `'('`.
+  * For `'('`:
+    * We increment `curr++` first, then record `res[i] = curr % 2`.
+  * For `')'`:
+    * We record `res[i] = curr % 2` first (capturing the depth level of the open pair), and *then* decrement `curr--`.
+  * Reversing the order on `')'` would cause brackets of the same pair to receive different group labels, creating invalid parenthesis expressions.
+
+---
+
+## Summary of Questions Solved
+
+* **Total Questions Solved:** 1
+  1. LeetCode 1111 ‚Äî *Maximum Nesting Depth of Two Valid Parentheses Strings*
+
+---
+
+*See you on Day 78*
