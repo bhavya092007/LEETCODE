@@ -3965,3 +3965,37 @@ floor + 1$).
 ---
 
 *See you on Day 75*
+
+# Important Concepts & Patterns — Day 77
+**Date:** September 30, 2026  
+**Day Number:** Day 77
+
+---
+
+## 1. Key Algorithmic Concepts & Patterns
+
+### 1. Parity-Based Depth Multiplexing
+* When distributing a hierarchical resource of depth $D$ equally among two consumers to minimize the maximum burden:
+  * Route odd levels to one container ($depth \pmod 2 == 1$).
+  * Route even levels to the other container ($depth \pmod 2 == 0$).
+  * This guarantees $\max(D_A, D_B) = \lceil D / 2 \rceil$.
+
+### 2. Matching Bracket Lifecycle Invariant
+* In any paired nesting structure, opening and closing tokens must share identical metadata:
+  * **Opening step:** increment state $\to$ read label.
+  * **Closing step:** read label $\to$ decrement state.
+* Failing to mirror the operations across opening and closing phases results in desynchronization between paired elements.
+
+### 3. State Simplification (Counter vs. Stack)
+* If internal token characters or indices do not need to be retrieved upon closing, replace a LIFO `Stack` ($O(N)$ space) with a scalar counter `curr` ($O(1)$ space).
+
+---
+
+## 2. Summary of Questions Solved
+
+* **Total Questions Solved:** 1
+  1. LeetCode 1111 — *Maximum Nesting Depth of Two Valid Parentheses Strings*
+
+---
+
+*See you on Day 78*
