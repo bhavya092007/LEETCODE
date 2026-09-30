@@ -15925,3 +15925,60 @@ floor + 1$). Since integer values in standard competitive programming fit within
 ---
 
 *See you on Day 75*
+
+# Learning Log — Day 77
+**Date:** September 30, 2026  
+**Day Number:** Day 77
+
+---
+
+## 1. Problem Overview & Technical Breakdown
+
+### Problem 1: LeetCode 1111 — Maximum Nesting Depth of Two Valid Parentheses Strings
+* **Category:** String / Stack Simulation / Greedy / Parity Splitting
+* **Core Task:** Given a valid parentheses string `seq`, split it into two disjoint subsequences $A$ and $B$ (represented by an answer array of 0s and 1s) such that $\max(\text{depth}(A), \text{depth}(B))$ is minimized.
+
+#### Technical Implementation Details
+* **Approach: Depth Tracking via Parity Alternation**
+  * Let the overall maximum nesting depth of `seq` be $D$. The theoretical minimum achievable maximum depth of two split subsequences is $\lceil D / 2 \rceil$.
+  * Instead of maintaining a full stack to store characters or indices, track the active nesting level using a scalar counter `curr`.
+  * **Partition Rule (Parity Multiplexing):**
+    * For `'('`: Increment `curr++` before assigning `res[i] = curr % 2`. This assigns odd depths (1, 3, 5...) to group 1 and even depths (2, 4, 6...) to group 0.
+    * For `')'`: Assign `res[i] = curr % 2` to match the exact group assigned to its opening partner, then decrement `curr--`.
+  * This guarantees that matching parenthesis pairs always end up in the exact same subgroup ($A$ or $B$), keeping both subsequences valid while dividing the total depth evenly.
+  * **Code Implementation:**
+    ```java
+    class Solution {
+        public int[] maxDepthAfterSplit(String seq) {
+            int curr = 0;
+            int res[] = new int[seq.length()];
+
+            for (int i = 0; i < seq.length(); i++) {
+                char c = seq.charAt(i);
+                if (c == '(') {
+                    curr++;
+                    res[i] = curr % 2;
+                } else {
+                    res[i] = curr % 2;
+                    curr--;
+                }
+            }
+
+            return res;
+        }
+    }
+    ```
+  * **Complexity Analysis:**
+    * **Time Complexity:** $O(N)$ — A single linear scan through the string of length $N$.
+    * **Space Complexity:** $O(N)$ to store the result array (with $O(1)$ auxiliary memory).
+
+---
+
+## 2. Summary of Questions Solved
+
+* **Total Questions Solved:** 1
+  1. LeetCode 1111 — *Maximum Nesting Depth of Two Valid Parentheses Strings*
+
+---
+
+*See you on Day 78*
