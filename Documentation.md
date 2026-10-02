@@ -8691,3 +8691,44 @@ eg	ext{Non-Overlap}$) simplifies conditional complexity dramatically.
 ---
 
 *See you on Day 78*
+
+# Problem Solving & Metacognition Documentation — Day 79
+**Date:** October 2, 2026  
+**Day Number:** Day 79
+
+---
+
+## Thought Process & Problem Solving Journey
+
+### LeetCode 1394: Find Lucky Integer in an Array
+
+* **Understanding the Definition of "Lucky":**
+  * A number $x$ is "lucky" if and only if $\text{frequency}(x) == x$.
+  * If multiple lucky numbers exist, the problem asks for the largest one.
+
+* **Choosing the Right Data Structure (Array vs. HashMap):**
+  * Typically, frequency counting suggests a `HashMap<Integer, Integer>`.
+  * However, looking at the constraints: $1 \le \text{arr}[i] \le 500$.
+  * Because the value domain is bounded and small, a direct-address table (`new int[501]`) is significantly faster and uses negligible fixed memory ($501 \times 4$ bytes $\approx 2$ KB), completely eliminating hashing collisions and object overhead.
+
+* **Greedy Reverse Scan for "Largest":**
+  * Instead of finding all lucky numbers and tracking a maximum variable, I structured the second loop to iterate backwards:
+    ```java
+    for (int i = 500; i >= 1; i--)
+    ```
+  * This ensures an early-exit optimization: the moment `i == count[i]` evaluates to true, it is mathematically impossible for any remaining candidate to be larger, so returning `i` immediately guarantees the correct answer.
+
+* **Key Takeaway:**
+  * Always check problem value constraints before deciding on hash maps. A small, fixed numerical domain ($M \le 10^5$) makes array-based frequency counting an $O(1)$-space direct lookup.
+  * When a problem asks for the "largest" element satisfying a condition, scanning the candidate domain in descending order turns the search into an immediate early return.
+
+---
+
+## Summary of Questions Solved
+
+* **Total Questions Solved:** 1
+  1. LeetCode 1394 — *Find Lucky Integer in an Array*
+
+---
+
+*See you on Day 80*
