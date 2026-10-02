@@ -3999,3 +3999,36 @@ floor + 1$).
 ---
 
 *See you on Day 78*
+
+# Important Concepts & Patterns — Day 79
+**Date:** October 2, 2026  
+**Day Number:** Day 79
+
+---
+
+## 1. Key Algorithmic Concepts & Patterns
+
+### 1. Direct-Address Frequency Array (Constraint-Driven Optimization)
+* When input values are bounded within a known, small range $[1, M]$:
+  * Allocate `int[] count = new int[M + 1]`.
+  * Index directly using values: `count[val]++`.
+  * Avoids heap allocation, hashing overhead, and autoboxing of `Map<Integer, Integer>`.
+
+### 2. Descending Domain Search for Maximum Values
+* If the problem requires finding the maximum value satisfying predicate $P(x)$:
+  * Iterate $x$ from $M_{\max}$ down to $M_{\min}$.
+  * The first $x$ where $P(x)$ is satisfied is guaranteed to be the maximum valid answer, allowing immediate early termination.
+
+### 3. Space-Time Duality
+* Pre-allocating an array of size $501$ consumes constant $O(1)$ memory relative to $N$, yielding an ultra-clean $O(N)$ one-pass tally followed by a bounded 500-step check.
+
+---
+
+## 2. Summary of Questions Solved
+
+* **Total Questions Solved:** 1
+  1. LeetCode 1394 — *Find Lucky Integer in an Array*
+
+---
+
+*See you on Day 80*
