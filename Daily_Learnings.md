@@ -15982,3 +15982,59 @@ floor + 1$). Since integer values in standard competitive programming fit within
 ---
 
 *See you on Day 78*
+
+# Learning Log — Day 79
+**Date:** October 2, 2026  
+**Day Number:** Day 79
+
+---
+
+## 1. Problem Overview & Technical Breakdown
+
+### Problem 1: LeetCode 1394 — Find Lucky Integer in an Array
+* **Category:** Array / Hash Table / Counting / Frequency Array
+* **Core Task:** Given an array of integers `arr`, a lucky integer is an integer whose frequency in the array is equal to its value. Return the largest lucky integer in the array. If there is no lucky integer, return `-1`.
+
+#### Technical Implementation Details
+* **Approach: Fixed-Size Frequency Array with Reverse Linear Scan**
+  * The problem constraints state that $1 \le \text{arr}[i] \le 500$.
+  * Direct frequency mapping using a primitive integer array `int count[] = new int[501]` avoids the overhead of boxing/unboxing with `HashMap<Integer, Integer>`.
+  * **Pass 1 (Frequency Tally):**
+    * Traverse `arr` from left to right and increment the corresponding tally: `count[arr[i]]++`.
+  * **Pass 2 (Reverse Greedy Search):**
+    * The problem specifically requests the *largest* lucky integer.
+    * By iterating downwards from the maximum possible value down to the minimum (`for (int i = 500; i >= 1; i--)`), the first number satisfying `i == count[i]` is guaranteed to be the largest lucky integer.
+    * Return `i` immediately upon the first match.
+  * If the loop completes down to 1 without a match, return `-1`.
+  * **Code Implementation:**
+    ```java
+    class Solution {
+        public int findLucky(int[] arr) {
+            int count[] = new int[501];
+            for (int i = 0; i < arr.length; i++) {
+                int x = arr[i];
+                count[x]++;
+            }
+            for (int i = 500; i >= 1; i--) {
+                if (i == count[i]) {
+                    return i;
+                }
+            }
+            return -1;
+        }
+    }
+    ```
+  * **Complexity Analysis:**
+    * **Time Complexity:** $O(N + K)$, where $N$ is the length of `arr` and $K = 500$ is the fixed constraint upper bound. Since $K$ is constant, the runtime is strictly $O(N)$.
+    * **Space Complexity:** $O(K) = O(501)  pprox O(1)$ auxiliary space.
+
+---
+
+## 2. Summary of Questions Solved
+
+* **Total Questions Solved:** 1
+  1. LeetCode 1394 — *Find Lucky Integer in an Array*
+
+---
+
+*See you on Day 80*
